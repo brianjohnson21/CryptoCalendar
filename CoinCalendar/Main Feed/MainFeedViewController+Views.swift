@@ -276,7 +276,7 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
-        let eventOptionsVC = EventOptionsViewController()//PickerViewController()
+        let eventOptionsVC =  EventOptionsViewController()//PickerViewController() //EventOptionsViewController()
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)
     }

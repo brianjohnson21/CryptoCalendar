@@ -55,8 +55,7 @@ extension EventOptionsViewController {
         keyLine.widthAnchor.constraint(equalToConstant: 34).isActive = true
         keyLine.heightAnchor.constraint(equalToConstant: 4).isActive = true
         keyLine.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
-        
-        
+                
         //
         
         newChatOption.iconImageView.image = UIImage(named: "eye")
@@ -69,7 +68,7 @@ extension EventOptionsViewController {
         newChatOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         newChatOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
-        //newGroupOption.optionButton.addTarget(self, action: #selector(didSelectNewGroup), for: .touchUpInside)
+        newGroupOption.optionButton.addTarget(self, action: #selector(didTapSetAlert), for: .touchUpInside)
         newGroupOption.iconImageView.image = UIImage(named: "bell")
         newGroupOption.optionTitleLabel.text = "Set Alert"
         newGroupOption.optionDetailLabel.text = "Lorem ipsum dolor"

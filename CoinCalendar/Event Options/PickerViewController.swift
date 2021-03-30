@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol PickerViewControllerDelegate: class {
+    func didSetAlarm()
+}
+
 class PickerViewController: UIViewController {
     
+    weak var delegate: PickerViewControllerDelegate?
     var opacityLayer = UIView()
     var mainScrollView = UIScrollView()
     var wrapper = UIView()
@@ -20,7 +25,9 @@ class PickerViewController: UIViewController {
     let picker = UIPickerView()
     
     var isDismissing = false
-    var resetButton = UIButton()
+    var resetButton = ContinueButton()
+    
+    var pickerOptions: [String] = ["Day of", "Day before", "3 days before", "7 days before", "14 days before", "1 month before"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +44,22 @@ class PickerViewController: UIViewController {
 extension PickerViewController {
     @objc func animateViewsIn() {
         UIView.animate(withDuration: 0.35) {
-            self.opacityLayer.alpha = 0.75
-            self.mainContainer.transform = CGAffineTransform(translationX: 0, y: 0)
-            self.keyLine.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+            self.resetButton.alpha = 1.0
+            self.resetButton.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+            self.picker.alpha = 1.0
+            self.picker.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+            self.navTitleLabel.alpha = 1.0
+            self.navTitleLabel.transform = CGAffineTransform(translationX: 0, y: 0)
         } completion: { (success) in
             //
         }
     }
     
     @objc func dimissVC() {
+        delegate?.didSetAlarm()
         UIView.animate(withDuration: 0.28) {
             self.mainScrollView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
             self.opacityLayer.alpha = 0
@@ -55,6 +69,12 @@ extension PickerViewController {
             }
         }
     }
+    
+    @objc func didTapConfirm() {
+        successImpactGenerator()
+        resetButton.showCheckmark()
+        self.picker.isUserInteractionEnabled = false
+    }
 }
 
 
@@ -62,7 +82,6 @@ extension PickerViewController {
 
 extension PickerViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         if scrollView.tag == 1 {
             let yOffset = scrollView.contentOffset.y// + 44
             if yOffset > -44 {
@@ -77,5 +96,13 @@ extension PickerViewController: UIScrollViewDelegate {
             }
         }
                 
+    }
+}
+
+//MARK: CONTINUE DELEGATE
+
+extension PickerViewController: ContinueButtonDelegate {
+    func didFinishCheckmark() {
+        dimissVC()
     }
 }

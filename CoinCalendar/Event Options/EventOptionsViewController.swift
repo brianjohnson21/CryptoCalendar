@@ -56,6 +56,35 @@ extension EventOptionsViewController {
             }
         }
     }
+    
+    @objc func didTapSetAlert() {
+        lightImpactGenerator()
+        UIView.animate(withDuration: 0.35) {
+            self.newChatOption.alpha = 0
+            self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.newGroupOption.alpha = 0
+            self.newGroupOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.newChannelOption.alpha = 0
+            self.newChannelOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.shareOption.alpha = 0
+            self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+        } completion: { (success) in
+            self.showSetAlert()
+        }
+    }
+    
+    @objc func showSetAlert() {
+        let eventOptionsVC =  PickerViewController()
+        eventOptionsVC.delegate = self
+        eventOptionsVC.modalPresentationStyle = .overFullScreen
+        self.present(eventOptionsVC, animated: false) {
+            self.mainContainer.isHidden = true
+            self.keyLine.isHidden = true
+        }
+    }
 }
 
 //MARK: SCROLLVIEW DELEGATE
@@ -77,5 +106,13 @@ extension EventOptionsViewController: UIScrollViewDelegate {
             }
         }
                 
+    }
+}
+
+//MARK: PICKER VC DELEGATE
+
+extension EventOptionsViewController: PickerViewControllerDelegate {
+    func didSetAlarm() {
+        dimissVC()
     }
 }
