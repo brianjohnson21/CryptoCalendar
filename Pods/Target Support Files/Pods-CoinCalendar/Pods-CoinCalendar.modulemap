@@ -1,0 +1,6 @@
+framework module Pods_CoinCalendar {
+  umbrella header "Pods-CoinCalendar-umbrella.h"
+
+  export *
+  module * { export * }
+}

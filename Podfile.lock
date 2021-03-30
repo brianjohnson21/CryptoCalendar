@@ -1,0 +1,54 @@
+PODS:
+  - CHIPageControl (0.1.8):
+    - CHIPageControl/Aji (= 0.1.8)
+    - CHIPageControl/Aleppo (= 0.1.8)
+    - CHIPageControl/Chimayo (= 0.1.8)
+    - CHIPageControl/Fresno (= 0.1.8)
+    - CHIPageControl/Jalapeno (= 0.1.8)
+    - CHIPageControl/Jaloro (= 0.1.8)
+    - CHIPageControl/Paprika (= 0.1.8)
+    - CHIPageControl/Puya (= 0.1.8)
+  - CHIPageControl/Aji (0.1.8)
+  - CHIPageControl/Aleppo (0.1.8)
+  - CHIPageControl/Chimayo (0.1.8)
+  - CHIPageControl/Fresno (0.1.8)
+  - CHIPageControl/Jalapeno (0.1.8)
+  - CHIPageControl/Jaloro (0.1.8)
+  - CHIPageControl/Paprika (0.1.8)
+  - CHIPageControl/Puya (0.1.8)
+  - FlagPhoneNumber (0.8.0):
+    - FlagPhoneNumber/libPhoneNumberiOS (= 0.8.0)
+  - FlagPhoneNumber/libPhoneNumberiOS (0.8.0)
+  - lottie-ios (3.2.1)
+  - PhotoCircleCrop (1.3.2)
+  - Segmentio (4.1)
+  - WXImageCompress (0.1.3)
+
+DEPENDENCIES:
+  - CHIPageControl (~> 0.1.3)
+  - FlagPhoneNumber
+  - lottie-ios
+  - PhotoCircleCrop
+  - Segmentio
+  - WXImageCompress
+
+SPEC REPOS:
+  trunk:
+    - CHIPageControl
+    - FlagPhoneNumber
+    - lottie-ios
+    - PhotoCircleCrop
+    - Segmentio
+    - WXImageCompress
+
+SPEC CHECKSUMS:
+  CHIPageControl: 76b35c8309d8dd155e869c109cc6ffc0aaa465ff
+  FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
+  lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
+  PhotoCircleCrop: cdbea998ad27778853977b349dd2e7c3352c9245
+  Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
+
+PODFILE CHECKSUM: 6353c9d6495b733dba291d63d3e6af3082326397
+
+COCOAPODS: 1.10.1
