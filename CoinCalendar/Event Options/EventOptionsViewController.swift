@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class EventOptionsViewController: UIViewController {
     
@@ -20,6 +21,9 @@ class EventOptionsViewController: UIViewController {
     var newGroupOption = OptionsView()
     var newChannelOption = OptionsView()
     var shareOption = OptionsView()
+    var successCheck = AnimationView()
+    var addedToWatchListLabel = UILabel()
+    let toastView = ToastNotificationView()
     
     var isDismissing = false
 
@@ -36,7 +40,53 @@ class EventOptionsViewController: UIViewController {
 //MARK: ACTIONS
 
 extension EventOptionsViewController {
+    @objc func didTapAddtoCustom() {
+        errorImpactGenerator()
+        toastView.presentError(withMessage: "Coming in v1.1")
+    }
+    
+    @objc func didTapShareWithFriends() {
+        lightImpactGenerator()
+        let text = "This is some text that I want to share."
+        
+        // set up activity view controller
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @objc func tappedAddToWatchlist() {
+        lightImpactGenerator()
+        UIView.animate(withDuration: 0.35) {
+            self.newChatOption.alpha = 0
+            //self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.newGroupOption.alpha = 0
+            //self.newGroupOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.newChannelOption.alpha = 0
+            //self.newChannelOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.shareOption.alpha = 0
+            //self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+        } completion: { (success) in
+            self.successCheck.alpha = 1.0
+            self.successCheck.play()
+            UIView.animate(withDuration: 0.35) {
+                self.addedToWatchListLabel.alpha = 1.0
+            }
+            self.perform(#selector(self.dimissVC), with: self, afterDelay: 1.5)
+        }
+    }
+    
     @objc func animateViewsIn() {
+        
         UIView.animate(withDuration: 0.35) {
             self.opacityLayer.alpha = 0.75
             self.mainContainer.transform = CGAffineTransform(translationX: 0, y: 0)

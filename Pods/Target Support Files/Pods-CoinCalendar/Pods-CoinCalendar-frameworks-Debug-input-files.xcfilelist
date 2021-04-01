@@ -1,7 +1,9 @@
 ${PODS_ROOT}/Target Support Files/Pods-CoinCalendar/Pods-CoinCalendar-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/CHIPageControl/CHIPageControl.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/FlagPhoneNumber/FlagPhoneNumber.framework
 ${BUILT_PRODUCTS_DIR}/PhotoCircleCrop/PhotoCircleCrop.framework
 ${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework
+${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework
 ${BUILT_PRODUCTS_DIR}/WXImageCompress/WXImageCompress.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

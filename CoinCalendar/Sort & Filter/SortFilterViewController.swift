@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol SortFilterViewControllerDelegate: class {
+    func didUpdateFilter()
+}
+
 class SortFilterViewController: UIViewController {
     
+    weak var delegate: SortFilterViewControllerDelegate?
     var opacityLayer = UIView()
     var mainScrollView = UIScrollView()
     var mainContainer = UIView()
@@ -38,11 +43,13 @@ class SortFilterViewController: UIViewController {
                              ["XRP", "XRP"]
     ]
     
+    var originalAmount: Int = 0
+    
     var isDismissing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
         setupTableView()
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.01)
@@ -65,6 +72,11 @@ extension SortFilterViewController {
     
     
     @objc func dimissVC() {
+        
+        if originalAmount != coinsSelected.count {
+            delegate?.didUpdateFilter()
+        }
+        
         UIView.animate(withDuration: 0.28) {
             self.mainScrollView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
             self.opacityLayer.alpha = 0

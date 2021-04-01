@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Segmentio
+import Lottie
 
 extension MainFeedViewController {
     
@@ -66,6 +67,15 @@ extension MainFeedViewController {
         navView.addSubview(userNameLabel)
         userNameLabel.leadingAnchor.constraint(equalTo: userGreetingLabel.leadingAnchor, constant: 0).isActive = true
         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
+        
+        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
+        profileButton.backgroundColor = .clear
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(profileButton)
+        profileButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
+        profileButton.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
+        profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
+        profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
         calendarImageView.image = UIImage(named: "calendar")
         calendarImageView.contentMode = .scaleAspectFill
@@ -208,7 +218,7 @@ extension MainFeedViewController {
     
     func setupTableView() {
         mainFeedTableView = UITableView(frame: self.view.frame, style: .grouped)
-        mainFeedTableView.alpha = 1.0
+        mainFeedTableView.alpha = 0
         mainFeedTableView.isScrollEnabled = true
         mainFeedTableView.backgroundColor = .clear
         mainFeedTableView.delegate = self
@@ -234,6 +244,64 @@ extension MainFeedViewController {
         let window = UIApplication.shared.keyWindow!
         launchTransition.frame = window.bounds
         window.addSubview(launchTransition)
+    }
+    
+    func setupLoadingIndicator() {
+        
+        loadingContainer.isHidden = true
+        loadingContainer.alpha = 0
+        loadingContainer.backgroundColor = .white
+        loadingContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(loadingContainer)
+        loadingContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        loadingContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        loadingContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        loadingContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        let checkAnimation = Animation.named("loadingBlocks")
+        loadingLottie.isUserInteractionEnabled = false
+        loadingLottie.alpha = 1.0
+        loadingLottie.loopMode = .loop
+        loadingLottie.animation = checkAnimation
+        loadingLottie.contentMode = .scaleAspectFill
+        loadingLottie.backgroundColor = .clear
+        loadingLottie.translatesAutoresizingMaskIntoConstraints = false
+        loadingContainer.addSubview(loadingLottie)
+        loadingLottie.centerYAnchor.constraint(equalTo: loadingContainer.centerYAnchor, constant: -75).isActive = true
+        loadingLottie.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
+        loadingLottie.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        loadingLottie.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        
+        let loadingLabel = UILabel()
+        loadingLabel.text = "Updating the feed..."
+        loadingLabel.textAlignment = .center
+        loadingLabel.font = .sofiaMedium(ofSize: 11)
+        loadingLabel.textColor = .keyEventDetailColorModeLight
+        loadingLabel.numberOfLines = 0
+        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+        loadingContainer.addSubview(loadingLabel)
+        loadingLabel.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
+        loadingLabel.topAnchor.constraint(equalTo: loadingLottie.bottomAnchor, constant: 15).isActive = true
+        
+        //print("😀😀😀 - \(loadingLottie.logHierarchyKeypaths()) - 😀😀😀")
+        /*
+        var i = 0
+        let loadingLayers = ["Shape Layer 1.Ellipse 1.Stroke 1.Color", "Shape Layer 2.Ellipse 1.Stroke 1.Color", "Shape Layer 3.Ellipse 1.Stroke 1.Color"]
+        for layer in 1...loadingLayers.count {
+            let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
+            if i == 0 {
+                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(1.0).lottieColorValue)
+                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
+            } else if i == 1 {
+                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.8).lottieColorValue)
+                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
+            } else {
+                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.6).lottieColorValue)
+                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
+            }
+            i += 1
+        }
+        */
     }
     
 }

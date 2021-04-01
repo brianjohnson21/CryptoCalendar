@@ -19,36 +19,44 @@ PODS:
   - FlagPhoneNumber (0.8.0):
     - FlagPhoneNumber/libPhoneNumberiOS (= 0.8.0)
   - FlagPhoneNumber/libPhoneNumberiOS (0.8.0)
+  - FSCalendar (2.8.2)
   - lottie-ios (3.2.1)
   - PhotoCircleCrop (1.3.2)
   - Segmentio (4.1)
+  - ViewAnimator (3.0.2)
   - WXImageCompress (0.1.3)
 
 DEPENDENCIES:
   - CHIPageControl (~> 0.1.3)
   - FlagPhoneNumber
+  - FSCalendar
   - lottie-ios
   - PhotoCircleCrop
   - Segmentio
+  - ViewAnimator
   - WXImageCompress
 
 SPEC REPOS:
   trunk:
     - CHIPageControl
     - FlagPhoneNumber
+    - FSCalendar
     - lottie-ios
     - PhotoCircleCrop
     - Segmentio
+    - ViewAnimator
     - WXImageCompress
 
 SPEC CHECKSUMS:
   CHIPageControl: 76b35c8309d8dd155e869c109cc6ffc0aaa465ff
   FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   PhotoCircleCrop: cdbea998ad27778853977b349dd2e7c3352c9245
   Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
   WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
 
-PODFILE CHECKSUM: 6353c9d6495b733dba291d63d3e6af3082326397
+PODFILE CHECKSUM: e0526e75aa430c90d4a9356ad3a93fb7bbba8125
 
 COCOAPODS: 1.10.1

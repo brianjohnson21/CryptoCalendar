@@ -54,6 +54,13 @@ class SubscriptionViewController: UIViewController {
         
         setupViews()
         setupPromoContainer()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func appMovedToForeround() {
+        checkmarkLottie.play()
     }
 
 }

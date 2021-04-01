@@ -13,5 +13,7 @@ pod 'CHIPageControl', '~> 0.1.3'
 pod 'WXImageCompress'
 pod 'PhotoCircleCrop'
 pod 'FlagPhoneNumber'
+pod 'ViewAnimator'
+pod 'FSCalendar'
 
 end

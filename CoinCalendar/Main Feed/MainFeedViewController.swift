@@ -7,11 +7,15 @@
 
 import UIKit
 import Segmentio
+import Lottie
+import ViewAnimator
 
 class MainFeedViewController: UIViewController {
     
     let launchTransition = LaunchTransitionView()
     var transitionView = UIView()
+    var loadingContainer = UIView()
+    var loadingLottie = AnimationView()
     
     //Nav
     var navView = UIView()
@@ -23,6 +27,7 @@ class MainFeedViewController: UIViewController {
     var userProfileImageView = UIImageView()
     var userGreetingLabel = UILabel()
     var userNameLabel = UILabel()
+    var profileButton = UIButton()
     var calendarImageView = UIImageView()
     var sortImageView = UIImageView()
     var sortButton = UIButton()
@@ -42,6 +47,7 @@ class MainFeedViewController: UIViewController {
         //Call Views
         setupNav()
         setupTableView()
+        setupLoadingIndicator()
         
         if fromSignUp.bool(forKey: "comingFromSignUp") {
             print("is from sign up")
@@ -57,7 +63,8 @@ class MainFeedViewController: UIViewController {
         
         doTransitionViewThing()
         
-        perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
+        perform(#selector(animateCells), with: self, afterDelay: 1.1)
+        //perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
         
     }
     
@@ -70,6 +77,16 @@ class MainFeedViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         hideTabBar()
+    }
+    
+    @objc func animateCells() {
+        mainFeedTableView.alpha = 1.0
+        let fromAnimation = AnimationType.vector(CGVector(dx: 0, dy: 100))
+        let zoomAnimation = AnimationType.zoom(scale: 1.0)
+        UIView.animate(views: mainFeedTableView.visibleCells,
+                       animations: [zoomAnimation, fromAnimation],
+                       initialAlpha: 0, finalAlpha: 1.0, duration: 0.5)
+        //finishedLoading = true
     }
     
 }
@@ -88,12 +105,27 @@ extension MainFeedViewController {
     }
     
     @objc func didTapSortFilter() {
-        lightImpactGenerator()
-        let sortFilterVC = SortFilterViewController()
+        lightImpactGenerator()        
+//        let sortFilterVC = SortFilterViewController()
+//        sortFilterVC.delegate = self
+//        sortFilterVC.modalPresentationStyle = .overFullScreen
+//        self.present(sortFilterVC, animated: false) {
+//            //
+//        }
+        
+        let sortFilterVC = PickCryptoViewController()
         sortFilterVC.modalPresentationStyle = .overFullScreen
         self.present(sortFilterVC, animated: false) {
             //
         }
+    }
+    
+    @objc func goToProfile() {
+        lightImpactGenerator()
+        let VC1 = MyProfileViewController()
+        let navController = UINavigationController(rootViewController: VC1)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false, completion: nil)
     }
 }
 
@@ -102,5 +134,25 @@ extension MainFeedViewController {
 extension MainFeedViewController: LaunchTransitionViewDelegate {
     func didFinishLaunchAnimation() {
         //Did finish
+    }
+}
+
+//MARK: LAUNCH DELEGATE
+
+extension MainFeedViewController: SortFilterViewControllerDelegate {
+    func didUpdateFilter() {
+        mainFeedTableView.alpha = 0
+        loadingLottie.play()
+        loadingContainer.alpha = 1.0
+        loadingContainer.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 2.0, options: []) {
+            self.loadingContainer.alpha = 0
+        } completion: { (success) in
+            self.loadingContainer.isHidden = true
+            self.loadingLottie.stop()
+            self.animateCells()
+        }
+
+        
     }
 }

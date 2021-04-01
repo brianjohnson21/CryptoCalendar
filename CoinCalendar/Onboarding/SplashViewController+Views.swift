@@ -74,7 +74,7 @@ extension SplashViewController {
         
         calendarLabel.alpha = 0
         calendarLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        calendarLabel.text = "Calendar"
+        calendarLabel.text = "Cal"
         calendarLabel.textAlignment = .left
         calendarLabel.textColor = .keyEventHeadlineColorModeLight
         calendarLabel.font = .sofiaSemiBold(ofSize: 50)
