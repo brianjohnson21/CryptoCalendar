@@ -106,18 +106,18 @@ extension MainFeedViewController {
     
     @objc func didTapSortFilter() {
         lightImpactGenerator()        
-//        let sortFilterVC = SortFilterViewController()
-//        sortFilterVC.delegate = self
-//        sortFilterVC.modalPresentationStyle = .overFullScreen
-//        self.present(sortFilterVC, animated: false) {
-//            //
-//        }
-        
-        let sortFilterVC = PickCryptoViewController()
+        let sortFilterVC = SortFilterViewController()
+        sortFilterVC.delegate = self
         sortFilterVC.modalPresentationStyle = .overFullScreen
         self.present(sortFilterVC, animated: false) {
             //
         }
+        
+//        let sortFilterVC = PickCryptoViewController()
+//        sortFilterVC.modalPresentationStyle = .overFullScreen
+//        self.present(sortFilterVC, animated: false) {
+//            //
+//        }
     }
     
     @objc func goToProfile() {

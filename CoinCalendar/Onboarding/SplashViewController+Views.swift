@@ -19,11 +19,12 @@ extension SplashViewController {
         
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.alpha = 0.9
+        blurEffectView.alpha = 0.8
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         
+        iconsBGImageView.isHidden = true
         iconsBGImageView.image = UIImage(named: "iphoneXSplashBG")
         iconsBGImageView.contentMode = .scaleAspectFill
         iconsBGImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +75,7 @@ extension SplashViewController {
         
         calendarLabel.alpha = 0
         calendarLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        calendarLabel.text = "Cal"
+        calendarLabel.text = "Gainz"
         calendarLabel.textAlignment = .left
         calendarLabel.textColor = .keyEventHeadlineColorModeLight
         calendarLabel.font = .sofiaSemiBold(ofSize: 50)
@@ -83,6 +84,18 @@ extension SplashViewController {
         self.view.addSubview(calendarLabel)
         calendarLabel.leadingAnchor.constraint(equalTo: cryptoLabel.leadingAnchor, constant: 0).isActive = true
         calendarLabel.topAnchor.constraint(equalTo: cryptoLabel.bottomAnchor, constant: 10).isActive = true
+        
+        goingToMoonLabel.alpha = 0
+        goingToMoonLabel.transform = CGAffineTransform(translationX: 0, y: 50)
+        goingToMoonLabel.text = "We going to the moon! 🚀🌕"
+        goingToMoonLabel.textAlignment = .left
+        goingToMoonLabel.font = .sofiaRegular(ofSize: 15)
+        goingToMoonLabel.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1.0)
+        goingToMoonLabel.numberOfLines = 0
+        goingToMoonLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(goingToMoonLabel)
+        goingToMoonLabel.leadingAnchor.constraint(equalTo: calendarLabel.leadingAnchor, constant: 5).isActive = true
+        goingToMoonLabel.topAnchor.constraint(equalTo: calendarLabel.bottomAnchor, constant: 10).isActive = true
         
         loginButton.layer.borderWidth = 2
         loginButton.layer.borderColor = UIColor.themePurple.cgColor
@@ -104,7 +117,62 @@ extension SplashViewController {
         loginButton.addSubview(loginLabel)
         loginLabel.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor, constant: 16).isActive = true
         loginLabel.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor, constant: 0).isActive = true
+        
+        let whatWeDoLabelText = "Democratizing Crypto\nResearch to empower you to\nmake informed investment\ndecisions"
+        whatWeDoLabel.setupLineHeight(myText: whatWeDoLabelText, myLineSpacing: 4)
+        whatWeDoLabel.alpha = 0
+        whatWeDoLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+        whatWeDoLabel.textAlignment = .left
+        whatWeDoLabel.font = .sofiaRegular(ofSize: 20)
+        whatWeDoLabel.textColor = UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1.0)
+        whatWeDoLabel.numberOfLines = 0
+        whatWeDoLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(whatWeDoLabel)
+        whatWeDoLabel.leadingAnchor.constraint(equalTo: goingToMoonLabel.leadingAnchor, constant: 0).isActive = true
+        whatWeDoLabel.bottomAnchor.constraint(equalTo: getStartedButton.topAnchor, constant: -20).isActive = true
+        
+        createIcon(iconView: btcIcon, iconString: "btcSplash")
+        btcIcon.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        btcIcon.widthAnchor.constraint(equalToConstant: 29).isActive = true
+        
+        createIcon(iconView: sushiIcon, iconString: "sushiSplash")
+        sushiIcon.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        sushiIcon.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        
+        createIcon(iconView: ethIcon, iconString: "ethSplash")
+        ethIcon.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        ethIcon.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        createIcon(iconView: thetaFuelIcon, iconString: "thetaFuelSplash")
+        thetaFuelIcon.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        thetaFuelIcon.widthAnchor.constraint(equalToConstant: 29).isActive = true
+        
+        createIcon(iconView: uniSwapIcon, iconString: "uniSplash")
+        uniSwapIcon.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        uniSwapIcon.widthAnchor.constraint(equalToConstant: 41).isActive = true
+        
+        createIcon(iconView: chainLinkIcon, iconString: "chainlinkSplash")
+        chainLinkIcon.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        chainLinkIcon.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        createIcon(iconView: enjinIcon, iconString: "enjinSplash")
+        enjinIcon.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        enjinIcon.widthAnchor.constraint(equalToConstant: 29).isActive = true
+        
+        createIcon(iconView: adaIcon, iconString: "cardanoSplash")
+        adaIcon.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        adaIcon.widthAnchor.constraint(equalToConstant: 41).isActive = true
             
+    }
+    
+    func createIcon(iconView: UIImageView, iconString: String) {
+        iconView.alpha = 0
+        iconView.image = UIImage(named: iconString)
+        iconView.contentMode = .scaleAspectFill
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(iconView)
+        iconView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        iconView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
     }
     
 }

@@ -156,6 +156,7 @@ extension SignUpPNViewController {
         pageControl.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         continueButton.alpha = 0
+        continueButton.continueLabel.alpha = 0
         continueButton.continueLabel.text = "Continue"
         continueButton.layer.cornerRadius = 63/2
         continueButton.backgroundColor = .themePurple

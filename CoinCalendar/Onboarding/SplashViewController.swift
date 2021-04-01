@@ -28,6 +28,20 @@ class SplashViewController: UIViewController {
     var cryptoLabel = UILabel()
     var calendarLabel = UILabel()
     
+    var goingToMoonLabel = UILabel()
+    var whatWeDoLabel = UILabel()
+    
+    //Icons
+    
+    var btcIcon = UIImageView()
+    var sushiIcon = UIImageView()
+    var adaIcon = UIImageView()
+    var ethIcon = UIImageView()
+    var enjinIcon = UIImageView()
+    var thetaFuelIcon = UIImageView()
+    var chainLinkIcon = UIImageView()
+    var uniSwapIcon = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .green
@@ -36,8 +50,23 @@ class SplashViewController: UIViewController {
         playVideoAudio()
         
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.5)
+        
+        let min = CGFloat(-20)
+        let max = CGFloat(20)
+        
+        let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
+        xMotion.minimumRelativeValue = min
+        xMotion.maximumRelativeValue = max
+        
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
+        yMotion.minimumRelativeValue = min
+        yMotion.maximumRelativeValue = max
+        
+        let motionEffectGroup = UIMotionEffectGroup()
+        motionEffectGroup.motionEffects = [xMotion,yMotion]
+        
+        mainContainer.addMotionEffect(motionEffectGroup)
     }
-
 
 }
 
@@ -88,18 +117,41 @@ extension SplashViewController {
             //
         }
         
-        UIView.animate(withDuration: 0.5) {
-            self.cryptoLabel.alpha = 1.0
-            self.cryptoLabel.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
-
-        UIView.animate(withDuration: 0.5, delay: 0.25, options: []) {
-            self.calendarLabel.alpha = 1.0
-            self.calendarLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+        showView(viewToAnimate: cryptoLabel, delay: 0)
+        showView(viewToAnimate: calendarLabel, delay: 0.25)
+        showView(viewToAnimate: goingToMoonLabel, delay: 0.5)
+        showView(viewToAnimate: whatWeDoLabel, delay: 1.25)
+        
+        let baseValue: Double = 0.75
+        let multiplier: Double = 0.15
+        
+        animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
+        animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
+        animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
+        animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
+        animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
+        animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
+        animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
+        animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+                
+    }
+    
+    @objc func animateCoin(coin: UIImageView, delay: Double, xAxis: CGFloat, yAxis: CGFloat) {
+        UIView.animate(withDuration: 0.5, delay: delay, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.85, options: .curveEaseInOut) {
+            coin.alpha = 1.0
+            coin.transform = CGAffineTransform(translationX: xAxis, y: yAxis)
         } completion: { (success) in
             //
         }
-        
+    }
+    
+    @objc func showView(viewToAnimate: UIView, delay: Double) {
+        UIView.animate(withDuration: 0.35, delay: delay, options: []) {
+            viewToAnimate.alpha = 1.0
+            viewToAnimate.transform = CGAffineTransform(translationX: 0, y: 0)
+        } completion: { (success) in
+            //
+        }
     }
     
     @objc func didTapGetStarted() {

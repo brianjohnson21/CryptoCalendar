@@ -190,9 +190,7 @@ extension SignUpPNViewController {
     }
     
     @objc func animateViewsIn() {
-        
         var conBottom: CGFloat = -325
-        
         let screenSize: CGRect = UIScreen.main.bounds
         let screenHeight = screenSize.height
         switch screenHeight {
@@ -204,8 +202,6 @@ extension SignUpPNViewController {
             conBottom = -250
         case .iphone11() :
             conBottom = -325
-            
-            
         default:
             conBottom = -325
         }
@@ -227,7 +223,6 @@ extension SignUpPNViewController {
             self.phoneNumberTextField.becomeFirstResponder()
 
             self.mainContainer.alpha = 1.0
-            self.continueButton.alpha = 1.0
             self.dismissImageView.alpha = 1.0
             self.signUpTitleLabel.alpha = 1.0
             self.signUpSteplabel.alpha = 1.0
@@ -235,7 +230,12 @@ extension SignUpPNViewController {
             self.emailFBContentContainer.alpha = 1.0
             
         } completion: { (success) in
+            self.continueButton.alpha = 1.0
             self.getStartedButton.isHidden = true
+            
+            UIView.animate(withDuration: 0.35) {
+                self.continueButton.continueLabel.alpha = 1.0
+            }
         }
     }
     
@@ -261,6 +261,39 @@ extension SignUpPNViewController {
             goBackToEnterCode()
         }
          */
+    }
+    
+    @objc func goToPickCrypto() {
+        continueButton.isUserInteractionEnabled = false
+        shrinkAnimation(viewToAnimate: photoImageView, delay: 0.1)
+        shrinkAnimation(viewToAnimate: nameLabel, delay: 0.1)
+        shrinkAnimation(viewToAnimate: photoDetailLabel, delay: 0.25)
+        shrinkAnimation(viewToAnimate: pageControl, delay: 0.3)
+        shrinkAnimation(viewToAnimate: termsLabel, delay: 0.3)
+        shrinkAnimation(viewToAnimate: signUpTitleLabel, delay: 0.35)
+        shrinkAnimation(viewToAnimate: backImageView, delay: 0.39)
+        shrinkAnimation(viewToAnimate: continueLabel, delay: 0.3)
+        //shrinkAnimation(viewToAnimate: continueButton.continueLabel, delay: 0.3)
+        //shrinkAnimation(viewToAnimate: continueButton.spinner, delay: 0.3)
+        shrinkAnimation(viewToAnimate: dismissImageView, delay: 0.35)
+        
+        continueBottom.constant = -30
+        UIView.animate(withDuration: 0.35) {
+            self.view.layoutIfNeeded()
+        } completion: { (success) in
+            
+        }
+        
+        perform(#selector(showPickCrypto), with: self, afterDelay: 0.7)
+        
+    }
+    
+    @objc func showPickCrypto() {
+        let sortFilterVC = PickCryptoViewController()
+        sortFilterVC.modalPresentationStyle = .overFullScreen
+        self.present(sortFilterVC, animated: false) {
+            //
+        }
     }
     
     @objc func shrinkTransition() {
@@ -375,8 +408,9 @@ extension SignUpPNViewController {
                     errorImpactGenerator()
                 }
             } else {
+                goToPickCrypto()
                 //continueButton.showLoader()
-                self.shrinkTransition()
+                //self.shrinkTransition()
                 /*
                 if self.userSignup == nil {
                     self.userSignup = UserSignup(phone: nil, name: enterNameTextField.text, email: emailTextField.text, facebookId: nil, password: "")
