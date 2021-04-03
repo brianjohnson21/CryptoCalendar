@@ -49,17 +49,17 @@ class MainFeedViewController: UIViewController {
         setupTableView()
         setupLoadingIndicator()
         
-        if fromSignUp.bool(forKey: "comingFromSignUp") {
-            print("is from sign up")
-            setupLaunchTransition()
-            launchTransition.instaMallLogo.isHidden = true
-            launchTransition.topHalf.backgroundColor = .themePurple
-            launchTransition.bottomHalf.backgroundColor = .themePurple
-            fromSignUp.set(false, forKey: "comingFromSignUp")
-        } else {
-            setupLaunchTransition()
-            print("is not from sign up")
-        }
+//        if fromSignUp.bool(forKey: "comingFromSignUp") {
+//            print("is from sign up")
+//            setupLaunchTransition()
+//            launchTransition.instaMallLogo.isHidden = true
+//            launchTransition.topHalf.backgroundColor = .themePurple
+//            launchTransition.bottomHalf.backgroundColor = .themePurple
+//            fromSignUp.set(false, forKey: "comingFromSignUp")
+//        } else {
+//            setupLaunchTransition()
+//            print("is not from sign up")
+//        }
         
         doTransitionViewThing()
         
@@ -69,14 +69,14 @@ class MainFeedViewController: UIViewController {
     }
     
     @objc func appMovedToForeround() {
-        hideTabBar()
+        //hideTabBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
-        hideTabBar()
+        //hideTabBar()
     }
     
     @objc func animateCells() {

@@ -134,17 +134,17 @@ extension MainFeedViewController {
         )
 
         let womenItem = SegmentioItem(
-            title: "Watchlist",
+            title: "Popular",
             image: nil
         )
 
         let curvesItem = SegmentioItem(
-            title: "Featured",
+            title: "New",
             image: nil
         )
 
         let menItem = SegmentioItem(
-            title: "Trending",
+            title: "Watchlist",
             image: nil
         )
 
