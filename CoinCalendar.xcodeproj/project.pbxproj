@@ -37,6 +37,12 @@
 		DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42471E2619199B00E185D4 /* CoinMarketFeedViewController.swift */; };
 		DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE424722261919A300E185D4 /* CoinMarketFeedViewController+Views.swift */; };
 		DE42473E26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */; };
+		DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42474126195C3D00E185D4 /* SocialMarketFeedViewController.swift */; };
+		DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42474526195C4600E185D4 /* SocialMarketFeedViewController+Views.swift */; };
+		DE424749261963B300E185D4 /* SocialMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE424748261963B300E185D4 /* SocialMarketFeedTableViewCell.swift */; };
+		DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42474C261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift */; };
+		DE424751261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE424750261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift */; };
+		DE42475426196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -104,6 +110,12 @@
 		DE42471E2619199B00E185D4 /* CoinMarketFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketFeedViewController.swift; sourceTree = "<group>"; };
 		DE424722261919A300E185D4 /* CoinMarketFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinMarketFeedViewController+Views.swift"; sourceTree = "<group>"; };
 		DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
+		DE42474126195C3D00E185D4 /* SocialMarketFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMarketFeedViewController.swift; sourceTree = "<group>"; };
+		DE42474526195C4600E185D4 /* SocialMarketFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialMarketFeedViewController+Views.swift"; sourceTree = "<group>"; };
+		DE424748261963B300E185D4 /* SocialMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
+		DE42474C261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceVolumeMarketFeedViewController.swift; sourceTree = "<group>"; };
+		DE424750261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PriceVolumeMarketFeedViewController+Views.swift"; sourceTree = "<group>"; };
+		DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceVolumeMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -251,6 +263,26 @@
 			path = "Coin Market Feed";
 			sourceTree = "<group>";
 		};
+		DE42474026195C2700E185D4 /* Social Market Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DE42474126195C3D00E185D4 /* SocialMarketFeedViewController.swift */,
+				DE42474526195C4600E185D4 /* SocialMarketFeedViewController+Views.swift */,
+				DE424748261963B300E185D4 /* SocialMarketFeedTableViewCell.swift */,
+			);
+			path = "Social Market Feed";
+			sourceTree = "<group>";
+		};
+		DE42474B2619679200E185D4 /* PriceVolume Market Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DE42474C261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift */,
+				DE424750261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift */,
+				DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */,
+			);
+			path = "PriceVolume Market Feed";
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +312,8 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE42474B2619679200E185D4 /* PriceVolume Market Feed */,
+				DE42474026195C2700E185D4 /* Social Market Feed */,
 				DE42471D2619169500E185D4 /* Coin Market Feed */,
 				DE4246A1261692F200E185D4 /* Home Feed */,
 				DE9AA60A261101010057A259 /* Event Feed */,
@@ -518,9 +552,11 @@
 				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
 				DE4245D32613722D00E185D4 /* OptionsView.swift in Sources */,
+				DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */,
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
+				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
 				DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */,
@@ -531,11 +567,13 @@
 				DE42462A2613F9B600E185D4 /* MyProfileViewController+Views.swift in Sources */,
 				DE9AA60C261101140057A259 /* EventFeedViewController.swift in Sources */,
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
+				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
 				DE9AA66D261155640057A259 /* ContinueButton.swift in Sources */,
 				DE42462D2613FB4400E185D4 /* MyProfileTableViewCell.swift in Sources */,
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
 				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
+				DE424749261963B300E185D4 /* SocialMarketFeedTableViewCell.swift in Sources */,
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,
 				DE42465B2614D29E00E185D4 /* PickCryptoViewController+Views.swift in Sources */,
 				DE9AA669261155520057A259 /* ToastNotificationView.swift in Sources */,
@@ -554,6 +592,8 @@
 				DE9AA670261155780057A259 /* OneTimeCodeTextField.swift in Sources */,
 				DE9AA612261101850057A259 /* MyTabBarController.swift in Sources */,
 				DE4246142613E90A00E185D4 /* MyAlertsViewController+Views.swift in Sources */,
+				DE424751261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift in Sources */,
+				DE42475426196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift in Sources */,
 				DE4245A12612D69C00E185D4 /* SortCoinTableViewCell.swift in Sources */,
 				DE4246572614D28700E185D4 /* PickCryptoViewController.swift in Sources */,
 			);
