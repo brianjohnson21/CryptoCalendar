@@ -34,6 +34,9 @@
 		DE4246B6261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4246B5261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift */; };
 		DE4246B926169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4246B826169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift */; };
 		DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4246BB2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift */; };
+		DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42471E2619199B00E185D4 /* CoinMarketFeedViewController.swift */; };
+		DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE424722261919A300E185D4 /* CoinMarketFeedViewController+Views.swift */; };
+		DE42473E26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -46,8 +49,8 @@
 		DE9AA6052610FFB40057A259 /* Sofia Pro Regular Az.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6002610FFB40057A259 /* Sofia Pro Regular Az.otf */; };
 		DE9AA6062610FFB40057A259 /* Sofia Pro Semi Bold Az.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6012610FFB40057A259 /* Sofia Pro Semi Bold Az.otf */; };
 		DE9AA6072610FFB40057A259 /* Sofia Pro Bold Az.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6022610FFB40057A259 /* Sofia Pro Bold Az.otf */; };
-		DE9AA60C261101140057A259 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA60B261101140057A259 /* MainFeedViewController.swift */; };
-		DE9AA60F2611011A0057A259 /* MainFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA60E2611011A0057A259 /* MainFeedViewController+Views.swift */; };
+		DE9AA60C261101140057A259 /* EventFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA60B261101140057A259 /* EventFeedViewController.swift */; };
+		DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA60E2611011A0057A259 /* EventFeedViewController+Views.swift */; };
 		DE9AA612261101850057A259 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA611261101850057A259 /* MyTabBarController.swift */; };
 		DE9AA6262611130B0057A259 /* MainFeedCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA6252611130B0057A259 /* MainFeedCardTableViewCell.swift */; };
 		DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA628261118570057A259 /* MainFeedListHeaderView.swift */; };
@@ -98,6 +101,9 @@
 		DE4246B5261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCoinsTableViewCell.swift; sourceTree = "<group>"; };
 		DE4246B826169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCoinOfDayTableViewCell.swift; sourceTree = "<group>"; };
 		DE4246BB2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCoinCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE42471E2619199B00E185D4 /* CoinMarketFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketFeedViewController.swift; sourceTree = "<group>"; };
+		DE424722261919A300E185D4 /* CoinMarketFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinMarketFeedViewController+Views.swift"; sourceTree = "<group>"; };
+		DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,8 +118,8 @@
 		DE9AA6002610FFB40057A259 /* Sofia Pro Regular Az.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofia Pro Regular Az.otf"; sourceTree = "<group>"; };
 		DE9AA6012610FFB40057A259 /* Sofia Pro Semi Bold Az.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofia Pro Semi Bold Az.otf"; sourceTree = "<group>"; };
 		DE9AA6022610FFB40057A259 /* Sofia Pro Bold Az.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofia Pro Bold Az.otf"; sourceTree = "<group>"; };
-		DE9AA60B261101140057A259 /* MainFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedViewController.swift; sourceTree = "<group>"; };
-		DE9AA60E2611011A0057A259 /* MainFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainFeedViewController+Views.swift"; sourceTree = "<group>"; };
+		DE9AA60B261101140057A259 /* EventFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedViewController.swift; sourceTree = "<group>"; };
+		DE9AA60E2611011A0057A259 /* EventFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventFeedViewController+Views.swift"; sourceTree = "<group>"; };
 		DE9AA611261101850057A259 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		DE9AA6252611130B0057A259 /* MainFeedCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCardTableViewCell.swift; sourceTree = "<group>"; };
 		DE9AA628261118570057A259 /* MainFeedListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedListHeaderView.swift; sourceTree = "<group>"; };
@@ -226,6 +232,25 @@
 			path = "Home Feed";
 			sourceTree = "<group>";
 		};
+		DE4247162619145B00E185D4 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DE9AA5E52610F18C0057A259 /* SplashViewController.swift */,
+				DE9AA62F261148CF0057A259 /* SplashViewController+Views.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		DE42471D2619169500E185D4 /* Coin Market Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DE42471E2619199B00E185D4 /* CoinMarketFeedViewController.swift */,
+				DE424722261919A300E185D4 /* CoinMarketFeedViewController+Views.swift */,
+				DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */,
+			);
+			path = "Coin Market Feed";
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -255,15 +280,15 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE42471D2619169500E185D4 /* Coin Market Feed */,
 				DE4246A1261692F200E185D4 /* Home Feed */,
-				DE4246552614D27300E185D4 /* Crypto Picker */,
+				DE9AA60A261101010057A259 /* Event Feed */,
 				DE4246242613F99A00E185D4 /* My Profile */,
 				DE42460E2613E8F800E185D4 /* My Alerts */,
 				DE4245C126136FFF00E185D4 /* Event Options */,
 				DE4245702612CE2300E185D4 /* Sort & Filter */,
 				DE9AA68A26121F680057A259 /* Subscription */,
 				DE9AA5F82610FCFB0057A259 /* Onboarding */,
-				DE9AA60A261101010057A259 /* Main Feed */,
 				DE9AA5E72610F18C0057A259 /* Main.storyboard */,
 				DE9AA5EA2610F18D0057A259 /* Assets.xcassets */,
 				DE9AA5EC2610F18D0057A259 /* LaunchScreen.storyboard */,
@@ -275,9 +300,9 @@
 		DE9AA5F82610FCFB0057A259 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				DE9AA5E52610F18C0057A259 /* SplashViewController.swift */,
-				DE9AA62F261148CF0057A259 /* SplashViewController+Views.swift */,
+				DE4247162619145B00E185D4 /* Splash */,
 				DE9AA647261154080057A259 /* Sign Up Flow */,
+				DE4246552614D27300E185D4 /* Crypto Picker */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -294,15 +319,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		DE9AA60A261101010057A259 /* Main Feed */ = {
+		DE9AA60A261101010057A259 /* Event Feed */ = {
 			isa = PBXGroup;
 			children = (
-				DE9AA60B261101140057A259 /* MainFeedViewController.swift */,
-				DE9AA60E2611011A0057A259 /* MainFeedViewController+Views.swift */,
+				DE9AA60B261101140057A259 /* EventFeedViewController.swift */,
+				DE9AA60E2611011A0057A259 /* EventFeedViewController+Views.swift */,
 				DE9AA6252611130B0057A259 /* MainFeedCardTableViewCell.swift */,
 				DE9AA628261118570057A259 /* MainFeedListHeaderView.swift */,
 			);
-			path = "Main Feed";
+			path = "Event Feed";
 			sourceTree = "<group>";
 		};
 		DE9AA62E261148010057A259 /* Media */ = {
@@ -489,7 +514,8 @@
 			files = (
 				DE4246262613F9A600E185D4 /* MyProfileViewController.swift in Sources */,
 				DE9AA6262611130B0057A259 /* MainFeedCardTableViewCell.swift in Sources */,
-				DE9AA60F2611011A0057A259 /* MainFeedViewController+Views.swift in Sources */,
+				DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */,
+				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
 				DE4245D32613722D00E185D4 /* OptionsView.swift in Sources */,
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
@@ -498,16 +524,18 @@
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
 				DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */,
+				DE42473E26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift in Sources */,
 				DE4246612614E54400E185D4 /* CircularProgressView.swift in Sources */,
 				DE9AA68D2612234E0057A259 /* SubscriptionViewController.swift in Sources */,
 				DE9AA67D2611781E0057A259 /* LaunchTransitionView.swift in Sources */,
 				DE42462A2613F9B600E185D4 /* MyProfileViewController+Views.swift in Sources */,
-				DE9AA60C261101140057A259 /* MainFeedViewController.swift in Sources */,
+				DE9AA60C261101140057A259 /* EventFeedViewController.swift in Sources */,
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
 				DE9AA66D261155640057A259 /* ContinueButton.swift in Sources */,
 				DE42462D2613FB4400E185D4 /* MyProfileTableViewCell.swift in Sources */,
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
+				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,
 				DE42465B2614D29E00E185D4 /* PickCryptoViewController+Views.swift in Sources */,
 				DE9AA669261155520057A259 /* ToastNotificationView.swift in Sources */,

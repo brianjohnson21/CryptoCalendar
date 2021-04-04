@@ -1,5 +1,5 @@
 //
-//  MainFeedViewController.swift
+//  EventFeedViewController.swift
 //  CoinCalendar
 //
 //  Created by Stephen Mata on 3/28/21.
@@ -10,7 +10,7 @@ import Segmentio
 import Lottie
 import ViewAnimator
 
-class MainFeedViewController: UIViewController {
+class EventFeedViewController: UIViewController {
     
     let launchTransition = LaunchTransitionView()
     var transitionView = UIView()
@@ -61,9 +61,9 @@ class MainFeedViewController: UIViewController {
 //            print("is not from sign up")
 //        }
         
-        doTransitionViewThing()
+        //doTransitionViewThing()
         
-        perform(#selector(animateCells), with: self, afterDelay: 1.1)
+        perform(#selector(animateCells), with: self, afterDelay: 0.25)
         //perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
         
     }
@@ -93,7 +93,7 @@ class MainFeedViewController: UIViewController {
 
 //MARK: ACTIONS
 
-extension MainFeedViewController {
+extension EventFeedViewController {
     @objc func doTransitionViewThing() {        
         self.launchTransition.animateViewsAway()
     }
@@ -131,7 +131,7 @@ extension MainFeedViewController {
 
 //MARK: LAUNCH DELEGATE
 
-extension MainFeedViewController: LaunchTransitionViewDelegate {
+extension EventFeedViewController: LaunchTransitionViewDelegate {
     func didFinishLaunchAnimation() {
         //Did finish
     }
@@ -139,7 +139,7 @@ extension MainFeedViewController: LaunchTransitionViewDelegate {
 
 //MARK: LAUNCH DELEGATE
 
-extension MainFeedViewController: SortFilterViewControllerDelegate {
+extension EventFeedViewController: SortFilterViewControllerDelegate {
     func didUpdateFilter() {
         mainFeedTableView.alpha = 0
         loadingLottie.play()

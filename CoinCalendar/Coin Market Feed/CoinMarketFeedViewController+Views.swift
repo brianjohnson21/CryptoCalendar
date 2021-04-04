@@ -1,16 +1,15 @@
 //
-//  MainFeedViewController+Views.swift
+//  CoinMarketFeedViewController+Views.swift
 //  CoinCalendar
 //
-//  Created by Stephen Mata on 3/28/21.
+//  Created by Stephen Mata on 4/3/21.
 //
 
 import Foundation
 import UIKit
 import Segmentio
-import Lottie
 
-extension MainFeedViewController {
+extension CoinMarketFeedViewController {
     
     func setupNav() {
         
@@ -95,7 +94,7 @@ extension MainFeedViewController {
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
-        sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
+        //sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
         sortButton.backgroundColor = .clear
         sortButton.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortButton)
@@ -115,91 +114,65 @@ extension MainFeedViewController {
         segmentContainer.backgroundColor = .clear
         segmentContainer.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(segmentContainer)
-        segmentContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 10).isActive = true
-        segmentContainer.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        segmentContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 0).isActive = true
+        segmentContainer.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
         segmentContainer.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: 0).isActive = true
         segmentContainer.heightAnchor.constraint(equalToConstant: 37).isActive = true
-
-
-        let segmentioViewRect = CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width), height: 48)
-        segmentioControl = Segmentio(frame: segmentioViewRect)
-        segmentioControl.backgroundColor = .themeColorOne
-        segmentioControl.selectedSegmentioIndex = 0
-
-        var content = [SegmentioItem]()
-
-        let featuredItem = SegmentioItem(
-            title: "All",
-            image: nil
-        )
-
-        let womenItem = SegmentioItem(
-            title: "Popular",
-            image: nil
-        )
-
-        let curvesItem = SegmentioItem(
-            title: "New",
-            image: nil
-        )
-
-        let menItem = SegmentioItem(
-            title: "Watchlist",
-            image: nil
-        )
-
-        content.append(featuredItem)
-        content.append(womenItem)
-        content.append(curvesItem)
-        content.append(menItem)
-
-        segmentioControl.setup(content: [featuredItem, womenItem, curvesItem, menItem], style: .onlyLabel, options: SegmentioOptions.init(
-            backgroundColor: UIColor.clear,
-            segmentPosition: .dynamic,
-            scrollEnabled: false,
-            indicatorOptions: SegmentioIndicatorOptions(
-                type: .bottom,
-                ratio: 0.65,
-                height: 2,
-                color: .themeColorOne),
-            horizontalSeparatorOptions: nil,
-            verticalSeparatorOptions: nil,
-            imageContentMode: .scaleAspectFill,
-            labelTextAlignment: NSTextAlignment.center,
-            labelTextNumberOfLines: 0,
-            segmentStates: SegmentioStates(
-                defaultState: SegmentioState(
-                    backgroundColor: .clear,
-                    titleFont: UIFont(name: "SofiaPro-SemiBold", size: 15)!,
-                    titleTextColor: UIColor.keyEventHeadlineColorModeLight.withAlphaComponent(0.75)
-                ),
-                selectedState: SegmentioState(
-                    backgroundColor: .clear,
-                    titleFont: UIFont(name: "SofiaPro-SemiBold", size: 15)!,
-                    titleTextColor: UIColor.keyEventHeadlineColorModeLight
-                ),
-                highlightedState: SegmentioState(
-                    backgroundColor: .clear,
-                    titleFont: UIFont(name: "SofiaPro-SemiBold", size: 15)!,
-                    titleTextColor: UIColor.keyEventHeadlineColorModeLight
-                )
-            ),
-            animationDuration: 0.25))
-
-        segmentioControl.valueDidChange = { segmentio, segmentIndex in
-            self.lightImpactGenerator()
-            print("Selected item: ", segmentIndex)
-//            let segmentedIndex = IndexPath(item: segmentIndex, section: 0)
-//            self.workoutLibraryTableView.reloadData()
-
-//            let sectionIndex = IndexSet(integer: 1)
-
-            //self.mainFeedCollectionView.reloadData()
-            //self.workoutLibraryTableView.reloadSections(sectionIndex, with: .automatic)
-
-            //self.workoutLibraryTableView.reloadSections(NSIndexSet(index: 1) as IndexSet, with: .none)
-
-        }
+        
+        //
+        coinContainer.backgroundColor = .clear
+        coinContainer.translatesAutoresizingMaskIntoConstraints = false
+        segmentContainer.addSubview(coinContainer)
+        coinContainer.leadingAnchor.constraint(equalTo: segmentContainer.leadingAnchor, constant: 5).isActive = true
+        coinContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
+        coinContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
+        coinContainer.widthAnchor.constraint(equalToConstant: 71).isActive = true
+        
+        createSectionLabel(label: coinLabel, string: "Coin", cointainer: coinContainer)
+        
+        //
+        coinHealthContainer.backgroundColor = .clear
+        coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
+        segmentContainer.addSubview(coinHealthContainer)
+        coinHealthContainer.leadingAnchor.constraint(equalTo: coinContainer.trailingAnchor, constant: 0).isActive = true
+        coinHealthContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
+        coinHealthContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
+        coinHealthContainer.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        
+        createSectionLabel(label: coinHealthLabel, string: "Coin Health", cointainer: coinHealthContainer)
+        
+        //
+        priceScoreContainer.backgroundColor = .clear
+        priceScoreContainer.translatesAutoresizingMaskIntoConstraints = false
+        segmentContainer.addSubview(priceScoreContainer)
+        priceScoreContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor, constant: 0).isActive = true
+        priceScoreContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
+        priceScoreContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
+        priceScoreContainer.widthAnchor.constraint(equalToConstant: 78).isActive = true
+        
+        createSectionLabel(label: priceScoreLabel, string: "Price Score", cointainer: priceScoreContainer)
+        
+        //
+        volatilityContainer.backgroundColor = .clear
+        volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
+        segmentContainer.addSubview(volatilityContainer)
+        volatilityContainer.leadingAnchor.constraint(equalTo: priceScoreContainer.trailingAnchor, constant: 0).isActive = true
+        volatilityContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
+        volatilityContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
+        volatilityContainer.widthAnchor.constraint(equalToConstant: 76).isActive = true
+        
+        createSectionLabel(label: volatilityLabel, string: "Volatility", cointainer: volatilityContainer)
+        
+        //
+        coinRankContainer.backgroundColor = .clear
+        coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
+        segmentContainer.addSubview(coinRankContainer)
+        coinRankContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor, constant: 0).isActive = true
+        coinRankContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
+        coinRankContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
+        coinRankContainer.widthAnchor.constraint(equalToConstant: 67).isActive = true
+        
+        createSectionLabel(label: coinRankLabel, string: "Coin Rank", cointainer: coinRankContainer)
 
         let separatorLine = UIView()
         separatorLine.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)
@@ -209,135 +182,87 @@ extension MainFeedViewController {
         separatorLine.trailingAnchor.constraint(equalTo: navView.trailingAnchor).isActive = true
         separatorLine.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: -0.1).isActive = true
         separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
-        segmentioControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentContainer.addSubview(segmentioControl)
-        segmentioControl.fillSuperview()
-        
+                
+    }
+    
+    func createSectionLabel(label: UILabel, string: String, cointainer: UIView) {
+        label.text = string
+        label.textAlignment = .center
+        label.textColor = UIColor.black
+        label.font = .sofiaBold(ofSize: 11)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        cointainer.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: cointainer.centerXAnchor, constant: 0).isActive = true
+        label.centerYAnchor.constraint(equalTo: cointainer.centerYAnchor, constant: 0).isActive = true
+    }
+    
+    func setupCoinTable() {
+        coinIconFeedContainer.backgroundColor = .green
+        coinIconFeedContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(coinIconFeedContainer)
+        coinIconFeedContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        coinIconFeedContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        coinIconFeedContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        coinIconFeedContainer.widthAnchor.constraint(equalToConstant: 70).isActive = true
     }
     
     func setupTableView() {
+
+        mainFeedContainer.backgroundColor = .clear
+        mainFeedContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(mainFeedContainer)
+        mainFeedContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        mainFeedContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        mainFeedContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        mainFeedContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width - 70).isActive = true
+        
         mainFeedTableView = UITableView(frame: self.view.frame, style: .grouped)
-        mainFeedTableView.alpha = 0
+        mainFeedTableView.alpha = 1.0
         mainFeedTableView.isScrollEnabled = true
         mainFeedTableView.backgroundColor = .clear
         mainFeedTableView.delegate = self
         mainFeedTableView.dataSource = self
-        mainFeedTableView.register(MainFeedCardTableViewCell.self, forCellReuseIdentifier: mainFeedCardTableViewCell)
+        mainFeedTableView.register(CoinMarketFeedTableViewCell.self, forCellReuseIdentifier: coinMarketFeedTableViewCell)
         mainFeedTableView.allowsMultipleSelection = false
         mainFeedTableView.contentInset = .zero
         mainFeedTableView.showsVerticalScrollIndicator = false
         mainFeedTableView.separatorStyle = .none
-        mainFeedTableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 80, right: 0)
+        mainFeedTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         mainFeedTableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainFeedTableView)
+        //mainFeedTableView.leadingAnchor.constraint(equalTo: coinIconFeedContainer.trailingAnchor).isActive = true
         mainFeedTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         mainFeedTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         mainFeedTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        mainFeedTableView.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        mainFeedTableView.topAnchor.constraint(equalTo: mainFeedContainer.topAnchor).isActive = true
     }
-    
-    func setupLaunchTransition() {
-        //let launchTransition = LaunchTransitionView()
-        launchTransition.delegate = self
-        launchTransition.alpha = 1.0
-        let window = UIApplication.shared.keyWindow!
-        launchTransition.frame = window.bounds
-        window.addSubview(launchTransition)
-    }
-    
-    func setupLoadingIndicator() {
-        
-        loadingContainer.isHidden = true
-        loadingContainer.alpha = 0
-        loadingContainer.backgroundColor = .white
-        loadingContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(loadingContainer)
-        loadingContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
-        loadingContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        loadingContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        loadingContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        let checkAnimation = Animation.named("loadingBlocks")
-        loadingLottie.isUserInteractionEnabled = false
-        loadingLottie.alpha = 1.0
-        loadingLottie.loopMode = .loop
-        loadingLottie.animation = checkAnimation
-        loadingLottie.contentMode = .scaleAspectFill
-        loadingLottie.backgroundColor = .clear
-        loadingLottie.translatesAutoresizingMaskIntoConstraints = false
-        loadingContainer.addSubview(loadingLottie)
-        loadingLottie.centerYAnchor.constraint(equalTo: loadingContainer.centerYAnchor, constant: -75).isActive = true
-        loadingLottie.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
-        loadingLottie.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        loadingLottie.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        
-        let loadingLabel = UILabel()
-        loadingLabel.text = "Updating the feed..."
-        loadingLabel.textAlignment = .center
-        loadingLabel.font = .sofiaMedium(ofSize: 11)
-        loadingLabel.textColor = .keyEventDetailColorModeLight
-        loadingLabel.numberOfLines = 0
-        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        loadingContainer.addSubview(loadingLabel)
-        loadingLabel.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
-        loadingLabel.topAnchor.constraint(equalTo: loadingLottie.bottomAnchor, constant: 15).isActive = true
-        
-        //print("😀😀😀 - \(loadingLottie.logHierarchyKeypaths()) - 😀😀😀")
-        /*
-        var i = 0
-        let loadingLayers = ["Shape Layer 1.Ellipse 1.Stroke 1.Color", "Shape Layer 2.Ellipse 1.Stroke 1.Color", "Shape Layer 3.Ellipse 1.Stroke 1.Color"]
-        for layer in 1...loadingLayers.count {
-            let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
-            if i == 0 {
-                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(1.0).lottieColorValue)
-                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
-            } else if i == 1 {
-                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.8).lottieColorValue)
-                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
-            } else {
-                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.6).lottieColorValue)
-                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
-            }
-            i += 1
-        }
-        */
-    }
-    
 }
 
 //MARK: TABLEVIEW DELEGATE & DATASOURCE
 
-extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
+extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: mainFeedCardTableViewCell, for: indexPath) as! MainFeedCardTableViewCell
-        cell.headlineLabel.text = "Headline of key event"
-        let detailText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-        cell.detailLabel.setupLineHeight(myText: detailText, myLineSpacing: 3)
-        cell.dateLabel.text = "1/6/21"
-        cell.cryptoImageView.image = UIImage(named: "Cardano")
+        let cell = tableView.dequeueReusableCell(withIdentifier: coinMarketFeedTableViewCell, for: indexPath) as! CoinMarketFeedTableViewCell
+        cell.coinImageView.image = UIImage(named: "Cardano")
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 70
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 43
+        return 0
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = MainFeedListHeaderView()
-        headerView.headerLabel.text = "January 1 - 7"
+        let headerView = UIView()
         return headerView
     }
     

@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="90" y="127"/>
         </scene>
-        <!--Main Feed View Controller-->
+        <!--Event Feed View Controller-->
         <scene sceneID="wDz-sg-DwL">
             <objects>
-                <viewController storyboardIdentifier="MainFeedViewController" id="pbc-qk-QBr" customClass="MainFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedViewController" id="pbc-qk-QBr" customClass="EventFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qkw-Vr-fDw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="2819" y="-656"/>
         </scene>
-        <!--View Controller-->
+        <!--Coin Market Feed View Controller-->
         <scene sceneID="ZV9-2L-yOo">
             <objects>
-                <viewController id="1AB-vD-I42" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CoinMarketFeedViewController" id="1AB-vD-I42" customClass="CoinMarketFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blZ-aD-YcR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
