@@ -57,6 +57,8 @@ class PriceVolumeMarketFeedViewController: UIViewController {
         setupNav()
         //setupCoinTable()
         setupTableView()
+        
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 4)
     }
         
     @objc func appMovedToForeround() {

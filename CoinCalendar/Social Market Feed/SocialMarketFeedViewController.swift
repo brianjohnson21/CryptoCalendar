@@ -55,6 +55,8 @@ class SocialMarketFeedViewController: UIViewController {
         setupNav()
         //setupCoinTable()
         setupTableView()
+        
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
     }
         
     @objc func appMovedToForeround() {

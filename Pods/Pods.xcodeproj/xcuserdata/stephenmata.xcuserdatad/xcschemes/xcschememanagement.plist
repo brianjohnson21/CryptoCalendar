@@ -60,19 +60,26 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>ViewAnimator.xcscheme</key>
+		<key>SuperBadges.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>WXImageCompress.xcscheme</key>
+		<key>ViewAnimator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
+		</dict>
+		<key>WXImageCompress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>lottie-ios.xcscheme</key>
 		<dict>

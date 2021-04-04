@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import SuperBadges
 
 class HomeFeedViewController: UIViewController {
     
@@ -51,6 +52,18 @@ class HomeFeedViewController: UIViewController {
         }
         
         doTransitionViewThing()
+        
+        //self.tabBarController?.addDotAtTabBarItemIndex(index: 0, radius: 4, color : .red)
+        self.tabBarController?.addDotAtTabBarItemIndex(index: 1, radius: 4, color : .red)
+        self.tabBarController?.addDotAtTabBarItemIndex(index: 2, radius: 4, color : .red)
+        self.tabBarController?.addDotAtTabBarItemIndex(index: 3, radius: 4, color : .red)
+        self.tabBarController?.addDotAtTabBarItemIndex(index: 4, radius: 4, color : .red)
+        
+        
+        //self.tabBarController?.tabBarItem.badgeValue = "●"
+        //self.tabBarController?.tabBarItem.badgeColor = .clear
+        //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
+        //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

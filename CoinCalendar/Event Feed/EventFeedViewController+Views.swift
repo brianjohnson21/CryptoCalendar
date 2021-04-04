@@ -337,7 +337,7 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = MainFeedListHeaderView()
-        headerView.headerLabel.text = "January 1 - 7"
+        headerView.headerLabel.text = "January 1"
         return headerView
     }
     

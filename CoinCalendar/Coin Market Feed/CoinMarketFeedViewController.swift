@@ -57,6 +57,8 @@ class CoinMarketFeedViewController: UIViewController {
         setupNav()
         //setupCoinTable()
         setupTableView()
+        
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
     }
         
     @objc func appMovedToForeround() {

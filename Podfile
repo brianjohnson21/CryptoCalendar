@@ -15,5 +15,6 @@ pod 'PhotoCircleCrop'
 pod 'FlagPhoneNumber'
 pod 'ViewAnimator'
 pod 'FSCalendar'
+pod 'SuperBadges'
 
 end

@@ -61,6 +61,8 @@ class EventFeedViewController: UIViewController {
 //            print("is not from sign up")
 //        }
         
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
+        
         //doTransitionViewThing()
         
         perform(#selector(animateCells), with: self, afterDelay: 0.25)
