@@ -175,4 +175,18 @@ extension SplashViewController {
         iconView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
     }
     
+    func setupLaunchTransition() {
+        launchTransition.delegate = self
+        launchTransition.layer.zPosition = 100
+        launchTransition.alpha = 1.0
+        launchTransition.spinner.isHidden = true
+        launchTransition.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(launchTransition)
+        launchTransition.fillSuperview()
+        //let window = UIApplication.shared.keyWindow!
+        //launchTransition.frame = window.bounds
+        //window.addSubview(launchTransition)
+    }
+    
 }
+

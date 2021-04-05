@@ -113,9 +113,9 @@ extension HomeFeedViewController {
     }
     
     func setupLaunchTransition() {
-        //let launchTransition = LaunchTransitionView()
         launchTransition.delegate = self
         launchTransition.alpha = 1.0
+        launchTransition.spinner.isHidden = true
         let window = UIApplication.shared.keyWindow!
         launchTransition.frame = window.bounds
         window.addSubview(launchTransition)

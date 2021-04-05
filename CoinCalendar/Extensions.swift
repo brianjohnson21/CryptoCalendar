@@ -146,6 +146,17 @@ extension UIView {
       impactGenerator.impactOccurred()
     }
     
+    func successImpactGenerator() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
+    func heavyImpactGenerator() {
+        let impactGenerator = UIImpactFeedbackGenerator(style: .heavy)
+      impactGenerator.prepare()
+      impactGenerator.impactOccurred()
+    }
+    
     func jiggleWiggle(arg: Bool, completion: (Bool) -> ()) {
         UIView.animate(withDuration: 0.15, animations: {
           self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
@@ -336,6 +347,7 @@ extension UIColor {
     
     //Theme Color
     static let themeColorOne = UIColor(red: 129/255, green: 152/255, blue: 238/255, alpha: 1.0)
+    static let coinBaseBlue = UIColor(red: 21/255, green: 82/255, blue: 240/255, alpha: 1.0)
     
     //Light Mode
     static let mainFeedBackgroundColorModeLight = UIColor(red: 253/255, green: 252/255, blue: 255/255, alpha: 1.0)

@@ -12,6 +12,8 @@ import AVKit
 
 
 class SplashViewController: UIViewController {
+    
+    let launchTransition = LaunchTransitionView()
 
     var mainContainer = UIView()
     var previewPlayer = AVPlayer()
@@ -48,8 +50,10 @@ class SplashViewController: UIViewController {
         
         setupViews()
         playVideoAudio()
+        setupLaunchTransition()
         
-        perform(#selector(animateViewsIn), with: self, afterDelay: 0.5)
+        //perform(#selector(doTransitionViewThing), with: self, afterDelay: 1.5)
+        //perform(#selector(animateViewsIn), with: self, afterDelay: 1.5)
         
         let min = CGFloat(-20)
         let max = CGFloat(20)
@@ -107,9 +111,11 @@ extension SplashViewController {
 //MARK: ACTIONS
 
 extension SplashViewController {
+    @objc func doTransitionViewThing() {
+        self.launchTransition.animateViewsAway()
+    }
     
     @objc func animateViewsIn() {
-        
         getStartedLeading.constant = 18
         UIView.animate(withDuration: 0.5, delay: 0.5, options: []) {
             self.view.layoutIfNeeded()
@@ -166,4 +172,12 @@ extension SplashViewController {
         //self.getStartedButton.isHidden = false
     }
     
+}
+
+//MARK: TRANSITION DELEGATE
+
+extension SplashViewController: LaunchTransitionViewDelegate {
+    func didFinishLaunchAnimation() {
+        animateViewsIn()
+    }
 }

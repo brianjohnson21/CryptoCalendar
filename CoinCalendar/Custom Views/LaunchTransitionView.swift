@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Comets
 
 protocol LaunchTransitionViewDelegate: class {
     func didFinishLaunchAnimation()
@@ -32,15 +33,21 @@ class LaunchTransitionView: UIView {
     
     var fromEnigmaImageView = UIImageView()
     
+    var cometsLayer = UIView()
+    var moonImageView = UIImageView()
+    var rocketImageView = UIImageView()
+    
     var showDrip = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         modifyConstraints()
         setupViews()
+        setupComets()
         self.backgroundColor = .clear
         //print("did this 😅😅😅")
         //perform(#selector(animateViewsAway), with: self, afterDelay: 0.25)
+        perform(#selector(shootOffRocket), with: self, afterDelay: 1.75)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +79,8 @@ extension LaunchTransitionView {
     
     func setupViews() {
         
+        let halfColor = UIColor(red: 21/255, green: 82/255, blue: 240/255, alpha: 1.0)
+        
         backgroundLayer.backgroundColor = .clear
         backgroundLayer.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(backgroundLayer)
@@ -82,7 +91,7 @@ extension LaunchTransitionView {
         let screen50 = height/2
         halfHeight = screen50
         
-        topHalf.backgroundColor = .themePurple
+        topHalf.backgroundColor = halfColor//.white//.themePurple
         topHalf.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(topHalf)
         topHalf.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -90,7 +99,7 @@ extension LaunchTransitionView {
         topHalf.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         topHalf.heightAnchor.constraint(equalToConstant: screen50).isActive = true
         
-        bottomHalf.backgroundColor = .themePurple
+        bottomHalf.backgroundColor = halfColor//.white//.themePurple
         bottomHalf.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(bottomHalf)
         bottomHalf.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
@@ -171,6 +180,70 @@ extension LaunchTransitionView {
         spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         spinner.topAnchor.constraint(equalTo: dripContainer.bottomAnchor, constant: 80).isActive = true
         
+        moonImageView.image = UIImage(named: "moon")
+        moonImageView.contentMode = .scaleAspectFill
+        moonImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(moonImageView)
+        moonImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        moonImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        moonImageView.heightAnchor.constraint(equalToConstant: 58).isActive = true
+        moonImageView.widthAnchor.constraint(equalToConstant: 58).isActive = true
+        
+        rocketImageView.image = UIImage(named: "rocket")
+        rocketImageView.contentMode = .scaleAspectFill
+        rocketImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(rocketImageView)
+        rocketImageView.trailingAnchor.constraint(equalTo: moonImageView.trailingAnchor, constant: -27).isActive = true
+        rocketImageView.topAnchor.constraint(equalTo: moonImageView.topAnchor, constant: 22).isActive = true
+        rocketImageView.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        rocketImageView.widthAnchor.constraint(equalToConstant: 36).isActive = true
+                
+    }
+    
+    func setupComets() {
+        
+        cometsLayer.backgroundColor = .clear
+        cometsLayer.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(cometsLayer)
+        cometsLayer.fillSuperview()
+        
+        // Customize your comet
+        let width: Double = 375//self.bounds.width
+        let height: Double = 812//self.bounds.height
+        let comets = [Comet(startPoint: CGPoint(x: 100, y: 0),
+                            endPoint: CGPoint(x: 0, y: 100),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0.4 * width, y: 0),
+                            endPoint: CGPoint(x: width, y: 0.8 * width),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0.8 * width, y: 0),
+                            endPoint: CGPoint(x: width, y: 0.2 * width),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: width, y: 0.2 * height),
+                            endPoint: CGPoint(x: 0, y: 0.25 * height),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0, y: height - 0.8 * width),
+                            endPoint: CGPoint(x: 0.6 * width, y: height),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: width - 100, y: height),
+                            endPoint: CGPoint(x: width, y: height - 100),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0, y: 0.8 * height),
+                            endPoint: CGPoint(x: width, y: 0.75 * height),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white)]
+
+        // draw line track and animate
+        for comet in comets {
+            cometsLayer.layer.addSublayer(comet.drawLine())
+            cometsLayer.layer.addSublayer(comet.animate())
+        }                
     }
     
 }
@@ -178,10 +251,38 @@ extension LaunchTransitionView {
 //MARK: ACTIONS
 
 extension LaunchTransitionView {
+    @objc func shootOffRocket() {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.rocketImageView.transform = CGAffineTransform(translationX: -20, y: 20)
+        } completion: { (success) in
+            UIView.animate(withDuration: 0.35) {
+                //self.successImpactGenerator()
+                self.heavyImpactGenerator()
+                self.rocketImageView.transform = CGAffineTransform(translationX: 400, y: -400)
+            } completion: { (success) in
+                UIView.animate(withDuration: 0.2) {
+                    self.cometsLayer.alpha = 0
+                    self.moonImageView.alpha = 0
+                    self.moonImageView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                } completion: { (success) in
+                    self.animateViewsAway()
+                    UIView.animate(withDuration: 0.35) {
+                        //self.moonImageView.transform = CGAffineTransform(scaleX: 0, y: 0)
+                    } completion: { (success) in
+                        self.delegate?.didFinishLaunchAnimation()
+                    }
+                }
+
+            }
+        }
+    }
     
     @objc func animateViewsAway() {
         spinner.stopAnimating()
         spinner.alpha = 0
+        self.animateHalves()
+        
         animateOut(animateView: fromEnigmaImageView, delay: 0.15)
         
         if showDrip {
@@ -195,7 +296,7 @@ extension LaunchTransitionView {
                 self.instaMallLogo.alpha = 0
                 self.instaMallLogo.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
             } completion: { (success) in
-                self.animateHalves()
+                //self.animateHalves()
             }
 
             
@@ -204,7 +305,7 @@ extension LaunchTransitionView {
         if showDrip {
             perform(#selector(hideSelf), with: self, afterDelay: 0.55)
         } else {
-            perform(#selector(hideSelf), with: self, afterDelay: 0.8)
+            perform(#selector(hideSelf), with: self, afterDelay: 0.25)
         }
     }
     

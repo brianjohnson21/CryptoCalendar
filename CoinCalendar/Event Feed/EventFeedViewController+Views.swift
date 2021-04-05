@@ -77,6 +77,7 @@ extension EventFeedViewController {
         profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
         profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
+        calendarImageView.isHidden = true
         calendarImageView.image = UIImage(named: "calendar")
         calendarImageView.contentMode = .scaleAspectFill
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +91,7 @@ extension EventFeedViewController {
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortImageView)
-        sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -20).isActive = true
+        sortImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true

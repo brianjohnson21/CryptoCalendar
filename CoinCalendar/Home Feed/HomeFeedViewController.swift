@@ -56,7 +56,7 @@ class HomeFeedViewController: UIViewController {
             print("is not from sign up")
         }
         
-        doTransitionViewThing()
+        //doTransitionViewThing()
         
         //self.tabBarController?.addDotAtTabBarItemIndex(index: 0, radius: 4, color : .red)
         self.tabBarController?.addDotAtTabBarItemIndex(index: 1, radius: 4, color : .red)

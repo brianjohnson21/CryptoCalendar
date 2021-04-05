@@ -15,17 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ccLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-RD-RqX">
-                                <rect key="frame" x="152" y="393" width="110" height="110"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-RD-RqX">
+                                <rect key="frame" x="178" y="419" width="58" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="NXk-jW-pE7"/>
-                                    <constraint firstAttribute="height" constant="110" id="m5U-lu-ocp"/>
+                                    <constraint firstAttribute="width" constant="58" id="NXk-jW-pE7"/>
+                                    <constraint firstAttribute="height" constant="58" id="m5U-lu-ocp"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocket" translatesAutoresizingMaskIntoConstraints="NO" id="El5-Kx-2Xl">
+                                <rect key="frame" x="173" y="441" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="CUr-0t-n2E"/>
+                                    <constraint firstAttribute="width" constant="36" id="X5c-Kj-knh"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.52549019607843139" green="0.61176470588235299" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="El5-Kx-2Xl" firstAttribute="bottom" secondItem="xdt-RD-RqX" secondAttribute="bottom" id="2ou-af-Dx1"/>
+                            <constraint firstItem="xdt-RD-RqX" firstAttribute="leading" secondItem="El5-Kx-2Xl" secondAttribute="trailing" constant="-31" id="cAY-4W-NtM"/>
                             <constraint firstItem="xdt-RD-RqX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="h2S-uX-4x9"/>
                             <constraint firstItem="xdt-RD-RqX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wmt-kN-PRO"/>
                         </constraints>
@@ -37,6 +46,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ccLogo" width="727" height="727"/>
+        <image name="moon" width="58" height="58.5"/>
+        <image name="rocket" width="36" height="36.5"/>
     </resources>
 </document>
