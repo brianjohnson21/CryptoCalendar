@@ -23,6 +23,9 @@ class HomeFeedViewController: UIViewController {
     var userGreetingLabel = UILabel()
     var userNameLabel = UILabel()
     var profileButton = UIButton()
+    var calendarImageView = UIImageView()
+    var sortImageView = UIImageView()
+    var sortButton = UIButton()
     
     var fromSignUp = UserDefaults()
     
@@ -31,6 +34,8 @@ class HomeFeedViewController: UIViewController {
     var homeFeedCoinOfDayTableViewCell = "homeFeedCoinOfDayTableViewCell"
     
     var sections: [String] = ["Biggest Gainers (24h)", "", "Bullish Sentiment", "Trending on Social (24h)", "Healthiest Coins (24h)"]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

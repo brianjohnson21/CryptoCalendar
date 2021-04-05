@@ -11,11 +11,15 @@ class MainFeedCardTableViewCell: UITableViewCell {
     
     var shadowLayer = UIView()
     var contentContainer = UIView()
+    var eventTypeLabel = UILabel()
     var headlineLabel = UILabel()
     var detailLabel = UILabel()
     var dateLabel = UILabel()
     var moreDotsImageView = UIImageView()
     var cryptoImageView = UIImageView()
+    
+    var verifiedEventImageView = UIImageView()
+    var importantEventImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,24 +59,34 @@ extension MainFeedCardTableViewCell {
         shadowLayer.addSubview(contentContainer)
         contentContainer.fillSuperview()
         
+        eventTypeLabel.textAlignment = .left
+        eventTypeLabel.textColor = UIColor.keyEventHeadlineColorModeLight.withAlphaComponent(0.6)
+        eventTypeLabel.font = .sofiaMedium(ofSize: 13)
+        eventTypeLabel.numberOfLines = 0
+        eventTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentContainer.addSubview(eventTypeLabel)
+        eventTypeLabel.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor, constant: 14).isActive = true
+        eventTypeLabel.topAnchor.constraint(equalTo: contentContainer.topAnchor, constant: 20).isActive = true
+        
         headlineLabel.textAlignment = .left
         headlineLabel.textColor = .keyEventHeadlineColorModeLight
         headlineLabel.font = .sofiaSemiBold(ofSize: 15)
         headlineLabel.numberOfLines = 0
         headlineLabel.translatesAutoresizingMaskIntoConstraints = false
         contentContainer.addSubview(headlineLabel)
-        headlineLabel.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor, constant: 14).isActive = true
-        headlineLabel.topAnchor.constraint(equalTo: contentContainer.topAnchor, constant: 12).isActive = true
+        headlineLabel.leadingAnchor.constraint(equalTo: eventTypeLabel.leadingAnchor, constant: 0).isActive = true
+        headlineLabel.topAnchor.constraint(equalTo: eventTypeLabel.bottomAnchor, constant: 10).isActive = true
         
         moreDotsImageView.image = UIImage(named: "more-horizontal")
         moreDotsImageView.contentMode = .scaleAspectFill
         moreDotsImageView.translatesAutoresizingMaskIntoConstraints = false
         contentContainer.addSubview(moreDotsImageView)
         moreDotsImageView.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor, constant: -8).isActive = true
-        moreDotsImageView.centerYAnchor.constraint(equalTo: headlineLabel.centerYAnchor, constant: 0).isActive = true
+        moreDotsImageView.centerYAnchor.constraint(equalTo: eventTypeLabel.topAnchor, constant: 0).isActive = true
         moreDotsImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         moreDotsImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
+        /*
         detailLabel.textAlignment = .left
         detailLabel.textColor = .keyEventDetailColorModeLight
         detailLabel.font = .sofiaMedium(ofSize: 13)
@@ -91,15 +105,34 @@ extension MainFeedCardTableViewCell {
         contentContainer.addSubview(dateLabel)
         dateLabel.leadingAnchor.constraint(equalTo: headlineLabel.leadingAnchor, constant: 0).isActive = true
         dateLabel.bottomAnchor.constraint(equalTo: contentContainer.bottomAnchor, constant: -11).isActive = true
+         */
                 
         cryptoImageView.image = UIImage(named: "btcIcon")
         cryptoImageView.contentMode = .scaleAspectFill
         cryptoImageView.translatesAutoresizingMaskIntoConstraints = false
         contentContainer.addSubview(cryptoImageView)
-        cryptoImageView.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor, constant: -8).isActive = true
+        cryptoImageView.leadingAnchor.constraint(equalTo: headlineLabel.leadingAnchor, constant: 0).isActive = true
         cryptoImageView.bottomAnchor.constraint(equalTo: contentContainer.bottomAnchor, constant: -11).isActive = true
         cryptoImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
         cryptoImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
+        
+        verifiedEventImageView.image = UIImage(named: "verifiedEvent")
+        verifiedEventImageView.contentMode = .scaleAspectFill
+        verifiedEventImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentContainer.addSubview(verifiedEventImageView)
+        verifiedEventImageView.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor, constant: -9).isActive = true
+        verifiedEventImageView.centerYAnchor.constraint(equalTo: cryptoImageView.centerYAnchor, constant: 0).isActive = true
+        verifiedEventImageView.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        verifiedEventImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        
+        importantEventImageView.image = UIImage(named: "importantEvent")
+        importantEventImageView.contentMode = .scaleAspectFill
+        importantEventImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentContainer.addSubview(importantEventImageView)
+        importantEventImageView.trailingAnchor.constraint(equalTo: verifiedEventImageView.leadingAnchor, constant: -11).isActive = true
+        importantEventImageView.centerYAnchor.constraint(equalTo: cryptoImageView.centerYAnchor, constant: 0).isActive = true
+        importantEventImageView.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        importantEventImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
     }
     
 }

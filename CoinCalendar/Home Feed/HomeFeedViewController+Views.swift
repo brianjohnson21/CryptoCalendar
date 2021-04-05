@@ -75,6 +75,33 @@ extension HomeFeedViewController {
         profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
         profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
+        calendarImageView.image = UIImage(named: "info")
+        calendarImageView.contentMode = .scaleAspectFill
+        calendarImageView.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(calendarImageView)
+        calendarImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        calendarImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        calendarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        calendarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        sortImageView.image = UIImage(named: "blackBell")
+        sortImageView.contentMode = .scaleAspectFill
+        sortImageView.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(sortImageView)
+        sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -20).isActive = true
+        sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        //sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
+        sortButton.backgroundColor = .clear
+        sortButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(sortButton)
+        sortButton.leadingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -5).isActive = true
+        sortButton.trailingAnchor.constraint(equalTo: sortImageView.trailingAnchor, constant: 5).isActive = true
+        sortButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
+        sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
+        
         let separatorLine = UIView()
         separatorLine.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)
         separatorLine.translatesAutoresizingMaskIntoConstraints = false

@@ -16,5 +16,6 @@ pod 'FlagPhoneNumber'
 pod 'ViewAnimator'
 pod 'FSCalendar'
 pod 'SuperBadges'
+pod 'Comets'
 
 end

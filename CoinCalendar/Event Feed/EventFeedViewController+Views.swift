@@ -104,6 +104,15 @@ extension EventFeedViewController {
         sortButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
         sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
         
+        bellImageView.image = UIImage(named: "blackBell")
+        bellImageView.contentMode = .scaleAspectFill
+        bellImageView.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(bellImageView)
+        bellImageView.trailingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -20).isActive = true
+        bellImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        bellImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        bellImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
         setupSegmentio()
         
         
@@ -314,15 +323,13 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: mainFeedCardTableViewCell, for: indexPath) as! MainFeedCardTableViewCell
-        cell.headlineLabel.text = "Headline of key event"
-        let detailText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-        cell.detailLabel.setupLineHeight(myText: detailText, myLineSpacing: 3)
-        cell.dateLabel.text = "1/6/21"
+        cell.eventTypeLabel.text = "Release"
+        cell.headlineLabel.text = "PolkaPets NFT Launch"
         cell.cryptoImageView.image = UIImage(named: "Cardano")
         return cell
     }
@@ -337,7 +344,15 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = MainFeedListHeaderView()
-        headerView.headerLabel.text = "January 1"
+        if section == 0 {
+            headerView.headerLabel.text = "January 1"
+        } else if section == 1 {
+            headerView.headerLabel.text = "January 8"
+        } else if section == 2 {
+            headerView.headerLabel.text = "January 24"
+        } else {
+            headerView.headerLabel.text = "February 6"
+        }
         return headerView
     }
     

@@ -31,6 +31,7 @@ class EventFeedViewController: UIViewController {
     var calendarImageView = UIImageView()
     var sortImageView = UIImageView()
     var sortButton = UIButton()
+    var bellImageView = UIImageView()
     
     var mainFeedTableView = UITableView()
     var mainFeedCardTableViewCell = "mainFeedCardTableViewCell"

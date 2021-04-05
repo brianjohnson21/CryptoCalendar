@@ -16,6 +16,7 @@ PODS:
   - CHIPageControl/Jaloro (0.1.8)
   - CHIPageControl/Paprika (0.1.8)
   - CHIPageControl/Puya (0.1.8)
+  - Comets (0.3.1)
   - FlagPhoneNumber (0.8.0):
     - FlagPhoneNumber/libPhoneNumberiOS (= 0.8.0)
   - FlagPhoneNumber/libPhoneNumberiOS (0.8.0)
@@ -29,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - CHIPageControl (~> 0.1.3)
+  - Comets
   - FlagPhoneNumber
   - FSCalendar
   - lottie-ios
@@ -41,6 +43,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CHIPageControl
+    - Comets
     - FlagPhoneNumber
     - FSCalendar
     - lottie-ios
@@ -52,6 +55,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CHIPageControl: 76b35c8309d8dd155e869c109cc6ffc0aaa465ff
+  Comets: ff75eb4658d612af66073bf9fcf6e8bef274817b
   FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
@@ -61,6 +65,6 @@ SPEC CHECKSUMS:
   ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
   WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
 
-PODFILE CHECKSUM: 6efb3e6696a5544448d8a1b3134991e6d00659a4
+PODFILE CHECKSUM: 0f6b158de02f4b3d9a97d51a50b25e9078385c76
 
 COCOAPODS: 1.10.1
