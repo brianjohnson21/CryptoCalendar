@@ -12,6 +12,7 @@ class CoinMarketFeedViewController: UIViewController {
     
     //Nav
     var navView = UIView()
+    var profileContainer = UIView()
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
     var segmentioControl: Segmentio!

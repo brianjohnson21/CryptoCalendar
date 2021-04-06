@@ -37,7 +37,7 @@ extension HomeFeedCoinsTableViewCell {
         sectionTitleLabel.text = "Biggest Gainers (24h)"
         sectionTitleLabel.textAlignment = .left
         sectionTitleLabel.font = .sofiaBold(ofSize: 16)
-        sectionTitleLabel.textColor = .keyEventHeadlineColorModeLight
+        sectionTitleLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)//.keyEventHeadlineColorModeLight
         sectionTitleLabel.numberOfLines = 0
         sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(sectionTitleLabel)
@@ -61,6 +61,7 @@ extension HomeFeedCoinsTableViewCell {
         // MARK: Setup Collection View
         
         globalContactListCollectionView = UICollectionView(frame: self.contentView.frame, collectionViewLayout: globalContactListCollectionViewFlowLayout)
+        globalContactListCollectionView.layer.masksToBounds = false
         globalContactListCollectionView.tag = 1
         globalContactListCollectionView.dataSource = self
         globalContactListCollectionView.delegate = self

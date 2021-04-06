@@ -39,22 +39,29 @@ class HomeFeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .mainFeedBackgroundColorModeLight
+        self.view.backgroundColor = .mainFeedBackgroundColorModeLight//UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
         
         setupNav()
         setupTableView()
+        setupLaunchTransition()
         
         if fromSignUp.bool(forKey: "comingFromSignUp") {
             print("is from sign up")
-            setupLaunchTransition()
             launchTransition.instaMallLogo.isHidden = true
-            launchTransition.topHalf.backgroundColor = .themePurple
-            launchTransition.bottomHalf.backgroundColor = .themePurple
+            launchTransition.topHalf.backgroundColor = .coinBaseBlue
+            launchTransition.bottomHalf.backgroundColor = .coinBaseBlue
+            launchTransition.cometsLayer.isHidden = true
+            launchTransition.moonImageView.isHidden = true
+            launchTransition.rocketImageView.isHidden = true
+            launchTransition.transitionDelay = 0.25
             fromSignUp.set(false, forKey: "comingFromSignUp")
         } else {
-            setupLaunchTransition()
+            //setupLaunchTransition()
             print("is not from sign up")
+            //fromSignUp.set(true, forKey: "comingFromSignUp")
         }
+        
+        print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😇😇😇")
         
         //doTransitionViewThing()
         

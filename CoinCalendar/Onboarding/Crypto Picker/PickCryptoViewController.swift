@@ -24,6 +24,8 @@ class PickCryptoViewController: UIViewController {
     var globalContactListCollectionView: UICollectionView!
     var pickCryptoCollectionViewCell = "pickCryptoCollectionViewCell"
     
+    var fromSignUp = UserDefaults()
+    
     var coinsSelected: [String] = []
     var coins: [[String]] = [["Cardano", "ADA"],
                              ["Theta Fuel", "TFUEL"],
@@ -174,6 +176,7 @@ extension PickCryptoViewController {
     }
     
     func goToHome() {
+        fromSignUp.set(true, forKey: "comingFromSignUp")
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "MyTabBarController") as! MyTabBarController
         let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate

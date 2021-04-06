@@ -68,7 +68,7 @@ class OneTimeCodeTextField: UITextField {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = .center
-            label.textColor = .themePurple
+            label.textColor = .black
             label.font = .systemFont(ofSize: 40)
             label.isUserInteractionEnabled = true
             label.text = defaultCharacter

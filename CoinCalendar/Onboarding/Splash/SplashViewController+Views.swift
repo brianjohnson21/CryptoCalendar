@@ -31,7 +31,7 @@ extension SplashViewController {
         self.view.addSubview(iconsBGImageView)
         iconsBGImageView.fillSuperview()
         
-        getStartedButton.backgroundColor = .themePurple
+        getStartedButton.backgroundColor = .coinBaseBlue//.themePurple
         getStartedButton.layer.cornerRadius = 63/2
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(getStartedButton)
@@ -98,7 +98,7 @@ extension SplashViewController {
         goingToMoonLabel.topAnchor.constraint(equalTo: calendarLabel.bottomAnchor, constant: 10).isActive = true
         
         loginButton.layer.borderWidth = 2
-        loginButton.layer.borderColor = UIColor.themePurple.cgColor
+        loginButton.layer.borderColor = UIColor.coinBaseBlue.cgColor
         loginButton.backgroundColor = .clear
         loginButton.layer.cornerRadius = 63/2
         loginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -110,7 +110,7 @@ extension SplashViewController {
         
         loginLabel.text = "or Log in"
         loginLabel.textAlignment = .left
-        loginLabel.textColor = .themePurple
+        loginLabel.textColor = .coinBaseBlue//.themePurple
         loginLabel.font = .sofiaSemiBold(ofSize: 17)
         loginLabel.numberOfLines = 0
         loginLabel.translatesAutoresizingMaskIntoConstraints = false

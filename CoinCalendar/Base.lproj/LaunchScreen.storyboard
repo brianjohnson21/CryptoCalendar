@@ -31,7 +31,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.082352941176470587" green="0.32156862745098036" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="El5-Kx-2Xl" firstAttribute="bottom" secondItem="xdt-RD-RqX" secondAttribute="bottom" id="2ou-af-Dx1"/>
                             <constraint firstItem="xdt-RD-RqX" firstAttribute="leading" secondItem="El5-Kx-2Xl" secondAttribute="trailing" constant="-31" id="cAY-4W-NtM"/>

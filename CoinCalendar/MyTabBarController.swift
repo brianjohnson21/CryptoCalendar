@@ -13,6 +13,40 @@ class MyTabBarController: UITabBarController {
         super.viewDidLoad()
 
         delegate = self
+        
+//        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        self.tabBar.layer.shadowRadius = 2
+//        self.tabBar.layer.shadowColor = UIColor.black.cgColor
+//        self.tabBar.layer.shadowOpacity = 0.3
+//        
+//        let appearance = tabBar.standardAppearance
+//        appearance.shadowImage = nil
+//        appearance.shadowColor = nil
+//        self.tabBar.standardAppearance = appearance;
+//        
+//        self.tabBar.shadowImage = UIImage()
+//        self.tabBar.backgroundImage = UIImage()
+//        
+//        self.tabBar.isTranslucent = false
+        
+        //
+        
+        tabBar.barTintColor = .white
+        tabBar.backgroundColor = .white
+            
+//        let appearance = tabBar.standardAppearance
+//        appearance.shadowImage = nil
+//        appearance.shadowColor = nil
+//        tabBar.standardAppearance = appearance;
+//
+//        tabBar.shadowImage = UIImage()
+//        tabBar.backgroundImage = UIImage()
+//
+        tabBar.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
+        tabBar.layer.shadowOffset = CGSize(width: -4, height: 6)
+        tabBar.layer.shadowOpacity = 0.75
+        tabBar.layer.shadowRadius = 8
+        
     }
 }
 

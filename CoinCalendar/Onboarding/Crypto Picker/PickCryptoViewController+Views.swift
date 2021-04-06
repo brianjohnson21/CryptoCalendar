@@ -114,8 +114,8 @@ extension PickCryptoViewController {
         continueButton.alpha = 1.0
         continueButton.continueLabel.text = "Continue"
         continueButton.layer.cornerRadius = 63/2
-        continueButton.backgroundColor = .themePurple
-        continueButton.purpleBG.backgroundColor = .themePurple
+        continueButton.backgroundColor = .coinBaseBlue
+        continueButton.purpleBG.backgroundColor = .coinBaseBlue
         continueButton.layer.masksToBounds = true
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(continueButton)

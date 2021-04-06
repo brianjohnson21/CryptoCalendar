@@ -13,7 +13,7 @@ extension HomeFeedViewController {
     func setupNav() {
         
         navView.isUserInteractionEnabled = true
-        navView.backgroundColor = .navColorModeLight
+        navView.backgroundColor = .white//.navColorModeLight
         navView.layer.shadowColor = UIColor.black.cgColor
         navView.layer.shadowOffset = CGSize(width: 0, height: 2)
         navView.layer.shadowOpacity = 0
@@ -113,6 +113,13 @@ extension HomeFeedViewController {
     }
     
     func setupLaunchTransition() {
+        
+        if fromSignUp.bool(forKey: "comingFromSignUp") {
+            launchTransition.transitionDelay = 0.25
+        } else {
+            print("is not from sign up")            
+        }
+        
         launchTransition.delegate = self
         launchTransition.alpha = 1.0
         launchTransition.spinner.isHidden = true
@@ -159,6 +166,7 @@ extension HomeFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinOfDayTableViewCell, for: indexPath) as! HomeFeedCoinOfDayTableViewCell
+            cell.coinOfDayImageView.image = UIImage(named: "CoinOfDayPH")
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell

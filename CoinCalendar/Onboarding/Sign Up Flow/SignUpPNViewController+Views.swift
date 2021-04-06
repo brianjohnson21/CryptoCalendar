@@ -13,7 +13,7 @@ extension SignUpPNViewController {
     
     func setupTransitionViews() {
                     
-        getStartedButton.backgroundColor = .themePurple
+        getStartedButton.backgroundColor = .coinBaseBlue
         getStartedButton.layer.cornerRadius = 63/2
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(getStartedButton)
@@ -87,7 +87,7 @@ extension SignUpPNViewController {
         
         dismissImageView.alpha = 0
         dismissImageView.image = UIImage(named: "searchX")
-        dismissImageView.setImageColor(color: .themePurple)
+        dismissImageView.setImageColor(color: .coinBaseBlue)
         dismissImageView.contentMode = .scaleAspectFill
         dismissImageView.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(dismissImageView)
@@ -145,8 +145,8 @@ extension SignUpPNViewController {
         }
         pageControl.padding = 4
         pageControl.radius = 3
-        pageControl.currentPageTintColor = .themePurple
-        pageControl.tintColor = UIColor.themePurple.withAlphaComponent(0.42)
+        pageControl.currentPageTintColor = .coinBaseBlue
+        pageControl.tintColor = UIColor.coinBaseBlue.withAlphaComponent(0.42)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(pageControl)
         pageControl.topAnchor.constraint(equalTo: signUpTitleLabel.bottomAnchor, constant: 11).isActive = true
@@ -159,8 +159,8 @@ extension SignUpPNViewController {
         continueButton.continueLabel.alpha = 0
         continueButton.continueLabel.text = "Continue"
         continueButton.layer.cornerRadius = 63/2
-        continueButton.backgroundColor = .themePurple
-        continueButton.purpleBG.backgroundColor = .themePurple
+        continueButton.backgroundColor = .coinBaseBlue
+        continueButton.purpleBG.backgroundColor = .coinBaseBlue
         continueButton.layer.masksToBounds = true
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(continueButton)
@@ -176,7 +176,7 @@ extension SignUpPNViewController {
         termsLabel.alpha = 0
         termsLabel.setupLineHeight(myText: "By tapping continue, you are agreeing to our\nterms of use and privacy policy", myLineSpacing: 3)
         termsLabel.textAlignment = .center
-        termsLabel.textColor = UIColor.themePurple.withAlphaComponent(0.6)
+        termsLabel.textColor = UIColor.coinBaseBlue.withAlphaComponent(0.6)
         termsLabel.font = .sofiaRegular(ofSize: 10)
         termsLabel.numberOfLines = 09
         termsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +195,7 @@ extension SignUpPNViewController {
         
 //        continueLabel.text = "Continue"
 //        continueLabel.textAlignment = .center
-//        continueLabel.textColor = .themePurple
+//        continueLabel.textColor = .coinBaseBlue
 //        continueLabel.font = .sofiaSemiBold(ofSize: 17)
 //        continueLabel.numberOfLines = 0
 //        continueLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -205,7 +205,7 @@ extension SignUpPNViewController {
         
         transitionView.layer.cornerRadius = 10
         transitionView.isUserInteractionEnabled = false
-        transitionView.backgroundColor = .themePurple
+        transitionView.backgroundColor = .coinBaseBlue
         transitionView.alpha = 0
         transitionView.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(transitionView)
@@ -230,7 +230,7 @@ extension SignUpPNViewController {
         nameContainer.topAnchor.constraint(equalTo: signUpSteplabel.bottomAnchor, constant: 16).isActive = true
         nameContainer.heightAnchor.constraint(equalToConstant: 160).isActive = true
         
-        enterNameContainer.layer.borderColor = UIColor.themePurple.cgColor
+        enterNameContainer.layer.borderColor = UIColor.coinBaseBlue.cgColor
         enterNameContainer.layer.borderWidth = 1
         enterNameContainer.layer.cornerRadius = 8
         enterNameContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -243,13 +243,13 @@ extension SignUpPNViewController {
         var placeHolder = NSMutableAttributedString()
         let Name  = "Enter your name"
         placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedString.Key.font: UIFont.sofiaMedium(ofSize: 15)])
-        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.themePurple.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
+        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.coinBaseBlue.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
         enterNameTextField.attributedPlaceholder = placeHolder
         enterNameTextField.autocorrectionType = .no
         enterNameTextField.font = .sofiaMedium(ofSize: 15)
-        enterNameTextField.textColor = .themePurple
+        enterNameTextField.textColor = .coinBaseBlue
         //enterNameTextField.becomeFirstResponder()
-        enterNameTextField.tintColor = .themePurple
+        enterNameTextField.tintColor = .coinBaseBlue
         enterNameTextField.returnKeyType = .done
         enterNameTextField.delegate = self
         enterNameTextField.tag = 1
@@ -281,10 +281,10 @@ extension SignUpPNViewController {
             let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
             
             if i == 1 {
-                let colorProvider = ColorValueProvider(UIColor.themePurple.withAlphaComponent(0.4).lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.withAlphaComponent(0.4).lottieColorValue)
                 checkmarkOneLottie.setValueProvider(colorProvider, keypath: keyPath)
             } else {
-                let colorProvider = ColorValueProvider(UIColor.themePurple.lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.lottieColorValue)
                 checkmarkOneLottie.setValueProvider(colorProvider, keypath: keyPath)
             }
             i += 1
@@ -302,7 +302,7 @@ extension SignUpPNViewController {
         emailFBContentContainer.heightAnchor.constraint(equalToConstant: 160).isActive = true
         emailFBContentContainer.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
         
-        emailContainer.layer.borderColor = UIColor.themePurple.cgColor
+        emailContainer.layer.borderColor = UIColor.coinBaseBlue.cgColor
         emailContainer.layer.borderWidth = 1
         emailContainer.layer.cornerRadius = 8
         emailContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -315,13 +315,13 @@ extension SignUpPNViewController {
         var placeHolder = NSMutableAttributedString()
         let Name  = "Enter your email"
         placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedString.Key.font: UIFont.sofiaMedium(ofSize: 15)])
-        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.themePurple.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
+        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.coinBaseBlue.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
         emailTextField.attributedPlaceholder = placeHolder
         emailTextField.autocorrectionType = .no
         emailTextField.font = .sofiaMedium(ofSize: 15)
-        emailTextField.textColor = .themePurple
+        emailTextField.textColor = .black
         emailTextField.keyboardType = .emailAddress
-        emailTextField.tintColor = .themePurple
+        emailTextField.tintColor = .coinBaseBlue
         emailTextField.returnKeyType = .done
         emailTextField.delegate = self
         emailTextField.tag = 1
@@ -374,10 +374,10 @@ extension SignUpPNViewController {
             let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
             
             if i == 1 {
-                let colorProvider = ColorValueProvider(UIColor.themePurple.withAlphaComponent(0.4).lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.withAlphaComponent(0.4).lottieColorValue)
                 checkMarkTwoLottie.setValueProvider(colorProvider, keypath: keyPath)
             } else {
-                let colorProvider = ColorValueProvider(UIColor.themePurple.lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.lottieColorValue)
                 checkMarkTwoLottie.setValueProvider(colorProvider, keypath: keyPath)
             }
             i += 1
@@ -472,7 +472,7 @@ extension SignUpPNViewController {
         photoDetailLabel.topAnchor.constraint(equalTo: profilePhotoContainer.topAnchor, constant: 4).isActive = true
         
         photoImageView.image = UIImage(named: "profileImagePH")
-        photoImageView.setImageColor(color: .themePurple)
+        photoImageView.setImageColor(color: .coinBaseBlue)
         photoImageView.layer.cornerRadius = 172/2
         photoImageView.layer.masksToBounds = true
         photoImageView.contentMode = .scaleAspectFill
@@ -487,7 +487,7 @@ extension SignUpPNViewController {
         
 //        nameLabel.text = "Stephen"
         nameLabel.textAlignment = .center
-        nameLabel.textColor = .themePurple
+        nameLabel.textColor = .coinBaseBlue
         nameLabel.font = .sofiaMedium(ofSize: 14)
         nameLabel.numberOfLines = 0
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -515,9 +515,9 @@ extension SignUpPNViewController {
         }
         */
         
-        enterPhoneNumberContainer.backgroundColor = UIColor.themePurple.withAlphaComponent(0.05)
+        enterPhoneNumberContainer.backgroundColor = UIColor.coinBaseBlue.withAlphaComponent(0.05)
         enterPhoneNumberContainer.layer.cornerRadius = 8
-        enterPhoneNumberContainer.layer.borderColor = UIColor.themePurple.cgColor
+        enterPhoneNumberContainer.layer.borderColor = UIColor.coinBaseBlue.cgColor
         enterPhoneNumberContainer.translatesAutoresizingMaskIntoConstraints = false
         phoneNumberContainer.addSubview(enterPhoneNumberContainer)
         enterPhoneNumberContainer.leadingAnchor.constraint(equalTo: phoneNumberContainer.leadingAnchor, constant: 26).isActive = true
@@ -528,7 +528,7 @@ extension SignUpPNViewController {
         var placeHolder = NSMutableAttributedString()
         let Name  = "Phone Number"
         placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedString.Key.font:UIFont.sofiaMedium(ofSize: 15)])
-        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.themePurple.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
+        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.coinBaseBlue.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
         phoneNumberTextField.attributedPlaceholder = placeHolder
         phoneNumberTextField.backgroundColor = .clear
         //phoneNumberTextField.flagButtonSize = CGSize(width: 44, height: 44)
@@ -537,8 +537,8 @@ extension SignUpPNViewController {
         phoneNumberTextField.delegate = self
         phoneNumberTextField.keyboardType = .numberPad
         phoneNumberTextField.autocorrectionType = .no
-        phoneNumberTextField.textColor = .themePurple
-        phoneNumberTextField.tintColor = .themePurple
+        phoneNumberTextField.textColor = .black
+        phoneNumberTextField.tintColor = .coinBaseBlue
         phoneNumberTextField.returnKeyType = .next
         phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
         enterPhoneNumberContainer.addSubview(phoneNumberTextField)
@@ -549,7 +549,7 @@ extension SignUpPNViewController {
         
         phoneNumberDetailLabel.text = "*You will receive a verification code"
         phoneNumberDetailLabel.textAlignment = .left
-        phoneNumberDetailLabel.textColor = UIColor.themePurple.withAlphaComponent(0.6)
+        phoneNumberDetailLabel.textColor = UIColor.coinBaseBlue.withAlphaComponent(0.6)
         phoneNumberDetailLabel.font = .sofiaRegular(ofSize: 13)
         phoneNumberDetailLabel.numberOfLines = 0
         phoneNumberDetailLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -601,7 +601,7 @@ extension SignUpPNViewController {
     func transitionViews() {
         
         dismissArrowImageView.image = UIImage(named: "downArrowWhite")
-        dismissArrowImageView.setImageColor(color: .themePurple)
+        dismissArrowImageView.setImageColor(color: .coinBaseBlue)
         dismissArrowImageView.contentMode = .scaleAspectFill
         dismissArrowImageView.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(dismissArrowImageView)
@@ -612,7 +612,7 @@ extension SignUpPNViewController {
         
         titleLabel.text = "Sign up"
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .themePurple
+        titleLabel.textColor = .coinBaseBlue
         titleLabel.font = .sofiaBold(ofSize: 24)
         titleLabel.numberOfLines = 0
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -634,7 +634,7 @@ extension SignUpPNViewController {
      
         appleButton.setBackgroundImage(UIImage(named: "contApple"), for: .normal)
         appleButton.imageView?.contentMode = .scaleAspectFit
-        appleButton.backgroundColor = .themePurple
+        appleButton.backgroundColor = .coinBaseBlue
         appleButton.layer.cornerRadius = 5
         appleButton.layer.masksToBounds = true
         appleButton.translatesAutoresizingMaskIntoConstraints = false
@@ -646,7 +646,7 @@ extension SignUpPNViewController {
         
         emailButton.setTitle("Continue with email", for: .normal)
         emailButton.titleLabel?.font = .sofiaSemiBold(ofSize: 18)
-        emailButton.setTitleColor(.themePurple, for: .normal)
+        emailButton.setTitleColor(.coinBaseBlue, for: .normal)
         emailButton.backgroundColor = .clear
         emailButton.layer.cornerRadius = 5
         emailButton.layer.masksToBounds = true

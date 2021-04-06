@@ -76,7 +76,7 @@ extension PriceVolumeMarketFeedViewController {
         profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
         profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
-        calendarImageView.image = UIImage(named: "calendar")
+        calendarImageView.image = UIImage(named: "info")
         calendarImageView.contentMode = .scaleAspectFill
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(calendarImageView)
@@ -85,7 +85,7 @@ extension PriceVolumeMarketFeedViewController {
         calendarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         calendarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
-        sortImageView.image = UIImage(named: "Sort")
+        sortImageView.image = UIImage(named: "blackBell")
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortImageView)
