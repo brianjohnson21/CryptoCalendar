@@ -8,19 +8,22 @@
 import Foundation
 import UIKit
 import Lottie
+import Comets
 
 extension SubscriptionViewController {
     
     func setupViews() {
         
         mainScrollView.isScrollEnabled = false
-        mainScrollView.backgroundColor = .blue
+        mainScrollView.backgroundColor = .coinBaseBlue
         mainScrollView.contentSize = CGSize(width: view.frame.width * 2, height: view.frame.height)
         mainScrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainScrollView)
         mainScrollView.fillSuperview()
         
-        containerView.backgroundColor = .themePurple
+        setupComets()
+        
+        containerView.backgroundColor = .clear
         containerView.translatesAutoresizingMaskIntoConstraints = false
         mainScrollView.addSubview(containerView)
         containerView.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor).isActive = true
@@ -121,7 +124,7 @@ extension SubscriptionViewController {
         appliedPromoLabel.centerYAnchor.constraint(equalTo: appliedPromoContainer.centerYAnchor, constant: 0).isActive = true
         appliedPromoLabel.centerXAnchor.constraint(equalTo: appliedPromoContainer.centerXAnchor, constant: 0).isActive = true
         
-        let tryTimeLabelText = "Try 30 days free, then $4.99/month.\nCancel anytime."
+        let tryTimeLabelText = "Try 7 days free, then $4.99/month.\nCancel anytime."
         tryTimeLabel.setupLineHeight(myText: tryTimeLabelText, myLineSpacing: 4)
         tryTimeLabel.font = .sofiaSemiBold(ofSize: 16)
         tryTimeLabel.textColor = .white
@@ -131,7 +134,7 @@ extension SubscriptionViewController {
         tryTimeLabel.leadingAnchor.constraint(equalTo: subscribeButton.leadingAnchor, constant: 10).isActive = true
         tryTimeLabel.bottomAnchor.constraint(equalTo: subscribeButton.topAnchor, constant: -23).isActive = true
         
-        createBenefitLabel(benefitLabel: benefitOneLabel, benefitString: "Lorem ipsum dolor set amet")
+        createBenefitLabel(benefitLabel: benefitOneLabel, benefitString: "Get key insights on which coins\nare bullish and bearish")
         benefitOneLabel.bottomAnchor.constraint(equalTo: tryTimeLabel.topAnchor, constant: -74).isActive = true
         
         createBenefitLabel(benefitLabel: benefitTwoLabel, benefitString: "See what’s trending and\nimportant highlights")
@@ -157,17 +160,28 @@ extension SubscriptionViewController {
         freeTrialContainer.heightAnchor.constraint(equalToConstant: 29).isActive = true
         freeTrialContainer.widthAnchor.constraint(equalToConstant: 169).isActive = true
         
-        freeTrialLabel.text = "30 Day Free Trial"
+        freeTrialLabel.text = "7 Day Free Trial"
         freeTrialLabel.textColor = .white
         freeTrialLabel.font = .sofiaSemiBold(ofSize: 15)
         freeTrialLabel.textAlignment = .left
         freeTrialLabel.numberOfLines = 0
         freeTrialLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(freeTrialLabel)
-        freeTrialLabel.trailingAnchor.constraint(equalTo: freeTrialContainer.trailingAnchor, constant: -11).isActive = true
-        freeTrialLabel.centerYAnchor.constraint(equalTo: freeTrialContainer.centerYAnchor, constant: 0).isActive = true
+        freeTrialLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 67).isActive = true
+        freeTrialLabel.bottomAnchor.constraint(equalTo: benefitFourLabel.topAnchor, constant: -37).isActive = true
         
         createBullet(labelToPin: freeTrialLabel)
+        
+        freeTrialContainer.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        freeTrialContainer.layer.cornerRadius = 29/2
+        freeTrialContainer.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(freeTrialContainer)
+        freeTrialContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 26).isActive = true
+        freeTrialContainer.trailingAnchor.constraint(equalTo: freeTrialLabel.trailingAnchor, constant: 1).isActive = true
+        freeTrialContainer.centerYAnchor.constraint(equalTo: freeTrialLabel.centerYAnchor, constant: -0.5).isActive = true
+        //freeTrialContainer.bottomAnchor.constraint(equalTo: benefitFourLabel.topAnchor, constant: -31).isActive = true
+        freeTrialContainer.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        //freeTrialContainer.widthAnchor.constraint(equalToConstant: 169).isActive = true
         
         dividerLine.backgroundColor = .white
         dividerLine.translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +211,7 @@ extension SubscriptionViewController {
         lottieContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         
         let checkAnimation = Animation.named("coinsRotating")
+        checkmarkLottie.isHidden = true
         checkmarkLottie.isUserInteractionEnabled = false
         checkmarkLottie.alpha = 1.0
         checkmarkLottie.animation = checkAnimation
@@ -263,7 +278,7 @@ extension SubscriptionViewController {
     
     func setupPromoContainer() {
                 
-        promoContainer.backgroundColor = .themePurple
+        promoContainer.backgroundColor = .clear
         promoContainer.translatesAutoresizingMaskIntoConstraints = false
         mainScrollView.addSubview(promoContainer)
         promoContainer.leadingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
@@ -345,4 +360,55 @@ extension SubscriptionViewController {
         //successCheckLottie.play()
     }
     
+}
+
+//MARK: COMENTS
+
+extension SubscriptionViewController {
+    func setupComets() {
+        
+        cometsLayer.isUserInteractionEnabled = false
+        cometsLayer.backgroundColor = .clear
+        cometsLayer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(cometsLayer)
+        cometsLayer.fillSuperview()
+        
+        // Customize your comet
+        let width: Double = 375//self.bounds.width
+        let height: Double = 812//self.bounds.height
+        let comets = [Comet(startPoint: CGPoint(x: 100, y: 0),
+                            endPoint: CGPoint(x: 0, y: 100),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0.4 * width, y: 0),
+                            endPoint: CGPoint(x: width, y: 0.8 * width),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0.8 * width, y: 0),
+                            endPoint: CGPoint(x: width, y: 0.2 * width),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: width, y: 0.2 * height),
+                            endPoint: CGPoint(x: 0, y: 0.25 * height),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0, y: height - 0.8 * width),
+                            endPoint: CGPoint(x: 0.6 * width, y: height),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: width - 100, y: height),
+                            endPoint: CGPoint(x: width, y: height - 100),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white),
+                      Comet(startPoint: CGPoint(x: 0, y: 0.8 * height),
+                            endPoint: CGPoint(x: width, y: 0.75 * height),
+                            lineColor: UIColor.white.withAlphaComponent(0.2),
+                            cometColor: UIColor.white)]
+
+        // draw line track and animate
+        for comet in comets {
+            cometsLayer.layer.addSublayer(comet.drawLine())
+            cometsLayer.layer.addSublayer(comet.animate())
+        }
+    }
 }

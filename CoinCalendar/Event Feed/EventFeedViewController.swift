@@ -92,6 +92,10 @@ class EventFeedViewController: UIViewController {
         //finishedLoading = true
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
 }
 
 //MARK: ACTIONS

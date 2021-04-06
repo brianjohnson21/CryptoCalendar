@@ -71,6 +71,10 @@ class PriceVolumeMarketFeedViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         //hideTabBar()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
 }
 
 //MARK: ACTIONS

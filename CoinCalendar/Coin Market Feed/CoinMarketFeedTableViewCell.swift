@@ -64,7 +64,7 @@ extension CoinMarketFeedTableViewCell {
         coinHealthContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         coinHealthContainer.leadingAnchor.constraint(equalTo: coinContainer.trailingAnchor).isActive = true
         coinHealthContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinHealthContainer.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        coinHealthContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         coinRankContainer.backgroundColor = .clear
         coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ extension CoinMarketFeedTableViewCell {
         coinRankContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         coinRankContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor).isActive = true
         coinRankContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinRankContainer.widthAnchor.constraint(equalToConstant: 78).isActive = true
+        coinRankContainer.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         volatilityContainer.backgroundColor = .clear
         volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +80,7 @@ extension CoinMarketFeedTableViewCell {
         volatilityContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         volatilityContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor).isActive = true
         volatilityContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        volatilityContainer.widthAnchor.constraint(equalToConstant: 76).isActive = true
+        volatilityContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         priceContainer.backgroundColor = .clear
         priceContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +88,7 @@ extension CoinMarketFeedTableViewCell {
         priceContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         priceContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor).isActive = true
         priceContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        priceContainer.widthAnchor.constraint(equalToConstant: 67).isActive = true
+        priceContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         createSectionLabel(label: coinHealthLabel, string: "9.0", cointainer: coinHealthContainer)
         createSectionLabel(label: priceScoreLabel, string: "8.3", cointainer: priceContainer)

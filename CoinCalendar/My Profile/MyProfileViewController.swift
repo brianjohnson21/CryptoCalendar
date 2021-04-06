@@ -85,6 +85,10 @@ class MyProfileViewController: UIViewController {
         showTabBar()
         gamesPlayedLabel.text = "0 Friends"
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
 
 }
 
@@ -93,6 +97,7 @@ class MyProfileViewController: UIViewController {
 extension MyProfileViewController {
     @objc func animateViewsIn() {
         UIView.animate(withDuration: 0.25) {
+            self.setNeedsStatusBarAppearanceUpdate()
             self.opacityLayer.alpha = 0.75
             self.containerView.transform = CGAffineTransform(translationX: 0, y: 0)
             //self.keyLine.transform = CGAffineTransform(translationX: 0, y: 0)

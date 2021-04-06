@@ -30,19 +30,19 @@ class CoinMarketFeedViewController: UIViewController {
     var mainFeedTableView = UITableView()
     var coinMarketFeedTableViewCell = "coinMarketFeedTableViewCell"
     
-    var coinContainer = UIView()
+    var coinContainer = FilterOptionView()
     var coinLabel = UILabel()
     
-    var coinHealthContainer = UIView()
+    var coinHealthContainer = FilterOptionView()
     var coinHealthLabel = UILabel()
     
-    var priceScoreContainer = UIView()
+    var priceScoreContainer = FilterOptionView()
     var priceScoreLabel = UILabel()
     
-    var volatilityContainer = UIView()
+    var volatilityContainer = FilterOptionView()
     var volatilityLabel = UILabel()
     
-    var coinRankContainer = UIView()
+    var coinRankContainer = FilterOptionView()
     var coinRankLabel = UILabel()
     
     var coinIconFeedContainer = UIView()
@@ -60,6 +60,7 @@ class CoinMarketFeedViewController: UIViewController {
         setupTableView()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
+        
     }
         
     @objc func appMovedToForeround() {
@@ -71,13 +72,17 @@ class CoinMarketFeedViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         //hideTabBar()
+        //setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
     }
 }
 
 //MARK: ACTIONS
 
 extension CoinMarketFeedViewController {
-    
     @objc func showSubscriptionVC() {
         let subVC = SubscriptionViewController()
         subVC.modalPresentationStyle = .overFullScreen
@@ -90,5 +95,35 @@ extension CoinMarketFeedViewController {
         let navController = UINavigationController(rootViewController: VC1)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
+    }
+    
+    @objc func didSelectCoinHeahlt(sender: UIButton) {
+        lightImpactGenerator()
+        switch sender.tag {
+        case 1:
+            coinHealthContainer.didSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.desSelectOption()
+        case 2:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.didSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.desSelectOption()
+        case 3:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.didSelectOption()
+            coinRankContainer.desSelectOption()
+        default:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.didSelectOption()
+        }
+        
+        
+        print("did this 🥶🥶🥶")
+        
     }
 }

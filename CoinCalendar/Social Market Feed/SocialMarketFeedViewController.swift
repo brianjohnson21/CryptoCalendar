@@ -69,6 +69,10 @@ class SocialMarketFeedViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         //hideTabBar()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
 }
 
 //MARK: ACTIONS

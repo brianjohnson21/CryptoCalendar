@@ -75,6 +75,7 @@
 		DE9AA6A72612A8850057A259 /* successCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6A62612A8850057A259 /* successCheck.json */; };
 		DE9AA6C02612C6FA0057A259 /* checkSuccessBurst.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6BF2612C6FA0057A259 /* checkSuccessBurst.json */; };
 		DE9AA6C32612C7F70057A259 /* Confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6C22612C7F70057A259 /* Confetti.json */; };
+		DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285AA261C0D32002F34B6 /* FilterOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,7 @@
 		DE9AA6A62612A8850057A259 /* successCheck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = successCheck.json; sourceTree = "<group>"; };
 		DE9AA6BF2612C6FA0057A259 /* checkSuccessBurst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkSuccessBurst.json; sourceTree = "<group>"; };
 		DE9AA6C22612C7F70057A259 /* Confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti.json; sourceTree = "<group>"; };
+		DED285AA261C0D32002F34B6 /* FilterOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +393,7 @@
 				DE9AA67C2611781E0057A259 /* LaunchTransitionView.swift */,
 				DE4245D22613722D00E185D4 /* OptionsView.swift */,
 				DE4246602614E54400E185D4 /* CircularProgressView.swift */,
+				DED285AA261C0D32002F34B6 /* FilterOptionView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
+				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
 				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import Comets
 
 class SubscriptionViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class SubscriptionViewController: UIViewController {
     var benefitFourLabel = UILabel()
     var tryFreeLabel = UILabel()
     var subSuccessAnimation = AnimationView()
+    var cometsLayer = UIView()
     
     var freeTrialContainer = UIView()
     var freeTrialLabel = UILabel()
@@ -53,6 +55,7 @@ class SubscriptionViewController: UIViewController {
         self.view.backgroundColor = .clear
         
         setupViews()
+        //setupComets()
         setupPromoContainer()
         
         let notificationCenter = NotificationCenter.default
@@ -72,7 +75,7 @@ extension SubscriptionViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func didTapPromoButton() {
+    @objc func didTapPromoButton() {        
         lightImpactGenerator()
         UIView.animate(withDuration: 0.25) {
             self.mainScrollView.contentOffset.x = self.view.frame.width
@@ -84,12 +87,12 @@ extension SubscriptionViewController {
     
     @objc func didTapBackButton() {
         lightImpactGenerator()
-        self.promoCodeButton.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.25) {
             self.view.endEditing(true)
             self.mainScrollView.contentOffset.x = 0
         } completion: { (success) in
             if self.appliedPromoCode {
+                self.promoCodeButton.isUserInteractionEnabled = false
                 self.updatePromorCodeButton()
             }
         }
