@@ -14,6 +14,7 @@ class SocialMarketFeedViewController: UIViewController {
     var profileContainer = UIView()
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
+    var segmentContentContainer = UIView()
     var segmentioControl: Segmentio!
     
     var userProfileImageContainer = UIView()
@@ -26,7 +27,8 @@ class SocialMarketFeedViewController: UIViewController {
     var sortButton = UIButton()
     var infoButton = UIButton()
     
-    var mainFeedContainer = UIView()
+    var mainFeedContainer = UIScrollView()
+    var dataHeadersScrollView = UIScrollView()
     var mainFeedTableView = UITableView()
     var socialMarketFeedTableViewCell = "socialMarketFeedTableViewCell"
     
@@ -46,6 +48,11 @@ class SocialMarketFeedViewController: UIViewController {
     var coinRankLabel = UILabel()
     
     var coinIconFeedContainer = UIView()
+    var coinIconFeedTableView = UITableView()
+    var coinIconFeedTableViewCell = "coinIconFeedTableViewCell"
+    
+    var blueGradient = UIImageView()
+    var whiteGradient = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +63,7 @@ class SocialMarketFeedViewController: UIViewController {
         
         //Call Views
         setupNav()
-        //setupCoinTable()
+        setupCoinTable()
         setupTableView()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
@@ -129,6 +136,44 @@ extension SocialMarketFeedViewController {
         
         
         //print("did this 🥶🥶🥶")
+        
+    }
+}
+
+//MARK: SCROLLVIEW DELEGATE
+
+extension SocialMarketFeedViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+                
+        if scrollView.tag == 1 {
+//            let yOffset = scrollView.contentOffset.y// + 44
+//            if yOffset > -44 {
+//                scrollView.setContentOffset(CGPoint(x: 0, y: -44), animated: false)
+//            }
+//            print("\(yOffset) - 🤷‍♂️🤷‍♂️🤷‍♂️")
+            
+            let xOffset = scrollView.contentOffset.x
+            //print("\(xOffset) - 🤢🤢🤢")
+            dataHeadersScrollView.contentOffset.x = xOffset
+        }
+        
+        if scrollView.tag == 2 {
+            print("Ass")
+            let yOffset = scrollView.contentOffset.y
+            coinIconFeedTableView.contentOffset.y = yOffset
+        }
+        
+        if scrollView.tag == 4 {
+            print("Ass")
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset
+        }
+        
+        if scrollView.tag == 3 {
+            let xOffset = scrollView.contentOffset.x
+            print("\(xOffset) - 😇😇😇")
+            mainFeedContainer.contentOffset.x = xOffset
+        }
         
     }
 }

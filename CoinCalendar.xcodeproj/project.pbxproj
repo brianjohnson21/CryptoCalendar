@@ -82,6 +82,7 @@
 		DED285D7261CC0A0002F34B6 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285D6261CC0A0002F34B6 /* InfoViewController.swift */; };
 		DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */; };
 		DED285DE261CC418002F34B6 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */; };
+		DED28635261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +165,7 @@
 		DED285D6261CC0A0002F34B6 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoViewController+Views.swift"; sourceTree = "<group>"; };
 		DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinIconFeedTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				DE42474126195C3D00E185D4 /* SocialMarketFeedViewController.swift */,
+				DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */,
 				DE42474526195C4600E185D4 /* SocialMarketFeedViewController+Views.swift */,
 				DE424748261963B300E185D4 /* SocialMarketFeedTableViewCell.swift */,
 			);
@@ -612,6 +615,7 @@
 				DE42462D2613FB4400E185D4 /* MyProfileTableViewCell.swift in Sources */,
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
 				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
+				DED28635261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift in Sources */,
 				DE424749261963B300E185D4 /* SocialMarketFeedTableViewCell.swift in Sources */,
 				DED285DE261CC418002F34B6 /* InfoTableViewCell.swift in Sources */,
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,

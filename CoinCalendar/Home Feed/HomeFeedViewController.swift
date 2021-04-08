@@ -77,7 +77,7 @@ class HomeFeedViewController: UIViewController {
         //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
         //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
         
-        //perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
+        perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {

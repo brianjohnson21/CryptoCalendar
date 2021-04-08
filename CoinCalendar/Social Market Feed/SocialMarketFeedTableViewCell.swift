@@ -40,55 +40,58 @@ class SocialMarketFeedTableViewCell: UITableViewCell {
 extension SocialMarketFeedTableViewCell {
     func setupViews() {
         
-        coinContainer.backgroundColor = .clear
-        coinContainer.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(coinContainer)
-        coinContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
-        coinContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coinContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinContainer.widthAnchor.constraint(equalToConstant: 53).isActive = true
-        
-        coinImageView.contentMode = .scaleAspectFill
-        coinImageView.layer.cornerRadius = 29/2
-        coinImageView.layer.masksToBounds = true
-        coinImageView.translatesAutoresizingMaskIntoConstraints = false
-        coinContainer.addSubview(coinImageView)
-        coinImageView.centerYAnchor.constraint(equalTo: coinContainer.centerYAnchor).isActive = true
-        coinImageView.centerXAnchor.constraint(equalTo: coinContainer.centerXAnchor).isActive = true
-        coinImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
-        coinImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
+//        coinContainer.backgroundColor = .clear
+//        coinContainer.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.addSubview(coinContainer)
+//        coinContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
+//        coinContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+//        coinContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+//        coinContainer.widthAnchor.constraint(equalToConstant: 53).isActive = true
+//
+//        coinImageView.contentMode = .scaleAspectFill
+//        coinImageView.layer.cornerRadius = 29/2
+//        coinImageView.layer.masksToBounds = true
+//        coinImageView.translatesAutoresizingMaskIntoConstraints = false
+//        coinContainer.addSubview(coinImageView)
+//        coinImageView.centerYAnchor.constraint(equalTo: coinContainer.centerYAnchor).isActive = true
+//        coinImageView.centerXAnchor.constraint(equalTo: coinContainer.centerXAnchor).isActive = true
+//        coinImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+//        coinImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
         coinHealthContainer.backgroundColor = .clear
         coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(coinHealthContainer)
         coinHealthContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coinHealthContainer.leadingAnchor.constraint(equalTo: coinContainer.trailingAnchor).isActive = true
+        coinHealthContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
         coinHealthContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinHealthContainer.widthAnchor.constraint(equalToConstant: 59).isActive = true
+        coinHealthContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         coinRankContainer.backgroundColor = .clear
         coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(coinRankContainer)
         coinRankContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coinRankContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor).isActive = true
+        //coinRankContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor).isActive = true
+        coinRankContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor, constant: 5).isActive = true
         coinRankContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinRankContainer.widthAnchor.constraint(equalToConstant: 84).isActive = true
+        coinRankContainer.widthAnchor.constraint(equalToConstant: 85).isActive = true
         
         volatilityContainer.backgroundColor = .clear
         volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(volatilityContainer)
         volatilityContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        volatilityContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor).isActive = true
+        //volatilityContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor).isActive = true
+        volatilityContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor, constant: 5).isActive = true
         volatilityContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        volatilityContainer.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        volatilityContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         priceContainer.backgroundColor = .clear
         priceContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(priceContainer)
         priceContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        priceContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor).isActive = true
+        //priceContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor).isActive = true
+        priceContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor, constant: 5).isActive = true
         priceContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        priceContainer.widthAnchor.constraint(equalToConstant: 98).isActive = true
+        priceContainer.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
         createSectionLabel(label: coinHealthLabel, string: "9.0", cointainer: coinHealthContainer)
         createSectionLabel(label: priceScoreLabel, string: "8.3", cointainer: priceContainer)
