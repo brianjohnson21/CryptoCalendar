@@ -6,13 +6,15 @@
 //
 
 import UIKit
-
+import Segmentio
 class SocialMarketFeedViewController: UIViewController {
 
     //Nav
     var navView = UIView()
+    var profileContainer = UIView()
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
+    var segmentioControl: Segmentio!
     
     var userProfileImageContainer = UIView()
     var userProfileImageView = UIImageView()
@@ -22,24 +24,25 @@ class SocialMarketFeedViewController: UIViewController {
     var calendarImageView = UIImageView()
     var sortImageView = UIImageView()
     var sortButton = UIButton()
+    var infoButton = UIButton()
     
     var mainFeedContainer = UIView()
     var mainFeedTableView = UITableView()
     var socialMarketFeedTableViewCell = "socialMarketFeedTableViewCell"
     
-    var coinContainer = UIView()
+    var coinContainer = FilterOptionView()
     var coinLabel = UILabel()
     
-    var coinHealthContainer = UIView()
+    var coinHealthContainer = FilterOptionView()
     var coinHealthLabel = UILabel()
     
-    var priceScoreContainer = UIView()
+    var priceScoreContainer = FilterOptionView()
     var priceScoreLabel = UILabel()
     
-    var volatilityContainer = UIView()
+    var volatilityContainer = FilterOptionView()
     var volatilityLabel = UILabel()
     
-    var coinRankContainer = UIView()
+    var coinRankContainer = FilterOptionView()
     var coinRankLabel = UILabel()
     
     var coinIconFeedContainer = UIView()
@@ -78,6 +81,12 @@ class SocialMarketFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension SocialMarketFeedViewController {
+    @objc func showMoreInfo() {
+        lightImpactGenerator()
+        let subVC = InfoViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
     
     @objc func showSubscriptionVC() {
         let subVC = SubscriptionViewController()
@@ -91,5 +100,35 @@ extension SocialMarketFeedViewController {
         let navController = UINavigationController(rootViewController: VC1)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
+    }
+    
+    @objc func didSelectCoinHeahlt(sender: UIButton) {
+        lightImpactGenerator()
+        switch sender.tag {
+        case 1:
+            coinHealthContainer.didSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.desSelectOption()
+        case 2:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.didSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.desSelectOption()
+        case 3:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.didSelectOption()
+            coinRankContainer.desSelectOption()
+        default:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.didSelectOption()
+        }
+        
+        
+        //print("did this 🥶🥶🥶")
+        
     }
 }

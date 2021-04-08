@@ -76,6 +76,12 @@
 		DE9AA6C02612C6FA0057A259 /* checkSuccessBurst.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6BF2612C6FA0057A259 /* checkSuccessBurst.json */; };
 		DE9AA6C32612C7F70057A259 /* Confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6C22612C7F70057A259 /* Confetti.json */; };
 		DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285AA261C0D32002F34B6 /* FilterOptionView.swift */; };
+		DED285CB261CBB1B002F34B6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285CA261CBB1B002F34B6 /* WelcomeViewController.swift */; };
+		DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285CE261CBB29002F34B6 /* WelcomeViewController+Views.swift */; };
+		DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285D1261CBBE5002F34B6 /* DiscountButtonView.swift */; };
+		DED285D7261CC0A0002F34B6 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285D6261CC0A0002F34B6 /* InfoViewController.swift */; };
+		DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */; };
+		DED285DE261CC418002F34B6 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +158,12 @@
 		DE9AA6BF2612C6FA0057A259 /* checkSuccessBurst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkSuccessBurst.json; sourceTree = "<group>"; };
 		DE9AA6C22612C7F70057A259 /* Confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti.json; sourceTree = "<group>"; };
 		DED285AA261C0D32002F34B6 /* FilterOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionView.swift; sourceTree = "<group>"; };
+		DED285CA261CBB1B002F34B6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		DED285CE261CBB29002F34B6 /* WelcomeViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeViewController+Views.swift"; sourceTree = "<group>"; };
+		DED285D1261CBBE5002F34B6 /* DiscountButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountButtonView.swift; sourceTree = "<group>"; };
+		DED285D6261CC0A0002F34B6 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoViewController+Views.swift"; sourceTree = "<group>"; };
+		DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,9 +323,11 @@
 				DE9AA5FD2610FF9A0057A259 /* Fonts */,
 				DE9AA667261155470057A259 /* Custom Views */,
 				DE9AA5E12610F18C0057A259 /* AppDelegate.swift */,
+				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DED285D5261CBFD7002F34B6 /* Info VC */,
 				DE42474B2619679200E185D4 /* PriceVolume Market Feed */,
 				DE42474026195C2700E185D4 /* Social Market Feed */,
 				DE42471D2619169500E185D4 /* Coin Market Feed */,
@@ -419,6 +433,26 @@
 				DE9AA6C22612C7F70057A259 /* Confetti.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		DED285C9261CBAE3002F34B6 /* Welcome VC's */ = {
+			isa = PBXGroup;
+			children = (
+				DED285D1261CBBE5002F34B6 /* DiscountButtonView.swift */,
+				DED285CA261CBB1B002F34B6 /* WelcomeViewController.swift */,
+				DED285CE261CBB29002F34B6 /* WelcomeViewController+Views.swift */,
+			);
+			path = "Welcome VC's";
+			sourceTree = "<group>";
+		};
+		DED285D5261CBFD7002F34B6 /* Info VC */ = {
+			isa = PBXGroup;
+			children = (
+				DED285D6261CC0A0002F34B6 /* InfoViewController.swift */,
+				DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */,
+				DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */,
+			);
+			path = "Info VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -560,6 +594,7 @@
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
+				DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */,
 				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
@@ -578,22 +613,27 @@
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
 				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
 				DE424749261963B300E185D4 /* SocialMarketFeedTableViewCell.swift in Sources */,
+				DED285DE261CC418002F34B6 /* InfoTableViewCell.swift in Sources */,
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,
 				DE42465B2614D29E00E185D4 /* PickCryptoViewController+Views.swift in Sources */,
 				DE9AA669261155520057A259 /* ToastNotificationView.swift in Sources */,
 				DE4245D7261376D000E185D4 /* PickerViewController.swift in Sources */,
+				DED285D7261CC0A0002F34B6 /* InfoViewController.swift in Sources */,
 				DE4245C32613701B00E185D4 /* EventOptionsViewController.swift in Sources */,
 				DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */,
+				DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */,
 				DE4245C62613702200E185D4 /* EventOptionsViewController+Views.swift in Sources */,
 				DE4246B926169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift in Sources */,
 				DE9AA5FB2610FD080057A259 /* Extensions.swift in Sources */,
 				DE4245DA261376DC00E185D4 /* PickerViewController+Views.swift in Sources */,
 				DE9AA6492611542F0057A259 /* SignUpPNViewController.swift in Sources */,
+				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
 				DE4246B6261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift in Sources */,
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,
 				DE9AA670261155780057A259 /* OneTimeCodeTextField.swift in Sources */,
+				DED285CB261CBB1B002F34B6 /* WelcomeViewController.swift in Sources */,
 				DE9AA612261101850057A259 /* MyTabBarController.swift in Sources */,
 				DE4246142613E90A00E185D4 /* MyAlertsViewController+Views.swift in Sources */,
 				DE424751261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift in Sources */,

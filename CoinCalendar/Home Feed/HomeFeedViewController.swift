@@ -112,6 +112,12 @@ extension HomeFeedViewController {
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
     }
+    
+    @objc func showWelcome() {
+        let subVC = WelcomeViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
 }
 
 //MARK: LAUNCH DELEGATE
@@ -119,6 +125,7 @@ extension HomeFeedViewController {
 extension HomeFeedViewController: LaunchTransitionViewDelegate {
     func didFinishLaunchAnimation() {
         //Did finish
-        perform(#selector(showSubscriptionVC), with: self, afterDelay: 1.0)
+        //perform(#selector(showSubscriptionVC), with: self, afterDelay: 1.0)
+        //perform(#selector(showWelcome), with: self, afterDelay: 1.0)
     }
 }

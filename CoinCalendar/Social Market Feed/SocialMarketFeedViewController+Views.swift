@@ -13,7 +13,9 @@ extension SocialMarketFeedViewController {
     
     func setupNav() {
         
+        navView.layer.zPosition = 2
         navView.isUserInteractionEnabled = true
+        navView.layer.masksToBounds = false
         navView.backgroundColor = .navColorModeLight
         navView.layer.shadowColor = UIColor.black.cgColor
         navView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -26,15 +28,31 @@ extension SocialMarketFeedViewController {
         navView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         navView.heightAnchor.constraint(equalToConstant: 136).isActive = true
         
+        profileContainer.layer.zPosition = 2
+        profileContainer.backgroundColor = .white
+        profileContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        profileContainer.layer.cornerRadius = 23
+        profileContainer.layer.shadowColor = UIColor.black.cgColor
+        profileContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        profileContainer.layer.shadowOpacity = 0.1
+        profileContainer.layer.shadowRadius = 4
+        //profileContainer.layer.masksToBounds = true
+        profileContainer.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(profileContainer)
+        profileContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
+        profileContainer.trailingAnchor.constraint(equalTo: navView.trailingAnchor).isActive = true
+        profileContainer.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
+        profileContainer.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        
         userProfileImageContainer.backgroundColor = .clear
         userProfileImageContainer.layer.shadowColor = UIColor.black.cgColor
         userProfileImageContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
         userProfileImageContainer.layer.shadowOpacity = 0.1
         userProfileImageContainer.layer.shadowRadius = 4
         userProfileImageContainer.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(userProfileImageContainer)
-        userProfileImageContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 18).isActive = true
-        userProfileImageContainer.topAnchor.constraint(equalTo: navView.topAnchor, constant: 45).isActive = true
+        profileContainer.addSubview(userProfileImageContainer)
+        userProfileImageContainer.leadingAnchor.constraint(equalTo: profileContainer.leadingAnchor, constant: 18).isActive = true
+        userProfileImageContainer.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 45).isActive = true
         userProfileImageContainer.heightAnchor.constraint(equalToConstant: 39).isActive = true
         userProfileImageContainer.widthAnchor.constraint(equalToConstant: 39).isActive = true
         
@@ -53,7 +71,7 @@ extension SocialMarketFeedViewController {
         userGreetingLabel.font = .sofiaRegular(ofSize: 12)
         userGreetingLabel.numberOfLines = 0
         userGreetingLabel.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(userGreetingLabel)
+        profileContainer.addSubview(userGreetingLabel)
         userGreetingLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 6).isActive = true
         userGreetingLabel.topAnchor.constraint(equalTo: userProfileImageContainer.topAnchor, constant: 5).isActive = true
         
@@ -63,24 +81,15 @@ extension SocialMarketFeedViewController {
         userNameLabel.font = .sofiaSemiBold(ofSize: 12)
         userNameLabel.numberOfLines = 0
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(userNameLabel)
+        profileContainer.addSubview(userNameLabel)
         userNameLabel.leadingAnchor.constraint(equalTo: userGreetingLabel.leadingAnchor, constant: 0).isActive = true
         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
-        
-        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
-        profileButton.backgroundColor = .clear
-        profileButton.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(profileButton)
-        profileButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
-        profileButton.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
-        profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
-        profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
         calendarImageView.image = UIImage(named: "info")
         calendarImageView.contentMode = .scaleAspectFill
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(calendarImageView)
-        calendarImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        profileContainer.addSubview(calendarImageView)
+        calendarImageView.trailingAnchor.constraint(equalTo: profileContainer.trailingAnchor, constant: -20).isActive = true
         calendarImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         calendarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         calendarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -88,11 +97,22 @@ extension SocialMarketFeedViewController {
         sortImageView.image = UIImage(named: "blackBell")
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(sortImageView)
+        profileContainer.addSubview(sortImageView)
         sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -20).isActive = true
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        setupSegmentio()
+        
+        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
+        profileButton.backgroundColor = .clear
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(profileButton)
+        profileButton.leadingAnchor.constraint(equalTo: profileContainer.leadingAnchor).isActive = true
+        profileButton.topAnchor.constraint(equalTo: profileContainer.topAnchor).isActive = true
+        profileButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor).isActive = true
+        profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
         //sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
         sortButton.backgroundColor = .clear
@@ -100,81 +120,105 @@ extension SocialMarketFeedViewController {
         navView.addSubview(sortButton)
         sortButton.leadingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -5).isActive = true
         sortButton.trailingAnchor.constraint(equalTo: sortImageView.trailingAnchor, constant: 5).isActive = true
-        sortButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
+        sortButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
         sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
         
-        setupSegmentio()
+        infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
+        infoButton.backgroundColor = .clear
+        infoButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(infoButton)
+        infoButton.leadingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -5).isActive = true
+        infoButton.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
+        infoButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
+        infoButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor, constant: 0).isActive = true
         
         
     }
     
     func setupSegmentio() {
         
+        segmentContainer.backgroundColor = .coinBaseBlue
+        segmentContainer.layer.shadowColor = UIColor.black.cgColor
+        segmentContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        segmentContainer.layer.shadowOpacity = 0.25
+        segmentContainer.layer.shadowRadius = 4
         segmentContainer.isUserInteractionEnabled = true
-        segmentContainer.backgroundColor = .clear
+        segmentContainer.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        segmentContainer.layer.cornerRadius = 23
         segmentContainer.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(segmentContainer)
         segmentContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 0).isActive = true
         segmentContainer.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
         segmentContainer.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: 0).isActive = true
-        segmentContainer.heightAnchor.constraint(equalToConstant: 37).isActive = true
+        segmentContainer.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         //
         coinContainer.backgroundColor = .clear
+        coinContainer.selectionBubble.isHidden = true
+        coinContainer.filterLabel.text = "Coin"
         coinContainer.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(coinContainer)
         coinContainer.leadingAnchor.constraint(equalTo: segmentContainer.leadingAnchor, constant: 5).isActive = true
         coinContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        coinContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
-        coinContainer.widthAnchor.constraint(equalToConstant: 53).isActive = true
+        coinContainer.widthAnchor.constraint(equalToConstant: 71).isActive = true
+        coinContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        createSectionLabel(label: coinLabel, string: "Coin", cointainer: coinContainer)
         
         //
+        coinHealthContainer.tag = 1
+        coinHealthContainer.optionSet()
+        coinHealthContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
         coinHealthContainer.backgroundColor = .clear
+        coinHealthContainer.filterLabel.text = "Soc. Vol."
         coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(coinHealthContainer)
         coinHealthContainer.leadingAnchor.constraint(equalTo: coinContainer.trailingAnchor, constant: 0).isActive = true
         coinHealthContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        coinHealthContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
-        coinHealthContainer.widthAnchor.constraint(equalToConstant: 59).isActive = true
+        coinHealthContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        coinHealthContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        createSectionLabel(label: coinHealthLabel, string: "Soc. Vol.", cointainer: coinHealthContainer)
         
         //
+        priceScoreContainer.tag = 2
+        priceScoreContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
         priceScoreContainer.backgroundColor = .clear
+        priceScoreContainer.filterLabel.text = "Soc. Vol. (24h)"
         priceScoreContainer.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(priceScoreContainer)
         priceScoreContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor, constant: 0).isActive = true
         priceScoreContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        priceScoreContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
-        priceScoreContainer.widthAnchor.constraint(equalToConstant: 84).isActive = true
+        priceScoreContainer.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        priceScoreContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        createSectionLabel(label: priceScoreLabel, string: "Soc. Vol (24h)", cointainer: priceScoreContainer)
         
         //
+        volatilityContainer.tag = 3
+        volatilityContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
         volatilityContainer.backgroundColor = .clear
+        volatilityContainer.filterLabel.text = "Soc. Score"
         volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(volatilityContainer)
         volatilityContainer.leadingAnchor.constraint(equalTo: priceScoreContainer.trailingAnchor, constant: 0).isActive = true
         volatilityContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        volatilityContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
-        volatilityContainer.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        volatilityContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        volatilityContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        createSectionLabel(label: volatilityLabel, string: "Soc. Score", cointainer: volatilityContainer)
         
         //
+        coinRankContainer.tag = 4
+        coinRankContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
         coinRankContainer.backgroundColor = .clear
+        coinRankContainer.filterLabel.text = "Soc. Score (24h)"
         coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(coinRankContainer)
         coinRankContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor, constant: 0).isActive = true
         coinRankContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        coinRankContainer.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 0).isActive = true
-        coinRankContainer.widthAnchor.constraint(equalToConstant: 98).isActive = true
+        coinRankContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        coinRankContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        createSectionLabel(label: coinRankLabel, string: "Soc. Score (24h)", cointainer: coinRankContainer)
 
         let separatorLine = UIView()
+        separatorLine.isHidden = true
         separatorLine.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)
         separatorLine.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(separatorLine)

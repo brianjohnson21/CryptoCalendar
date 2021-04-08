@@ -25,6 +25,7 @@ class CoinMarketFeedViewController: UIViewController {
     var calendarImageView = UIImageView()
     var sortImageView = UIImageView()
     var sortButton = UIButton()
+    var infoButton = UIButton()
     
     var mainFeedContainer = UIView()
     var mainFeedTableView = UITableView()
@@ -83,6 +84,13 @@ class CoinMarketFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension CoinMarketFeedViewController {
+    @objc func showMoreInfo() {
+        lightImpactGenerator()
+        let subVC = InfoViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
+    
     @objc func showSubscriptionVC() {
         let subVC = SubscriptionViewController()
         subVC.modalPresentationStyle = .overFullScreen
@@ -123,7 +131,7 @@ extension CoinMarketFeedViewController {
         }
         
         
-        print("did this 🥶🥶🥶")
+        //print("did this 🥶🥶🥶")
         
     }
 }

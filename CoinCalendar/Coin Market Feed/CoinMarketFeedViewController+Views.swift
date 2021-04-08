@@ -123,6 +123,15 @@ extension CoinMarketFeedViewController {
         sortButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
         sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
         
+        infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
+        infoButton.backgroundColor = .clear
+        infoButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(infoButton)
+        infoButton.leadingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -5).isActive = true
+        infoButton.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
+        infoButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
+        infoButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor, constant: 0).isActive = true
+        
         
     }
     
