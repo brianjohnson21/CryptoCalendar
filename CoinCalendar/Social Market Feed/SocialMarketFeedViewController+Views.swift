@@ -13,7 +13,7 @@ extension SocialMarketFeedViewController {
     
     func setupNav() {
         
-        navView.layer.zPosition = 2
+        navView.layer.zPosition = 150
         navView.isUserInteractionEnabled = true
         navView.layer.masksToBounds = false
         navView.backgroundColor = .navColorModeLight
@@ -123,16 +123,6 @@ extension SocialMarketFeedViewController {
         sortButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
         sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
         
-        infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
-        infoButton.backgroundColor = .clear
-        infoButton.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(infoButton)
-        infoButton.leadingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -5).isActive = true
-        infoButton.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
-        infoButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
-        infoButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor, constant: 0).isActive = true
-        
-        
     }
     
     func setupSegmentio() {
@@ -162,7 +152,8 @@ extension SocialMarketFeedViewController {
         segmentContentContainer.fillSuperview()
         
         //
-        coinContainer.backgroundColor = .clear
+        //coinContainer.layer.zPosition = 100
+        coinContainer.backgroundColor = .coinBaseBlue
         coinContainer.selectionBubble.isHidden = true
         coinContainer.filterLabel.text = "Coin"
         coinContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -172,18 +163,18 @@ extension SocialMarketFeedViewController {
         coinContainer.widthAnchor.constraint(equalToConstant: 71).isActive = true
         coinContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        blueGradient.isHidden = true
+        blueGradient.isHidden = false
         blueGradient.layer.zPosition = 100
+        blueGradient.layer.masksToBounds = true
         blueGradient.isUserInteractionEnabled = false
         blueGradient.image = UIImage(named: "blueVertGradient")
         blueGradient.contentMode = .scaleAspectFill
         blueGradient.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.addSubview(blueGradient)
-        blueGradient.leadingAnchor.constraint(equalTo: coinContainer.trailingAnchor, constant: 0).isActive = true
+        blueGradient.leadingAnchor.constraint(equalTo: coinIconFeedContainer.trailingAnchor, constant: 0).isActive = true
         blueGradient.topAnchor.constraint(equalTo: coinContainer.topAnchor, constant: 0).isActive = true
         blueGradient.bottomAnchor.constraint(equalTo: coinContainer.bottomAnchor, constant: 0).isActive = true
         blueGradient.widthAnchor.constraint(equalToConstant: 18).isActive = true
-        
         
         //
         /*
@@ -396,6 +387,32 @@ extension SocialMarketFeedViewController {
         coinRankContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
         coinRankContainer.widthAnchor.constraint(equalToConstant: 90).isActive = true
         coinRankContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        
+        whiteGradient.isHidden = false
+        whiteGradient.layer.zPosition = 100
+        whiteGradient.layer.masksToBounds = true
+        whiteGradient.isUserInteractionEnabled = false
+        whiteGradient.image = UIImage(named: "whiteVertGradient")
+        whiteGradient.setImageColor(color: .mainFeedBackgroundColorModeLight)
+        whiteGradient.contentMode = .scaleAspectFill
+        whiteGradient.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(whiteGradient)
+        whiteGradient.leadingAnchor.constraint(equalTo: coinIconFeedContainer.trailingAnchor, constant: 0).isActive = true
+        whiteGradient.topAnchor.constraint(equalTo: mainFeedContainer.topAnchor, constant: 0).isActive = true
+        whiteGradient.bottomAnchor.constraint(equalTo: coinIconFeedContainer.bottomAnchor, constant: 0).isActive = true
+        //whiteGradient.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        whiteGradient.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        
+        //
+        
+        infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
+        infoButton.backgroundColor = .clear
+        infoButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(infoButton)
+        infoButton.leadingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -5).isActive = true
+        infoButton.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
+        infoButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
+        infoButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor, constant: 0).isActive = true
     }
 }
 
@@ -435,7 +452,7 @@ extension SocialMarketFeedViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
-        let eventOptionsVC =  EventOptionsViewController()//PickerViewController() //EventOptionsViewController()
+        let eventOptionsVC =  CoinOptionsViewController()
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)
     }

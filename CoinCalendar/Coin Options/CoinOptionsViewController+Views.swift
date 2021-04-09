@@ -1,15 +1,15 @@
 //
-//  EventOptionsViewController+Views.swift
+//  CoinOptionsViewController+Views.swift
 //  CoinCalendar
 //
-//  Created by Stephen Mata on 3/30/21.
+//  Created by Stephen Mata on 4/8/21.
 //
 
 import Foundation
 import UIKit
 import Lottie
 
-extension EventOptionsViewController {
+extension CoinOptionsViewController {
     
     func setupViews() {
         opacityLayer.backgroundColor = .black
@@ -44,7 +44,7 @@ extension EventOptionsViewController {
         mainContainer.bottomAnchor.constraint(equalTo: wrapper.bottomAnchor, constant: 0).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainContainer.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        mainContainer.heightAnchor.constraint(equalToConstant: 328).isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         
         keyLine.backgroundColor = .white
@@ -56,14 +56,24 @@ extension EventOptionsViewController {
         keyLine.widthAnchor.constraint(equalToConstant: 34).isActive = true
         keyLine.heightAnchor.constraint(equalToConstant: 4).isActive = true
         keyLine.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
+        
+        let dismissButton = UIButton()
+        dismissButton.backgroundColor = .clear
+        dismissButton.addTarget(self, action: #selector(dimissVC), for: .touchUpInside)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        wrapper.addSubview(dismissButton)
+        dismissButton.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor).isActive = true
+        dismissButton.trailingAnchor.constraint(equalTo: wrapper.trailingAnchor).isActive = true
+        dismissButton.topAnchor.constraint(equalTo: wrapper.topAnchor).isActive = true
+        dismissButton.bottomAnchor.constraint(equalTo: keyLine.topAnchor).isActive = true
                 
         //
         
         newChatOption.optionButton.addTarget(self, action: #selector(tappedAddToWatchlist), for: .touchUpInside)
-        newChatOption.iconImageView.image = UIImage(named: "eye")
+        newChatOption.iconImageView.image = UIImage(named: "pinCoin")
         newChatOption.iconImageView.setImageColor(color: .coinBaseBlue)
-        newChatOption.optionTitleLabel.text = "Add to Watchlist"
-        newChatOption.optionDetailLabel.text = "Keep an eye on this for later"
+        newChatOption.optionTitleLabel.text = "Pin Coin"
+        newChatOption.optionDetailLabel.text = "Keep this at the top of the list"
         newChatOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newChatOption)
         newChatOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
@@ -74,26 +84,15 @@ extension EventOptionsViewController {
         newGroupOption.optionButton.addTarget(self, action: #selector(didTapSetAlert), for: .touchUpInside)
         newGroupOption.iconImageView.image = UIImage(named: "bell")
         newGroupOption.iconImageView.setImageColor(color: .coinBaseBlue)
-        newGroupOption.optionTitleLabel.text = "Set Alert"
-        newGroupOption.optionDetailLabel.text = "Get an alert before the event starts"
+        newGroupOption.optionTitleLabel.text = "Set Price Alert"
+        newGroupOption.optionDetailLabel.text = "Get an alert when a certain price is hit"
         newGroupOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newGroupOption)
         newGroupOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
         newGroupOption.topAnchor.constraint(equalTo: newChatOption.bottomAnchor, constant: 0).isActive = true
         newGroupOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         newGroupOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
-        
-        newChannelOption.optionButton.addTarget(self, action: #selector(didTapAddtoCustom), for: .touchUpInside)
-        newChannelOption.iconImageView.image = UIImage(named: "shareLink")
-        newChannelOption.iconImageView.setImageColor(color: .coinBaseBlue)
-        newChannelOption.optionTitleLabel.text = "View Source"
-        newChannelOption.optionDetailLabel.text = "See where we got our info from"
-        newChannelOption.translatesAutoresizingMaskIntoConstraints = false
-        mainContainer.addSubview(newChannelOption)
-        newChannelOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
-        newChannelOption.topAnchor.constraint(equalTo: newGroupOption.bottomAnchor, constant: 0).isActive = true
-        newChannelOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
-        newChannelOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
+                
         
         shareOption.optionButton.addTarget(self, action: #selector(didTapShareWithFriends), for: .touchUpInside)
         shareOption.iconImageView.image = UIImage(named: "share")
@@ -103,7 +102,7 @@ extension EventOptionsViewController {
         shareOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(shareOption)
         shareOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
-        shareOption.topAnchor.constraint(equalTo: newChannelOption.bottomAnchor, constant: 0).isActive = true
+        shareOption.topAnchor.constraint(equalTo: newGroupOption.bottomAnchor, constant: 0).isActive = true
         shareOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         shareOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
@@ -123,7 +122,7 @@ extension EventOptionsViewController {
         //successCheck.play()
         
         addedToWatchListLabel.alpha = 0
-        addedToWatchListLabel.text = "Added to watchlist!"
+        addedToWatchListLabel.text = "Coin is pinned!"
         addedToWatchListLabel.textAlignment = .center
         addedToWatchListLabel.textColor = UIColor.black.withAlphaComponent(0.6)
         addedToWatchListLabel.font = .sofiaRegular(ofSize: 20)

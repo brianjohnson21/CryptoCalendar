@@ -96,7 +96,7 @@ extension PickerViewController {
         //resetButton.backgroundColor = .themePurple
         resetButton.delegate = self
         resetButton.continueLabel.text = "Confirm"
-        resetButton.purpleBG.backgroundColor = .themePurple
+        resetButton.purpleBG.backgroundColor = .coinBaseBlue
         resetButton.layer.cornerRadius = 8
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(resetButton)
