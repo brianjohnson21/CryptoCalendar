@@ -46,6 +46,8 @@ class PriceVolumeMarketFeedViewController: UIViewController {
     
     var coinIconFeedContainer = UIView()
     
+    var coins = [Coin]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let notificationCenter = NotificationCenter.default
@@ -59,6 +61,8 @@ class PriceVolumeMarketFeedViewController: UIViewController {
         setupTableView()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 4)
+        
+        getCoins()
     }
         
     @objc func appMovedToForeround() {
@@ -74,6 +78,25 @@ class PriceVolumeMarketFeedViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
+    }
+    
+    func getCoins() {
+        API.sharedInstance.getCoins { (success, coins, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coins = coins else {
+                print("error getting coins")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.coins = coins
+                self?.mainFeedTableView.reloadData()
+            }
+        }
     }
 }
 

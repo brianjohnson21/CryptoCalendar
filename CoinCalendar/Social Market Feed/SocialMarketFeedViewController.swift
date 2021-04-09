@@ -54,6 +54,8 @@ class SocialMarketFeedViewController: UIViewController {
     var blueGradient = UIImageView()
     var whiteGradient = UIImageView()
     
+    var coins = [Coin]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let notificationCenter = NotificationCenter.default
@@ -67,6 +69,8 @@ class SocialMarketFeedViewController: UIViewController {
         setupTableView()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
+        
+        getCoins()
     }
         
     @objc func appMovedToForeround() {
@@ -82,6 +86,25 @@ class SocialMarketFeedViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
+    }
+    
+    func getCoins() {
+        API.sharedInstance.getCoins { (success, coins, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coins = coins else {
+                print("error getting coins")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.coins = coins
+                self?.mainFeedTableView.reloadData()
+            }
+        }
     }
 }
 

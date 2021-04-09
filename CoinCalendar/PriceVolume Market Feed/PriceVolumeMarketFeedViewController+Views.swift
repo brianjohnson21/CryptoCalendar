@@ -244,12 +244,46 @@ extension PriceVolumeMarketFeedViewController {
 extension PriceVolumeMarketFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return coins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: priceVolumeMarketFeedTableViewCell, for: indexPath) as! PriceVolumeMarketFeedTableViewCell
-        cell.coinImageView.image = UIImage(named: "Cardano")
+        
+        let coin = coins[indexPath.row]
+        
+        if coin.symbol == "ADA" {
+            cell.coinImageView.image = UIImage(named: "Cardano")
+        } else if coin.symbol == "" {
+            cell.coinImageView.image = nil
+        } else {
+            cell.coinImageView.image = nil
+        }
+        
+        if let score = coin.priceScore {
+            cell.coinHealthLabel.text = "\(score)"
+        } else {
+            cell.coinHealthLabel.text = "N/A"
+        }
+        
+        if let change = coin.percentChange24Hours {
+            cell.priceScoreLabel.text = "\(change)"
+        } else {
+            cell.priceScoreLabel.text = "N/A"
+        }
+        
+        if let score = coin.socialVolume {
+            cell.volatilityLabel.text = "\(score)"
+        } else {
+            cell.volatilityLabel.text = "N/A"
+        }
+        
+        if let score = coin.marketCap {
+            cell.coinRankLabel.text = "\(score)"
+        } else {
+            cell.coinRankLabel.text = "N/A"
+        }
+        
         return cell
     }
     

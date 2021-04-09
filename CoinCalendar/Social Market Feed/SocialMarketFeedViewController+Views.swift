@@ -421,19 +421,47 @@ extension SocialMarketFeedViewController {
 extension SocialMarketFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return coins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView.tag == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: coinIconFeedTableViewCell, for: indexPath) as! CoinIconFeedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: socialMarketFeedTableViewCell, for: indexPath) as! SocialMarketFeedTableViewCell
+        
+        let coin = coins[indexPath.row]
+        
+        if coin.symbol == "ADA" {
             cell.coinImageView.image = UIImage(named: "Cardano")
-            return cell
+        } else if coin.symbol == "" {
+            cell.coinImageView.image = nil
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: socialMarketFeedTableViewCell, for: indexPath) as! SocialMarketFeedTableViewCell
-            cell.coinImageView.image = UIImage(named: "Cardano")
-            return cell
+            cell.coinImageView.image = nil
         }
+        
+        if let score = coin.socialVolume {
+            cell.coinHealthLabel.text = "\(score)"
+        } else {
+            cell.coinHealthLabel.text = "N/A"
+        }
+        
+        if let rank = coin.volumeRank {
+            cell.priceScoreLabel.text = "\(rank)"
+        } else {
+            cell.priceScoreLabel.text = "N/A"
+        }
+        
+        if let score = coin.socialScore {
+            cell.volatilityLabel.text = "\(score)"
+        } else {
+            cell.volatilityLabel.text = "N/A"
+        }
+        
+        if let score = coin.socialScore24Hours {
+            cell.coinRankLabel.text = "\(score)"
+        } else {
+            cell.coinRankLabel.text = "N/A"
+        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

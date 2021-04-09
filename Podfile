@@ -17,5 +17,6 @@ pod 'ViewAnimator'
 pod 'FSCalendar'
 pod 'SuperBadges'
 pod 'Comets'
+pod 'Disk'
 
 end

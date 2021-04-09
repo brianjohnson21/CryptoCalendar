@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-CoinCalendar/Pods-CoinCalendar-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/CHIPageControl/CHIPageControl.framework
 ${BUILT_PRODUCTS_DIR}/Comets/Comets.framework
+${BUILT_PRODUCTS_DIR}/Disk/Disk.framework
 ${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/FlagPhoneNumber/FlagPhoneNumber.framework
 ${BUILT_PRODUCTS_DIR}/PhotoCircleCrop/PhotoCircleCrop.framework

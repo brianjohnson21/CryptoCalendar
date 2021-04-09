@@ -85,6 +85,10 @@
 		DED28635261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */; };
 		DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */; };
 		DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */; };
+		FC4E558C26202334008AF09B /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558726202334008AF09B /* Admin.swift */; };
+		FC4E558D26202334008AF09B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558826202334008AF09B /* User.swift */; };
+		FC4E558E26202334008AF09B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558926202334008AF09B /* Coin.swift */; };
+		FC4E558F26202334008AF09B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558B26202334008AF09B /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +174,10 @@
 		DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinIconFeedTableViewCell.swift; sourceTree = "<group>"; };
 		DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinOptionsViewController.swift; sourceTree = "<group>"; };
 		DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinOptionsViewController+Views.swift"; sourceTree = "<group>"; };
+		FC4E558726202334008AF09B /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		FC4E558826202334008AF09B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FC4E558926202334008AF09B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		FC4E558B26202334008AF09B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +341,8 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				FC4E558626202334008AF09B /* Models */,
+				FC4E558A26202334008AF09B /* Singletons */,
 				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
 				DED28637261F9093002F34B6 /* Coin Options */,
 				DED285D5261CBFD7002F34B6 /* Info VC */,
@@ -472,6 +482,24 @@
 			path = "Coin Options";
 			sourceTree = "<group>";
 		};
+		FC4E558626202334008AF09B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC4E558726202334008AF09B /* Admin.swift */,
+				FC4E558826202334008AF09B /* User.swift */,
+				FC4E558926202334008AF09B /* Coin.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC4E558A26202334008AF09B /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				FC4E558B26202334008AF09B /* API.swift */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -604,6 +632,7 @@
 				DE9AA6262611130B0057A259 /* MainFeedCardTableViewCell.swift in Sources */,
 				DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */,
 				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
+				FC4E558D26202334008AF09B /* User.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
 				DE4245D32613722D00E185D4 /* OptionsView.swift in Sources */,
 				DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */,
@@ -626,6 +655,7 @@
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
+				FC4E558E26202334008AF09B /* Coin.swift in Sources */,
 				DE9AA66D261155640057A259 /* ContinueButton.swift in Sources */,
 				DE42462D2613FB4400E185D4 /* MyProfileTableViewCell.swift in Sources */,
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
@@ -657,8 +687,10 @@
 				DE9AA612261101850057A259 /* MyTabBarController.swift in Sources */,
 				DE4246142613E90A00E185D4 /* MyAlertsViewController+Views.swift in Sources */,
 				DE424751261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift in Sources */,
+				FC4E558C26202334008AF09B /* Admin.swift in Sources */,
 				DE42475426196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift in Sources */,
 				DE4245A12612D69C00E185D4 /* SortCoinTableViewCell.swift in Sources */,
+				FC4E558F26202334008AF09B /* API.swift in Sources */,
 				DE4246572614D28700E185D4 /* PickCryptoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -811,6 +843,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -833,6 +866,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
