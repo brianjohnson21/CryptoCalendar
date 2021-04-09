@@ -15,6 +15,8 @@ class HomeFeedCoinsTableViewCell: UITableViewCell {
     var globalContactListCollectionView: UICollectionView!
     var homeFeedCoinCollectionViewCell = "homeFeedCoinCollectionViewCell"
     
+    var coins = [Coin]()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
@@ -93,16 +95,27 @@ extension HomeFeedCoinsTableViewCell {
 
 extension HomeFeedCoinsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return coins.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeFeedCoinCollectionViewCell, for: indexPath) as! HomeFeedCoinCollectionViewCell
-        cell.coinImageView.image = UIImage(named: "Bitcoin")
-        cell.coinNameLabel.text = "Bitcoin"
-        cell.coinPriceLabel.text = "$59,027.45"
-        cell.upDownImageView.image = UIImage(named: "redArrowDown")
-        cell.upDownLabel.text = "1.22%"
+        
+        let coin = coins[indexPath.row]
+        
+        if coin.symbol == "ADA" {
+            cell.coinImageView.image = UIImage(named: "Cardano")
+        } else if coin.symbol == "" {
+            cell.coinImageView.image = nil
+        } else {
+            cell.coinImageView.image = nil
+        }
+//        cell.coinImageView.image = UIImage(named: "Bitcoin")
+        cell.coinNameLabel.text = coin.name
+        
+        cell.coinPriceLabel.text = "$\(coin.price ?? 0.0)"
+        cell.upDownImageView.image = coin.percentChange24Hours ?? 0 > 0.0 ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
+        cell.upDownLabel.text = "\(coin.percentChange24Hours ?? 0)%"
         return cell
     }
 }

@@ -164,10 +164,26 @@ extension HomeFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
+            cell.coins = Array(coins.sorted(by: {$0.averageSentiment24Hours ?? 0.0 > $1.averageSentiment24Hours ?? 0.0}).prefix(10))
+            cell.globalContactListCollectionView.reloadData()
+            return cell
+        }
+        else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinOfDayTableViewCell, for: indexPath) as! HomeFeedCoinOfDayTableViewCell
             cell.coinOfDayImageView.image = UIImage(named: "CoinOfDayPH")
             cell.coinOfDayLabel.text = coin?.name
+            return cell
+        } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
+            cell.coins = Array(coins.sorted(by: {$0.socialScore24Hours ?? 0 > $1.socialScore24Hours ?? 0}).prefix(10))
+            cell.globalContactListCollectionView.reloadData()
+            return cell
+        } else if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
+            cell.coins = Array(coins.sorted(by: {$0.healthScore ?? 0 > $1.healthScore ?? 0}).prefix(10))
+            cell.globalContactListCollectionView.reloadData()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
