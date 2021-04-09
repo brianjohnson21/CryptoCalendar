@@ -163,7 +163,7 @@ class API: NSObject {
     }
     
     func getCoinOfDay(completionHandler: @escaping (Bool, Coin?, Error?) -> ()) {
-        performRequest(endpoint: "api/users/coinofday", method: "GET", authenticated: true) { (data, response, error) in
+        performRequest(endpoint: "api/users/coins/coinofday", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 completionHandler(false, nil, error)

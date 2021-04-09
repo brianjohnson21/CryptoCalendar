@@ -35,7 +35,7 @@ class HomeFeedViewController: UIViewController {
     
     var sections: [String] = ["Biggest Gainers (24h)", "", "Bullish Sentiment", "Trending on Social (24h)", "Healthiest Coins (24h)"]
     
-    
+    var coin: Coin?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +78,8 @@ class HomeFeedViewController: UIViewController {
         //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
         
         perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
+        
+        getCoinOfDay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +90,25 @@ class HomeFeedViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
+    }
+    
+    func getCoinOfDay() {
+        API.sharedInstance.getCoinOfDay { (success, coin, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coin = coin else {
+                print("error getting coin of day")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.coin = coin
+                self?.mainFeedTableView.reloadData()
+            }
+        }
     }
 
 }
