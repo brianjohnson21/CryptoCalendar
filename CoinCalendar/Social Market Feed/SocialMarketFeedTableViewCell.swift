@@ -21,6 +21,7 @@ class SocialMarketFeedTableViewCell: UITableViewCell {
     var coinRankLabel = UILabel()
     var priceScoreLabel = UILabel()
     var volatilityLabel = UILabel()
+    var whiteGradient = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -39,7 +40,7 @@ class SocialMarketFeedTableViewCell: UITableViewCell {
 
 extension SocialMarketFeedTableViewCell {
     func setupViews() {
-        
+                        
 //        coinContainer.backgroundColor = .clear
 //        coinContainer.translatesAutoresizingMaskIntoConstraints = false
 //        contentView.addSubview(coinContainer)

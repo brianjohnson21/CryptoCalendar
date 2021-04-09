@@ -29,6 +29,10 @@ class InfoViewController: UIViewController {
         ["Coin Rank", "Coin Rank measures a coin’s performance VS. all other coins that we actively support. In general it is a unique measurement that combines ALT coin price performance relative to Bitcoin and other social activity indicators across the entire crypto market. The lower the score the better! A coin can have a Coin Rank of 1 even in a bear market situation. This combined metric seeks to provide a broader view of the health and performance of altcoins.\n\nHow can it be used?\n\nCoin Rank looks at both financial metrics alongside community metrics and seeks to identify altcoins that outperform Bitcoin during specific timeframes. There’s four main factors that go into the Coin Rank:\n\n• Price Change\n\n• Trading Volume\n\n• Social Volume\n\n• Social Score"]
     ]
     
+    var socialExpos: [[String]] = [
+        ["Social Volume", ""]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear

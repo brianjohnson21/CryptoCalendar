@@ -83,6 +83,8 @@
 		DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */; };
 		DED285DE261CC418002F34B6 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */; };
 		DED28635261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */; };
+		DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */; };
+		DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +168,8 @@
 		DED285DA261CC0B0002F34B6 /* InfoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoViewController+Views.swift"; sourceTree = "<group>"; };
 		DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinIconFeedTableViewCell.swift; sourceTree = "<group>"; };
+		DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinOptionsViewController.swift; sourceTree = "<group>"; };
+		DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinOptionsViewController+Views.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,10 +330,11 @@
 				DE9AA5FD2610FF9A0057A259 /* Fonts */,
 				DE9AA667261155470057A259 /* Custom Views */,
 				DE9AA5E12610F18C0057A259 /* AppDelegate.swift */,
-				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
+				DED28637261F9093002F34B6 /* Coin Options */,
 				DED285D5261CBFD7002F34B6 /* Info VC */,
 				DE42474B2619679200E185D4 /* PriceVolume Market Feed */,
 				DE42474026195C2700E185D4 /* Social Market Feed */,
@@ -456,6 +461,15 @@
 				DED285DD261CC418002F34B6 /* InfoTableViewCell.swift */,
 			);
 			path = "Info VC";
+			sourceTree = "<group>";
+		};
+		DED28637261F9093002F34B6 /* Coin Options */ = {
+			isa = PBXGroup;
+			children = (
+				DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */,
+				DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */,
+			);
+			path = "Coin Options";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -595,6 +609,7 @@
 				DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */,
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
+				DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
 				DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */,
@@ -633,6 +648,7 @@
 				DE9AA6492611542F0057A259 /* SignUpPNViewController.swift in Sources */,
 				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
 				DE4246B6261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift in Sources */,
+				DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */,
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,

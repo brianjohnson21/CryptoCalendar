@@ -269,7 +269,7 @@ extension PriceVolumeMarketFeedViewController: UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
-        let eventOptionsVC =  EventOptionsViewController()//PickerViewController() //EventOptionsViewController()
+        let eventOptionsVC =  CoinOptionsViewController()
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)
     }
