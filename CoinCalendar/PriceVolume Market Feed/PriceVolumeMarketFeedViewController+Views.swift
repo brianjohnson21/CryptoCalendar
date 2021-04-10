@@ -229,7 +229,7 @@ extension PriceVolumeMarketFeedViewController {
     
     func setupTableView() {
 
-        mainFeedContainer.tag = 1
+        mainFeedContainer.tag = 0
         mainFeedContainer.delegate = self
         mainFeedContainer.contentSize = CGSize(width: view.frame.width * 1.025, height: view.frame.height - 200)
         mainFeedContainer.backgroundColor = .clear
@@ -384,8 +384,24 @@ extension PriceVolumeMarketFeedViewController: UITableViewDelegate, UITableViewD
                 cell.coinHealthLabel.text = "N/A"
             }
             
-            if let change = coin.percentChange24Hours {
-                cell.priceScoreLabel.text = "\(change)"
+            if let change = coin.marketCap {
+                //let capNumber =
+                cell.priceScoreLabel.text = "$\(suffixNumber(number: Double(change)))"//"\(change)"
+                
+                /*
+                let myDouble = change
+                let currencyFormatter = NumberFormatter()
+                currencyFormatter.usesGroupingSeparator = true
+                currencyFormatter.numberStyle = .currency
+                // localize to your grouping and decimal separator
+                currencyFormatter.locale = Locale.current
+
+                // We'll force unwrap with the !, if you've got defined data you may need more error checking
+
+                let priceString = currencyFormatter.string(from: NSNumber(value: myDouble))!
+                cell.priceScoreLabel.text = priceString
+                */
+                
             } else {
                 cell.priceScoreLabel.text = "N/A"
             }
@@ -396,8 +412,8 @@ extension PriceVolumeMarketFeedViewController: UITableViewDelegate, UITableViewD
                 cell.volatilityLabel.text = "N/A"
             }
             
-            if let score = coin.marketCap {
-                cell.coinRankLabel.text = "\(score)"
+            if let score = coin.percentChange24Hours {
+                cell.coinRankLabel.text = "\(score)%"
             } else {
                 cell.coinRankLabel.text = "N/A"
             }

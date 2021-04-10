@@ -167,28 +167,38 @@ extension SocialMarketFeedViewController {
 extension SocialMarketFeedViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
                 
-        if scrollView.tag == 1 {
-            let yOffset = scrollView.contentOffset.y
-            mainFeedTableView.contentOffset.y = yOffset
-            
+        //mainFeedContainer.tag = 0
+        if scrollView.tag == 0 {
             let xOffset = scrollView.contentOffset.x
             dataHeadersScrollView.contentOffset.x = xOffset
         }
         
+        //coinIconFeedTableView.tag = 1
+        if scrollView.tag == 1 {
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset
+            print("1111")
+        }
+        
+        //mainFeedTableView.tag = 2
         if scrollView.tag == 2 {
             let yOffset = scrollView.contentOffset.y
             coinIconFeedTableView.contentOffset.y = yOffset
+            print("2222")
+                        
         }
         
+        //dataHeadersScrollView.tag = 3
         if scrollView.tag == 3 {
             let xOffset = scrollView.contentOffset.x
-            print("\(xOffset) - 😇😇😇")
             mainFeedContainer.contentOffset.x = xOffset
+            print("3333")
         }
         
         if scrollView.tag == 4 {
             let yOffset = scrollView.contentOffset.y
             mainFeedTableView.contentOffset.y = yOffset
+            print("4444")
         }
         
     }

@@ -22,6 +22,8 @@ class CoinMarketFeedTableViewCell: UITableViewCell {
     var priceScoreLabel = UILabel()
     var volatilityLabel = UILabel()
 
+    var volatilityGraphImageView = UIImageView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
@@ -82,6 +84,14 @@ extension CoinMarketFeedTableViewCell {
         volatilityContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         volatilityContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
+        volatilityGraphImageView.contentMode = .scaleAspectFill
+        volatilityGraphImageView.translatesAutoresizingMaskIntoConstraints = false
+        volatilityContainer.addSubview(volatilityGraphImageView)
+        volatilityGraphImageView.centerXAnchor.constraint(equalTo: volatilityContainer.centerXAnchor).isActive = true
+        volatilityGraphImageView.centerYAnchor.constraint(equalTo: volatilityContainer.centerYAnchor).isActive = true
+        volatilityGraphImageView.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        volatilityGraphImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
         priceContainer.backgroundColor = .clear
         priceContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(priceContainer)
@@ -91,9 +101,9 @@ extension CoinMarketFeedTableViewCell {
         priceContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         createSectionLabel(label: coinHealthLabel, string: "9.0", cointainer: coinHealthContainer)
-        createSectionLabel(label: priceScoreLabel, string: "8.3", cointainer: priceContainer)
         createSectionLabel(label: coinRankLabel, string: "7.0", cointainer: coinRankContainer)
-        createSectionLabel(label: volatilityLabel, string: "6.5", cointainer: volatilityContainer)
+        createSectionLabel(label: priceScoreLabel, string: "8.3", cointainer: priceContainer)
+        //createSectionLabel(label: volatilityLabel, string: "6.5", cointainer: volatilityContainer)
         
     }
     

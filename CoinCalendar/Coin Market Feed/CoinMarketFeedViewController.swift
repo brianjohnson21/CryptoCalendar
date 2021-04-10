@@ -104,6 +104,8 @@ class CoinMarketFeedViewController: UIViewController {
     }
 }
 
+
+
 //MARK: ACTIONS
 
 extension CoinMarketFeedViewController {
@@ -157,4 +159,5 @@ extension CoinMarketFeedViewController {
         //print("did this 🥶🥶🥶")
         
     }
+    
 }

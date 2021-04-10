@@ -229,7 +229,7 @@ extension SocialMarketFeedViewController {
     
     func setupTableView() {
 
-        mainFeedContainer.tag = 1
+        mainFeedContainer.tag = 0
         mainFeedContainer.delegate = self
         mainFeedContainer.contentSize = CGSize(width: view.frame.width * 1.025, height: view.frame.height - 200)
         mainFeedContainer.backgroundColor = .clear

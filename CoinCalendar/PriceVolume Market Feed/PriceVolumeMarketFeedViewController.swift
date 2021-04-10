@@ -158,37 +158,67 @@ extension PriceVolumeMarketFeedViewController {
             volatilityContainer.desSelectOption()
             coinRankContainer.didSelectOption()
         }
-        
-                
     }
+    
+    func suffixNumber(number:Double) -> String {
+
+        var num:Double = number//.doubleValue;
+        let sign = ((num < 0) ? "-" : "" );
+
+        num = fabs(num);
+
+        if (num < 1000.0){
+            return "\(sign)\(num)"// as NSString;
+        }
+
+        let exp:Int = Int(log10(num) / 3.0 ); //log10(1000));
+
+        let units:[String] = ["K ","M ","B ","T ","P ","E ®"];
+
+        let roundedNum:Double = round(10 * num / pow(1000.0,Double(exp))) / 10;
+
+        return "\(sign)\(roundedNum)\(units[exp-1])"
+    }
+    
 }
 
 //MARK: SCROLLVIEW DELEGATE
 
 extension PriceVolumeMarketFeedViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-                
-        if scrollView.tag == 1 {
-            let yOffset = scrollView.contentOffset.y
-            mainFeedTableView.contentOffset.y = yOffset
-            
+        
+        //mainFeedContainer.tag = 0
+        if scrollView.tag == 0 {
             let xOffset = scrollView.contentOffset.x
             dataHeadersScrollView.contentOffset.x = xOffset
         }
         
+        //coinIconFeedTableView.tag = 1
+        if scrollView.tag == 1 {
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset            
+            print("1111")
+        }
+        
+        //mainFeedTableView.tag = 2
         if scrollView.tag == 2 {
             let yOffset = scrollView.contentOffset.y
             coinIconFeedTableView.contentOffset.y = yOffset
+            print("2222")
+                        
         }
         
+        //dataHeadersScrollView.tag = 3
         if scrollView.tag == 3 {
             let xOffset = scrollView.contentOffset.x
             mainFeedContainer.contentOffset.x = xOffset
+            print("3333")
         }
         
         if scrollView.tag == 4 {
             let yOffset = scrollView.contentOffset.y
             mainFeedTableView.contentOffset.y = yOffset
+            print("4444")
         }
         
     }

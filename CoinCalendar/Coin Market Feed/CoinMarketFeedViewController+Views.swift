@@ -305,14 +305,6 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
             cell.coinImageView.backgroundColor = .red
         }
         
-//        if coin.symbol == "ADA" {
-//            cell.coinImageView.image = UIImage(named: "Cardano")
-//        } else if coin.symbol == "" {
-//            cell.coinImageView.image = nil
-//        } else {
-//            cell.coinImageView.image = nil
-//        }
-        
         if let score = coin.healthScore {
             cell.coinHealthLabel.text = "\(score)"
             //print("\(score) - 🥶🥶🥶")
@@ -320,19 +312,30 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
             cell.coinHealthLabel.text = "N/A"
         }
         
-        if let score = coin.priceScore {
+        if let score = coin.altRank{
             cell.priceScoreLabel.text = "\(score)"
         } else {
             cell.priceScoreLabel.text = "N/A"
         }
         
         if let volatility = coin.volatility {
-            cell.volatilityLabel.text = "\(volatility)"
+            
+            if volatility < 0.025 {
+                cell.volatilityGraphImageView.image = UIImage(named: "lowVolatiity")
+            } else if volatility < 0.05 {
+                cell.volatilityGraphImageView.image = UIImage(named: "medVolatiity")
+            } else if volatility < 0.075 {
+                cell.volatilityGraphImageView.image = UIImage(named: "highVolatiity")
+            } else {
+                cell.volatilityGraphImageView.image = UIImage(named: "veryHighVolatiity")
+            }
+            
+            //cell.volatilityLabel.text = "\(volatility)"
         } else {
             cell.volatilityLabel.text = "N/A"
         }
         
-        if let rank = coin.altRank {
+        if let rank = coin.priceScore {
             cell.coinRankLabel.text = "\(rank)"
         } else {
             cell.coinRankLabel.text = "N/A"
