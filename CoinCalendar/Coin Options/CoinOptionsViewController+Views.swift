@@ -141,10 +141,10 @@ extension CoinOptionsViewController {
             let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
 
             if i == 1 {
-                let colorProvider = ColorValueProvider(UIColor.themePurple.withAlphaComponent(0.4).lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.withAlphaComponent(0.4).lottieColorValue)
                 successCheck.setValueProvider(colorProvider, keypath: keyPath)
             } else {
-                let colorProvider = ColorValueProvider(UIColor.themePurple.lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.lottieColorValue)
                 successCheck.setValueProvider(colorProvider, keypath: keyPath)
             }
             i += 1

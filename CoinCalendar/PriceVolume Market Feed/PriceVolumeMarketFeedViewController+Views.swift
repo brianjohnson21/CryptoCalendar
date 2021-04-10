@@ -298,8 +298,7 @@ extension PriceVolumeMarketFeedViewController {
         priceScoreContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
         priceScoreContainer.widthAnchor.constraint(equalToConstant: 85).isActive = true
         priceScoreContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        
-        
+                
         //
         volatilityContainer.tag = 3
         volatilityContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
@@ -311,7 +310,6 @@ extension PriceVolumeMarketFeedViewController {
         volatilityContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
         volatilityContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         volatilityContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
-
 
         //
         coinRankContainer.tag = 4
@@ -337,11 +335,9 @@ extension PriceVolumeMarketFeedViewController {
         whiteGradient.leadingAnchor.constraint(equalTo: coinIconFeedContainer.trailingAnchor, constant: 0).isActive = true
         whiteGradient.topAnchor.constraint(equalTo: mainFeedContainer.topAnchor, constant: 0).isActive = true
         whiteGradient.bottomAnchor.constraint(equalTo: coinIconFeedContainer.bottomAnchor, constant: 0).isActive = true
-        //whiteGradient.heightAnchor.constraint(equalToConstant: 40).isActive = true
         whiteGradient.widthAnchor.constraint(equalToConstant: 18).isActive = true
         
         //
-        
         infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
         infoButton.backgroundColor = .clear
         infoButton.translatesAutoresizingMaskIntoConstraints = false

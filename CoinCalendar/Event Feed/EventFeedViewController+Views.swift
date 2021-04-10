@@ -77,21 +77,30 @@ extension EventFeedViewController {
         profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
         profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
-        calendarImageView.isHidden = true
-        calendarImageView.image = UIImage(named: "calendar")
-        calendarImageView.contentMode = .scaleAspectFill
-        calendarImageView.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(calendarImageView)
-        calendarImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
-        calendarImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        calendarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        calendarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        infoImageView.image = UIImage(named: "info")
+        infoImageView.contentMode = .scaleAspectFill
+        infoImageView.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(infoImageView)
+        infoImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        infoImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        infoImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        infoImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
+        infoButton.backgroundColor = .clear
+        infoButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(infoButton)
+        infoButton.leadingAnchor.constraint(equalTo: infoImageView.leadingAnchor, constant: -5).isActive = true
+        infoButton.trailingAnchor.constraint(equalTo: infoImageView.trailingAnchor, constant: 5).isActive = true
+        infoButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
+        infoButton.bottomAnchor.constraint(equalTo: infoImageView.bottomAnchor, constant: 5).isActive = true
+
         
         sortImageView.image = UIImage(named: "Sort")
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortImageView)
-        sortImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        sortImageView.trailingAnchor.constraint(equalTo: infoImageView.leadingAnchor, constant: -20).isActive = true
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -115,8 +124,7 @@ extension EventFeedViewController {
         bellImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
         setupSegmentio()
-        
-        
+                
     }
     
     func setupSegmentio() {
@@ -171,7 +179,7 @@ extension EventFeedViewController {
                 type: .bottom,
                 ratio: 0.65,
                 height: 2,
-                color: .themeColorOne),
+                color: .coinBaseBlue),
             horizontalSeparatorOptions: nil,
             verticalSeparatorOptions: nil,
             imageContentMode: .scaleAspectFill,

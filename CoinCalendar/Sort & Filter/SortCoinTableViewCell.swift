@@ -62,6 +62,7 @@ extension SortCoinTableViewCell {
         coinLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: 0).isActive = true
         
         emptyImageView.image = UIImage(named: "emptySquare")
+        //emptyImageView.setImageColor(color: .coinBaseBlue)
         emptyImageView.contentMode = .scaleAspectFill
         emptyImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(emptyImageView)
@@ -73,6 +74,7 @@ extension SortCoinTableViewCell {
         selectedImageView.alpha = 0
         selectedImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         selectedImageView.image = UIImage(named: "checkSquare")
+        //selectedImageView.setImageColor(color: .coinBaseBlue)
         selectedImageView.contentMode = .scaleAspectFill
         selectedImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(selectedImageView)

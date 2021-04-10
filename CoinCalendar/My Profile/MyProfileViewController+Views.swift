@@ -252,7 +252,7 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: myProfileTableViewCell, for: indexPath) as! MyProfileTableViewCell
         cell.settingsLabel.text = settingTitle[indexPath.row]
         cell.settingsIcon.image = UIImage(named: settingImage[indexPath.row])
-        cell.settingsIcon.setImageColor(color: .themePurple)
+        cell.settingsIcon.setImageColor(color: .coinBaseBlue)
         cell.contentView.backgroundColor = .clear
         
         cell.profileButton.isUserInteractionEnabled = false

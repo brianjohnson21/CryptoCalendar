@@ -102,7 +102,7 @@ extension HomeFeedCoinsTableViewCell: UICollectionViewDelegate, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeFeedCoinCollectionViewCell, for: indexPath) as! HomeFeedCoinCollectionViewCell
         
         let coin = coins[indexPath.row]
-        
+        /*
         if coin.symbol == "ADA" {
             cell.coinImageView.image = UIImage(named: "Cardano")
         } else if coin.symbol == "" {
@@ -110,12 +110,60 @@ extension HomeFeedCoinsTableViewCell: UICollectionViewDelegate, UICollectionView
         } else {
             cell.coinImageView.image = nil
         }
-//        cell.coinImageView.image = UIImage(named: "Bitcoin")
+        */
+        
+        if let coinSymbol = coin.symbol {
+            cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
+        } else {
+            cell.coinImageView.image = nil
+            cell.coinImageView.backgroundColor = .red
+        }
+        
         cell.coinNameLabel.text = coin.name
         
-        cell.coinPriceLabel.text = "$\(coin.price ?? 0.0)"
+        //let roundedPrice = coin.price?.rounded()
+        
+        if let coinPrice = coin.price {
+            if coinPrice < 1.0 {
+                cell.coinPriceLabel.text = "$\(coinPrice)"
+            } else {
+                cell.coinPriceLabel.text = "$\(coinPrice.rounded(toPlaces: 2))"
+                //cell.coinPriceLabel.text = "$\(preciseRound(coinPrice, precision: .hundredths))"
+                //cell.coinPriceLabel.text = "$\(coinPrice)"
+            }
+        }
+                
         cell.upDownImageView.image = coin.percentChange24Hours ?? 0 > 0.0 ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
         cell.upDownLabel.text = "\(coin.percentChange24Hours ?? 0)%"
         return cell
+    }
+}
+
+public enum RoundingPrecision {
+    case ones
+    case tenths
+    case hundredths
+}
+
+// Round to the specific decimal place
+public func preciseRound(
+    _ value: Double,
+    precision: RoundingPrecision = .ones) -> Double
+{
+    switch precision {
+    case .ones:
+        return round(value)
+    case .tenths:
+        return round(value * 10) / 10.0
+    case .hundredths:
+        return round(value * 100) / 100.0
+    }
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }

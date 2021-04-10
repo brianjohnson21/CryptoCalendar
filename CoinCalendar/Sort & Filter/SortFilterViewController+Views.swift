@@ -109,7 +109,7 @@ extension SortFilterViewController {
         resetButton.setTitle("Reset", for: .normal)
         resetButton.titleLabel?.font = .sofiaBold(ofSize: 16)
         resetButton.setTitleColor(.white, for: .normal)
-        resetButton.backgroundColor = .themePurple
+        resetButton.backgroundColor = .coinBaseBlue
         resetButton.layer.cornerRadius = 8
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(resetButton)

@@ -42,29 +42,11 @@ class CoinMarketFeedTableViewCell: UITableViewCell {
 extension CoinMarketFeedTableViewCell {
     func setupViews() {
         
-        coinContainer.backgroundColor = .clear
-        coinContainer.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(coinContainer)
-        coinContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
-        coinContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coinContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinContainer.widthAnchor.constraint(equalToConstant: 71).isActive = true
-        
-        coinImageView.contentMode = .scaleAspectFill
-        coinImageView.layer.cornerRadius = 29/2
-        coinImageView.layer.masksToBounds = true
-        coinImageView.translatesAutoresizingMaskIntoConstraints = false
-        coinContainer.addSubview(coinImageView)
-        coinImageView.centerYAnchor.constraint(equalTo: coinContainer.centerYAnchor).isActive = true
-        coinImageView.centerXAnchor.constraint(equalTo: coinContainer.centerXAnchor).isActive = true
-        coinImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
-        coinImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
-        
         coinHealthContainer.backgroundColor = .clear
         coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(coinHealthContainer)
         coinHealthContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coinHealthContainer.leadingAnchor.constraint(equalTo: coinContainer.trailingAnchor).isActive = true
+        coinHealthContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
         coinHealthContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         coinHealthContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         

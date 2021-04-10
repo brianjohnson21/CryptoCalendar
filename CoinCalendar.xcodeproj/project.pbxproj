@@ -63,7 +63,6 @@
 		DE9AA6262611130B0057A259 /* MainFeedCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA6252611130B0057A259 /* MainFeedCardTableViewCell.swift */; };
 		DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA628261118570057A259 /* MainFeedListHeaderView.swift */; };
 		DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA62F261148CF0057A259 /* SplashViewController+Views.swift */; };
-		DE9AA63826114AF80057A259 /* hexPattern.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA63726114AF80057A259 /* hexPattern.mp4 */; };
 		DE9AA64026114C7B0057A259 /* hexPatternVertical.mov in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA63F26114C7B0057A259 /* hexPatternVertical.mov */; };
 		DE9AA6492611542F0057A259 /* SignUpPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA6482611542F0057A259 /* SignUpPNViewController.swift */; };
 		DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA64C2611543D0057A259 /* SignUpPNViewController+Views.swift */; };
@@ -87,6 +86,11 @@
 		DED28635261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */; };
 		DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */; };
 		DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */; };
+		DED6575D2621EDAD002CC83D /* space1Vid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DED6575C2621EDAD002CC83D /* space1Vid.mp4 */; };
+		DED657602621EE8A002CC83D /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED6575F2621EE8A002CC83D /* PlayerViewClass.swift */; };
+		DED657632621FACB002CC83D /* EventFeedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657622621FACB002CC83D /* EventFeedInfoViewController.swift */; };
+		DED657662621FAD4002CC83D /* EventFeedInfoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657652621FAD4002CC83D /* EventFeedInfoViewController+Views.swift */; };
+		DED657692621FD45002CC83D /* EventInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657682621FD45002CC83D /* EventInfoTableViewCell.swift */; };
 		FC4E558C26202334008AF09B /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558726202334008AF09B /* Admin.swift */; };
 		FC4E558D26202334008AF09B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558826202334008AF09B /* User.swift */; };
 		FC4E558E26202334008AF09B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558926202334008AF09B /* Coin.swift */; };
@@ -154,7 +158,6 @@
 		DE9AA6252611130B0057A259 /* MainFeedCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCardTableViewCell.swift; sourceTree = "<group>"; };
 		DE9AA628261118570057A259 /* MainFeedListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedListHeaderView.swift; sourceTree = "<group>"; };
 		DE9AA62F261148CF0057A259 /* SplashViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashViewController+Views.swift"; sourceTree = "<group>"; };
-		DE9AA63726114AF80057A259 /* hexPattern.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = hexPattern.mp4; sourceTree = "<group>"; };
 		DE9AA63F26114C7B0057A259 /* hexPatternVertical.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = hexPatternVertical.mov; sourceTree = "<group>"; };
 		DE9AA6482611542F0057A259 /* SignUpPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPNViewController.swift; sourceTree = "<group>"; };
 		DE9AA64C2611543D0057A259 /* SignUpPNViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpPNViewController+Views.swift"; sourceTree = "<group>"; };
@@ -178,6 +181,11 @@
 		DED28634261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinIconFeedTableViewCell.swift; sourceTree = "<group>"; };
 		DED28638261F90A6002F34B6 /* CoinOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinOptionsViewController.swift; sourceTree = "<group>"; };
 		DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinOptionsViewController+Views.swift"; sourceTree = "<group>"; };
+		DED6575C2621EDAD002CC83D /* space1Vid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = space1Vid.mp4; sourceTree = "<group>"; };
+		DED6575F2621EE8A002CC83D /* PlayerViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewClass.swift; sourceTree = "<group>"; };
+		DED657622621FACB002CC83D /* EventFeedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedInfoViewController.swift; sourceTree = "<group>"; };
+		DED657652621FAD4002CC83D /* EventFeedInfoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventFeedInfoViewController+Views.swift"; sourceTree = "<group>"; };
+		DED657682621FD45002CC83D /* EventInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTableViewCell.swift; sourceTree = "<group>"; };
 		FC4E558726202334008AF09B /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		FC4E558826202334008AF09B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC4E558926202334008AF09B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -400,6 +408,9 @@
 				DE9AA60E2611011A0057A259 /* EventFeedViewController+Views.swift */,
 				DE9AA6252611130B0057A259 /* MainFeedCardTableViewCell.swift */,
 				DE9AA628261118570057A259 /* MainFeedListHeaderView.swift */,
+				DED657622621FACB002CC83D /* EventFeedInfoViewController.swift */,
+				DED657652621FAD4002CC83D /* EventFeedInfoViewController+Views.swift */,
+				DED657682621FD45002CC83D /* EventInfoTableViewCell.swift */,
 			);
 			path = "Event Feed";
 			sourceTree = "<group>";
@@ -408,7 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				DE9AA63F26114C7B0057A259 /* hexPatternVertical.mov */,
-				DE9AA63726114AF80057A259 /* hexPattern.mp4 */,
+				DED6575C2621EDAD002CC83D /* space1Vid.mp4 */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -432,6 +443,7 @@
 				DE4245D22613722D00E185D4 /* OptionsView.swift */,
 				DE4246602614E54400E185D4 /* CircularProgressView.swift */,
 				DED285AA261C0D32002F34B6 /* FilterOptionView.swift */,
+				DED6575F2621EE8A002CC83D /* PlayerViewClass.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -568,13 +580,13 @@
 				DE9AA5EE2610F18D0057A259 /* LaunchScreen.storyboard in Resources */,
 				DE9AA69A261262670057A259 /* coinsRotating.json in Resources */,
 				DE9AA6C32612C7F70057A259 /* Confetti.json in Resources */,
-				DE9AA63826114AF80057A259 /* hexPattern.mp4 in Resources */,
 				DE9AA6032610FFB40057A259 /* sofiapro-light.otf in Resources */,
 				DE9AA6C02612C6FA0057A259 /* checkSuccessBurst.json in Resources */,
 				DE4245F32613BDF800E185D4 /* loadingBlocks.json in Resources */,
 				DE9AA64026114C7B0057A259 /* hexPatternVertical.mov in Resources */,
 				DE9AA6042610FFB40057A259 /* Sofia Pro Medium Az.otf in Resources */,
 				DE9AA6072610FFB40057A259 /* Sofia Pro Bold Az.otf in Resources */,
+				DED6575D2621EDAD002CC83D /* space1Vid.mp4 in Resources */,
 				DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */,
 				DE9AA6052610FFB40057A259 /* Sofia Pro Regular Az.otf in Resources */,
 				DE9AA6A72612A8850057A259 /* successCheck.json in Resources */,
@@ -639,6 +651,7 @@
 				DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */,
 				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
 				FC4E558D26202334008AF09B /* User.swift in Sources */,
+				DED657602621EE8A002CC83D /* PlayerViewClass.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
 				DE4245D32613722D00E185D4 /* OptionsView.swift in Sources */,
 				DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */,
@@ -650,8 +663,10 @@
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
 				DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */,
 				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
+				DED657662621FAD4002CC83D /* EventFeedInfoViewController+Views.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
+				DED657632621FACB002CC83D /* EventFeedInfoViewController.swift in Sources */,
 				DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */,
 				DE42473E26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift in Sources */,
 				DE4246612614E54400E185D4 /* CircularProgressView.swift in Sources */,
@@ -687,6 +702,7 @@
 				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
 				DE4246B6261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift in Sources */,
 				DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */,
+				DED657692621FD45002CC83D /* EventInfoTableViewCell.swift in Sources */,
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,

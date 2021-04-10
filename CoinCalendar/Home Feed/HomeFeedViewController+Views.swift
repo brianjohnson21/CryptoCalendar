@@ -172,8 +172,13 @@ extension HomeFeedViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinOfDayTableViewCell, for: indexPath) as! HomeFeedCoinOfDayTableViewCell
-            cell.coinOfDayImageView.image = UIImage(named: "CoinOfDayPH")
-            cell.coinOfDayLabel.text = coin?.name
+            if let coinOfDay = coin {
+                cell.coinOfDayImageView.image = UIImage(named: "CoinOfDayPH")
+                cell.coinNameLabel.text = coinOfDay.name                
+                if let coinSymbol = coinOfDay.symbol {
+                    cell.coinIconImageView.image = UIImage(named: "\(coinSymbol)")
+                }
+            }
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell

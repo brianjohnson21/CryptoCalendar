@@ -7,14 +7,19 @@
 
 import UIKit
 import Segmentio
+import Lottie
 
 class CoinMarketFeedViewController: UIViewController {
+    
+    var loadingContainer = UIView()
+    var loadingLottie = AnimationView()
     
     //Nav
     var navView = UIView()
     var profileContainer = UIView()
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
+    var segmentContentContainer = UIView()
     var segmentioControl: Segmentio!
     
     var userProfileImageContainer = UIView()
@@ -27,7 +32,8 @@ class CoinMarketFeedViewController: UIViewController {
     var sortButton = UIButton()
     var infoButton = UIButton()
     
-    var mainFeedContainer = UIView()
+    var mainFeedContainer = UIScrollView()
+    var dataHeadersScrollView = UIScrollView()
     var mainFeedTableView = UITableView()
     var coinMarketFeedTableViewCell = "coinMarketFeedTableViewCell"
     
@@ -47,6 +53,11 @@ class CoinMarketFeedViewController: UIViewController {
     var coinRankLabel = UILabel()
     
     var coinIconFeedContainer = UIView()
+    var coinIconFeedTableView = UITableView()
+    var coinIconFeedTableViewCell = "coinIconFeedTableViewCell"
+    
+    var blueGradient = UIImageView()
+    var whiteGradient = UIImageView()
     
     var coins = [Coin]()
     
@@ -59,8 +70,9 @@ class CoinMarketFeedViewController: UIViewController {
         
         //Call Views
         setupNav()
-        //setupCoinTable()
+        setupCoinTable()
         setupTableView()
+        setupLoadingIndicator()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
         
@@ -99,6 +111,8 @@ class CoinMarketFeedViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.coins = coins
                 self?.mainFeedTableView.reloadData()
+                self?.coinIconFeedTableView.reloadData()
+                self?.perform(#selector(self?.hideLoader), with: self, afterDelay: 0.1)
             }
         }
     }
@@ -109,6 +123,15 @@ class CoinMarketFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension CoinMarketFeedViewController {
+    @objc func hideLoader() {
+        UIView.animateKeyframes(withDuration: 0.35, delay: 0.2, options: []) {
+            self.loadingContainer.alpha = 0
+        } completion: { (success) in
+            self.loadingLottie.stop()
+            self.loadingContainer.isHidden = true
+        }
+    }
+    
     @objc func showMoreInfo() {
         lightImpactGenerator()
         let subVC = InfoViewController()
@@ -130,7 +153,7 @@ extension CoinMarketFeedViewController {
         self.present(navController, animated: false, completion: nil)
     }
     
-    @objc func didSelectCoinHeahlt(sender: UIButton) {
+    @objc func didSelectCoinHeahlth(sender: UIButton) {
         lightImpactGenerator()
         switch sender.tag {
         case 1:
@@ -154,10 +177,43 @@ extension CoinMarketFeedViewController {
             volatilityContainer.desSelectOption()
             coinRankContainer.didSelectOption()
         }
-        
-        
-        //print("did this 🥶🥶🥶")
-        
     }
     
+}
+
+//MARK: SCROLLVIEW DELEGATE
+
+extension CoinMarketFeedViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+                
+        //mainFeedContainer.tag = 0
+        if scrollView.tag == 0 {
+            let xOffset = scrollView.contentOffset.x
+            dataHeadersScrollView.contentOffset.x = xOffset
+        }
+        
+        //coinIconFeedTableView.tag = 1
+        if scrollView.tag == 1 {
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset
+        }
+        
+        //mainFeedTableView.tag = 2
+        if scrollView.tag == 2 {
+            let yOffset = scrollView.contentOffset.y
+            coinIconFeedTableView.contentOffset.y = yOffset
+        }
+        
+        //dataHeadersScrollView.tag = 3
+        if scrollView.tag == 3 {
+            let xOffset = scrollView.contentOffset.x
+            mainFeedContainer.contentOffset.x = xOffset
+        }
+        
+        if scrollView.tag == 4 {
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset
+        }
+        
+    }
 }

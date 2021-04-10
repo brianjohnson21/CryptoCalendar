@@ -9,12 +9,14 @@ import UIKit
 
 class HomeFeedCoinCollectionViewCell: UICollectionViewCell {
     
+    var shadowLayer = UIView()
     var contentContainer = UIView()
     var coinImageView = UIImageView()
     var coinNameLabel = UILabel()
     var coinPriceLabel = UILabel()
     var upDownImageView = UIImageView()
     var upDownLabel = UILabel()
+    var miniGradient = UIImageView()
     
     var isDarkMode = false
     
@@ -37,6 +39,14 @@ class HomeFeedCoinCollectionViewCell: UICollectionViewCell {
 extension HomeFeedCoinCollectionViewCell {
     func setupViews() {
         
+        shadowLayer.layer.shadowColor = UIColor.black.cgColor
+        shadowLayer.layer.shadowOffset = CGSize(width: 0, height: 0)
+        shadowLayer.layer.shadowOpacity = 0.1
+        shadowLayer.layer.shadowRadius = 2
+        shadowLayer.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(shadowLayer)
+        shadowLayer.fillSuperview()
+        
         if isDarkMode {
             coinNameLabel.textColor = .white
             coinPriceLabel.textColor = UIColor.white.withAlphaComponent(0.6)
@@ -49,12 +59,9 @@ extension HomeFeedCoinCollectionViewCell {
             contentContainer.backgroundColor = .white//UIColor(red: 48/255, green: 48/255, blue: 48/255, alpha: 1.0)
         }
         contentContainer.layer.cornerRadius = 14
-        contentContainer.layer.shadowColor = UIColor.black.cgColor
-        contentContainer.layer.shadowOffset = CGSize(width: 0, height: 0)
-        contentContainer.layer.shadowOpacity = 0.1
-        contentContainer.layer.shadowRadius = 2
+        contentContainer.layer.masksToBounds = true
         contentContainer.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(contentContainer)
+        shadowLayer.addSubview(contentContainer)
         contentContainer.fillSuperview()
         
         coinImageView.contentMode = .scaleAspectFill
@@ -98,6 +105,15 @@ extension HomeFeedCoinCollectionViewCell {
         contentContainer.addSubview(upDownLabel)
         upDownLabel.leadingAnchor.constraint(equalTo: upDownImageView.trailingAnchor, constant: 4).isActive = true
         upDownLabel.centerYAnchor.constraint(equalTo: upDownImageView.centerYAnchor, constant: 0).isActive = true
+        
+        miniGradient.image = UIImage(named: "miniRightWhiteGradient")
+        miniGradient.contentMode = .scaleAspectFill
+        miniGradient.translatesAutoresizingMaskIntoConstraints = false
+        contentContainer.addSubview(miniGradient)
+        miniGradient.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor).isActive = true
+        miniGradient.centerYAnchor.constraint(equalTo: coinNameLabel.centerYAnchor).isActive = true
+        miniGradient.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        miniGradient.widthAnchor.constraint(equalToConstant: 46).isActive = true
         
     }
 }

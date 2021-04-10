@@ -157,8 +157,6 @@ extension SocialMarketFeedViewController {
             volatilityContainer.desSelectOption()
             coinRankContainer.didSelectOption()
         }
-        
-                
     }
 }
 

@@ -59,7 +59,7 @@ extension MyAlertsTableViewCell {
         dividerLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         dotsImageView.image = UIImage(named: "more-vertical")
-        dotsImageView.setImageColor(color: .themePurple)
+        dotsImageView.setImageColor(color: .coinBaseBlue)
         dotsImageView.contentMode = .scaleAspectFill
         dotsImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(dotsImageView)

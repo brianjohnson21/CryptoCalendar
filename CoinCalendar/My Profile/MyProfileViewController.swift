@@ -46,7 +46,7 @@ class MyProfileViewController: UIViewController {
     var mainFeedTableView = UITableView()
     var myProfileTableViewCell = "myProfileTableViewCell"
     var settingTitle: [String] = ["Edit my profile", "My alerts", "Invite your friends", "Settings"]
-    var settingImage: [String] = ["edit-3", "bell", "share", "settings2"]
+    var settingImage: [String] = ["edit 1", "bell", "share", "settings2"]
     
     var piDimensions: CGFloat = 100
     var logoTop: CGFloat = 48

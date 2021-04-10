@@ -32,6 +32,8 @@ class EventFeedViewController: UIViewController {
     var sortImageView = UIImageView()
     var sortButton = UIButton()
     var bellImageView = UIImageView()
+    var infoImageView = UIImageView()
+    var infoButton = UIButton()
     
     var mainFeedTableView = UITableView()
     var mainFeedCardTableViewCell = "mainFeedCardTableViewCell"
@@ -50,24 +52,9 @@ class EventFeedViewController: UIViewController {
         setupTableView()
         setupLoadingIndicator()
         
-//        if fromSignUp.bool(forKey: "comingFromSignUp") {
-//            print("is from sign up")
-//            setupLaunchTransition()
-//            launchTransition.instaMallLogo.isHidden = true
-//            launchTransition.topHalf.backgroundColor = .themePurple
-//            launchTransition.bottomHalf.backgroundColor = .themePurple
-//            fromSignUp.set(false, forKey: "comingFromSignUp")
-//        } else {
-//            setupLaunchTransition()
-//            print("is not from sign up")
-//        }
-        
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
-        
-        //doTransitionViewThing()
-        
+                
         perform(#selector(animateCells), with: self, afterDelay: 0.25)
-        //perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
         
     }
     
@@ -89,7 +76,6 @@ class EventFeedViewController: UIViewController {
         UIView.animate(views: mainFeedTableView.visibleCells,
                        animations: [zoomAnimation, fromAnimation],
                        initialAlpha: 0, finalAlpha: 1.0, duration: 0.5)
-        //finishedLoading = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -101,6 +87,13 @@ class EventFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension EventFeedViewController {
+    @objc func showMoreInfo() {
+        lightImpactGenerator()
+        let subVC = EventFeedInfoViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
+    
     @objc func doTransitionViewThing() {        
         self.launchTransition.animateViewsAway()
     }
@@ -119,12 +112,6 @@ extension EventFeedViewController {
         self.present(sortFilterVC, animated: false) {
             //
         }
-        
-//        let sortFilterVC = PickCryptoViewController()
-//        sortFilterVC.modalPresentationStyle = .overFullScreen
-//        self.present(sortFilterVC, animated: false) {
-//            //
-//        }
     }
     
     @objc func goToProfile() {
