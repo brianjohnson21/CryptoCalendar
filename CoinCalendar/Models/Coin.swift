@@ -14,6 +14,7 @@ class Coin: Codable {
     var symbol: String?
     var coinDescription: String?
     var isCoinOfDay: Bool?
+    var price: Double?
     var averageSentiment24Hours: Double?
     var socialVolume: Int?
     var socialScore24Hours: Int?

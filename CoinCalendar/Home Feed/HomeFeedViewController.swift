@@ -35,6 +35,7 @@ class HomeFeedViewController: UIViewController {
     
     var sections: [String] = ["Biggest Gainers (24h)", "", "Bullish Sentiment", "Trending on Social (24h)", "Healthiest Coins (24h)"]
     
+    var coins = [Coin]()
     var coin: Coin?
 
     override func viewDidLoad() {
@@ -79,6 +80,7 @@ class HomeFeedViewController: UIViewController {
         
         //perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
         
+        getCoins()
         getCoinOfDay()
     }
     
@@ -90,6 +92,25 @@ class HomeFeedViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
+    }
+    
+    func getCoins() {
+        API.sharedInstance.getCoins { (success, coins, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coins = coins else {
+                print("error getting coins")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.coins = coins
+                self?.mainFeedTableView.reloadData()
+            }
+        }
     }
     
     func getCoinOfDay() {
