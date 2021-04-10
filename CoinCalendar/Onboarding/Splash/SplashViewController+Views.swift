@@ -68,8 +68,8 @@ extension SplashViewController {
         getStartedLabel.leadingAnchor.constraint(equalTo: getStartedButton.leadingAnchor, constant: 33).isActive = true
         getStartedLabel.centerYAnchor.constraint(equalTo: getStartedButton.centerYAnchor, constant: 0).isActive = true
         
-        //getStartedButton.addTarget(self, action: #selector(didTapGetStarted), for: .touchUpInside)
-        getStartedButton.addTarget(self, action: #selector(goToTempCode), for: .touchUpInside)
+        getStartedButton.addTarget(self, action: #selector(didTapGetStarted), for: .touchUpInside)
+        //getStartedButton.addTarget(self, action: #selector(goToTempCode), for: .touchUpInside)
         getStartedArrowImageView.image = UIImage(named: "getStartedArrow")
         getStartedArrowImageView.contentMode = .scaleAspectFill
         getStartedArrowImageView.translatesAutoresizingMaskIntoConstraints = false
