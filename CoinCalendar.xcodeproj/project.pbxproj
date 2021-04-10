@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14A0273139F23DCD6BC01174 /* Pods_CoinCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CAF292FBC3D59F1B98901C /* Pods_CoinCalendar.framework */; };
+		DE1EA42826211BB500954FBC /* TempCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EA42726211BB500954FBC /* TempCodeViewController.swift */; };
+		DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */; };
 		DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */ = {isa = PBXBuildFile; fileRef = DE42456D2612CC2200E185D4 /* Confetti2.json */; };
 		DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245712612CE3200E185D4 /* SortFilterViewController.swift */; };
 		DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */; };
@@ -95,6 +97,8 @@
 		61CAF292FBC3D59F1B98901C /* Pods_CoinCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D12D16CC5E93ED0854FA6F /* Pods-CoinCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinCalendar.debug.xcconfig"; path = "Target Support Files/Pods-CoinCalendar/Pods-CoinCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		CA89203F96C95607B4367B2A /* Pods-CoinCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinCalendar.release.xcconfig"; path = "Target Support Files/Pods-CoinCalendar/Pods-CoinCalendar.release.xcconfig"; sourceTree = "<group>"; };
+		DE1EA42726211BB500954FBC /* TempCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCodeViewController.swift; sourceTree = "<group>"; };
+		DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempCodeViewController+Views.swift"; sourceTree = "<group>"; };
 		DE42456D2612CC2200E185D4 /* Confetti2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti2.json; sourceTree = "<group>"; };
 		DE4245712612CE3200E185D4 /* SortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFilterViewController.swift; sourceTree = "<group>"; };
 		DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortFilterViewController+Views.swift"; sourceTree = "<group>"; };
@@ -341,8 +345,9 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
-				FC4E558626202334008AF09B /* Models */,
 				FC4E558A26202334008AF09B /* Singletons */,
+				FC4E558626202334008AF09B /* Models */,
+				DE9AA5F82610FCFB0057A259 /* Onboarding */,
 				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
 				DED28637261F9093002F34B6 /* Coin Options */,
 				DED285D5261CBFD7002F34B6 /* Info VC */,
@@ -356,7 +361,6 @@
 				DE4245C126136FFF00E185D4 /* Event Options */,
 				DE4245702612CE2300E185D4 /* Sort & Filter */,
 				DE9AA68A26121F680057A259 /* Subscription */,
-				DE9AA5F82610FCFB0057A259 /* Onboarding */,
 				DE9AA5E72610F18C0057A259 /* Main.storyboard */,
 				DE9AA5EA2610F18D0057A259 /* Assets.xcassets */,
 				DE9AA5EC2610F18D0057A259 /* LaunchScreen.storyboard */,
@@ -368,6 +372,8 @@
 		DE9AA5F82610FCFB0057A259 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				DE1EA42726211BB500954FBC /* TempCodeViewController.swift */,
+				DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */,
 				DE4247162619145B00E185D4 /* Splash */,
 				DE9AA647261154080057A259 /* Sign Up Flow */,
 				DE4246552614D27300E185D4 /* Crypto Picker */,
@@ -638,6 +644,7 @@
 				DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */,
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
+				DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */,
 				DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
@@ -657,6 +664,7 @@
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
 				FC4E558E26202334008AF09B /* Coin.swift in Sources */,
 				DE9AA66D261155640057A259 /* ContinueButton.swift in Sources */,
+				DE1EA42826211BB500954FBC /* TempCodeViewController.swift in Sources */,
 				DE42462D2613FB4400E185D4 /* MyProfileTableViewCell.swift in Sources */,
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
 				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
@@ -840,7 +848,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -863,7 +871,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

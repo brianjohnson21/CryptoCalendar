@@ -36,7 +36,6 @@ extension SocialMarketFeedViewController {
         profileContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
         profileContainer.layer.shadowOpacity = 0.1
         profileContainer.layer.shadowRadius = 4
-        //profileContainer.layer.masksToBounds = true
         profileContainer.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(profileContainer)
         profileContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
@@ -102,9 +101,7 @@ extension SocialMarketFeedViewController {
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        //setupSegmentio()
-        
+                
         profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
         profileButton.backgroundColor = .clear
         profileButton.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +149,6 @@ extension SocialMarketFeedViewController {
         segmentContentContainer.fillSuperview()
         
         //
-        //coinContainer.layer.zPosition = 100
         coinContainer.backgroundColor = .coinBaseBlue
         coinContainer.selectionBubble.isHidden = true
         coinContainer.filterLabel.text = "Coin"
@@ -176,61 +172,6 @@ extension SocialMarketFeedViewController {
         blueGradient.bottomAnchor.constraint(equalTo: coinContainer.bottomAnchor, constant: 0).isActive = true
         blueGradient.widthAnchor.constraint(equalToConstant: 18).isActive = true
         
-        //
-        /*
-        coinHealthContainer.tag = 1
-        coinHealthContainer.optionSet()
-        coinHealthContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
-        coinHealthContainer.backgroundColor = .clear
-        coinHealthContainer.filterLabel.text = "Soc. Vol."
-        coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
-        dataHeadersScrollView.addSubview(coinHealthContainer)
-        coinHealthContainer.leadingAnchor.constraint(equalTo: dataHeadersScrollView.leadingAnchor, constant: 10).isActive = true
-        //coinHealthContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        coinHealthContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
-        coinHealthContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        coinHealthContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
-                
-        //
-        
-        priceScoreContainer.tag = 2
-        priceScoreContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
-        priceScoreContainer.backgroundColor = .clear
-        priceScoreContainer.filterLabel.text = "Soc. Vol. (24h)"
-        priceScoreContainer.translatesAutoresizingMaskIntoConstraints = false
-        segmentContainer.addSubview(priceScoreContainer)
-        priceScoreContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor, constant: 0).isActive = true
-        priceScoreContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        priceScoreContainer.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        priceScoreContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        
-        
-        //
-        volatilityContainer.tag = 3
-        volatilityContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
-        volatilityContainer.backgroundColor = .clear
-        volatilityContainer.filterLabel.text = "Soc. Score"
-        volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
-        segmentContainer.addSubview(volatilityContainer)
-        volatilityContainer.leadingAnchor.constraint(equalTo: priceScoreContainer.trailingAnchor, constant: 0).isActive = true
-        volatilityContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        volatilityContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        volatilityContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        
-        
-        //
-        coinRankContainer.tag = 4
-        coinRankContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
-        coinRankContainer.backgroundColor = .clear
-        coinRankContainer.filterLabel.text = "Soc. Score (24h)"
-        coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
-        segmentContainer.addSubview(coinRankContainer)
-        coinRankContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor, constant: 0).isActive = true
-        coinRankContainer.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
-        coinRankContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
-        coinRankContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        */
-
         let separatorLine = UIView()
         separatorLine.isHidden = true
         separatorLine.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0)
@@ -256,6 +197,7 @@ extension SocialMarketFeedViewController {
     }
     
     func setupCoinTable() {
+        coinIconFeedContainer.layer.zPosition = 100
         coinIconFeedContainer.backgroundColor = .clear
         coinIconFeedContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(coinIconFeedContainer)
@@ -265,7 +207,7 @@ extension SocialMarketFeedViewController {
         coinIconFeedContainer.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
         coinIconFeedTableView = UITableView(frame: self.view.frame, style: .grouped)
-        coinIconFeedTableView.tag = 4
+        coinIconFeedTableView.tag = 1
         coinIconFeedTableView.alpha = 1.0
         coinIconFeedTableView.isScrollEnabled = true
         coinIconFeedTableView.backgroundColor = .clear
@@ -314,10 +256,6 @@ extension SocialMarketFeedViewController {
         mainFeedTableView.translatesAutoresizingMaskIntoConstraints = false
         mainFeedContainer.addSubview(mainFeedTableView)
         mainFeedTableView.leadingAnchor.constraint(equalTo: mainFeedContainer.leadingAnchor).isActive = true
-        
-        //mainFeedTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        //mainFeedTableView.bottomAnchor.constraint(equalTo: mainFeedTableView.bottomAnchor).isActive = true
-        //mainFeedTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         mainFeedTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
         mainFeedTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         mainFeedTableView.topAnchor.constraint(equalTo: mainFeedContainer.topAnchor).isActive = true
@@ -337,11 +275,10 @@ extension SocialMarketFeedViewController {
         dataHeadersScrollView.trailingAnchor.constraint(equalTo: segmentContentContainer.trailingAnchor, constant: 0).isActive = true
         dataHeadersScrollView.bottomAnchor.constraint(equalTo: segmentContentContainer.bottomAnchor, constant: 0).isActive = true
         dataHeadersScrollView.heightAnchor.constraint(equalToConstant: 33).isActive = true
-        //dataHeadersScrollView.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: 0).isActive = true
                 
         coinHealthContainer.tag = 1
         coinHealthContainer.optionSet()
-        coinHealthContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
+        coinHealthContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
         coinHealthContainer.backgroundColor = .clear
         coinHealthContainer.filterLabel.text = "Soc. Vol."
         coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -352,7 +289,7 @@ extension SocialMarketFeedViewController {
         coinHealthContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
         priceScoreContainer.tag = 2
-        priceScoreContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
+        priceScoreContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
         priceScoreContainer.backgroundColor = .clear
         priceScoreContainer.filterLabel.text = "Soc. Vol. (24h)"
         priceScoreContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -365,7 +302,7 @@ extension SocialMarketFeedViewController {
         
         //
         volatilityContainer.tag = 3
-        volatilityContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
+        volatilityContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
         volatilityContainer.backgroundColor = .clear
         volatilityContainer.filterLabel.text = "Soc. Score"
         volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -378,7 +315,7 @@ extension SocialMarketFeedViewController {
 
         //
         coinRankContainer.tag = 4
-        coinRankContainer.addTarget(self, action: #selector(didSelectCoinHeahlt), for: .touchUpInside)
+        coinRankContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
         coinRankContainer.backgroundColor = .clear
         coinRankContainer.filterLabel.text = "Soc. Score (24h)"
         coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -425,43 +362,48 @@ extension SocialMarketFeedViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: socialMarketFeedTableViewCell, for: indexPath) as! SocialMarketFeedTableViewCell
-        
-        let coin = coins[indexPath.row]
-        
-        if coin.symbol == "ADA" {
-            cell.coinImageView.image = UIImage(named: "Cardano")
-        } else if coin.symbol == "" {
-            cell.coinImageView.image = nil
+        if tableView.tag == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: coinIconFeedTableViewCell, for: indexPath) as! CoinIconFeedTableViewCell
+            let coin = coins[indexPath.row]
+            if let coinSymbol = coin.symbol {
+                cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
+            } else {
+                cell.coinImageView.image = nil
+                cell.coinImageView.backgroundColor = .red
+            }
+            return cell
+                        
         } else {
-            cell.coinImageView.image = nil
+            let cell = tableView.dequeueReusableCell(withIdentifier: socialMarketFeedTableViewCell, for: indexPath) as! SocialMarketFeedTableViewCell
+
+            let coin = coins[indexPath.row]
+
+            if let score = coin.socialVolume {
+                cell.coinHealthLabel.text = "\(score)"
+            } else {
+                cell.coinHealthLabel.text = "N/A"
+            }
+
+            if let rank = coin.volumeRank {
+                cell.priceScoreLabel.text = "\(rank)"
+            } else {
+                cell.priceScoreLabel.text = "N/A"
+            }
+
+            if let score = coin.socialScore {
+                cell.volatilityLabel.text = "\(score)"
+            } else {
+                cell.volatilityLabel.text = "N/A"
+            }
+
+            if let score = coin.socialScore24Hours {
+                cell.coinRankLabel.text = "\(score)"
+            } else {
+                cell.coinRankLabel.text = "N/A"
+            }
+            return cell
         }
         
-        if let score = coin.socialVolume {
-            cell.coinHealthLabel.text = "\(score)"
-        } else {
-            cell.coinHealthLabel.text = "N/A"
-        }
-        
-        if let rank = coin.volumeRank {
-            cell.priceScoreLabel.text = "\(rank)"
-        } else {
-            cell.priceScoreLabel.text = "N/A"
-        }
-        
-        if let score = coin.socialScore {
-            cell.volatilityLabel.text = "\(score)"
-        } else {
-            cell.volatilityLabel.text = "N/A"
-        }
-        
-        if let score = coin.socialScore24Hours {
-            cell.coinRankLabel.text = "\(score)"
-        } else {
-            cell.coinRankLabel.text = "N/A"
-        }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

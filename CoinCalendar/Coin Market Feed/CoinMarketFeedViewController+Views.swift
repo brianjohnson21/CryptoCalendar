@@ -272,7 +272,7 @@ extension CoinMarketFeedViewController {
         mainFeedTableView.contentInset = .zero
         mainFeedTableView.showsVerticalScrollIndicator = false
         mainFeedTableView.separatorStyle = .none
-        mainFeedTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        mainFeedTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         mainFeedTableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainFeedTableView)
         //mainFeedTableView.leadingAnchor.constraint(equalTo: coinIconFeedContainer.trailingAnchor).isActive = true
@@ -294,18 +294,28 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: coinMarketFeedTableViewCell, for: indexPath) as! CoinMarketFeedTableViewCell
         
-        let coin = coins[indexPath.row]
         
-        if coin.symbol == "ADA" {
-            cell.coinImageView.image = UIImage(named: "Cardano")
-        } else if coin.symbol == "" {
-            cell.coinImageView.image = nil
+        let coin = coins[indexPath.row]
+                        
+        if let coinSymbol = coin.symbol {
+            print("\(coinSymbol)")
+            cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
         } else {
             cell.coinImageView.image = nil
+            cell.coinImageView.backgroundColor = .red
         }
+        
+//        if coin.symbol == "ADA" {
+//            cell.coinImageView.image = UIImage(named: "Cardano")
+//        } else if coin.symbol == "" {
+//            cell.coinImageView.image = nil
+//        } else {
+//            cell.coinImageView.image = nil
+//        }
         
         if let score = coin.healthScore {
             cell.coinHealthLabel.text = "\(score)"
+            //print("\(score) - 🥶🥶🥶")
         } else {
             cell.coinHealthLabel.text = "N/A"
         }

@@ -10,6 +10,23 @@ import UIKit
 
 extension SplashViewController {
     
+    func modifyConstraints() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            cryptoLabelTop = 153
+        case .iphone78() :
+            cryptoLabelTop = 153
+        case .iphone78Plus() :
+            cryptoLabelTop = 128
+        case .iphone11() :
+            cryptoLabelTop = 153
+        default:
+            cryptoLabelTop = 153
+        }
+    }
+    
     func setupViews() {
         
         mainContainer.backgroundColor = .red
@@ -51,7 +68,8 @@ extension SplashViewController {
         getStartedLabel.leadingAnchor.constraint(equalTo: getStartedButton.leadingAnchor, constant: 33).isActive = true
         getStartedLabel.centerYAnchor.constraint(equalTo: getStartedButton.centerYAnchor, constant: 0).isActive = true
         
-        getStartedButton.addTarget(self, action: #selector(didTapGetStarted), for: .touchUpInside)
+        //getStartedButton.addTarget(self, action: #selector(didTapGetStarted), for: .touchUpInside)
+        getStartedButton.addTarget(self, action: #selector(goToTempCode), for: .touchUpInside)
         getStartedArrowImageView.image = UIImage(named: "getStartedArrow")
         getStartedArrowImageView.contentMode = .scaleAspectFill
         getStartedArrowImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,11 +89,11 @@ extension SplashViewController {
         cryptoLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(cryptoLabel)
         cryptoLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 29).isActive = true
-        cryptoLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 153).isActive = true
+        cryptoLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: cryptoLabelTop).isActive = true
         
         calendarLabel.alpha = 0
         calendarLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        calendarLabel.text = "Gainz"
+        calendarLabel.text = "Track"
         calendarLabel.textAlignment = .left
         calendarLabel.textColor = .keyEventHeadlineColorModeLight
         calendarLabel.font = .sofiaSemiBold(ofSize: 50)

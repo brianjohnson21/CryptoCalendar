@@ -12,8 +12,10 @@ class PriceVolumeMarketFeedViewController: UIViewController {
     
     //Nav
     var navView = UIView()
+    var profileContainer = UIView()
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
+    var segmentContentContainer = UIView()
     var segmentioControl: Segmentio!
     
     var userProfileImageContainer = UIView()
@@ -24,27 +26,34 @@ class PriceVolumeMarketFeedViewController: UIViewController {
     var calendarImageView = UIImageView()
     var sortImageView = UIImageView()
     var sortButton = UIButton()
+    var infoButton = UIButton()
     
-    var mainFeedContainer = UIView()
+    var mainFeedContainer = UIScrollView()
+    var dataHeadersScrollView = UIScrollView()
     var mainFeedTableView = UITableView()
-    var priceVolumeMarketFeedTableViewCell = "priceVolumeMarketFeedTableViewCell"
+    var socialMarketFeedTableViewCell = "socialMarketFeedTableViewCell"
     
-    var coinContainer = UIView()
+    var coinContainer = FilterOptionView()
     var coinLabel = UILabel()
     
-    var coinHealthContainer = UIView()
+    var coinHealthContainer = FilterOptionView()
     var coinHealthLabel = UILabel()
     
-    var priceScoreContainer = UIView()
+    var priceScoreContainer = FilterOptionView()
     var priceScoreLabel = UILabel()
     
-    var volatilityContainer = UIView()
+    var volatilityContainer = FilterOptionView()
     var volatilityLabel = UILabel()
     
-    var coinRankContainer = UIView()
+    var coinRankContainer = FilterOptionView()
     var coinRankLabel = UILabel()
     
     var coinIconFeedContainer = UIView()
+    var coinIconFeedTableView = UITableView()
+    var coinIconFeedTableViewCell = "coinIconFeedTableViewCell"
+    
+    var blueGradient = UIImageView()
+    var whiteGradient = UIImageView()
     
     var coins = [Coin]()
     
@@ -57,7 +66,7 @@ class PriceVolumeMarketFeedViewController: UIViewController {
         
         //Call Views
         setupNav()
-        //setupCoinTable()
+        setupCoinTable()
         setupTableView()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 4)
@@ -94,6 +103,7 @@ class PriceVolumeMarketFeedViewController: UIViewController {
             
             DispatchQueue.main.async { [weak self] in
                 self?.coins = coins
+                self?.coinIconFeedTableView.reloadData()
                 self?.mainFeedTableView.reloadData()
             }
         }
@@ -103,6 +113,12 @@ class PriceVolumeMarketFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension PriceVolumeMarketFeedViewController {
+    @objc func showMoreInfo() {
+        lightImpactGenerator()
+        let subVC = InfoViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
     
     @objc func showSubscriptionVC() {
         let subVC = SubscriptionViewController()
@@ -116,5 +132,64 @@ extension PriceVolumeMarketFeedViewController {
         let navController = UINavigationController(rootViewController: VC1)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
+    }
+    
+    @objc func didSelectCoinHeahlth(sender: UIButton) {
+        lightImpactGenerator()
+        switch sender.tag {
+        case 1:
+            coinHealthContainer.didSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.desSelectOption()
+        case 2:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.didSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.desSelectOption()
+        case 3:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.didSelectOption()
+            coinRankContainer.desSelectOption()
+        default:
+            coinHealthContainer.desSelectOption()
+            priceScoreContainer.desSelectOption()
+            volatilityContainer.desSelectOption()
+            coinRankContainer.didSelectOption()
+        }
+        
+                
+    }
+}
+
+//MARK: SCROLLVIEW DELEGATE
+
+extension PriceVolumeMarketFeedViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+                
+        if scrollView.tag == 1 {
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset
+            
+            let xOffset = scrollView.contentOffset.x
+            dataHeadersScrollView.contentOffset.x = xOffset
+        }
+        
+        if scrollView.tag == 2 {
+            let yOffset = scrollView.contentOffset.y
+            coinIconFeedTableView.contentOffset.y = yOffset
+        }
+        
+        if scrollView.tag == 3 {
+            let xOffset = scrollView.contentOffset.x
+            mainFeedContainer.contentOffset.x = xOffset
+        }
+        
+        if scrollView.tag == 4 {
+            let yOffset = scrollView.contentOffset.y
+            mainFeedTableView.contentOffset.y = yOffset
+        }
+        
     }
 }

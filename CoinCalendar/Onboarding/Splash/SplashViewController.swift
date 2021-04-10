@@ -28,6 +28,7 @@ class SplashViewController: UIViewController {
     var getStartedLabel = UILabel()
     var getStartedArrowImageView = UIImageView()
     var cryptoLabel = UILabel()
+    var cryptoLabelTop: CGFloat = 153
     var calendarLabel = UILabel()
     
     var goingToMoonLabel = UILabel()
@@ -48,6 +49,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .green
         
+        modifyConstraints()
         setupViews()
         playVideoAudio()
         setupLaunchTransition()
@@ -130,15 +132,77 @@ extension SplashViewController {
         
         let baseValue: Double = 0.75
         let multiplier: Double = 0.15
+                                
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+        case .iphone78() :
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+        case .iphone78Plus() :
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -320)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -270)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 329)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 341)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 85)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+        case .iphone11() :
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -133, yAxis: -375)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 146, yAxis: -343)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 117, yAxis: -60)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 172, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 143, yAxis: 405)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -151, yAxis: 416)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
         
-        animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
-        animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
-        animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
-        animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
-        animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
-        animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
-        animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
-        animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+        case .iphone12Mini() :
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+            
+        case .iphone12ProMax() :
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -133, yAxis: -375)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 146, yAxis: -343)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 117, yAxis: -60)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 172, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 143, yAxis: 420)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -151, yAxis: 431)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -70, yAxis: 109)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -135, yAxis: -34)
+                        
+        default:
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
+            animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
+            animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
+            animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+        }
                 
     }
     
@@ -168,6 +232,15 @@ extension SplashViewController {
         }
     }
     
+    @objc func goToTempCode() {
+        let signupPN = TempCodeViewController()
+        signupPN.delegate = self
+        signupPN.modalPresentationStyle = .overFullScreen
+        self.present(signupPN, animated: false) {
+            //
+        }
+    }
+    
     @objc func unhideViews() {
         //self.getStartedButton.isHidden = false
     }
@@ -180,4 +253,13 @@ extension SplashViewController: LaunchTransitionViewDelegate {
     func didFinishLaunchAnimation() {
         animateViewsIn()
     }
+}
+
+//MARK: TEMP CODE DELEGATE
+
+extension SplashViewController: TempCodeViewControllerDelegate {
+    func didEnterCorrectCode() {
+        didTapGetStarted()
+    }    
+
 }
