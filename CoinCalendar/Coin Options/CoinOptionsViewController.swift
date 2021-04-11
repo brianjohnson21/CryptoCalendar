@@ -8,8 +8,14 @@
 import UIKit
 import Lottie
 
+protocol CoinOptionsViewControllerDelegate: class {
+    func pinCoin(coinPinned: Coin)
+    func unPinCoin()
+}
+
 class CoinOptionsViewController: UIViewController {
     
+    weak var delegate: CoinOptionsViewControllerDelegate?
     var opacityLayer = UIView()
     var mainScrollView = UIScrollView()
     var wrapper = UIView()
@@ -26,10 +32,13 @@ class CoinOptionsViewController: UIViewController {
     var addedToWatchListLabel = UILabel()
     let toastView = ToastNotificationView()
     
+    var coin: Coin?
+    
     var coinPrice = "1"
     var coinName = "Cardano"
     var coinSymbol = "ADA"
     
+    var isPinnedCoin = false
     var isDismissing = false
 
     override func viewDidLoad() {
@@ -38,7 +47,9 @@ class CoinOptionsViewController: UIViewController {
         setupViews()
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.01)
         
-        print("\(coinPrice) - \(coinName) - \(coinSymbol) - 🧠🧠🧠")
+        print("\(coinPrice) - \(coinName) - \(coinSymbol) - \(coin?.name) 🧠🧠🧠")
+        
+        
         
     }
 
@@ -72,17 +83,29 @@ extension CoinOptionsViewController {
         lightImpactGenerator()
         UIView.animate(withDuration: 0.35) {
             self.newChatOption.alpha = 0
-            //self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
             self.newGroupOption.alpha = 0
-            //self.newGroupOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
             self.newChannelOption.alpha = 0
-            //self.newChannelOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
             self.shareOption.alpha = 0
-            //self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+        } completion: { (success) in            
+            self.delegate?.pinCoin(coinPinned: self.coin!)
+            self.successCheck.alpha = 1.0
+            self.successCheck.play()
+            UIView.animate(withDuration: 0.35) {
+                self.addedToWatchListLabel.alpha = 1.0
+            }
+            self.perform(#selector(self.dimissVC), with: self, afterDelay: 1.5)
+        }
+    }
+    
+    @objc func removePinTapped() {
+        lightImpactGenerator()
+        UIView.animate(withDuration: 0.35) {
+            self.newChatOption.alpha = 0
+            self.newGroupOption.alpha = 0
+            self.newChannelOption.alpha = 0
+            self.shareOption.alpha = 0
         } completion: { (success) in
+            self.delegate?.unPinCoin()
             self.successCheck.alpha = 1.0
             self.successCheck.play()
             UIView.animate(withDuration: 0.35) {

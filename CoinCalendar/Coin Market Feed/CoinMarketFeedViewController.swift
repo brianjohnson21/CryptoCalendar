@@ -61,6 +61,25 @@ class CoinMarketFeedViewController: UIViewController {
     
     var coins = [Coin]()
     
+    var pinnedCoins = [Coin]()
+    
+    var pinContainer = UIView()
+    var pinHeight: NSLayoutConstraint!
+    var pinScrollView = UIScrollView()
+    var collectionDivider = UIView()
+    var globalContactListCollectionViewFlowLayout = UICollectionViewFlowLayout()
+    var globalContactListCollectionView: UICollectionView!
+    var pinnedCoinCollectionViewCell = "pinnedCoinCollectionViewCell"
+    
+    var pinnedCoinImageView = UIImageView()
+    var pinnedCoinHealthContainer = UIView()
+    var pinnedCoinRankContainer = UIView()
+    var pinnedVolatilityContainer = UIView()
+    var pinnedVolatilityGraphImageView = UIImageView()
+    var pinnedPriceContainer = UIView()
+    
+    var firstPinnedCoinView = PinnedCoinView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let notificationCenter = NotificationCenter.default
@@ -72,6 +91,8 @@ class CoinMarketFeedViewController: UIViewController {
         setupNav()
         setupCoinTable()
         setupTableView()
+        setupPinScrollView()
+        //setupPinCollectionView()
         setupLoadingIndicator()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
@@ -111,6 +132,7 @@ class CoinMarketFeedViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.coins = coins
                 self?.mainFeedTableView.reloadData()
+                //self?.globalContactListCollectionView.reloadData()
                 self?.coinIconFeedTableView.reloadData()
                 self?.perform(#selector(self?.hideLoader), with: self, afterDelay: 0.1)
             }
@@ -179,6 +201,30 @@ extension CoinMarketFeedViewController {
         }
     }
     
+    @objc func removePinnedCoin() {
+        lightImpactGenerator()
+        let eventOptionsVC =  CoinOptionsViewController()
+        eventOptionsVC.delegate = self
+        eventOptionsVC.isPinnedCoin = true
+        eventOptionsVC.coin = pinnedCoins[0]
+        let coin = pinnedCoins[0]//coins[indexPath.row]
+        if let coinPrice = coin.price {
+            eventOptionsVC.coinPrice = "$\(coinPrice.rounded(toPlaces: 2))"
+        }
+        
+        if let coinName = coin.name {
+            eventOptionsVC.coinName = coinName
+        }
+        
+        if let coinSymbol = coin.symbol {
+            eventOptionsVC.coinSymbol = coinSymbol
+        }
+                
+        eventOptionsVC.modalPresentationStyle = .overFullScreen
+        self.present(eventOptionsVC, animated: false, completion: nil)
+        
+    }
+    
 }
 
 //MARK: SCROLLVIEW DELEGATE
@@ -190,6 +236,7 @@ extension CoinMarketFeedViewController: UIScrollViewDelegate {
         if scrollView.tag == 0 {
             let xOffset = scrollView.contentOffset.x
             dataHeadersScrollView.contentOffset.x = xOffset
+            firstPinnedCoinView.pinScrollView.contentOffset.x = xOffset
         }
         
         //coinIconFeedTableView.tag = 1
@@ -208,12 +255,80 @@ extension CoinMarketFeedViewController: UIScrollViewDelegate {
         if scrollView.tag == 3 {
             let xOffset = scrollView.contentOffset.x
             mainFeedContainer.contentOffset.x = xOffset
+            firstPinnedCoinView.pinScrollView.contentOffset.x = xOffset
         }
         
+        //Pinned ScrollView
         if scrollView.tag == 4 {
-            let yOffset = scrollView.contentOffset.y
-            mainFeedTableView.contentOffset.y = yOffset
+            let xOffset = scrollView.contentOffset.x
+            mainFeedContainer.contentOffset.x = xOffset
+            dataHeadersScrollView.contentOffset.x = xOffset
         }
         
     }
+}
+
+//MARK: COIN OPTIONS DELEGATE
+
+extension CoinMarketFeedViewController: CoinOptionsViewControllerDelegate {
+    func unPinCoin() {
+        pinHeight.constant = 0
+        UIView.animate(withDuration: 0.35, delay: 0, options: []) {
+            self.collectionDivider.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { (success) in
+            self.pinnedCoins.removeAll()
+        }
+    }
+    
+    func pinCoin(coinPinned: Coin) {
+        //print("\(coinPinned) - 😅😅😅")
+        pinnedCoins.removeAll()
+        pinnedCoins.append(coinPinned)
+//        if pinnedCoins.count == 1 {
+            pinHeight.constant = 58
+//        } else {
+//            pinHeight.constant = 58 * 2
+//        }
+                
+        UIView.animate(withDuration: 0.35, delay: 0.75, options: []) {
+            self.collectionDivider.alpha = 1.0
+            self.view.layoutIfNeeded()
+        } completion: { (success) in
+            //
+        }
+        
+
+        if let coinSymbol = pinnedCoins[pinnedCoins.count - 1].symbol {
+            firstPinnedCoinView.pinnedCoinImageView.image = UIImage(named: coinSymbol)
+        }
+
+        if let coinHealth = pinnedCoins[pinnedCoins.count - 1].healthScore {
+            firstPinnedCoinView.createPinnedLabel(label: firstPinnedCoinView.coinHealthLabel, string: "\(coinHealth)", cointainer: firstPinnedCoinView.pinnedCoinHealthContainer)
+        }
+        
+        if let altRank = pinnedCoins[pinnedCoins.count - 1].altRank {
+            firstPinnedCoinView.createPinnedLabel(label: firstPinnedCoinView.coinRankLabel, string: "\(altRank)", cointainer: firstPinnedCoinView.pinnedCoinRankContainer)
+        }
+        
+        if let priceScore = pinnedCoins[pinnedCoins.count - 1].priceScore {
+            firstPinnedCoinView.createPinnedLabel(label: firstPinnedCoinView.priceScoreLabel, string: "\(priceScore)", cointainer: firstPinnedCoinView.pinnedPriceContainer)
+        }
+        
+        if let volatility = pinnedCoins[pinnedCoins.count - 1].volatility {
+            
+            if volatility < 0.025 {
+                firstPinnedCoinView.pinnedVolatilityGraphImageView.image = UIImage(named: "lowVolatiity")
+            } else if volatility < 0.05 {
+                firstPinnedCoinView.pinnedVolatilityGraphImageView.image = UIImage(named: "medVolatiity")
+            } else if volatility < 0.075 {
+                firstPinnedCoinView.pinnedVolatilityGraphImageView.image = UIImage(named: "highVolatiity")
+            } else {
+                firstPinnedCoinView.pinnedVolatilityGraphImageView.image = UIImage(named: "veryHighVolatiity")
+            }
+        }
+         
+        
+    }
+    
 }

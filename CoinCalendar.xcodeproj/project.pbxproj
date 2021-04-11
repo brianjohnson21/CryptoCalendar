@@ -10,6 +10,8 @@
 		14A0273139F23DCD6BC01174 /* Pods_CoinCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CAF292FBC3D59F1B98901C /* Pods_CoinCalendar.framework */; };
 		DE1EA42826211BB500954FBC /* TempCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EA42726211BB500954FBC /* TempCodeViewController.swift */; };
 		DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */; };
+		DE3DC1122622C4660089E021 /* PinnedCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC1112622C4660089E021 /* PinnedCoinCollectionViewCell.swift */; };
+		DE3DC124262349240089E021 /* PinnedCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC123262349240089E021 /* PinnedCoinView.swift */; };
 		DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */ = {isa = PBXBuildFile; fileRef = DE42456D2612CC2200E185D4 /* Confetti2.json */; };
 		DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245712612CE3200E185D4 /* SortFilterViewController.swift */; };
 		DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */; };
@@ -107,6 +109,8 @@
 		CA89203F96C95607B4367B2A /* Pods-CoinCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinCalendar.release.xcconfig"; path = "Target Support Files/Pods-CoinCalendar/Pods-CoinCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		DE1EA42726211BB500954FBC /* TempCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCodeViewController.swift; sourceTree = "<group>"; };
 		DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempCodeViewController+Views.swift"; sourceTree = "<group>"; };
+		DE3DC1112622C4660089E021 /* PinnedCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedCoinCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE3DC123262349240089E021 /* PinnedCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedCoinView.swift; sourceTree = "<group>"; };
 		DE42456D2612CC2200E185D4 /* Confetti2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti2.json; sourceTree = "<group>"; };
 		DE4245712612CE3200E185D4 /* SortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFilterViewController.swift; sourceTree = "<group>"; };
 		DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortFilterViewController+Views.swift"; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				DE42471E2619199B00E185D4 /* CoinMarketFeedViewController.swift */,
 				DE424722261919A300E185D4 /* CoinMarketFeedViewController+Views.swift */,
 				DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */,
+				DE3DC1112622C4660089E021 /* PinnedCoinCollectionViewCell.swift */,
+				DE3DC123262349240089E021 /* PinnedCoinView.swift */,
 			);
 			path = "Coin Market Feed";
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 				DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */,
 				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
 				FC4E558D26202334008AF09B /* User.swift in Sources */,
+				DE3DC124262349240089E021 /* PinnedCoinView.swift in Sources */,
 				DED657BD26223D31002CC83D /* SetAlertViewController+Views.swift in Sources */,
 				DED657602621EE8A002CC83D /* PlayerViewClass.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
@@ -696,6 +703,7 @@
 				DE42462A2613F9B600E185D4 /* MyProfileViewController+Views.swift in Sources */,
 				DE9AA60C261101140057A259 /* EventFeedViewController.swift in Sources */,
 				DED657BA26223D2A002CC83D /* SetAlertViewController.swift in Sources */,
+				DE3DC1122622C4660089E021 /* PinnedCoinCollectionViewCell.swift in Sources */,
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,

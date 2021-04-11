@@ -69,12 +69,15 @@ extension CoinOptionsViewController {
         dismissButton.bottomAnchor.constraint(equalTo: keyLine.topAnchor).isActive = true
                 
         //
-        
-        newChatOption.optionButton.addTarget(self, action: #selector(tappedAddToWatchlist), for: .touchUpInside)
-        newChatOption.iconImageView.image = UIImage(named: "pinCoin")
+        if isPinnedCoin {
+            newChatOption.optionButton.addTarget(self, action: #selector(removePinTapped), for: .touchUpInside)
+        } else {
+            newChatOption.optionButton.addTarget(self, action: #selector(tappedAddToWatchlist), for: .touchUpInside)
+        }
+        newChatOption.iconImageView.image = isPinnedCoin ? UIImage(named: "unpinCoin") : UIImage(named: "pinCoin")
         newChatOption.iconImageView.setImageColor(color: .coinBaseBlue)
-        newChatOption.optionTitleLabel.text = "Pin Coin"
-        newChatOption.optionDetailLabel.text = "Keep this at the top of the list"
+        newChatOption.optionTitleLabel.text = isPinnedCoin ? "Remove Pin" : "Pin Coin"
+        newChatOption.optionDetailLabel.text = isPinnedCoin ? "Remove coin from the top of the list" : "Keep this at the top of the list"
         newChatOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newChatOption)
         newChatOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
@@ -123,7 +126,7 @@ extension CoinOptionsViewController {
         //successCheck.play()
         
         addedToWatchListLabel.alpha = 0
-        addedToWatchListLabel.text = "Coin is pinned!"
+        addedToWatchListLabel.text = isPinnedCoin ? "Pin is removed!" : "Coin is pinned!"
         addedToWatchListLabel.textAlignment = .center
         addedToWatchListLabel.textColor = UIColor.black.withAlphaComponent(0.6)
         addedToWatchListLabel.font = .sofiaRegular(ofSize: 20)

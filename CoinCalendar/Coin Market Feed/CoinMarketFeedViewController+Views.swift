@@ -121,6 +121,19 @@ extension CoinMarketFeedViewController {
         sortButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
         sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
         
+        pinContainer.isUserInteractionEnabled = true
+        let pinContainerTapped = UITapGestureRecognizer(target: self, action: #selector(removePinnedCoin))
+        pinContainer.addGestureRecognizer(pinContainerTapped)
+        pinContainer.layer.zPosition = 100
+        pinContainer.backgroundColor = .mainFeedBackgroundColorModeLight
+        pinContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(pinContainer)
+        pinContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        pinContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        pinContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        pinHeight = pinContainer.heightAnchor.constraint(equalToConstant: 0)
+        pinHeight.isActive = true
+        
     }
     
     func setupSegmentio() {
@@ -160,7 +173,7 @@ extension CoinMarketFeedViewController {
         coinContainer.widthAnchor.constraint(equalToConstant: 71).isActive = true
         coinContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
-        blueGradient.isHidden = false
+        blueGradient.isHidden = true
         blueGradient.layer.zPosition = 100
         blueGradient.layer.masksToBounds = true
         blueGradient.isUserInteractionEnabled = false
@@ -198,12 +211,13 @@ extension CoinMarketFeedViewController {
     }
     
     func setupCoinTable() {
+        
         coinIconFeedContainer.layer.zPosition = 100
         coinIconFeedContainer.backgroundColor = .clear
         coinIconFeedContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(coinIconFeedContainer)
         coinIconFeedContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        coinIconFeedContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        coinIconFeedContainer.topAnchor.constraint(equalTo: pinContainer.bottomAnchor).isActive = true
         coinIconFeedContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         coinIconFeedContainer.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
@@ -237,9 +251,10 @@ extension CoinMarketFeedViewController {
         mainFeedContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainFeedContainer)
         mainFeedContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        mainFeedContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
+        mainFeedContainer.topAnchor.constraint(equalTo: pinContainer.bottomAnchor).isActive = true
         mainFeedContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        mainFeedContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width - 70).isActive = true
+        mainFeedContainer.leadingAnchor.constraint(equalTo: coinIconFeedContainer.trailingAnchor).isActive = true
+        //mainFeedContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width - 70).isActive = true
         
         mainFeedTableView = UITableView(frame: self.view.frame, style: .grouped)
         mainFeedTableView.tag = 2
@@ -350,7 +365,6 @@ extension CoinMarketFeedViewController {
     }
     
     func setupLoadingIndicator() {
-        
         loadingContainer.alpha = 1.0
         loadingContainer.layer.zPosition = 100
         loadingContainer.backgroundColor = .white
@@ -386,27 +400,28 @@ extension CoinMarketFeedViewController {
         loadingContainer.addSubview(loadingLabel)
         loadingLabel.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
         loadingLabel.topAnchor.constraint(equalTo: loadingLottie.bottomAnchor, constant: 15).isActive = true
-        
-        //print("😀😀😀 - \(loadingLottie.logHierarchyKeypaths()) - 😀😀😀")
-        /*
-        var i = 0
-        let loadingLayers = ["Shape Layer 1.Ellipse 1.Stroke 1.Color", "Shape Layer 2.Ellipse 1.Stroke 1.Color", "Shape Layer 3.Ellipse 1.Stroke 1.Color"]
-        for layer in 1...loadingLayers.count {
-            let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
-            if i == 0 {
-                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(1.0).lottieColorValue)
-                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
-            } else if i == 1 {
-                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.8).lottieColorValue)
-                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
-            } else {
-                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.6).lottieColorValue)
-                loadingLottie.setValueProvider(colorProvider, keypath: keyPath)
-            }
-            i += 1
-        }
-        */
     }
+    
+    func setupPinScrollView() {
+        firstPinnedCoinView.pinScrollView.tag = 4
+        firstPinnedCoinView.pinScrollView.delegate = self
+        firstPinnedCoinView.translatesAutoresizingMaskIntoConstraints = false
+        pinContainer.addSubview(firstPinnedCoinView)
+        firstPinnedCoinView.leadingAnchor.constraint(equalTo: pinContainer.leadingAnchor).isActive = true
+        firstPinnedCoinView.trailingAnchor.constraint(equalTo: pinContainer.trailingAnchor).isActive = true
+        firstPinnedCoinView.bottomAnchor.constraint(equalTo: pinContainer.bottomAnchor).isActive = true
+        firstPinnedCoinView.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        
+        collectionDivider.alpha = 0
+        collectionDivider.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        collectionDivider.translatesAutoresizingMaskIntoConstraints = false
+        pinContainer.addSubview(collectionDivider)
+        collectionDivider.leadingAnchor.constraint(equalTo: pinContainer.leadingAnchor, constant: 0).isActive = true
+        collectionDivider.trailingAnchor.constraint(equalTo: pinContainer.trailingAnchor, constant: 0).isActive = true
+        collectionDivider.bottomAnchor.constraint(equalTo: pinContainer.bottomAnchor, constant: 0).isActive = true
+        collectionDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
 }
 
 //MARK: TABLEVIEW DELEGATE & DATASOURCE
@@ -434,7 +449,7 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
             let coin = coins[indexPath.row]
                             
             if let coinSymbol = coin.symbol {
-                print("\(coinSymbol)")
+                //print("\(coinSymbol)")
                 cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
             } else {
                 cell.coinImageView.image = nil
@@ -455,7 +470,6 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
             }
             
             if let volatility = coin.volatility {
-                
                 if volatility < 0.025 {
                     cell.volatilityGraphImageView.image = UIImage(named: "lowVolatiity")
                 } else if volatility < 0.05 {
@@ -465,8 +479,6 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
                 } else {
                     cell.volatilityGraphImageView.image = UIImage(named: "veryHighVolatiity")
                 }
-                
-                //cell.volatilityLabel.text = "\(volatility)"
             } else {
                 cell.volatilityLabel.text = "N/A"
             }
@@ -499,6 +511,9 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
         let eventOptionsVC =  CoinOptionsViewController()
+        eventOptionsVC.delegate = self
+        
+        eventOptionsVC.coin = coins[indexPath.row]
         
         let coin = coins[indexPath.row]
         if let coinPrice = coin.price {

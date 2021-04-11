@@ -1,13 +1,13 @@
 //
-//  CoinMarketFeedTableViewCell.swift
+//  PinnedCoinCollectionViewCell.swift
 //  CoinCalendar
 //
-//  Created by Stephen Mata on 4/3/21.
+//  Created by Stephen Mata on 4/10/21.
 //
 
 import UIKit
 
-class CoinMarketFeedTableViewCell: UITableViewCell {
+class PinnedCoinCollectionViewCell: UICollectionViewCell {
     
     var coinContainer = UIView()
     var coinImageView = UIImageView()
@@ -21,31 +21,27 @@ class CoinMarketFeedTableViewCell: UITableViewCell {
     var coinRankLabel = UILabel()
     var priceScoreLabel = UILabel()
     var volatilityLabel = UILabel()
-    
-    var healthWidth: CGFloat = 75
-    var priceScoreWidth: CGFloat = 85
-    var volatilityWidth: CGFloat = 75
-    var rankWidth: CGFloat = 90
 
     var volatilityGraphImageView = UIImageView()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .clear
-        self.contentView.backgroundColor = .clear
-        self.selectionStyle = .none
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.contentView.layer.masksToBounds = false
+        self.layer.masksToBounds = false
+        contentView.backgroundColor = .clear
         setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
 }
 
 //MARK: VIEWS
 
-extension CoinMarketFeedTableViewCell {
-    func setupViews() {
+extension PinnedCoinCollectionViewCell {
+    func setupViews() {                
         
         coinHealthContainer.backgroundColor = .clear
         coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -53,23 +49,23 @@ extension CoinMarketFeedTableViewCell {
         coinHealthContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         coinHealthContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
         coinHealthContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinHealthContainer.widthAnchor.constraint(equalToConstant: healthWidth).isActive = true
+        coinHealthContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         coinRankContainer.backgroundColor = .clear
         coinRankContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(coinRankContainer)
         coinRankContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        coinRankContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor, constant: 5).isActive = true
+        coinRankContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor).isActive = true
         coinRankContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinRankContainer.widthAnchor.constraint(equalToConstant: priceScoreWidth).isActive = true
+        coinRankContainer.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         volatilityContainer.backgroundColor = .clear
         volatilityContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(volatilityContainer)
         volatilityContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        volatilityContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor, constant: 5).isActive = true
+        volatilityContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor).isActive = true
         volatilityContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        volatilityContainer.widthAnchor.constraint(equalToConstant: volatilityWidth).isActive = true
+        volatilityContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         volatilityGraphImageView.contentMode = .scaleAspectFill
         volatilityGraphImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,13 +79,13 @@ extension CoinMarketFeedTableViewCell {
         priceContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(priceContainer)
         priceContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        priceContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor, constant: 5).isActive = true
+        priceContainer.leadingAnchor.constraint(equalTo: volatilityContainer.trailingAnchor).isActive = true
         priceContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        priceContainer.widthAnchor.constraint(equalToConstant: rankWidth).isActive = true
+        priceContainer.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         createSectionLabel(label: coinHealthLabel, string: "9.0", cointainer: coinHealthContainer)
         createSectionLabel(label: coinRankLabel, string: "7.0", cointainer: coinRankContainer)
-        createSectionLabel(label: priceScoreLabel, string: "8.3", cointainer: priceContainer)        
+        createSectionLabel(label: priceScoreLabel, string: "8.3", cointainer: priceContainer)
         
     }
     
