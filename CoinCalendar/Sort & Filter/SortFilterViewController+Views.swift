@@ -166,6 +166,4 @@ extension SortFilterViewController: UITableViewDelegate, UITableViewDataSource {
         }
                  
     }
-    
-    
 }

@@ -499,8 +499,23 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
         let eventOptionsVC =  CoinOptionsViewController()
+        
+        let coin = coins[indexPath.row]
+        if let coinPrice = coin.price {
+            eventOptionsVC.coinPrice = "$\(coinPrice.rounded(toPlaces: 2))"
+        }
+        
+        if let coinName = coin.name {
+            eventOptionsVC.coinName = coinName
+        }
+        
+        if let coinSymbol = coin.symbol {
+            eventOptionsVC.coinSymbol = coinSymbol
+        }
+                
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)
+        
     }
     
 }

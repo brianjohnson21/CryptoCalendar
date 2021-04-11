@@ -152,7 +152,7 @@ extension EventFeedViewController {
         )
 
         let womenItem = SegmentioItem(
-            title: "Popular",
+            title: "Important",
             image: nil
         )
 

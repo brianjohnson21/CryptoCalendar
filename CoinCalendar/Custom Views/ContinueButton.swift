@@ -101,11 +101,11 @@ extension ContinueButton {
     
     func showNewLabel() {
         confirmLabel.transform = CGAffineTransform(translationX: 0, y: -50)
-        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: [], animations: {
             self.continueLabel.transform = CGAffineTransform(translationX: 0, y: 50)
             self.continueLabel.alpha = 0
         }) { (success) in
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.25) {
                 self.confirmLabel.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.confirmLabel.alpha = 1.0
             }
@@ -113,11 +113,11 @@ extension ContinueButton {
     }
     
     func showOriginalLabel() {
-        UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: [], animations: {
             self.confirmLabel.transform = CGAffineTransform(translationX: 0, y: -50)
             self.confirmLabel.alpha = 0
         }) { (success) in
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.25) {
                 self.continueLabel.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.continueLabel.alpha = 1.0
             }

@@ -44,7 +44,8 @@ extension CoinOptionsViewController {
         mainContainer.bottomAnchor.constraint(equalTo: wrapper.bottomAnchor, constant: 0).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainContainer.heightAnchor.constraint(equalToConstant: 328).isActive = true
+        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 328)
+        mainHeight.isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         
         keyLine.backgroundColor = .white
@@ -132,7 +133,7 @@ extension CoinOptionsViewController {
         addedToWatchListLabel.centerXAnchor.constraint(equalTo: mainContainer.centerXAnchor, constant: 0).isActive = true
         addedToWatchListLabel.topAnchor.constraint(equalTo: successCheck.bottomAnchor, constant: 5).isActive = true
         
-        print("😀😀😀 - \(successCheck.logHierarchyKeypaths()) - 😀😀😀")
+        //print("😀😀😀 - \(successCheck.logHierarchyKeypaths()) - 😀😀😀")
     
         var i = 0
         let loadingLayers = ["ring 2.Oval 2.Stroke 1.Color", "ring 3.Oval 2.Stroke 1.Color", "boom.Oval 2 Copy.Fill 1.Color", "check.Group 1.Stroke 1.Color", "check 2.Group 1.Stroke 1.Color", "check 3.Group 1.Stroke 1.Color", "ring.Oval 2.Stroke 1.Color", "ring 2.Oval 2.Stroke 1.Color", "ring 3.Oval 2.Stroke 1.Color"]

@@ -14,6 +14,7 @@ class CoinOptionsViewController: UIViewController {
     var mainScrollView = UIScrollView()
     var wrapper = UIView()
     var mainContainer = UIView()
+    var mainHeight: NSLayoutConstraint!
     var navView = UIView()
     var navTitleLabel = UILabel()
     var keyLine = UIView()
@@ -25,6 +26,10 @@ class CoinOptionsViewController: UIViewController {
     var addedToWatchListLabel = UILabel()
     let toastView = ToastNotificationView()
     
+    var coinPrice = "1"
+    var coinName = "Cardano"
+    var coinSymbol = "ADA"
+    
     var isDismissing = false
 
     override func viewDidLoad() {
@@ -32,6 +37,8 @@ class CoinOptionsViewController: UIViewController {
 
         setupViews()
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.01)
+        
+        print("\(coinPrice) - \(coinName) - \(coinSymbol) - 🧠🧠🧠")
         
     }
 
@@ -109,6 +116,7 @@ extension CoinOptionsViewController {
     
     @objc func didTapSetAlert() {
         lightImpactGenerator()
+        mainHeight.constant = self.view.frame.height - 71
         UIView.animate(withDuration: 0.35) {
             self.newChatOption.alpha = 0
             self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
@@ -121,13 +129,22 @@ extension CoinOptionsViewController {
             
             self.shareOption.alpha = 0
             self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.view.layoutIfNeeded()
         } completion: { (success) in
             self.showSetAlert()
         }
     }
     
     @objc func showSetAlert() {
-        let eventOptionsVC =  PickerViewController()
+        let eventOptionsVC =  SetAlertViewController()
+        
+        eventOptionsVC.coinPriceLabel.text = coinPrice
+        eventOptionsVC.blockChainLabel.text = coinName
+        eventOptionsVC.coinLabel.text = coinSymbol
+        eventOptionsVC.coinImageView.image = UIImage(named: coinSymbol)
+        
+        eventOptionsVC.isComingFromCoinOptions = true
         eventOptionsVC.delegate = self
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false) {
@@ -164,5 +181,15 @@ extension CoinOptionsViewController: UIScrollViewDelegate {
 extension CoinOptionsViewController: PickerViewControllerDelegate {
     func didSetAlarm() {
         dimissVC()
+    }
+}
+
+//MARK: SET ALERT DELEGATE
+
+extension CoinOptionsViewController: SetAlertViewControllerDelegate {
+    func doubleDismiss() {
+        UIView.animate(withDuration: 0.35) {
+            self.opacityLayer.alpha = 0
+        }
     }
 }

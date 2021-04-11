@@ -91,6 +91,10 @@
 		DED657632621FACB002CC83D /* EventFeedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657622621FACB002CC83D /* EventFeedInfoViewController.swift */; };
 		DED657662621FAD4002CC83D /* EventFeedInfoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657652621FAD4002CC83D /* EventFeedInfoViewController+Views.swift */; };
 		DED657692621FD45002CC83D /* EventInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657682621FD45002CC83D /* EventInfoTableViewCell.swift */; };
+		DED657BA26223D2A002CC83D /* SetAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657B926223D2A002CC83D /* SetAlertViewController.swift */; };
+		DED657BD26223D31002CC83D /* SetAlertViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657BC26223D31002CC83D /* SetAlertViewController+Views.swift */; };
+		DED657CF26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657CE26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift */; };
+		DED657D226226190002CC83D /* SetAlertOptionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657D126226190002CC83D /* SetAlertOptionTwoTableViewCell.swift */; };
 		FC4E558C26202334008AF09B /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558726202334008AF09B /* Admin.swift */; };
 		FC4E558D26202334008AF09B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558826202334008AF09B /* User.swift */; };
 		FC4E558E26202334008AF09B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558926202334008AF09B /* Coin.swift */; };
@@ -186,6 +190,10 @@
 		DED657622621FACB002CC83D /* EventFeedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedInfoViewController.swift; sourceTree = "<group>"; };
 		DED657652621FAD4002CC83D /* EventFeedInfoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventFeedInfoViewController+Views.swift"; sourceTree = "<group>"; };
 		DED657682621FD45002CC83D /* EventInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTableViewCell.swift; sourceTree = "<group>"; };
+		DED657B926223D2A002CC83D /* SetAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertViewController.swift; sourceTree = "<group>"; };
+		DED657BC26223D31002CC83D /* SetAlertViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAlertViewController+Views.swift"; sourceTree = "<group>"; };
+		DED657CE26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertOptionOneTableViewCell.swift; sourceTree = "<group>"; };
+		DED657D126226190002CC83D /* SetAlertOptionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertOptionTwoTableViewCell.swift; sourceTree = "<group>"; };
 		FC4E558726202334008AF09B /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		FC4E558826202334008AF09B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC4E558926202334008AF09B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -349,12 +357,13 @@
 				DE9AA62E261148010057A259 /* Media */,
 				DE9AA5FD2610FF9A0057A259 /* Fonts */,
 				DE9AA667261155470057A259 /* Custom Views */,
+				FC4E558A26202334008AF09B /* Singletons */,
+				FC4E558626202334008AF09B /* Models */,
 				DE9AA5E12610F18C0057A259 /* AppDelegate.swift */,
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
-				FC4E558A26202334008AF09B /* Singletons */,
-				FC4E558626202334008AF09B /* Models */,
+				DED657B826223D16002CC83D /* Price Alert */,
 				DE9AA5F82610FCFB0057A259 /* Onboarding */,
 				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
 				DED28637261F9093002F34B6 /* Coin Options */,
@@ -498,6 +507,17 @@
 				DED2863C261F90B3002F34B6 /* CoinOptionsViewController+Views.swift */,
 			);
 			path = "Coin Options";
+			sourceTree = "<group>";
+		};
+		DED657B826223D16002CC83D /* Price Alert */ = {
+			isa = PBXGroup;
+			children = (
+				DED657B926223D2A002CC83D /* SetAlertViewController.swift */,
+				DED657BC26223D31002CC83D /* SetAlertViewController+Views.swift */,
+				DED657CE26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift */,
+				DED657D126226190002CC83D /* SetAlertOptionTwoTableViewCell.swift */,
+			);
+			path = "Price Alert";
 			sourceTree = "<group>";
 		};
 		FC4E558626202334008AF09B /* Models */ = {
@@ -651,6 +671,7 @@
 				DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */,
 				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
 				FC4E558D26202334008AF09B /* User.swift in Sources */,
+				DED657BD26223D31002CC83D /* SetAlertViewController+Views.swift in Sources */,
 				DED657602621EE8A002CC83D /* PlayerViewClass.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
 				DE4245D32613722D00E185D4 /* OptionsView.swift in Sources */,
@@ -674,6 +695,7 @@
 				DE9AA67D2611781E0057A259 /* LaunchTransitionView.swift in Sources */,
 				DE42462A2613F9B600E185D4 /* MyProfileViewController+Views.swift in Sources */,
 				DE9AA60C261101140057A259 /* EventFeedViewController.swift in Sources */,
+				DED657BA26223D2A002CC83D /* SetAlertViewController.swift in Sources */,
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
@@ -695,6 +717,7 @@
 				DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */,
 				DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */,
 				DE4245C62613702200E185D4 /* EventOptionsViewController+Views.swift in Sources */,
+				DED657CF26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift in Sources */,
 				DE4246B926169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift in Sources */,
 				DE9AA5FB2610FD080057A259 /* Extensions.swift in Sources */,
 				DE4245DA261376DC00E185D4 /* PickerViewController+Views.swift in Sources */,
@@ -706,6 +729,7 @@
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,
+				DED657D226226190002CC83D /* SetAlertOptionTwoTableViewCell.swift in Sources */,
 				DE9AA670261155780057A259 /* OneTimeCodeTextField.swift in Sources */,
 				DED285CB261CBB1B002F34B6 /* WelcomeViewController.swift in Sources */,
 				DE9AA612261101850057A259 /* MyTabBarController.swift in Sources */,
