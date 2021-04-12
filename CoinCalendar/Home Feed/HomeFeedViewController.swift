@@ -88,6 +88,7 @@ class HomeFeedViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
+        showTabBar()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -159,6 +160,12 @@ extension HomeFeedViewController {
         let subVC = WelcomeViewController()
         subVC.modalPresentationStyle = .overFullScreen
         self.present(subVC, animated: false, completion: nil)
+    }
+    
+    @objc func goToAlerts() {
+        lightImpactGenerator()
+        let sortFilterVC = MyAlertsViewController()
+        self.navigationController?.pushViewController(sortFilterVC, animated: true)
     }
 }
 

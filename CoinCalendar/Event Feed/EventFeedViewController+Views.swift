@@ -123,6 +123,15 @@ extension EventFeedViewController {
         bellImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         bellImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
+        alertsButton.addTarget(self, action: #selector(goToAlerts), for: .touchUpInside)
+        alertsButton.backgroundColor = .clear
+        alertsButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(alertsButton)
+        alertsButton.leadingAnchor.constraint(equalTo: bellImageView.leadingAnchor, constant: -5).isActive = true
+        alertsButton.trailingAnchor.constraint(equalTo: bellImageView.trailingAnchor, constant: 5).isActive = true
+        alertsButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
+        alertsButton.bottomAnchor.constraint(equalTo: bellImageView.bottomAnchor, constant: 5).isActive = true
+        
         setupSegmentio()
                 
     }

@@ -112,15 +112,6 @@ extension CoinMarketFeedViewController {
         profileButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor).isActive = true
         profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
-        //sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
-        sortButton.backgroundColor = .clear
-        sortButton.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(sortButton)
-        sortButton.leadingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -5).isActive = true
-        sortButton.trailingAnchor.constraint(equalTo: sortImageView.trailingAnchor, constant: 5).isActive = true
-        sortButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
-        sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
-        
         pinContainer.isUserInteractionEnabled = true
         let pinContainerTapped = UITapGestureRecognizer(target: self, action: #selector(removePinnedCoin))
         pinContainer.addGestureRecognizer(pinContainerTapped)
@@ -362,6 +353,15 @@ extension CoinMarketFeedViewController {
         infoButton.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
         infoButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
         infoButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor, constant: 0).isActive = true
+        
+        sortButton.addTarget(self, action: #selector(goToAlerts), for: .touchUpInside)
+        sortButton.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        sortButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(sortButton)
+        sortButton.leadingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -5).isActive = true
+        sortButton.trailingAnchor.constraint(equalTo: sortImageView.trailingAnchor, constant: 5).isActive = true
+        sortButton.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 0).isActive = true
+        sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
     }
     
     func setupLoadingIndicator() {
@@ -420,6 +420,21 @@ extension CoinMarketFeedViewController {
         collectionDivider.trailingAnchor.constraint(equalTo: pinContainer.trailingAnchor, constant: 0).isActive = true
         collectionDivider.bottomAnchor.constraint(equalTo: pinContainer.bottomAnchor, constant: 0).isActive = true
         collectionDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+    func setupCompareContainer() {
+        compareContainer.isHidden = true
+        compareContainer.layer.zPosition = 100
+        compareContainer.cancelButton.addTarget(self, action: #selector(hideCompareCoin), for: .touchUpInside)
+        compareContainer.coinTwoImageView.image = UIImage(named: "coinEmptyState")
+        compareContainer.backgroundColor = .white
+        compareContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(compareContainer)
+        compareContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        compareContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        compareContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -83).isActive = true
+        compareContainer.heightAnchor.constraint(equalToConstant: 57).isActive = true
+        compareContainer.transform = CGAffineTransform(translationX: 0, y: 100)
     }
     
 }

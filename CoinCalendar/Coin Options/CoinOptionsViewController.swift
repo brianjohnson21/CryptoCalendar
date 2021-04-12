@@ -11,6 +11,7 @@ import Lottie
 protocol CoinOptionsViewControllerDelegate: class {
     func pinCoin(coinPinned: Coin)
     func unPinCoin()
+    func compareTapped(coinCompare: Coin)
 }
 
 class CoinOptionsViewController: UIViewController {
@@ -24,6 +25,7 @@ class CoinOptionsViewController: UIViewController {
     var navView = UIView()
     var navTitleLabel = UILabel()
     var keyLine = UIView()
+    var compareOption = OptionsView()
     var newChatOption = OptionsView()
     var newGroupOption = OptionsView()
     var newChannelOption = OptionsView()
@@ -38,6 +40,7 @@ class CoinOptionsViewController: UIViewController {
     var coinName = "Cardano"
     var coinSymbol = "ADA"
     
+    var isComparing = false
     var isPinnedCoin = false
     var isDismissing = false
 
@@ -47,7 +50,7 @@ class CoinOptionsViewController: UIViewController {
         setupViews()
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.01)
         
-        print("\(coinPrice) - \(coinName) - \(coinSymbol) - \(coin?.name) 🧠🧠🧠")
+        //print("\(coinPrice) - \(coinName) - \(coinSymbol) - \(coin?.name) 🧠🧠🧠")
         
         
         
@@ -58,6 +61,12 @@ class CoinOptionsViewController: UIViewController {
 //MARK: ACTIONS
 
 extension CoinOptionsViewController {
+    @objc func didTapCompare() {
+        lightImpactGenerator()
+        isComparing = true
+        dimissVC()
+    }
+    
     @objc func didTapAddtoCustom() {
         errorImpactGenerator()
         toastView.presentError(withMessage: "Coming in v1.1")
@@ -85,6 +94,7 @@ extension CoinOptionsViewController {
             self.newChatOption.alpha = 0
             self.newGroupOption.alpha = 0
             self.newChannelOption.alpha = 0
+            self.compareOption.alpha = 0
             self.shareOption.alpha = 0
         } completion: { (success) in            
             self.delegate?.pinCoin(coinPinned: self.coin!)
@@ -103,6 +113,7 @@ extension CoinOptionsViewController {
             self.newChatOption.alpha = 0
             self.newGroupOption.alpha = 0
             self.newChannelOption.alpha = 0
+            self.compareOption.alpha = 0
             self.shareOption.alpha = 0
         } completion: { (success) in
             self.delegate?.unPinCoin()
@@ -132,7 +143,9 @@ extension CoinOptionsViewController {
             self.opacityLayer.alpha = 0
         } completion: { (success) in
             self.dismiss(animated: false) {
-                //
+                if self.isComparing {
+                    self.delegate?.compareTapped(coinCompare: self.coin!)
+                }
             }
         }
     }
@@ -152,6 +165,9 @@ extension CoinOptionsViewController {
             
             self.shareOption.alpha = 0
             self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.compareOption.alpha = 0
+            self.compareOption.transform = CGAffineTransform(translationX: -100, y: 0)
             
             self.view.layoutIfNeeded()
         } completion: { (success) in

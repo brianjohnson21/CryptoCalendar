@@ -43,7 +43,7 @@ extension EventFeedInfoViewController {
         mainContainer.bottomAnchor.constraint(equalTo: contentContainer.bottomAnchor, constant: 0).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainContainer.heightAnchor.constraint(equalToConstant: 477).isActive = true
+        mainContainer.heightAnchor.constraint(equalToConstant: 500).isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         
         keyLine.backgroundColor = .white

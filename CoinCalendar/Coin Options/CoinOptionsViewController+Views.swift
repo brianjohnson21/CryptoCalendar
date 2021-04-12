@@ -44,7 +44,7 @@ extension CoinOptionsViewController {
         mainContainer.bottomAnchor.constraint(equalTo: wrapper.bottomAnchor, constant: 0).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 328)
+        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 400)
         mainHeight.isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         
@@ -85,6 +85,18 @@ extension CoinOptionsViewController {
         newChatOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         newChatOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
+        compareOption.optionButton.addTarget(self, action: #selector(didTapCompare), for: .touchUpInside)
+        compareOption.iconImageView.image = UIImage(named: "compareCircles")
+        compareOption.iconImageView.setImageColor(color: .coinBaseBlue)
+        compareOption.optionTitleLabel.text = "Compare"
+        compareOption.optionDetailLabel.text = "Compare this coin to another"
+        compareOption.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.addSubview(compareOption)
+        compareOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
+        compareOption.topAnchor.constraint(equalTo: newChatOption.bottomAnchor, constant: 0).isActive = true
+        compareOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
+        compareOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
+        
         newGroupOption.optionButton.addTarget(self, action: #selector(didTapSetAlert), for: .touchUpInside)
         newGroupOption.iconImageView.image = UIImage(named: "bell")
         newGroupOption.iconImageView.setImageColor(color: .coinBaseBlue)
@@ -93,10 +105,9 @@ extension CoinOptionsViewController {
         newGroupOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newGroupOption)
         newGroupOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
-        newGroupOption.topAnchor.constraint(equalTo: newChatOption.bottomAnchor, constant: 0).isActive = true
+        newGroupOption.topAnchor.constraint(equalTo: compareOption.bottomAnchor, constant: 0).isActive = true
         newGroupOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         newGroupOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
-                
         
         shareOption.optionButton.addTarget(self, action: #selector(didTapShareWithFriends), for: .touchUpInside)
         shareOption.iconImageView.image = UIImage(named: "share")

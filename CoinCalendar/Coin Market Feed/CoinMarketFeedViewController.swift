@@ -60,8 +60,8 @@ class CoinMarketFeedViewController: UIViewController {
     var whiteGradient = UIImageView()
     
     var coins = [Coin]()
-    
     var pinnedCoins = [Coin]()
+    var comparedCoins = [Coin]()
     
     var pinContainer = UIView()
     var pinHeight: NSLayoutConstraint!
@@ -80,6 +80,8 @@ class CoinMarketFeedViewController: UIViewController {
     
     var firstPinnedCoinView = PinnedCoinView()
     
+    var compareContainer = CompareCoinsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let notificationCenter = NotificationCenter.default
@@ -93,6 +95,7 @@ class CoinMarketFeedViewController: UIViewController {
         setupTableView()
         setupPinScrollView()
         //setupPinCollectionView()
+        setupCompareContainer()
         setupLoadingIndicator()
         
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
@@ -109,6 +112,7 @@ class CoinMarketFeedViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
+        showTabBar()
         //hideTabBar()
         //setNeedsStatusBarAppearanceUpdate()
     }
@@ -145,6 +149,22 @@ class CoinMarketFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension CoinMarketFeedViewController {
+    @objc func hideCompareCoin() {
+        lightImpactGenerator()
+        UIView.animate(withDuration: 0.35) {
+            self.compareContainer.transform = CGAffineTransform(translationX: 0, y: 100)
+        } completion: { (success) in
+            self.comparedCoins.removeAll()
+        }
+
+    }
+    
+    @objc func goToAlerts() {
+        lightImpactGenerator()
+        let sortFilterVC = MyAlertsViewController()
+        self.navigationController?.pushViewController(sortFilterVC, animated: true)
+    }
+    
     @objc func hideLoader() {
         UIView.animateKeyframes(withDuration: 0.35, delay: 0.2, options: []) {
             self.loadingContainer.alpha = 0
@@ -271,6 +291,40 @@ extension CoinMarketFeedViewController: UIScrollViewDelegate {
 //MARK: COIN OPTIONS DELEGATE
 
 extension CoinMarketFeedViewController: CoinOptionsViewControllerDelegate {
+    func compareTapped(coinCompare: Coin) {
+        comparedCoins.append(coinCompare)
+        compareContainer.isHidden = false
+        
+        if comparedCoins.count > 1 {
+            if let coinSymbol = coinCompare.symbol {
+                compareContainer.coinTwoImageView.image = UIImage(named: coinSymbol)
+                compareContainer.coinTwoShortNameLabel.text = coinSymbol
+                perform(#selector(presentCompareVC), with: self, afterDelay: 0.75)
+            }
+        } else {
+            if let coinSymbol = coinCompare.symbol {
+                compareContainer.coinOneImageView.image = UIImage(named: coinSymbol)
+                compareContainer.coinOneShortNameLabel.text = coinSymbol
+            }
+            
+            UIView.animate(withDuration: 0.35) {
+                self.compareContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+            }
+        }
+    }
+    
+    @objc func presentCompareVC() {
+        let compareVC = CompareCoinsViewController()
+        compareVC.comparedCoins = comparedCoins
+        compareVC.modalPresentationStyle = .overFullScreen
+        self.present(compareVC, animated: false) {
+            self.compareContainer.isHidden = true
+            self.compareContainer.transform = CGAffineTransform(translationX: 0, y: 100)
+            self.comparedCoins.removeAll()
+            self.compareContainer.resetCoins()
+        }
+    }
+    
     func unPinCoin() {
         pinHeight.constant = 0
         UIView.animate(withDuration: 0.35, delay: 0, options: []) {

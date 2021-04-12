@@ -93,7 +93,7 @@ extension HomeFeedViewController {
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
-        //sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
+        sortButton.addTarget(self, action: #selector(goToAlerts), for: .touchUpInside)
         sortButton.backgroundColor = .clear
         sortButton.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortButton)

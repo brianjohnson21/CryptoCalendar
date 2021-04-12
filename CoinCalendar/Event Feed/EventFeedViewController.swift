@@ -34,6 +34,7 @@ class EventFeedViewController: UIViewController {
     var bellImageView = UIImageView()
     var infoImageView = UIImageView()
     var infoButton = UIButton()
+    var alertsButton = UIButton()
     
     var mainFeedTableView = UITableView()
     var mainFeedCardTableViewCell = "mainFeedCardTableViewCell"
@@ -66,7 +67,7 @@ class EventFeedViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
-        //hideTabBar()
+        showTabBar()
     }
     
     @objc func animateCells() {
@@ -87,6 +88,12 @@ class EventFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension EventFeedViewController {
+    @objc func goToAlerts() {
+        lightImpactGenerator()
+        let sortFilterVC = MyAlertsViewController()
+        self.navigationController?.pushViewController(sortFilterVC, animated: true)
+    }
+    
     @objc func showMoreInfo() {
         lightImpactGenerator()
         let subVC = EventFeedInfoViewController()

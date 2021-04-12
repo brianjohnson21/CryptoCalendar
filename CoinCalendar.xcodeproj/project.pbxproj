@@ -12,6 +12,10 @@
 		DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */; };
 		DE3DC1122622C4660089E021 /* PinnedCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC1112622C4660089E021 /* PinnedCoinCollectionViewCell.swift */; };
 		DE3DC124262349240089E021 /* PinnedCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC123262349240089E021 /* PinnedCoinView.swift */; };
+		DE3DC1552623C3B70089E021 /* CompareCoinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC1542623C3B70089E021 /* CompareCoinsView.swift */; };
+		DE3DC159262416A20089E021 /* CompareCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC158262416A20089E021 /* CompareCoinsViewController.swift */; };
+		DE3DC15D262416B30089E021 /* CompareCoinsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC15C262416B30089E021 /* CompareCoinsViewController+Views.swift */; };
+		DE3DC17E26248B7E0089E021 /* CompareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC17D26248B7E0089E021 /* CompareTableViewCell.swift */; };
 		DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */ = {isa = PBXBuildFile; fileRef = DE42456D2612CC2200E185D4 /* Confetti2.json */; };
 		DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245712612CE3200E185D4 /* SortFilterViewController.swift */; };
 		DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */; };
@@ -111,6 +115,10 @@
 		DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TempCodeViewController+Views.swift"; sourceTree = "<group>"; };
 		DE3DC1112622C4660089E021 /* PinnedCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedCoinCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE3DC123262349240089E021 /* PinnedCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedCoinView.swift; sourceTree = "<group>"; };
+		DE3DC1542623C3B70089E021 /* CompareCoinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCoinsView.swift; sourceTree = "<group>"; };
+		DE3DC158262416A20089E021 /* CompareCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCoinsViewController.swift; sourceTree = "<group>"; };
+		DE3DC15C262416B30089E021 /* CompareCoinsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompareCoinsViewController+Views.swift"; sourceTree = "<group>"; };
+		DE3DC17D26248B7E0089E021 /* CompareTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareTableViewCell.swift; sourceTree = "<group>"; };
 		DE42456D2612CC2200E185D4 /* Confetti2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti2.json; sourceTree = "<group>"; };
 		DE4245712612CE3200E185D4 /* SortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFilterViewController.swift; sourceTree = "<group>"; };
 		DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortFilterViewController+Views.swift"; sourceTree = "<group>"; };
@@ -233,6 +241,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DE3DC157262416890089E021 /* Compare Coins */ = {
+			isa = PBXGroup;
+			children = (
+				DE3DC158262416A20089E021 /* CompareCoinsViewController.swift */,
+				DE3DC15C262416B30089E021 /* CompareCoinsViewController+Views.swift */,
+				DE3DC17D26248B7E0089E021 /* CompareTableViewCell.swift */,
+			);
+			path = "Compare Coins";
+			sourceTree = "<group>";
+		};
 		DE4245702612CE2300E185D4 /* Sort & Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +331,7 @@
 				DE42473D26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift */,
 				DE3DC1112622C4660089E021 /* PinnedCoinCollectionViewCell.swift */,
 				DE3DC123262349240089E021 /* PinnedCoinView.swift */,
+				DE3DC1542623C3B70089E021 /* CompareCoinsView.swift */,
 			);
 			path = "Coin Market Feed";
 			sourceTree = "<group>";
@@ -369,6 +388,7 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE3DC157262416890089E021 /* Compare Coins */,
 				DED657B826223D16002CC83D /* Price Alert */,
 				DE9AA5F82610FCFB0057A259 /* Onboarding */,
 				DED285C9261CBAE3002F34B6 /* Welcome VC's */,
@@ -673,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE4246262613F9A600E185D4 /* MyProfileViewController.swift in Sources */,
+				DE3DC15D262416B30089E021 /* CompareCoinsViewController+Views.swift in Sources */,
 				DE9AA6262611130B0057A259 /* MainFeedCardTableViewCell.swift in Sources */,
 				DE9AA60F2611011A0057A259 /* EventFeedViewController+Views.swift in Sources */,
 				DE424723261919A300E185D4 /* CoinMarketFeedViewController+Views.swift in Sources */,
@@ -686,6 +707,7 @@
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
 				DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */,
+				DE3DC17E26248B7E0089E021 /* CompareTableViewCell.swift in Sources */,
 				DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
@@ -710,6 +732,7 @@
 				FC4E558E26202334008AF09B /* Coin.swift in Sources */,
 				DE9AA66D261155640057A259 /* ContinueButton.swift in Sources */,
 				DE1EA42826211BB500954FBC /* TempCodeViewController.swift in Sources */,
+				DE3DC1552623C3B70089E021 /* CompareCoinsView.swift in Sources */,
 				DE42462D2613FB4400E185D4 /* MyProfileTableViewCell.swift in Sources */,
 				DE4246A32616930000E185D4 /* HomeFeedViewController.swift in Sources */,
 				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
@@ -733,6 +756,7 @@
 				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
 				DE4246B6261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift in Sources */,
 				DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */,
+				DE3DC159262416A20089E021 /* CompareCoinsViewController.swift in Sources */,
 				DED657692621FD45002CC83D /* EventInfoTableViewCell.swift in Sources */,
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
@@ -896,7 +920,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -919,7 +943,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

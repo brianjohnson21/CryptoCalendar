@@ -23,8 +23,8 @@ class EventFeedInfoViewController: UIViewController {
     var isDismissing = false
     
     var expos: [[String]] = [
-        ["Reliable", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"],
-        ["Important", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"]
+        ["Reliable", "This sign indicates that the source of this information is reliable and has been vetted. This would typically come from the coin company itself, on their website, or on their social media drops."],
+        ["Important", "This sign indicates that the event is significant and important for the specified coin. Keep an eye on the coin as important events draw closer. With important events come greater speculation which could mean Crypto Gainz."]
     ]
     
     override func viewDidLoad() {
