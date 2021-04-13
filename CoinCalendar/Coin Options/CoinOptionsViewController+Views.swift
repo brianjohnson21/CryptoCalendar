@@ -44,7 +44,7 @@ extension CoinOptionsViewController {
         mainContainer.bottomAnchor.constraint(equalTo: wrapper.bottomAnchor, constant: 0).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 400)
+        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 460)
         mainHeight.isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         
@@ -67,6 +67,83 @@ extension CoinOptionsViewController {
         dismissButton.trailingAnchor.constraint(equalTo: wrapper.trailingAnchor).isActive = true
         dismissButton.topAnchor.constraint(equalTo: wrapper.topAnchor).isActive = true
         dismissButton.bottomAnchor.constraint(equalTo: keyLine.topAnchor).isActive = true
+        
+        coinContainer.backgroundColor = .white
+        coinContainer.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.addSubview(coinContainer)
+        coinContainer.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor).isActive = true
+        coinContainer.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor).isActive = true
+        coinContainer.topAnchor.constraint(equalTo: mainContainer.topAnchor).isActive = true
+        coinContainer.heightAnchor.constraint(equalToConstant: 84).isActive = true
+        
+        if let coinSymbol = coin?.symbol {
+            coinImageView.image = UIImage(named: "\(coinSymbol)")
+            coinLabel.text = coinSymbol
+        }
+        coinImageView.contentMode = .scaleAspectFill
+        coinImageView.layer.cornerRadius = 36/2
+        coinImageView.layer.masksToBounds = true
+        coinImageView.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(coinImageView)
+        coinImageView.leadingAnchor.constraint(equalTo: coinContainer.leadingAnchor, constant: 18).isActive = true
+        coinImageView.centerYAnchor.constraint(equalTo: coinContainer.centerYAnchor, constant: 0).isActive = true
+        coinImageView.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        coinImageView.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        
+        if let coinName = coin?.name {
+            blockChainLabel.text = coinName
+        }
+        blockChainLabel.textAlignment = .left
+        blockChainLabel.textColor = .black
+        blockChainLabel.font = .sofiaMedium(ofSize: 18)
+        blockChainLabel.numberOfLines = 0
+        blockChainLabel.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(blockChainLabel)
+        blockChainLabel.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: 6).isActive = true
+        blockChainLabel.topAnchor.constraint(equalTo: coinImageView.topAnchor, constant: 2).isActive = true
+                
+        coinLabel.textAlignment = .left
+        coinLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+        coinLabel.font = .sofiaRegular(ofSize: 14)
+        coinLabel.numberOfLines = 0
+        coinLabel.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(coinLabel)
+        coinLabel.leadingAnchor.constraint(equalTo: blockChainLabel.leadingAnchor, constant: 0).isActive = true
+        coinLabel.topAnchor.constraint(equalTo: blockChainLabel.bottomAnchor, constant: 2).isActive = true
+        
+        arrowImageView.transform = view.transform.rotated(by: .pi)
+        arrowImageView.image = UIImage(named: "backWhiteArrow")
+        arrowImageView.setImageColor(color: .black)
+        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(arrowImageView)
+        arrowImageView.trailingAnchor.constraint(equalTo: coinContainer.trailingAnchor, constant: -16).isActive = true
+        arrowImageView.centerYAnchor.constraint(equalTo: coinContainer.centerYAnchor, constant: 0).isActive = true
+        arrowImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        seeMoreLabel.text = "See More"
+        seeMoreLabel.textAlignment = .left
+        seeMoreLabel.textColor = .keyEventHeadlineColorModeLight
+        seeMoreLabel.font = .sofiaMedium(ofSize: 14)
+        seeMoreLabel.numberOfLines = 0
+        seeMoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(seeMoreLabel)
+        seeMoreLabel.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -2).isActive = true
+        seeMoreLabel.centerYAnchor.constraint(equalTo: arrowImageView.centerYAnchor, constant: 0).isActive = true
+        
+        coinDivider.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        coinDivider.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(coinDivider)
+        coinDivider.leadingAnchor.constraint(equalTo: coinContainer.leadingAnchor).isActive = true
+        coinDivider.trailingAnchor.constraint(equalTo: coinContainer.trailingAnchor).isActive = true
+        coinDivider.bottomAnchor.constraint(equalTo: coinContainer.bottomAnchor).isActive = true
+        coinDivider.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        coinDetailButton.addTarget(self, action: #selector(coinDetailTapped), for: .touchUpInside)
+        coinDetailButton.backgroundColor = .clear
+        coinDetailButton.translatesAutoresizingMaskIntoConstraints = false
+        coinContainer.addSubview(coinDetailButton)
+        coinDetailButton.fillSuperview()
                 
         //
         if isPinnedCoin {
@@ -81,7 +158,7 @@ extension CoinOptionsViewController {
         newChatOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newChatOption)
         newChatOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
-        newChatOption.topAnchor.constraint(equalTo: mainContainer.topAnchor, constant: 14).isActive = true
+        newChatOption.topAnchor.constraint(equalTo: coinContainer.bottomAnchor, constant: 14).isActive = true
         newChatOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         newChatOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
         

@@ -524,7 +524,13 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*
+        let eventOptionsVC =  CoinDetailsViewController()
+        self.navigationController?.pushViewController(eventOptionsVC, animated: true)
         lightImpactGenerator()
+        print("\(indexPath.row) - 👍👍👍")
+        */
+        
         let eventOptionsVC =  CoinOptionsViewController()
         eventOptionsVC.delegate = self
         

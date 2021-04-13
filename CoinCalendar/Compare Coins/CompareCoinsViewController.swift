@@ -43,18 +43,26 @@ extension CompareCoinsViewController {
         compareContainer.coinOneTop.constant = 82
         compareContainer.coinOneLeading.constant = 56
         compareContainer.coinTwoLeading.constant = 206
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.5) {
             self.compareContainer.shortNameOneLabel.alpha = 1.0
             self.compareContainer.shortNameTwoLabel.alpha = 1.0
             self.compareContainer.topContainer.alpha = 1.0
             self.compareFeedTableView.alpha = 1.0
             self.downArrow.alpha = 1.0
-            self.compareContainer.cancelImageView.alpha = 0
-            self.compareContainer.coinOneShortNameLabel.alpha = 0
-            self.compareContainer.coinTwoShortNameLabel.alpha = 0
+        } completion: { (success) in
+            //
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.15, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
         } completion: { (success) in
             //
+        }
+
+        UIView.animate(withDuration: 0.25) {
+            self.compareContainer.cancelImageView.alpha = 0
+            self.compareContainer.coinOneShortNameLabel.alpha = 0
+            self.compareContainer.coinTwoShortNameLabel.alpha = 0
         }
 
     }

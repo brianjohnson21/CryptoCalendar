@@ -102,6 +102,8 @@ class CoinMarketFeedViewController: UIViewController {
         
         getCoins()
         
+        //let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
+        //self.mainFeedTableView.addGestureRecognizer(longPressRecognizer)
     }
         
     @objc func appMovedToForeround() {
@@ -149,6 +151,37 @@ class CoinMarketFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension CoinMarketFeedViewController {
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            let touchPoint = longPressGestureRecognizer.location(in: mainFeedTableView)
+            if let indexPath = mainFeedTableView.indexPathForRow(at: touchPoint) {
+                heavyImpactGenerator()
+                //print("\(indexPath.row) - 🤑🤑🤑")
+                
+                let eventOptionsVC =  CoinOptionsViewController()
+                eventOptionsVC.delegate = self
+                
+                eventOptionsVC.coin = coins[indexPath.row]
+                
+                let coin = coins[indexPath.row]
+                if let coinPrice = coin.price {
+                    eventOptionsVC.coinPrice = "$\(coinPrice.rounded(toPlaces: 2))"
+                }
+                
+                if let coinName = coin.name {
+                    eventOptionsVC.coinName = coinName
+                }
+                
+                if let coinSymbol = coin.symbol {
+                    eventOptionsVC.coinSymbol = coinSymbol
+                }
+                        
+                eventOptionsVC.modalPresentationStyle = .overFullScreen
+                self.present(eventOptionsVC, animated: false, completion: nil)
+            }
+        }
+    }
+    
     @objc func hideCompareCoin() {
         lightImpactGenerator()
         UIView.animate(withDuration: 0.35) {
@@ -291,6 +324,12 @@ extension CoinMarketFeedViewController: UIScrollViewDelegate {
 //MARK: COIN OPTIONS DELEGATE
 
 extension CoinMarketFeedViewController: CoinOptionsViewControllerDelegate {
+    func goToCoinDetail(coinToGo: Coin) {
+        let eventOptionsVC =  CoinDetailsViewController()
+        eventOptionsVC.coin = coinToGo
+        self.navigationController?.pushViewController(eventOptionsVC, animated: true)        
+    }
+    
     func compareTapped(coinCompare: Coin) {
         comparedCoins.append(coinCompare)
         compareContainer.isHidden = false

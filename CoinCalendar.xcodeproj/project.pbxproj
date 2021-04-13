@@ -16,6 +16,11 @@
 		DE3DC159262416A20089E021 /* CompareCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC158262416A20089E021 /* CompareCoinsViewController.swift */; };
 		DE3DC15D262416B30089E021 /* CompareCoinsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC15C262416B30089E021 /* CompareCoinsViewController+Views.swift */; };
 		DE3DC17E26248B7E0089E021 /* CompareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC17D26248B7E0089E021 /* CompareTableViewCell.swift */; };
+		DE3DC20626251BC30089E021 /* CoinDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC20526251BC30089E021 /* CoinDetailsViewController.swift */; };
+		DE3DC20A26251BCA0089E021 /* CoinDetailsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC20926251BCA0089E021 /* CoinDetailsViewController+Views.swift */; };
+		DE3DC20D262528010089E021 /* CoinDetailCoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC20C262528010089E021 /* CoinDetailCoinTableViewCell.swift */; };
+		DE3DC21026252B270089E021 /* CoinDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC20F26252B270089E021 /* CoinDetailsHeader.swift */; };
+		DE3DC21326252C4A0089E021 /* CoinDetailStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC21226252C4A0089E021 /* CoinDetailStatTableViewCell.swift */; };
 		DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */ = {isa = PBXBuildFile; fileRef = DE42456D2612CC2200E185D4 /* Confetti2.json */; };
 		DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245712612CE3200E185D4 /* SortFilterViewController.swift */; };
 		DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */; };
@@ -119,6 +124,11 @@
 		DE3DC158262416A20089E021 /* CompareCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCoinsViewController.swift; sourceTree = "<group>"; };
 		DE3DC15C262416B30089E021 /* CompareCoinsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompareCoinsViewController+Views.swift"; sourceTree = "<group>"; };
 		DE3DC17D26248B7E0089E021 /* CompareTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareTableViewCell.swift; sourceTree = "<group>"; };
+		DE3DC20526251BC30089E021 /* CoinDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailsViewController.swift; sourceTree = "<group>"; };
+		DE3DC20926251BCA0089E021 /* CoinDetailsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinDetailsViewController+Views.swift"; sourceTree = "<group>"; };
+		DE3DC20C262528010089E021 /* CoinDetailCoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailCoinTableViewCell.swift; sourceTree = "<group>"; };
+		DE3DC20F26252B270089E021 /* CoinDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailsHeader.swift; sourceTree = "<group>"; };
+		DE3DC21226252C4A0089E021 /* CoinDetailStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailStatTableViewCell.swift; sourceTree = "<group>"; };
 		DE42456D2612CC2200E185D4 /* Confetti2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti2.json; sourceTree = "<group>"; };
 		DE4245712612CE3200E185D4 /* SortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFilterViewController.swift; sourceTree = "<group>"; };
 		DE4245752612CE3900E185D4 /* SortFilterViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortFilterViewController+Views.swift"; sourceTree = "<group>"; };
@@ -249,6 +259,18 @@
 				DE3DC17D26248B7E0089E021 /* CompareTableViewCell.swift */,
 			);
 			path = "Compare Coins";
+			sourceTree = "<group>";
+		};
+		DE3DC20426251BB80089E021 /* Coin Details */ = {
+			isa = PBXGroup;
+			children = (
+				DE3DC20526251BC30089E021 /* CoinDetailsViewController.swift */,
+				DE3DC20926251BCA0089E021 /* CoinDetailsViewController+Views.swift */,
+				DE3DC20C262528010089E021 /* CoinDetailCoinTableViewCell.swift */,
+				DE3DC20F26252B270089E021 /* CoinDetailsHeader.swift */,
+				DE3DC21226252C4A0089E021 /* CoinDetailStatTableViewCell.swift */,
+			);
+			path = "Coin Details";
 			sourceTree = "<group>";
 		};
 		DE4245702612CE2300E185D4 /* Sort & Filter */ = {
@@ -388,6 +410,7 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE3DC20426251BB80089E021 /* Coin Details */,
 				DE3DC157262416890089E021 /* Compare Coins */,
 				DED657B826223D16002CC83D /* Price Alert */,
 				DE9AA5F82610FCFB0057A259 /* Onboarding */,
@@ -715,6 +738,7 @@
 				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
 				DED657662621FAD4002CC83D /* EventFeedInfoViewController+Views.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
+				DE3DC20626251BC30089E021 /* CoinDetailsViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
 				DED657632621FACB002CC83D /* EventFeedInfoViewController.swift in Sources */,
 				DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */,
@@ -754,6 +778,7 @@
 				DE4245DA261376DC00E185D4 /* PickerViewController+Views.swift in Sources */,
 				DE9AA6492611542F0057A259 /* SignUpPNViewController.swift in Sources */,
 				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
+				DE3DC20D262528010089E021 /* CoinDetailCoinTableViewCell.swift in Sources */,
 				DE4246B6261696C900E185D4 /* HomeFeedCoinsTableViewCell.swift in Sources */,
 				DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */,
 				DE3DC159262416A20089E021 /* CompareCoinsViewController.swift in Sources */,
@@ -762,6 +787,7 @@
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,
 				DED657D226226190002CC83D /* SetAlertOptionTwoTableViewCell.swift in Sources */,
+				DE3DC21326252C4A0089E021 /* CoinDetailStatTableViewCell.swift in Sources */,
 				DE9AA670261155780057A259 /* OneTimeCodeTextField.swift in Sources */,
 				DED285CB261CBB1B002F34B6 /* WelcomeViewController.swift in Sources */,
 				DE9AA612261101850057A259 /* MyTabBarController.swift in Sources */,
@@ -772,6 +798,8 @@
 				DE4245A12612D69C00E185D4 /* SortCoinTableViewCell.swift in Sources */,
 				FC4E558F26202334008AF09B /* API.swift in Sources */,
 				DE4246572614D28700E185D4 /* PickCryptoViewController.swift in Sources */,
+				DE3DC21026252B270089E021 /* CoinDetailsHeader.swift in Sources */,
+				DE3DC20A26251BCA0089E021 /* CoinDetailsViewController+Views.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

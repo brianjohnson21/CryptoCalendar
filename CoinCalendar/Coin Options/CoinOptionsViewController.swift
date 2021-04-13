@@ -12,6 +12,7 @@ protocol CoinOptionsViewControllerDelegate: class {
     func pinCoin(coinPinned: Coin)
     func unPinCoin()
     func compareTapped(coinCompare: Coin)
+    func goToCoinDetail(coinToGo: Coin)
 }
 
 class CoinOptionsViewController: UIViewController {
@@ -34,6 +35,15 @@ class CoinOptionsViewController: UIViewController {
     var addedToWatchListLabel = UILabel()
     let toastView = ToastNotificationView()
     
+    var coinContainer = UIView()
+    var coinImageView = UIImageView()
+    var blockChainLabel = UILabel()
+    var coinLabel = UILabel()
+    var arrowImageView = UIImageView()
+    var seeMoreLabel = UILabel()
+    var coinDivider = UIView()
+    var coinDetailButton = UIButton()
+    
     var coin: Coin?
     
     var coinPrice = "1"
@@ -43,6 +53,7 @@ class CoinOptionsViewController: UIViewController {
     var isComparing = false
     var isPinnedCoin = false
     var isDismissing = false
+    var goingToCoinDetail = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +72,12 @@ class CoinOptionsViewController: UIViewController {
 //MARK: ACTIONS
 
 extension CoinOptionsViewController {
+    @objc func coinDetailTapped() {
+        lightImpactGenerator()
+        goingToCoinDetail = true
+        dimissVC()
+    }
+    
     @objc func didTapCompare() {
         lightImpactGenerator()
         isComparing = true
@@ -146,6 +163,11 @@ extension CoinOptionsViewController {
                 if self.isComparing {
                     self.delegate?.compareTapped(coinCompare: self.coin!)
                 }
+                
+                if self.goingToCoinDetail {
+                    self.delegate?.goToCoinDetail(coinToGo: self.coin!)
+                }
+                
             }
         }
     }
