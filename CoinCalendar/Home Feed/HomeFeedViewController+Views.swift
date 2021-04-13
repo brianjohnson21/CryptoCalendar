@@ -166,6 +166,7 @@ extension HomeFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
+            cell.delegate = self
             cell.coins = Array(coins.sorted(by: {$0.averageSentiment24Hours ?? 0.0 > $1.averageSentiment24Hours ?? 0.0}).prefix(10))
             cell.globalContactListCollectionView.reloadData()
             return cell
@@ -184,15 +185,18 @@ extension HomeFeedViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
             cell.coins = Array(coins.sorted(by: {$0.socialScore24Hours ?? 0 > $1.socialScore24Hours ?? 0}).prefix(10))
             cell.globalContactListCollectionView.reloadData()
+            cell.delegate = self
             return cell
         } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
             cell.coins = Array(coins.sorted(by: {$0.healthScore ?? 0 > $1.healthScore ?? 0}).prefix(10))
             cell.globalContactListCollectionView.reloadData()
+            cell.delegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: homeFeedCoinsTableViewCell, for: indexPath) as! HomeFeedCoinsTableViewCell
             cell.sectionTitleLabel.text = sections[indexPath.section]
+            cell.delegate = self
             return cell
         }
     }
@@ -215,10 +219,22 @@ extension HomeFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        lightImpactGenerator()
-        let eventOptionsVC =  EventOptionsViewController()//PickerViewController() //EventOptionsViewController()
-        eventOptionsVC.modalPresentationStyle = .overFullScreen
-        self.present(eventOptionsVC, animated: false, completion: nil)
+        if indexPath.section == 1 {
+            lightImpactGenerator()
+            let eventOptionsVC =  CoinOptionsViewController()
+            eventOptionsVC.isFromHome = true
+            eventOptionsVC.coin = coin
+            eventOptionsVC.delegate = self
+            if let coinOfDay = coin {
+                eventOptionsVC.blockChainLabel.text = coinOfDay.name
+                if let coinSymbol = coinOfDay.symbol {
+                    eventOptionsVC.coinImageView.image = UIImage(named: "\(coinSymbol)")
+                    eventOptionsVC.coinLabel.text = coinSymbol
+                }
+            }
+            eventOptionsVC.modalPresentationStyle = .overFullScreen
+            self.present(eventOptionsVC, animated: false, completion: nil)
+        }
     }
     
 }

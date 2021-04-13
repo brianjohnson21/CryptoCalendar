@@ -100,7 +100,7 @@ extension SetAlertViewController {
         navTitleLabel.centerXAnchor.constraint(equalTo: contentContainer.centerXAnchor, constant: 0).isActive = true
         
         //coinImageView.image = UIImage(named: "ADA")
-        coinImageView.backgroundColor = .green
+        coinImageView.backgroundColor = .lightGray
         coinImageView.contentMode = .scaleAspectFill
         coinImageView.layer.cornerRadius = 29/2
         coinImageView.translatesAutoresizingMaskIntoConstraints  = false

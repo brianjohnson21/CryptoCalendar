@@ -178,3 +178,46 @@ extension HomeFeedViewController: LaunchTransitionViewDelegate {
         //perform(#selector(showWelcome), with: self, afterDelay: 1.0)
     }
 }
+
+//MARK: COIN OPTION DELEGATE
+
+extension HomeFeedViewController: CoinOptionsViewControllerDelegate {
+    func pinCoin(coinPinned: Coin) {
+        //
+    }
+    
+    func unPinCoin() {
+        //
+    }
+    
+    func compareTapped(coinCompare: Coin) {
+        //
+    }
+    
+    func goToCoinDetail(coinToGo: Coin) {
+        let eventOptionsVC =  CoinDetailsViewController()
+        eventOptionsVC.coin = coinToGo
+        self.navigationController?.pushViewController(eventOptionsVC, animated: true) 
+    }
+}
+
+//MARK: HOME FEED COINS CELL DELEGATE
+
+extension HomeFeedViewController: HomeFeedCoinsTableViewCellDelegate {
+    func didTapOnCoin(coinTapped: Coin) {
+        lightImpactGenerator()
+        let eventOptionsVC =  CoinOptionsViewController()
+        eventOptionsVC.isFromHome = true
+        eventOptionsVC.coin = coinTapped
+        eventOptionsVC.delegate = self
+        
+        eventOptionsVC.blockChainLabel.text = coinTapped.name
+        if let coinSymbol = coinTapped.symbol {
+            eventOptionsVC.coinImageView.image = UIImage(named: "\(coinSymbol)")
+            eventOptionsVC.coinLabel.text = coinSymbol
+        }
+        
+        eventOptionsVC.modalPresentationStyle = .overFullScreen
+        self.present(eventOptionsVC, animated: false, completion: nil)
+    }
+}

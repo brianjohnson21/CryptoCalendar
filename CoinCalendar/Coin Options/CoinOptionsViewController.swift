@@ -55,6 +55,7 @@ class CoinOptionsViewController: UIViewController {
     var isPinnedCoin = false
     var isDismissing = false
     var goingToCoinDetail = false
+    var isFromHome = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -232,11 +233,26 @@ extension CoinOptionsViewController {
     
     @objc func showSetAlert() {
         let eventOptionsVC =  SetAlertViewController()
-        
-        eventOptionsVC.coinPriceLabel.text = coinPrice
-        eventOptionsVC.blockChainLabel.text = coinName
-        eventOptionsVC.coinLabel.text = coinSymbol
-        eventOptionsVC.coinImageView.image = UIImage(named: coinSymbol)
+        //print("\(coinName) - 🥶🥶🥶")
+        if let coinPrice = coin?.price {
+            if coinPrice < 1.0 {
+                eventOptionsVC.coinPriceLabel.text = "$\(coinPrice)"
+            } else {
+                let largeNumber = coinPrice.rounded(toPlaces: 2)
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber))
+                if let formNumber = formattedNumber {
+                    eventOptionsVC.coinPriceLabel.text = "$\(formNumber)"
+                }
+            }
+        }
+        eventOptionsVC.blockChainLabel.text = coin?.name
+        if let coinSymbol = coin?.symbol {
+            eventOptionsVC.coinLabel.text = coinSymbol
+            eventOptionsVC.coinImageView.image = UIImage(named: "\(coinSymbol)")
+            print("\(coinSymbol) - 🥶🥶🥶")
+        }
         
         eventOptionsVC.isComingFromCoinOptions = true
         eventOptionsVC.delegate = self

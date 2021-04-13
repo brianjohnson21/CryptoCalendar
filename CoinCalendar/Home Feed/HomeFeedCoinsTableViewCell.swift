@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol HomeFeedCoinsTableViewCellDelegate: class {
+    func didTapOnCoin(coinTapped: Coin)
+}
+
 class HomeFeedCoinsTableViewCell: UITableViewCell {
 
+    weak var delegate: HomeFeedCoinsTableViewCellDelegate?
     let sectionTitleLabel = UILabel()
-    
     var globalContactListCollectionViewFlowLayout = UICollectionViewFlowLayout()
     var globalContactListCollectionView: UICollectionView!
     var homeFeedCoinCollectionViewCell = "homeFeedCoinCollectionViewCell"
@@ -102,15 +106,6 @@ extension HomeFeedCoinsTableViewCell: UICollectionViewDelegate, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeFeedCoinCollectionViewCell, for: indexPath) as! HomeFeedCoinCollectionViewCell
         
         let coin = coins[indexPath.row]
-        /*
-        if coin.symbol == "ADA" {
-            cell.coinImageView.image = UIImage(named: "Cardano")
-        } else if coin.symbol == "" {
-            cell.coinImageView.image = nil
-        } else {
-            cell.coinImageView.image = nil
-        }
-        */
         
         if let coinSymbol = coin.symbol {
             cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
@@ -124,18 +119,33 @@ extension HomeFeedCoinsTableViewCell: UICollectionViewDelegate, UICollectionView
         //let roundedPrice = coin.price?.rounded()
         
         if let coinPrice = coin.price {
+//            if coinPrice < 1.0 {
+//                cell.coinPriceLabel.text = "$\(coinPrice)"
+//            } else {
+//                cell.coinPriceLabel.text = "$\(coinPrice.rounded(toPlaces: 2))"
+//            }
+            
             if coinPrice < 1.0 {
                 cell.coinPriceLabel.text = "$\(coinPrice)"
             } else {
-                cell.coinPriceLabel.text = "$\(coinPrice.rounded(toPlaces: 2))"
-                //cell.coinPriceLabel.text = "$\(preciseRound(coinPrice, precision: .hundredths))"
-                //cell.coinPriceLabel.text = "$\(coinPrice)"
+                let largeNumber = coinPrice.rounded(toPlaces: 2)
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber))
+                if let formNumber = formattedNumber {
+                    cell.coinPriceLabel.text = "$\(formNumber)"
+                }
             }
+            
         }
                 
         cell.upDownImageView.image = coin.percentChange24Hours ?? 0 > 0.0 ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
         cell.upDownLabel.text = "\(coin.percentChange24Hours ?? 0)%"
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didTapOnCoin(coinTapped: coins[indexPath.row])
     }
 }
 
