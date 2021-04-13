@@ -8,6 +8,11 @@
 import UIKit
 import Lottie
 
+protocol EventOptionsViewControllerDelegate: class {
+    func addToWatchlistClicked()
+    func setAlertClicked(date: Date)
+}
+
 class EventOptionsViewController: UIViewController {
     
     var opacityLayer = UIView()
@@ -26,6 +31,8 @@ class EventOptionsViewController: UIViewController {
     let toastView = ToastNotificationView()
     
     var isDismissing = false
+    
+    weak var delegate: EventOptionsViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +69,7 @@ extension EventOptionsViewController {
     }
     
     @objc func tappedAddToWatchlist() {
+        delegate?.addToWatchlistClicked()
         lightImpactGenerator()
         UIView.animate(withDuration: 0.35) {
             self.newChatOption.alpha = 0
@@ -162,7 +170,8 @@ extension EventOptionsViewController: UIScrollViewDelegate {
 //MARK: PICKER VC DELEGATE
 
 extension EventOptionsViewController: PickerViewControllerDelegate {
-    func didSetAlarm() {
+    func didSetAlarm(date: Date) {
+        delegate?.setAlertClicked(date: date)
         dimissVC()
     }
 }

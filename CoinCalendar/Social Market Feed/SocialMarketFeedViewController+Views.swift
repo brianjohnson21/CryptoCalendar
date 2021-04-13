@@ -55,7 +55,11 @@ extension SocialMarketFeedViewController {
         userProfileImageContainer.heightAnchor.constraint(equalToConstant: 39).isActive = true
         userProfileImageContainer.widthAnchor.constraint(equalToConstant: 39).isActive = true
         
-        userProfileImageView.image = UIImage(named: "STM")
+        if let imageUrl = User.current.profilePhotoUrl {
+            userProfileImageView.kf.setImage(with: URL(string: imageUrl))
+        } else {
+            userProfileImageView.image = nil
+        }
         userProfileImageView.backgroundColor = .clear
         userProfileImageView.layer.cornerRadius = 39/2
         userProfileImageView.layer.masksToBounds = true
@@ -74,7 +78,7 @@ extension SocialMarketFeedViewController {
         userGreetingLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 6).isActive = true
         userGreetingLabel.topAnchor.constraint(equalTo: userProfileImageContainer.topAnchor, constant: 5).isActive = true
         
-        userNameLabel.text = "Stephen M."
+        userNameLabel.text = User.current.name
         userNameLabel.textAlignment = .left
         userNameLabel.textColor = .black
         userNameLabel.font = .sofiaSemiBold(ofSize: 12)

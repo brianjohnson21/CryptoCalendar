@@ -18,5 +18,7 @@ pod 'FSCalendar'
 pod 'SuperBadges'
 pod 'Comets'
 pod 'Disk'
+pod 'AWSS3'
+pod 'Kingfisher'
 
 end

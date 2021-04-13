@@ -15,18 +15,19 @@ final class User: Codable {
     var interests: [String]?
     var remainingSubs: Int?
     var profilePhotoUrl: String?
-    var bio: String?
-    var youtube: String?
-    var twitch: String?
-    var twitter: String?
-    var instagram: String?
-    var tiktok: String?
-    var instagramUrls: [String]?
-    var subscriptionCredits: Double!
+    var watchlist: [String]?
     
     var coins: [Coin] {
         do {
             return try Disk.retrieve("usercoins", from: .caches, as: [Coin].self)
+        } catch {
+            return []
+        }
+    }
+    
+    var watchlistPosts: [Post] {
+        do {
+            return try Disk.retrieve("userposts", from: .caches, as: [Post].self)
         } catch {
             return []
         }
@@ -75,6 +76,29 @@ final class User: Codable {
         } catch {
             print(error)
             return false
+        }
+    }
+    
+    
+    
+    static func addPostToWatchlist(post: Post) {
+        do {
+            var userposts = try Disk.retrieve("userposts", from: .caches, as: [Post].self)
+            
+            userposts.append(post)
+            
+            do {
+                try Disk.save(userposts, to: .caches, as: "userposts")
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+            do {
+                try Disk.save([post], to: .caches, as: "userposts")
+            } catch {
+                print(error)
+            }
         }
     }
 }

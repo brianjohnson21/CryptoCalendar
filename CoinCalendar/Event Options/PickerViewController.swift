@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PickerViewControllerDelegate: class {
-    func didSetAlarm()
+    func didSetAlarm(date: Date)
 }
 
 class PickerViewController: UIViewController {
@@ -28,6 +28,8 @@ class PickerViewController: UIViewController {
     var resetButton = ContinueButton()
     
     var pickerOptions: [String] = ["Day of", "Day before", "3 days before", "7 days before", "14 days before", "1 month before"]
+    
+    var selectedDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +61,7 @@ extension PickerViewController {
     }
     
     @objc func dimissVC() {
-        delegate?.didSetAlarm()
+        delegate?.didSetAlarm(date: selectedDate)
         UIView.animate(withDuration: 0.28) {
             self.mainScrollView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
             self.opacityLayer.alpha = 0

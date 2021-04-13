@@ -39,7 +39,11 @@ extension EventFeedViewController {
         userProfileImageContainer.heightAnchor.constraint(equalToConstant: 39).isActive = true
         userProfileImageContainer.widthAnchor.constraint(equalToConstant: 39).isActive = true
         
-        userProfileImageView.image = UIImage(named: "STM")
+        if let imageUrl = User.current.profilePhotoUrl {
+            userProfileImageView.kf.setImage(with: URL(string: imageUrl))
+        } else {
+            userProfileImageView.image = nil
+        }
         userProfileImageView.backgroundColor = .clear
         userProfileImageView.layer.cornerRadius = 39/2
         userProfileImageView.layer.masksToBounds = true
@@ -58,7 +62,7 @@ extension EventFeedViewController {
         userGreetingLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 6).isActive = true
         userGreetingLabel.topAnchor.constraint(equalTo: userProfileImageContainer.topAnchor, constant: 5).isActive = true
         
-        userNameLabel.text = "Stephen M."
+        userNameLabel.text = User.current.name
         userNameLabel.textAlignment = .left
         userNameLabel.textColor = .black
         userNameLabel.font = .sofiaSemiBold(ofSize: 12)
@@ -213,15 +217,15 @@ extension EventFeedViewController {
             ),
             animationDuration: 0.25))
 
-        segmentioControl.valueDidChange = { segmentio, segmentIndex in
-            self.lightImpactGenerator()
+        segmentioControl.valueDidChange = { [weak self] segmentio, segmentIndex in
+            self?.lightImpactGenerator()
             print("Selected item: ", segmentIndex)
 //            let segmentedIndex = IndexPath(item: segmentIndex, section: 0)
 //            self.workoutLibraryTableView.reloadData()
 
 //            let sectionIndex = IndexSet(integer: 1)
 
-            //self.mainFeedCollectionView.reloadData()
+            self?.mainFeedTableView.reloadData()
             //self.workoutLibraryTableView.reloadSections(sectionIndex, with: .automatic)
 
             //self.workoutLibraryTableView.reloadSections(NSIndexSet(index: 1) as IndexSet, with: .none)
@@ -337,18 +341,52 @@ extension EventFeedViewController {
 
 extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        var source: [Post]!
+        
+        if segmentioControl.selectedSegmentioIndex == 0 {
+            source = self.posts
+        } else if segmentioControl.selectedSegmentioIndex == 1 {
+            source = self.importantPosts
+        } else if segmentioControl.selectedSegmentioIndex == 2 {
+            source = self.newPosts
+        } else if segmentioControl.selectedSegmentioIndex == 3 {
+            source = self.watchlistPosts
+        }
+        
+        return source.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: mainFeedCardTableViewCell, for: indexPath) as! MainFeedCardTableViewCell
-        cell.eventTypeLabel.text = "Release"
-        cell.headlineLabel.text = "PolkaPets NFT Launch"
-        cell.cryptoImageView.image = UIImage(named: "Cardano")
+        
+        var source: [Post]!
+        if segmentioControl.selectedSegmentioIndex == 0 {
+            source = self.posts
+        } else if segmentioControl.selectedSegmentioIndex == 1 {
+            source = self.importantPosts
+        } else if segmentioControl.selectedSegmentioIndex == 2 {
+            source = self.newPosts
+        } else if segmentioControl.selectedSegmentioIndex == 3 {
+            source = self.watchlistPosts
+        }
+        
+        let post = source[indexPath.row]
+        
+        cell.eventTypeLabel.text = post.type
+        cell.headlineLabel.text = post.name
+        
+        
+        if let coinSymbol = post.coinSymbol {
+            cell.cryptoImageView.image = UIImage(named: "\(coinSymbol)")
+        } else {
+            cell.cryptoImageView.image = nil
+            cell.cryptoImageView.backgroundColor = .red
+        }
+        
         return cell
     }
     
@@ -377,7 +415,21 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
+        
+        var source: [Post]!
+        if segmentioControl.selectedSegmentioIndex == 0 {
+            source = self.posts
+        } else if segmentioControl.selectedSegmentioIndex == 1 {
+            source = self.importantPosts
+        } else if segmentioControl.selectedSegmentioIndex == 2 {
+            source = self.newPosts
+        } else if segmentioControl.selectedSegmentioIndex == 3 {
+            source = self.watchlistPosts
+        }
+        self.selectedPost = source[indexPath.row]
+        
         let eventOptionsVC =  EventOptionsViewController()//PickerViewController() //EventOptionsViewController()
+        eventOptionsVC.delegate = self
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)
     }

@@ -110,6 +110,8 @@
 		FC4E558D26202334008AF09B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558826202334008AF09B /* User.swift */; };
 		FC4E558E26202334008AF09B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558926202334008AF09B /* Coin.swift */; };
 		FC4E558F26202334008AF09B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558B26202334008AF09B /* API.swift */; };
+		FC565FB7262618F40093D019 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565FB6262618F40093D019 /* ImageUploader.swift */; };
+		FC565FBA26261CED0093D019 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC565FB926261CED0093D019 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +222,8 @@
 		FC4E558826202334008AF09B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC4E558926202334008AF09B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		FC4E558B26202334008AF09B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		FC565FB6262618F40093D019 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		FC565FB926261CED0093D019 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,6 +579,7 @@
 				FC4E558726202334008AF09B /* Admin.swift */,
 				FC4E558826202334008AF09B /* User.swift */,
 				FC4E558926202334008AF09B /* Coin.swift */,
+				FC565FB926261CED0093D019 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4E558B26202334008AF09B /* API.swift */,
+				FC565FB6262618F40093D019 /* ImageUploader.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -766,10 +772,12 @@
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,
 				DE42465B2614D29E00E185D4 /* PickCryptoViewController+Views.swift in Sources */,
 				DE9AA669261155520057A259 /* ToastNotificationView.swift in Sources */,
+				FC565FBA26261CED0093D019 /* Post.swift in Sources */,
 				DE4245D7261376D000E185D4 /* PickerViewController.swift in Sources */,
 				DED285D7261CC0A0002F34B6 /* InfoViewController.swift in Sources */,
 				DE4245C32613701B00E185D4 /* EventOptionsViewController.swift in Sources */,
 				DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */,
+				FC565FB7262618F40093D019 /* ImageUploader.swift in Sources */,
 				DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */,
 				DE4245C62613702200E185D4 /* EventOptionsViewController+Views.swift in Sources */,
 				DED657CF26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift in Sources */,

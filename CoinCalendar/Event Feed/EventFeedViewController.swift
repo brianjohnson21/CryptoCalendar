@@ -40,6 +40,15 @@ class EventFeedViewController: UIViewController {
     var mainFeedCardTableViewCell = "mainFeedCardTableViewCell"
     
     var fromSignUp = UserDefaults()
+    
+    var posts = [Post]()
+    var importantPosts = [Post]()
+    var newPosts = [Post]()
+    var watchlistPosts: [Post] {
+        return User.current.watchlistPosts
+    }
+    
+    var selectedPost: Post?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +77,8 @@ class EventFeedViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
+        
+        getPosts()
     }
     
     @objc func animateCells() {
@@ -81,6 +92,27 @@ class EventFeedViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .darkContent
+    }
+    
+    func getPosts() {
+        API.sharedInstance.getPosts { (success, posts, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let posts = posts else {
+                print("error getting posts")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.posts = posts
+                self?.importantPosts = posts.filter({$0.isImportant ?? false})
+                self?.newPosts = posts.filter({($0.postDate ?? Date()) > Date().addingTimeInterval(-86400)})
+                self?.mainFeedTableView.reloadData()
+            }
+        }
     }
     
 }
@@ -156,4 +188,17 @@ extension EventFeedViewController: SortFilterViewControllerDelegate {
 
         
     }
+}
+
+extension EventFeedViewController: EventOptionsViewControllerDelegate {
+    func addToWatchlistClicked() {
+        guard let post = self.selectedPost else { return }
+        User.addPostToWatchlist(post: post)
+    }
+    
+    func setAlertClicked(date: Date) {
+        
+    }
+    
+    
 }

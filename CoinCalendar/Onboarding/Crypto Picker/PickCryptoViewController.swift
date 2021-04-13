@@ -106,6 +106,36 @@ extension PickCryptoViewController {
         //finishedLoading = true
     }
     
+    @objc func continueClicked() {
+        continueButton.showLoader()
+        
+        User.current.watchlist = self.coinsSelected
+        
+        API.sharedInstance.updateUser(user: User.current) { (success, user, error) in
+            guard error == nil else {
+                print(error!)
+                DispatchQueue.main.async { [weak self] in
+                    self?.continueButton.didCancelLoader()
+                }
+                return
+            }
+            guard success, let user = user else {
+                print("failed updating user")
+                DispatchQueue.main.async { [weak self] in
+                    self?.continueButton.didCancelLoader()
+                }
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                User.current = user
+                User.saveCurrentUser()
+                
+                self?.shrinkTransition()
+            }
+        }
+    }
+    
     @objc func shrinkTransition() {
         
         let screenSize: CGRect = UIScreen.main.bounds

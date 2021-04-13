@@ -116,11 +116,11 @@ class SignUpPNViewController: UIViewController {
     
     var circleCenter: CGFloat = -375
     
-    //var userSignup: UserSignup?
+    var userSignup: UserSignup?
     
     //let facebookLoginManager = LoginManager()
     
-    //var loginRequest: SMSLoginRequest?
+    var loginRequest: SMSLoginRequest?
     var photo: UIImage?
     var userName: String?
     var userEmail: String?
@@ -240,19 +240,18 @@ extension SignUpPNViewController {
     }
     
     @objc func dismissVC() {
-        //if stepOne {
+        if stepOne {
             UIView.animate(withDuration: 0.35) {
                 self.mainContainer.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height + 10)
                 self.view.endEditing(true)
             } completion: { (success) in
-                if self.isClubHouse {
+//                if self.isClubHouse {
                     self.dismiss(animated: true, completion: nil)
-                } else {
-                    //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {})
-                    self.dismiss(animated: true, completion: nil)
-                }
+//                } else {
+//                    //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {})
+//                    self.dismiss(animated: true, completion: nil)
+//                }
             }
-        /*
         } else if stepTwo {
             goBackToEnterEmail()
         } else if stepThree {
@@ -260,7 +259,6 @@ extension SignUpPNViewController {
         } else {
             goBackToEnterCode()
         }
-         */
     }
     
     @objc func goToPickCrypto() {
@@ -365,8 +363,7 @@ extension SignUpPNViewController {
                     self.goToEnterCodeStep()
                     self.stepOne = false
                     self.stepTwo = true
-                    /*
-                    LAPI.sharedInstance.sendSMSVerify(user: UserSignup(phone: phoneNumber, name: enterNameTextField.text, email: nil, facebookId: nil, appleId: nil, password: nil)) { (success, loginRequest, error) in
+                    API.sharedInstance.sendSMSVerify(user: UserSignup(phone: phoneNumber, name: enterNameTextField.text, email: nil, facebookId: nil, appleId: nil, password: nil)) { (success, loginRequest, error) in
                         guard error == nil else {
                             print(error!)
                             return
@@ -384,7 +381,6 @@ extension SignUpPNViewController {
                             self?.stepTwo = true
                         }
                     }
-                    */
                 } else {
                     emailContainer.badWiggle()
                     errorImpactGenerator()
@@ -408,10 +404,8 @@ extension SignUpPNViewController {
                     errorImpactGenerator()
                 }
             } else {
-                goToPickCrypto()
-                //continueButton.showLoader()
-                //self.shrinkTransition()
-                /*
+                continueButton.showLoader()
+
                 if self.userSignup == nil {
                     self.userSignup = UserSignup(phone: nil, name: enterNameTextField.text, email: emailTextField.text, facebookId: nil, password: "")
                 } else {
@@ -420,7 +414,7 @@ extension SignUpPNViewController {
                 
                 self.userSignup?.phone = self.phoneNumber
                 
-                LAPI.sharedInstance.register(user: self.userSignup!) { (success, user, error) in
+                API.sharedInstance.register(user: self.userSignup!) { (success, user, error) in
                     guard error == nil else {
                         print(error!)
                         DispatchQueue.main.async {
@@ -436,15 +430,12 @@ extension SignUpPNViewController {
                     }
                     
                     DispatchQueue.main.async { [weak self] in
-                        if self?.notOnList == false {
-                            User.current = user
-                            User.saveCurrentUser()
-                            self?.uploadImage()
-                            self?.shrinkTransition()
-                        }
+                        User.current = user
+                        User.saveCurrentUser()
+                        self?.uploadImage()
+                        self?.goToPickCrypto()
                     }
                 }
-                */
             }
         } else {
             print("did this ⛱⛱⛱")
@@ -820,7 +811,6 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
     }
     
     @objc func replacePhotoClicked() {
-        /*
         ImagePickerManager().pickImage(self){ image in
             if let image = image {
                 self.pickedImage(image: image)
@@ -828,7 +818,6 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
                 print("no photo retrieved")
             }
         }
-        */
     }
     
     func pickedImage(image: UIImage) {
@@ -840,7 +829,6 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
     }
     
     func uploadImage() {
-        /*
         guard let photo = self.photo else {
             print("photo is nil, can't upload")
             return
@@ -877,7 +865,6 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
                 }
             }
         }
- */
     }
     
     func circleCropDidCropImage(_ image: UIImage) {

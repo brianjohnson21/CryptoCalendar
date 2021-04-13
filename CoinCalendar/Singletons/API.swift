@@ -99,6 +99,50 @@ class API: NSObject {
         }
     }
     
+    func sendSMSVerify(user: UserSignup, completionHandler: @escaping (Bool, SMSLoginRequest?, Error?) -> ()) {
+        performRequest(endpoint: "api/signup/verify", method: "POST", authenticated: true, object: user) { (data, response, error) in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let response = try decoder.decode(SMSLoginRequest.self, from: data)
+                
+                completionHandler(true, response, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func sendSMSVerifyLogin(loginRequest: SMSLoginAttempt, completionHandler: @escaping (Bool, User?, Error?, Int?) -> ()) {
+        performRequest(endpoint: "api/signup/verifylogin", method: "POST", authenticated: true, object: loginRequest) { (data, response, error) in
+            guard let data = data, error == nil, (response as? HTTPURLResponse)?.statusCode != 406 else {
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error, ((response as? HTTPURLResponse)?.statusCode ?? -1))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let response = try decoder.decode(CreateUserResponse.self, from: data)
+                
+                try Disk.save(LToken(token: response.token), to: .applicationSupport, as: "token")
+                
+                completionHandler(true, response.user, nil, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error, nil)
+            }
+        }
+    }
+    
     func updateUser(user: User, completionHandler: @escaping (Bool, User?, Error?) -> ()) {
         performRequest(endpoint: "api/users/update", method: "PUT", authenticated: true, object: user) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -175,6 +219,26 @@ class API: NSObject {
                 let coin = try decoder.decode(Coin.self, from: data)
                 
                 completionHandler(true, coin, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func getPosts(completionHandler: @escaping (Bool, [Post]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/posts", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let posts = try decoder.decode([Post].self, from: data)
+                
+                completionHandler(true, posts, nil)
             } catch {
                 print(error)
                 completionHandler(false, nil, error)

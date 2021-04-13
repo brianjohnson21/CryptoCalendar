@@ -289,7 +289,7 @@ extension CoinOptionsViewController: UIScrollViewDelegate {
 //MARK: PICKER VC DELEGATE
 
 extension CoinOptionsViewController: PickerViewControllerDelegate {
-    func didSetAlarm() {
+    func didSetAlarm(date: Date) {
         dimissVC()
     }
 }

@@ -110,7 +110,7 @@ extension PickCryptoViewController {
         whiteGradient.heightAnchor.constraint(equalToConstant: 100).isActive = true
                 
         continueButton.layer.zPosition = 100
-        continueButton.addTarget(self, action: #selector(shrinkTransition), for: .touchUpInside)
+        continueButton.addTarget(self, action: #selector(continueClicked), for: .touchUpInside)
         continueButton.alpha = 1.0
         continueButton.continueLabel.text = "Continue"
         continueButton.layer.cornerRadius = 63/2
@@ -150,11 +150,15 @@ extension PickCryptoViewController: UICollectionViewDelegate, UICollectionViewDa
         lightImpactGenerator()
         let cell = collectionView.cellForItem(at: indexPath) as! PickCryptoCollectionViewCell
         cell.handleTap()
+        
+        coinsSelected.append(coins[indexPath.row][1])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         lightImpactGenerator()
         let cell = collectionView.cellForItem(at: indexPath) as! PickCryptoCollectionViewCell
         cell.hideRing()
+        
+        coinsSelected.remove(at: indexPath.row)
     }
 }
