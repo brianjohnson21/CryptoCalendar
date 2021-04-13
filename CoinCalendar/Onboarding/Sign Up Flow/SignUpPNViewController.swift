@@ -870,7 +870,6 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
     func circleCropDidCropImage(_ image: UIImage) {
         self.photo = image.wxCompress()
         self.photoImageView.image = image
-        uploadImage()
     }
     
     func circleCropDidCancel() {
