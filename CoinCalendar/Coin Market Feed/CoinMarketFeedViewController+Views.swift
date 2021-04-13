@@ -59,9 +59,10 @@ extension CoinMarketFeedViewController {
         if let imageUrl = User.current.profilePhotoUrl {
             userProfileImageView.kf.setImage(with: URL(string: imageUrl))
         } else {
-            userProfileImageView.image = nil
+            userProfileImageView.image = UIImage.init(named: "profileImagePH")
+            userProfileImageView.backgroundColor = UIColor(red: 42/255, green: 42/255, blue: 42/255, alpha: 1.0)
         }
-        userProfileImageView.backgroundColor = .clear
+        
         userProfileImageView.layer.cornerRadius = 39/2
         userProfileImageView.layer.masksToBounds = true
         userProfileImageView.contentMode = .scaleAspectFill

@@ -527,6 +527,8 @@ extension SignUpPNViewController {
         shrinkAnimation(viewToAnimate: signUpTitleLabel, delay: 0.45)
         shrinkAnimation(viewToAnimate: backImageView, delay: 0.49)
         shrinkAnimation(viewToAnimate: continueButton.continueLabel, delay: 0.3)
+        continueButton.spinner.stopAnimating()
+        continueButton.spinner.isHidden = true
         
         continueWidth.constant = 63
         

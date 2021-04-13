@@ -42,9 +42,9 @@ extension EventFeedViewController {
         if let imageUrl = User.current.profilePhotoUrl {
             userProfileImageView.kf.setImage(with: URL(string: imageUrl))
         } else {
-            userProfileImageView.image = nil
+            userProfileImageView.image = UIImage.init(named: "profileImagePH")
+            userProfileImageView.backgroundColor = UIColor(red: 42/255, green: 42/255, blue: 42/255, alpha: 1.0)
         }
-        userProfileImageView.backgroundColor = .clear
         userProfileImageView.layer.cornerRadius = 39/2
         userProfileImageView.layer.masksToBounds = true
         userProfileImageView.contentMode = .scaleAspectFill
@@ -395,7 +395,8 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 43
+        //return 43
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
