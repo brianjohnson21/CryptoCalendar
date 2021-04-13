@@ -26,6 +26,7 @@ class CoinOptionsViewController: UIViewController {
     var navView = UIView()
     var navTitleLabel = UILabel()
     var keyLine = UIView()
+    var watchlistOption = OptionsView()
     var compareOption = OptionsView()
     var newChatOption = OptionsView()
     var newGroupOption = OptionsView()
@@ -112,7 +113,31 @@ extension CoinOptionsViewController {
             self.newGroupOption.alpha = 0
             self.newChannelOption.alpha = 0
             self.compareOption.alpha = 0
+            self.watchlistOption.alpha = 0
             self.shareOption.alpha = 0
+            self.coinContainer.alpha = 0
+        } completion: { (success) in
+            //self.delegate?.pinCoin(coinPinned: self.coin!)
+            self.successCheck.alpha = 1.0
+            self.successCheck.play()
+            self.addedToWatchListLabel.text = "Add to watchlist!"
+            UIView.animate(withDuration: 0.35) {
+                self.addedToWatchListLabel.alpha = 1.0
+            }
+            self.perform(#selector(self.dimissVC), with: self, afterDelay: 1.5)
+        }
+    }
+    
+    @objc func addPinTapped() {
+        lightImpactGenerator()
+        UIView.animate(withDuration: 0.35) {
+            self.newChatOption.alpha = 0
+            self.newGroupOption.alpha = 0
+            self.newChannelOption.alpha = 0
+            self.compareOption.alpha = 0
+            self.watchlistOption.alpha = 0
+            self.shareOption.alpha = 0
+            self.coinContainer.alpha = 0
         } completion: { (success) in            
             self.delegate?.pinCoin(coinPinned: self.coin!)
             self.successCheck.alpha = 1.0
@@ -131,7 +156,9 @@ extension CoinOptionsViewController {
             self.newGroupOption.alpha = 0
             self.newChannelOption.alpha = 0
             self.compareOption.alpha = 0
+            self.watchlistOption.alpha = 0
             self.shareOption.alpha = 0
+            self.coinContainer.alpha = 0
         } completion: { (success) in
             self.delegate?.unPinCoin()
             self.successCheck.alpha = 1.0
@@ -190,6 +217,12 @@ extension CoinOptionsViewController {
             
             self.compareOption.alpha = 0
             self.compareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.watchlistOption.alpha = 0
+            self.watchlistOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            
+            self.coinContainer.alpha = 0
+            self.coinContainer.transform = CGAffineTransform(translationX: -100, y: 0)
             
             self.view.layoutIfNeeded()
         } completion: { (success) in

@@ -22,15 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func determineLaunchPoint() {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "MyTabBarController") as! MyTabBarController
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
-                    
 //        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+//        let vc = sb.instantiateViewController(withIdentifier: "MyTabBarController") as! MyTabBarController
 //        window?.rootViewController = vc
 //        window?.makeKeyAndVisible()
+                    
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

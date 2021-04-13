@@ -44,7 +44,7 @@ extension CoinOptionsViewController {
         mainContainer.bottomAnchor.constraint(equalTo: wrapper.bottomAnchor, constant: 0).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 460)
+        mainHeight = mainContainer.heightAnchor.constraint(equalToConstant: 540)
         mainHeight.isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         
@@ -149,7 +149,7 @@ extension CoinOptionsViewController {
         if isPinnedCoin {
             newChatOption.optionButton.addTarget(self, action: #selector(removePinTapped), for: .touchUpInside)
         } else {
-            newChatOption.optionButton.addTarget(self, action: #selector(tappedAddToWatchlist), for: .touchUpInside)
+            newChatOption.optionButton.addTarget(self, action: #selector(addPinTapped), for: .touchUpInside)
         }
         newChatOption.iconImageView.image = isPinnedCoin ? UIImage(named: "unpinCoin") : UIImage(named: "pinCoin")
         newChatOption.iconImageView.setImageColor(color: .coinBaseBlue)
@@ -174,6 +174,18 @@ extension CoinOptionsViewController {
         compareOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         compareOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
+        watchlistOption.optionButton.addTarget(self, action: #selector(tappedAddToWatchlist), for: .touchUpInside)
+        watchlistOption.iconImageView.image = UIImage(named: "eye")
+        watchlistOption.iconImageView.setImageColor(color: .coinBaseBlue)
+        watchlistOption.optionTitleLabel.text = "Add to Watchlist"
+        watchlistOption.optionDetailLabel.text = "Keep an eye on this coin"
+        watchlistOption.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.addSubview(watchlistOption)
+        watchlistOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
+        watchlistOption.topAnchor.constraint(equalTo: compareOption.bottomAnchor, constant: 0).isActive = true
+        watchlistOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
+        watchlistOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
+        
         newGroupOption.optionButton.addTarget(self, action: #selector(didTapSetAlert), for: .touchUpInside)
         newGroupOption.iconImageView.image = UIImage(named: "bell")
         newGroupOption.iconImageView.setImageColor(color: .coinBaseBlue)
@@ -182,7 +194,7 @@ extension CoinOptionsViewController {
         newGroupOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newGroupOption)
         newGroupOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
-        newGroupOption.topAnchor.constraint(equalTo: compareOption.bottomAnchor, constant: 0).isActive = true
+        newGroupOption.topAnchor.constraint(equalTo: watchlistOption.bottomAnchor, constant: 0).isActive = true
         newGroupOption.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         newGroupOption.heightAnchor.constraint(equalToConstant: 72).isActive = true
         
