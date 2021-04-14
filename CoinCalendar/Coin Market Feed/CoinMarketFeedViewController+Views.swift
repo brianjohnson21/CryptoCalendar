@@ -70,6 +70,7 @@ extension CoinMarketFeedViewController {
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
         
+        /*
         userGreetingLabel.text = "Good morning,"
         userGreetingLabel.textAlignment = .left
         userGreetingLabel.textColor = UIColor.black.withAlphaComponent(0.3)
@@ -89,6 +90,7 @@ extension CoinMarketFeedViewController {
         profileContainer.addSubview(userNameLabel)
         userNameLabel.leadingAnchor.constraint(equalTo: userGreetingLabel.leadingAnchor, constant: 0).isActive = true
         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
+        */
         
         calendarImageView.image = UIImage(named: "info")
         calendarImageView.contentMode = .scaleAspectFill
@@ -107,15 +109,6 @@ extension CoinMarketFeedViewController {
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-                
-        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
-        profileButton.backgroundColor = .clear
-        profileButton.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(profileButton)
-        profileButton.leadingAnchor.constraint(equalTo: profileContainer.leadingAnchor).isActive = true
-        profileButton.topAnchor.constraint(equalTo: profileContainer.topAnchor).isActive = true
-        profileButton.bottomAnchor.constraint(equalTo: profileContainer.bottomAnchor).isActive = true
-        profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
         
         pinContainer.isUserInteractionEnabled = true
         let pinContainerTapped = UITapGestureRecognizer(target: self, action: #selector(removePinnedCoin))
@@ -129,6 +122,25 @@ extension CoinMarketFeedViewController {
         pinContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
         pinHeight = pinContainer.heightAnchor.constraint(equalToConstant: 0)
         pinHeight.isActive = true
+        
+        titleLabel.text = "Market Data"
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        titleLabel.font = .sofiaBold(ofSize: 24)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileContainer.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 10).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        
+        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
+        profileButton.backgroundColor = .clear
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(profileButton)
+        profileButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
+        profileButton.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
+        profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
+        profileButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
         
     }
     

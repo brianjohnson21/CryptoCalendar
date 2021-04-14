@@ -49,7 +49,7 @@ extension SetAlertOptionOneTableViewCell {
         upDownImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(upDownImageView)
         upDownImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 5).isActive = true
-        upDownImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: -2).isActive = true
+        upDownImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: -1).isActive = true
         upDownImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
         upDownImageView.widthAnchor.constraint(equalToConstant: 13).isActive = true
         

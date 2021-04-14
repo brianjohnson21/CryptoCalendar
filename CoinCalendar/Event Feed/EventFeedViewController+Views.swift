@@ -52,34 +52,27 @@ extension EventFeedViewController {
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
         
-        userGreetingLabel.text = "Good morning,"
-        userGreetingLabel.textAlignment = .left
-        userGreetingLabel.textColor = UIColor.black.withAlphaComponent(0.3)
-        userGreetingLabel.font = .sofiaRegular(ofSize: 12)
-        userGreetingLabel.numberOfLines = 0
-        userGreetingLabel.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(userGreetingLabel)
-        userGreetingLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 6).isActive = true
-        userGreetingLabel.topAnchor.constraint(equalTo: userProfileImageContainer.topAnchor, constant: 5).isActive = true
-        
-        userNameLabel.text = User.current.name
-        userNameLabel.textAlignment = .left
-        userNameLabel.textColor = .black
-        userNameLabel.font = .sofiaSemiBold(ofSize: 12)
-        userNameLabel.numberOfLines = 0
-        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(userNameLabel)
-        userNameLabel.leadingAnchor.constraint(equalTo: userGreetingLabel.leadingAnchor, constant: 0).isActive = true
-        userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
-        
-        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
-        profileButton.backgroundColor = .clear
-        profileButton.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(profileButton)
-        profileButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
-        profileButton.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
-        profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
-        profileButton.trailingAnchor.constraint(equalTo: userGreetingLabel.trailingAnchor).isActive = true
+        /*
+         userGreetingLabel.text = "Good morning,"
+         userGreetingLabel.textAlignment = .left
+         userGreetingLabel.textColor = UIColor.black.withAlphaComponent(0.3)
+         userGreetingLabel.font = .sofiaRegular(ofSize: 12)
+         userGreetingLabel.numberOfLines = 0
+         userGreetingLabel.translatesAutoresizingMaskIntoConstraints = false
+         navView.addSubview(userGreetingLabel)
+         userGreetingLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 6).isActive = true
+         userGreetingLabel.topAnchor.constraint(equalTo: userProfileImageContainer.topAnchor, constant: 5).isActive = true
+         
+         userNameLabel.text = User.current.name
+         userNameLabel.textAlignment = .left
+         userNameLabel.textColor = .black
+         userNameLabel.font = .sofiaSemiBold(ofSize: 12)
+         userNameLabel.numberOfLines = 0
+         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
+         navView.addSubview(userNameLabel)
+         userNameLabel.leadingAnchor.constraint(equalTo: userGreetingLabel.leadingAnchor, constant: 0).isActive = true
+         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
+         */
         
         infoImageView.image = UIImage(named: "info")
         infoImageView.contentMode = .scaleAspectFill
@@ -135,6 +128,25 @@ extension EventFeedViewController {
         alertsButton.trailingAnchor.constraint(equalTo: bellImageView.trailingAnchor, constant: 5).isActive = true
         alertsButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
         alertsButton.bottomAnchor.constraint(equalTo: bellImageView.bottomAnchor, constant: 5).isActive = true
+        
+        titleLabel.text = "Key Events"
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        titleLabel.font = .sofiaBold(ofSize: 24)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 10).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        
+        profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
+        profileButton.backgroundColor = .clear
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(profileButton)
+        profileButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
+        profileButton.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
+        profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
+        profileButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
         
         setupSegmentio()
                 

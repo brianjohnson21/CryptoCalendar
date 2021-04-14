@@ -31,6 +31,7 @@ class CoinMarketFeedViewController: UIViewController {
     var sortImageView = UIImageView()
     var sortButton = UIButton()
     var infoButton = UIButton()
+    var titleLabel = UILabel()
     
     var mainFeedContainer = UIScrollView()
     var dataHeadersScrollView = UIScrollView()

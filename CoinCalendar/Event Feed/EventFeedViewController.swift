@@ -24,6 +24,7 @@ class EventFeedViewController: UIViewController {
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
     var segmentioControl: Segmentio!
+    var titleLabel = UILabel()
     
     var userProfileImageContainer = UIView()
     var userProfileImageView = UIImageView()

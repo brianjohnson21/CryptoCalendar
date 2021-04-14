@@ -26,6 +26,7 @@ class HomeFeedViewController: UIViewController {
     var calendarImageView = UIImageView()
     var sortImageView = UIImageView()
     var sortButton = UIButton()
+    var titleLabel = UILabel()
     
     var fromSignUp = UserDefaults()
     
