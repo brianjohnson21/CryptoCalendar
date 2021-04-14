@@ -27,7 +27,9 @@ class PickerViewController: UIViewController {
     var isDismissing = false
     var resetButton = ContinueButton()
     
-    var pickerOptions: [String] = ["Day of", "Day before", "3 days before", "7 days before", "14 days before", "1 month before"]
+    var pickerOptions: [String] = ["Day of", "Day before", "3 days before", "7 days before", "14 days before", "30 days before"]
+
+    var daysTillEvent: Int = 30
     
     var selectedDate = Date()
     

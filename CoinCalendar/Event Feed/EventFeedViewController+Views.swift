@@ -220,16 +220,27 @@ extension EventFeedViewController {
         segmentioControl.valueDidChange = { [weak self] segmentio, segmentIndex in
             self?.lightImpactGenerator()
             print("Selected item: ", segmentIndex)
-//            let segmentedIndex = IndexPath(item: segmentIndex, section: 0)
-//            self.workoutLibraryTableView.reloadData()
-
-//            let sectionIndex = IndexSet(integer: 1)
-
-            self?.mainFeedTableView.reloadData()
-            //self.workoutLibraryTableView.reloadSections(sectionIndex, with: .automatic)
-
-            //self.workoutLibraryTableView.reloadSections(NSIndexSet(index: 1) as IndexSet, with: .none)
-
+            
+            switch segmentIndex {
+            case 0:
+                print("did this")
+                self?.watchListEmptyState.hidViews()
+            case 1:
+                print("did this")
+                self?.watchListEmptyState.hidViews()
+            case 2:
+                print("did this")
+                self?.watchListEmptyState.hidViews()
+            default:
+                print("did this")
+                if let watchListPostsCount = self?.watchlistPosts.count {
+                    if watchListPostsCount < 1 {
+                        self?.watchListEmptyState.showViews()
+                    }
+                }
+            }
+            //self?.mainFeedTableView.reloadData()
+            self?.mainFeedTableView.reloadSections([0], with: .fade)
         }
 
         let separatorLine = UIView()
@@ -335,6 +346,26 @@ extension EventFeedViewController {
         */
     }
     
+    func setupEmptyState() {
+        watchListEmptyState.isUserInteractionEnabled = false
+        watchListEmptyState.layer.zPosition = 100
+        watchListEmptyState.isHidden = true
+        watchListEmptyState.squadUpButton.isHidden = true
+        watchListEmptyState.lockLabel.text = "👀🧐"
+        watchListEmptyState.lockTitleLabel.text = "Watchlist Empty"
+        watchListEmptyState.lockDetailLabel.setupLineHeight(myText: "Add events that you want to keep on your\nradar and receive notifications for", myLineSpacing: 4)
+        watchListEmptyState.lockDetailLabel.textAlignment = .center
+        watchListEmptyState.squadUpButton.setTitle("Browse users", for: .normal)
+        watchListEmptyState.backgroundColor = .clear
+        watchListEmptyState.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(watchListEmptyState)
+        watchListEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
+        //searchEmptyState.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 25).isActive = true
+        watchListEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
+        watchListEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        watchListEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
+    }
+    
 }
 
 //MARK: TABLEVIEW DELEGATE & DATASOURCE
@@ -364,6 +395,7 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: mainFeedCardTableViewCell, for: indexPath) as! MainFeedCardTableViewCell
         
         var source: [Post]!
+        
         if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts
         } else if segmentioControl.selectedSegmentioIndex == 1 {
@@ -386,6 +418,46 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
             cell.cryptoImageView.image = nil
             cell.cryptoImageView.backgroundColor = .red
         }
+        
+        if let postVerified = post.isVerified {
+            if let postImportant = post.isImportant {
+                if postImportant {
+                    cell.importantEventImageView.isHidden = false
+                } else {
+                    cell.importantEventImageView.isHidden = true
+                }
+                
+                if postVerified {
+                    cell.verifiedEventImageView.isHidden = false
+                } else {
+                    cell.verifiedEventImageView.isHidden = true
+                }
+                
+                if postImportant == true && postVerified == false {
+                    cell.verifiedEventImageView.isHidden = false
+                    cell.importantEventImageView.isHidden = true
+                    cell.verifiedEventImageView.image = UIImage(named: "importantEvent")
+                    cell.importantEventImageView.image = UIImage(named: "importantEvent")
+                } else {
+                    cell.verifiedEventImageView.image = UIImage(named: "verifiedEvent")
+                    cell.importantEventImageView.image = UIImage(named: "importantEvent")
+                }
+            }
+        }
+        
+        // Create date formatter
+        let dateFormatter: DateFormatter = DateFormatter()
+        
+        // Set date format
+        dateFormatter.dateFormat = "MM/dd/yyyy"//"MM/dd/yyyy hh:mm a"
+        
+        // Apply date format
+        if let postEventDate = post.eventDate {
+            let selectedDate: String = dateFormatter.string(from: postEventDate)
+            cell.dateLabel.text = "\(selectedDate)"
+        }
+        
+        //print("\(post.resourceLink) - 🤟🤟🤟")
         
         return cell
     }
@@ -416,6 +488,7 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lightImpactGenerator()
+        let eventOptionsVC =  EventOptionsViewController()
         
         var source: [Post]!
         if segmentioControl.selectedSegmentioIndex == 0 {
@@ -426,10 +499,11 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
             source = self.newPosts
         } else if segmentioControl.selectedSegmentioIndex == 3 {
             source = self.watchlistPosts
+            eventOptionsVC.fromWatchList = true
         }
         self.selectedPost = source[indexPath.row]
+        eventOptionsVC.post = source[indexPath.row]
         
-        let eventOptionsVC =  EventOptionsViewController()//PickerViewController() //EventOptionsViewController()
         eventOptionsVC.delegate = self
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)

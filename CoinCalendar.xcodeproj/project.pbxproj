@@ -56,6 +56,8 @@
 		DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42474C261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift */; };
 		DE424751261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE424750261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift */; };
 		DE42475426196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */; };
+		DE55D2EC26267D9E00F9295D /* EventSourceWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D2EB26267D9E00F9295D /* EventSourceWebViewController.swift */; };
+		DE55D2F42626877C00F9295D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D2F32626877C00F9295D /* EmptyStateView.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -166,6 +168,8 @@
 		DE42474C261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceVolumeMarketFeedViewController.swift; sourceTree = "<group>"; };
 		DE424750261969D200E185D4 /* PriceVolumeMarketFeedViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PriceVolumeMarketFeedViewController+Views.swift"; sourceTree = "<group>"; };
 		DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceVolumeMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D2EB26267D9E00F9295D /* EventSourceWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSourceWebViewController.swift; sourceTree = "<group>"; };
+		DE55D2F32626877C00F9295D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -383,6 +387,14 @@
 			path = "PriceVolume Market Feed";
 			sourceTree = "<group>";
 		};
+		DE55D2EA26267D8D00F9295D /* Coin Source Webview */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D2EB26267D9E00F9295D /* EventSourceWebViewController.swift */,
+			);
+			path = "Coin Source Webview";
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +426,7 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE55D2EA26267D8D00F9295D /* Coin Source Webview */,
 				DE3DC20426251BB80089E021 /* Coin Details */,
 				DE3DC157262416890089E021 /* Compare Coins */,
 				DED657B826223D16002CC83D /* Price Alert */,
@@ -506,6 +519,7 @@
 				DE4246602614E54400E185D4 /* CircularProgressView.swift */,
 				DED285AA261C0D32002F34B6 /* FilterOptionView.swift */,
 				DED6575F2621EE8A002CC83D /* PlayerViewClass.swift */,
+				DE55D2F32626877C00F9295D /* EmptyStateView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -738,6 +752,7 @@
 				DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */,
 				DE3DC17E26248B7E0089E021 /* CompareTableViewCell.swift in Sources */,
 				DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */,
+				DE55D2EC26267D9E00F9295D /* EventSourceWebViewController.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
 				DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */,
@@ -784,6 +799,7 @@
 				DE4246B926169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift in Sources */,
 				DE9AA5FB2610FD080057A259 /* Extensions.swift in Sources */,
 				DE4245DA261376DC00E185D4 /* PickerViewController+Views.swift in Sources */,
+				DE55D2F42626877C00F9295D /* EmptyStateView.swift in Sources */,
 				DE9AA6492611542F0057A259 /* SignUpPNViewController.swift in Sources */,
 				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
 				DE3DC20D262528010089E021 /* CoinDetailCoinTableViewCell.swift in Sources */,

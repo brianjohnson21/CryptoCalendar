@@ -12,6 +12,8 @@ import ViewAnimator
 
 class EventFeedViewController: UIViewController {
     
+    var watchListEmptyState = EmptyStateView()
+    
     let launchTransition = LaunchTransitionView()
     var transitionView = UIView()
     var loadingContainer = UIView()
@@ -48,6 +50,8 @@ class EventFeedViewController: UIViewController {
         return User.current.watchlistPosts
     }
     
+    var selectedSourceLink: String = "http://www.apple.com"
+    
     var selectedPost: Post?
 
     override func viewDidLoad() {
@@ -61,7 +65,7 @@ class EventFeedViewController: UIViewController {
         setupNav()
         setupTableView()
         setupLoadingIndicator()
-        
+        setupEmptyState()
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
                 
         perform(#selector(animateCells), with: self, afterDelay: 0.25)
@@ -191,6 +195,23 @@ extension EventFeedViewController: SortFilterViewControllerDelegate {
 }
 
 extension EventFeedViewController: EventOptionsViewControllerDelegate {
+    func removeFromWatchlist() {
+        //Dylan, remove post from watch list here
+        //self.selectedPost remove this bish
+        print("did this remove")
+    }
+    
+    func didTapViewSource() {
+        let eventSourceVC = EventSourceWebViewController()
+        if let resource = selectedPost?.resourceLink {
+            eventSourceVC.urlString = resource
+            //print("\(resource) - 🎯🎯🎯")
+        }
+        self.present(eventSourceVC, animated: true) {
+            //
+        }
+    }
+    
     func addToWatchlistClicked() {
         guard let post = self.selectedPost else { return }
         User.addPostToWatchlist(post: post)

@@ -274,6 +274,9 @@ extension SignUpPNViewController {
         //shrinkAnimation(viewToAnimate: continueButton.continueLabel, delay: 0.3)
         //shrinkAnimation(viewToAnimate: continueButton.spinner, delay: 0.3)
         shrinkAnimation(viewToAnimate: dismissImageView, delay: 0.35)
+        continueButton.spinner.stopAnimating()
+        continueButton.spinner.alpha = 0
+        continueButton.spinner.isHidden = true
         
         continueBottom.constant = -30
         UIView.animate(withDuration: 0.35) {
@@ -308,6 +311,7 @@ extension SignUpPNViewController {
         shrinkAnimation(viewToAnimate: continueButton.spinner, delay: 0.3)
         shrinkAnimation(viewToAnimate: dismissImageView, delay: 0.35)
         continueButton.spinner.stopAnimating()
+        continueButton.spinner.alpha = 0
         continueButton.spinner.isHidden = true
         
         continueWidth.constant = 63
@@ -528,6 +532,7 @@ extension SignUpPNViewController {
         shrinkAnimation(viewToAnimate: backImageView, delay: 0.49)
         shrinkAnimation(viewToAnimate: continueButton.continueLabel, delay: 0.3)
         continueButton.spinner.stopAnimating()
+        continueButton.spinner.alpha = 0
         continueButton.spinner.isHidden = true
         
         continueWidth.constant = 63

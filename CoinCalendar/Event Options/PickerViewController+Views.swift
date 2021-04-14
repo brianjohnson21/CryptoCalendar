@@ -128,7 +128,23 @@ extension PickerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
+        
+        if daysTillEvent > 30 {
+            return 6
+        } else if daysTillEvent > 14 {
+            return 5
+        } else if daysTillEvent > 7 {
+            return 4
+        } else if daysTillEvent > 3 {
+            return 3
+        } else if daysTillEvent > 2 {
+            return 2
+        } else if daysTillEvent > 1 {
+            return 1
+        } else {
+            return 0
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {

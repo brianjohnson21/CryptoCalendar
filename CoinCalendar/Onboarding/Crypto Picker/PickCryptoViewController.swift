@@ -107,8 +107,8 @@ extension PickCryptoViewController {
     }
     
     @objc func continueClicked() {
-        continueButton.showLoader()
-        continueButton.spinner.isHidden = true
+        //continueButton.showLoader()
+        continueButton.spinner.isHidden = true        
         User.current.watchlist = self.coinsSelected
         
         API.sharedInstance.updateUser(user: User.current) { (success, user, error) in
@@ -168,6 +168,7 @@ extension PickCryptoViewController {
         shrinkAnimation(viewToAnimate: continueButton.continueLabel, delay: 0.3)
         shrinkAnimation(viewToAnimate: continueButton.spinner, delay: 0.3)
         continueButton.spinner.stopAnimating()
+        continueButton.spinner.alpha = 0
         continueButton.spinner.isHidden = true
         
         continueWidth.constant = 63

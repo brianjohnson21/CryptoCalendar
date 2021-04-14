@@ -60,10 +60,10 @@ extension EventOptionsViewController {
         //
         
         newChatOption.optionButton.addTarget(self, action: #selector(tappedAddToWatchlist), for: .touchUpInside)
-        newChatOption.iconImageView.image = UIImage(named: "eye")
+        newChatOption.iconImageView.image = UIImage(named: fromWatchList ? "eye-cross" : "eye")
         newChatOption.iconImageView.setImageColor(color: .coinBaseBlue)
-        newChatOption.optionTitleLabel.text = "Add to Watchlist"
-        newChatOption.optionDetailLabel.text = "Keep an eye on this for later"
+        newChatOption.optionTitleLabel.text = fromWatchList ? "Remove from Watchlist" : "Add to Watchlist"
+        newChatOption.optionDetailLabel.text = fromWatchList ? "Remove this event from your watchlist" : "Keep an eye on this for later"
         newChatOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(newChatOption)
         newChatOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true
@@ -123,7 +123,7 @@ extension EventOptionsViewController {
         //successCheck.play()
         
         addedToWatchListLabel.alpha = 0
-        addedToWatchListLabel.text = "Added to watchlist!"
+        addedToWatchListLabel.text = fromWatchList ? "Removed from watchlist!" : "Added to watchlist!"
         addedToWatchListLabel.textAlignment = .center
         addedToWatchListLabel.textColor = UIColor.black.withAlphaComponent(0.6)
         addedToWatchListLabel.font = .sofiaRegular(ofSize: 20)

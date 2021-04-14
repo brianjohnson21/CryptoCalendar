@@ -10,7 +10,9 @@ import Lottie
 
 protocol EventOptionsViewControllerDelegate: class {
     func addToWatchlistClicked()
+    func removeFromWatchlist()
     func setAlertClicked(date: Date)
+    func didTapViewSource()
 }
 
 class EventOptionsViewController: UIViewController {
@@ -31,6 +33,10 @@ class EventOptionsViewController: UIViewController {
     let toastView = ToastNotificationView()
     
     var isDismissing = false
+    var showSource = false
+    var fromWatchList = false
+    
+    var post: Post?
     
     weak var delegate: EventOptionsViewControllerDelegate?
 
@@ -39,6 +45,8 @@ class EventOptionsViewController: UIViewController {
 
         setupViews()
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.01)
+        print("\(post?.eventDate) - 🔥🔥🔥")
+        
         
     }
 
@@ -48,8 +56,11 @@ class EventOptionsViewController: UIViewController {
 
 extension EventOptionsViewController {
     @objc func didTapAddtoCustom() {
-        errorImpactGenerator()
-        toastView.presentError(withMessage: "Coming in v1.1")
+        //errorImpactGenerator()
+        //toastView.presentError(withMessage: "Coming in v1.1")
+        //delegate?.didTapViewSource()
+        showSource = true
+        self.dimissVC()
     }
     
     @objc func didTapShareWithFriends() {
@@ -69,20 +80,17 @@ extension EventOptionsViewController {
     }
     
     @objc func tappedAddToWatchlist() {
-        delegate?.addToWatchlistClicked()
+        if fromWatchList {
+            delegate?.removeFromWatchlist()
+        } else {
+            delegate?.addToWatchlistClicked()
+        }
         lightImpactGenerator()
         UIView.animate(withDuration: 0.35) {
             self.newChatOption.alpha = 0
-            //self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
             self.newGroupOption.alpha = 0
-            //self.newGroupOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
             self.newChannelOption.alpha = 0
-            //self.newChannelOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
             self.shareOption.alpha = 0
-            //self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
         } completion: { (success) in
             self.successCheck.alpha = 1.0
             self.successCheck.play()
@@ -110,37 +118,67 @@ extension EventOptionsViewController {
             self.opacityLayer.alpha = 0
         } completion: { (success) in
             self.dismiss(animated: false) {
-                //
+                if self.showSource {
+                    self.delegate?.didTapViewSource()
+                }
             }
         }
     }
     
     @objc func didTapSetAlert() {
         lightImpactGenerator()
-        UIView.animate(withDuration: 0.35) {
-            self.newChatOption.alpha = 0
-            self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
+        
+        if let postEventDate = post?.eventDate {
+            let date = Date()
+            let difference = postEventDate.days(from: date)
             
-            self.newGroupOption.alpha = 0
-            self.newGroupOption.transform = CGAffineTransform(translationX: -100, y: 0)
+            if difference <= 1 {
+                errorImpactGenerator()
+                toastView.presentError(withMessage: "Can't set a notification")
+                newGroupOption.badWiggle()
+            } else {
+                UIView.animate(withDuration: 0.35) {
+                    self.newChatOption.alpha = 0
+                    self.newChatOption.transform = CGAffineTransform(translationX: -100, y: 0)
+                    
+                    self.newGroupOption.alpha = 0
+                    self.newGroupOption.transform = CGAffineTransform(translationX: -100, y: 0)
+                    
+                    self.newChannelOption.alpha = 0
+                    self.newChannelOption.transform = CGAffineTransform(translationX: -100, y: 0)
+                    
+                    self.shareOption.alpha = 0
+                    self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
+                } completion: { (success) in
+                    self.showSetAlert()
+                }
+            }
             
-            self.newChannelOption.alpha = 0
-            self.newChannelOption.transform = CGAffineTransform(translationX: -100, y: 0)
-            
-            self.shareOption.alpha = 0
-            self.shareOption.transform = CGAffineTransform(translationX: -100, y: 0)
-        } completion: { (success) in
-            self.showSetAlert()
         }
+                
     }
     
     @objc func showSetAlert() {
         let eventOptionsVC =  PickerViewController()
-        eventOptionsVC.delegate = self
-        eventOptionsVC.modalPresentationStyle = .overFullScreen
-        self.present(eventOptionsVC, animated: false) {
-            self.mainContainer.isHidden = true
-            self.keyLine.isHidden = true
+        
+        if let postEventDate = post?.eventDate {
+            let date = Date()
+            let difference = postEventDate.days(from: date)
+            eventOptionsVC.daysTillEvent = difference
+            
+            //print("\(difference) - 🥶🥶🥶")
+            
+            if difference <= 1 {
+                errorImpactGenerator()
+                toastView.presentError(withMessage: "Can't set a notification")
+            } else {
+                eventOptionsVC.delegate = self
+                eventOptionsVC.modalPresentationStyle = .overFullScreen
+                self.present(eventOptionsVC, animated: false) {
+                    self.mainContainer.isHidden = true
+                    self.keyLine.isHidden = true
+                }
+            }
         }
     }
 }
