@@ -15,7 +15,8 @@ import WXImageCompress
 import AuthenticationServices
 
 protocol SignUpPNViewControllerDelegate: class {
-    func didCompleteNowFadeMusic()
+    //func didCompleteNowFadeMusic()
+    func didGoBack()
 }
 
 class SignUpPNViewController: UIViewController {
@@ -45,7 +46,7 @@ class SignUpPNViewController: UIViewController {
     
     //
     
-    //var delegate: SignUpPNViewControllerDelegate!
+    var delegate: SignUpPNViewControllerDelegate!
     var backImageView = UIImageView()
     var dismissImageView = UIImageView()
     var backDismissButton = UIButton()
@@ -241,16 +242,22 @@ extension SignUpPNViewController {
     
     @objc func dismissVC() {
         if stepOne {
+            self.continueBottom.constant = -72
+            self.continueWidth.constant = 252
+            self.getStartedWidth.constant = 252
+            self.getStartedBottom.constant = -72
+            self.getStartedButton.isHidden = false
             UIView.animate(withDuration: 0.35) {
-                self.mainContainer.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height + 10)
+                self.view.layoutIfNeeded()
+                self.mainContainer.alpha = 0
+                self.continueButton.alpha = 0
+                self.getStartedButton.alpha = 1.0
+                self.getStartedLabel.alpha = 1.0
+                self.getStartedArrowImageView.alpha = 1.0
                 self.view.endEditing(true)
             } completion: { (success) in
-//                if self.isClubHouse {
-                    self.dismiss(animated: true, completion: nil)
-//                } else {
-//                    //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {})
-//                    self.dismiss(animated: true, completion: nil)
-//                }
+                self.delegate.didGoBack()
+                self.dismiss(animated: false, completion: nil)
             }
         } else if stepTwo {
             goBackToEnterEmail()

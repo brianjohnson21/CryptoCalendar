@@ -58,6 +58,8 @@
 		DE42475426196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */; };
 		DE55D2EC26267D9E00F9295D /* EventSourceWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D2EB26267D9E00F9295D /* EventSourceWebViewController.swift */; };
 		DE55D2F42626877C00F9295D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D2F32626877C00F9295D /* EmptyStateView.swift */; };
+		DE55D30A2627CF0700F9295D /* LoginPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3092627CF0700F9295D /* LoginPNViewController.swift */; };
+		DE55D30D2627CF7A00F9295D /* LoginPNViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D30C2627CF7A00F9295D /* LoginPNViewController+Views.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -170,6 +172,8 @@
 		DE42475326196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceVolumeMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
 		DE55D2EB26267D9E00F9295D /* EventSourceWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSourceWebViewController.swift; sourceTree = "<group>"; };
 		DE55D2F32626877C00F9295D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		DE55D3092627CF0700F9295D /* LoginPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPNViewController.swift; sourceTree = "<group>"; };
+		DE55D30C2627CF7A00F9295D /* LoginPNViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginPNViewController+Views.swift"; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -395,6 +399,15 @@
 			path = "Coin Source Webview";
 			sourceTree = "<group>";
 		};
+		DE55D3082627CEF200F9295D /* Login Flow */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D3092627CF0700F9295D /* LoginPNViewController.swift */,
+				DE55D30C2627CF7A00F9295D /* LoginPNViewController+Views.swift */,
+			);
+			path = "Login Flow";
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +470,7 @@
 			children = (
 				DE1EA42726211BB500954FBC /* TempCodeViewController.swift */,
 				DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */,
+				DE55D3082627CEF200F9295D /* Login Flow */,
 				DE4247162619145B00E185D4 /* Splash */,
 				DE9AA647261154080057A259 /* Sign Up Flow */,
 				DE4246552614D27300E185D4 /* Crypto Picker */,
@@ -787,6 +801,7 @@
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,
 				DE42465B2614D29E00E185D4 /* PickCryptoViewController+Views.swift in Sources */,
 				DE9AA669261155520057A259 /* ToastNotificationView.swift in Sources */,
+				DE55D30D2627CF7A00F9295D /* LoginPNViewController+Views.swift in Sources */,
 				FC565FBA26261CED0093D019 /* Post.swift in Sources */,
 				DE4245D7261376D000E185D4 /* PickerViewController.swift in Sources */,
 				DED285D7261CC0A0002F34B6 /* InfoViewController.swift in Sources */,
@@ -807,6 +822,7 @@
 				DED28639261F90A6002F34B6 /* CoinOptionsViewController.swift in Sources */,
 				DE3DC159262416A20089E021 /* CompareCoinsViewController.swift in Sources */,
 				DED657692621FD45002CC83D /* EventInfoTableViewCell.swift in Sources */,
+				DE55D30A2627CF0700F9295D /* LoginPNViewController.swift in Sources */,
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,

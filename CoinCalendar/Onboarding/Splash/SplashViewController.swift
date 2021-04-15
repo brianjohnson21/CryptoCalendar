@@ -226,9 +226,19 @@ extension SplashViewController {
     
     @objc func didTapGetStarted() {
         let signupPN = SignUpPNViewController()
+        signupPN.delegate = self
         signupPN.modalPresentationStyle = .overFullScreen
         self.present(signupPN, animated: false) {
             self.getStartedButton.isHidden = true
+        }
+    }
+    
+    @objc func didTapLogin() {
+        let signupPN = LoginPNViewController()
+        //signupPN.delegate = self
+        signupPN.modalPresentationStyle = .overFullScreen
+        self.present(signupPN, animated: true) {
+            //self.getStartedButton.isHidden = true
         }
     }
     
@@ -262,4 +272,12 @@ extension SplashViewController: TempCodeViewControllerDelegate {
         didTapGetStarted()
     }    
 
+}
+
+//MARK: SIGN UP PN DELEGATE
+
+extension SplashViewController: SignUpPNViewControllerDelegate {
+    func didGoBack() {
+        self.getStartedButton.isHidden = false
+    }
 }

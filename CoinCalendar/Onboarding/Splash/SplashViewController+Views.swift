@@ -115,6 +115,7 @@ extension SplashViewController {
         goingToMoonLabel.leadingAnchor.constraint(equalTo: calendarLabel.leadingAnchor, constant: 5).isActive = true
         goingToMoonLabel.topAnchor.constraint(equalTo: calendarLabel.bottomAnchor, constant: 10).isActive = true
         
+        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
         loginButton.layer.borderWidth = 2
         loginButton.layer.borderColor = UIColor.coinBaseBlue.cgColor
         loginButton.backgroundColor = .clear

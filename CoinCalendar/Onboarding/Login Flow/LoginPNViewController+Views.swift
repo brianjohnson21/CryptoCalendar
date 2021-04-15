@@ -1,51 +1,15 @@
 //
-//  SignUpPNViewController+Views.swift
+//  LoginPNViewController+Views.swift
 //  CoinCalendar
 //
-//  Created by Stephen Mata on 3/28/21.
+//  Created by Stephen Mata on 4/14/21.
 //
 
 import Foundation
 import UIKit
 import Lottie
 
-extension SignUpPNViewController {
-    
-    func setupTransitionViews() {
-                    
-        getStartedButton.backgroundColor = .coinBaseBlue
-        getStartedButton.layer.cornerRadius = 63/2
-        getStartedButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(getStartedButton)
-        getStartedLeading = getStartedButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 18)
-        getStartedLeading.isActive = true
-        getStartedBottom = getStartedButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -72)
-        getStartedBottom.isActive = true
-        getStartedWidth = getStartedButton.widthAnchor.constraint(equalToConstant: 252)
-        getStartedWidth.isActive = true
-        getStartedButton.heightAnchor.constraint(equalToConstant: 63).isActive = true
-        
-        getStartedLabel.text = "GET STARTED"
-        getStartedLabel.textAlignment = .left
-        getStartedLabel.textColor = .white
-        getStartedLabel.font = .sofiaSemiBold(ofSize: 17)
-        getStartedLabel.numberOfLines = 0
-        getStartedLabel.translatesAutoresizingMaskIntoConstraints = false
-        getStartedButton.addSubview(getStartedLabel)
-        getStartedLabel.leadingAnchor.constraint(equalTo: getStartedButton.leadingAnchor, constant: 33).isActive = true
-        getStartedLabel.centerYAnchor.constraint(equalTo: getStartedButton.centerYAnchor, constant: 0).isActive = true
-                
-        getStartedArrowImageView.image = UIImage(named: "getStartedArrow")
-        getStartedArrowImageView.contentMode = .scaleAspectFill
-        getStartedArrowImageView.translatesAutoresizingMaskIntoConstraints = false
-        getStartedButton.addSubview(getStartedArrowImageView)
-        getStartedArrowImageView.centerYAnchor.constraint(equalTo: getStartedButton.centerYAnchor).isActive = true
-        getStartedArrowImageView.trailingAnchor.constraint(equalTo: getStartedButton.trailingAnchor, constant: -14).isActive = true
-        getStartedArrowImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        getStartedArrowImageView.widthAnchor.constraint(equalToConstant: 62).isActive = true
-        
-            
-    }
+extension LoginPNViewController {
     
     func setupViews() {
         
@@ -65,8 +29,6 @@ extension SignUpPNViewController {
             backTop = 40
         case .iphone11() :
             conBottom = -325
-            
-            
         default:
             conBottom = -325
         }
@@ -75,7 +37,6 @@ extension SignUpPNViewController {
         mainContainer.layer.cornerRadius = 15
         mainContainer.layer.masksToBounds = true
         mainContainer.backgroundColor = .white
-        mainContainer.alpha = 0
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainContainer)
         //mainContainer.fillSuperview()
@@ -116,10 +77,10 @@ extension SignUpPNViewController {
         backDismissButton.trailingAnchor.constraint(equalTo: dismissImageView.trailingAnchor, constant: 15).isActive = true
         
         signUpTitleLabel.alpha = 0
-        signUpTitleLabel.text = "Sign Up"
-        signUpTitleLabel.textColor = .keyEventHeadlineColorModeLight
+        signUpTitleLabel.text = "Log In"
         signUpTitleLabel.textAlignment = .left
-        signUpTitleLabel.font = .sofiaBold(ofSize: 34)
+        signUpTitleLabel.textColor = .coinBaseBlue
+        signUpTitleLabel.font = .sofiaBold(ofSize: 24)
         signUpTitleLabel.numberOfLines = 0
         signUpTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(signUpTitleLabel)
@@ -138,11 +99,7 @@ extension SignUpPNViewController {
         signUpSteplabel.topAnchor.constraint(equalTo: signUpTitleLabel.bottomAnchor, constant: 10).isActive = true
         
         pageControl.alpha = 0
-        if !isAppleEmailSignUp && !isFacebookSignUp {
-            pageControl.numberOfPages = 4
-        } else {
-            pageControl.numberOfPages = 3
-        }
+        pageControl.numberOfPages = 2
         pageControl.padding = 4
         pageControl.radius = 3
         pageControl.currentPageTintColor = .coinBaseBlue
@@ -150,55 +107,35 @@ extension SignUpPNViewController {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(pageControl)
         pageControl.topAnchor.constraint(equalTo: signUpTitleLabel.bottomAnchor, constant: 11).isActive = true
-        //pageControl.leadingAnchor.constraint(equalTo: signUpTitleLabel.leadingAnchor).isActive = true
-        pageControl.leadingAnchor.constraint(equalTo: signUpTitleLabel.leadingAnchor, constant: 10).isActive = true
+        pageControl.leadingAnchor.constraint(equalTo: signUpTitleLabel.leadingAnchor).isActive = true
         pageControl.heightAnchor.constraint(equalToConstant: 15).isActive = true
         pageControl.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         continueButton.alpha = 0
-        continueButton.continueLabel.alpha = 0
         continueButton.continueLabel.text = "Continue"
-        continueButton.layer.cornerRadius = 63/2
-        continueButton.backgroundColor = .coinBaseBlue
+        continueButton.setTitle("", for: .normal)
+        continueButton.titleLabel?.font = .sofiaSemiBold(ofSize: 17)
+        continueButton.setTitleColor(.white, for: .normal)
         continueButton.purpleBG.backgroundColor = .coinBaseBlue
+        continueButton.backgroundColor = .coinBaseBlue
+        continueButton.layer.cornerRadius = 63/2
         continueButton.layer.masksToBounds = true
         continueButton.translatesAutoresizingMaskIntoConstraints = false
-        //mainContainer.addSubview(continueButton)
         mainContainer.addSubview(continueButton)
-        //continueButton.centerXAnchor.constraint(equalTo: mainContainer.centerXAnchor, constant: 0).isActive = true
-        continueButton.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 18).isActive = true
-        continueBottom = continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -72)
+        continueButton.centerXAnchor.constraint(equalTo: mainContainer.centerXAnchor, constant: 0).isActive = true
+        continueBottom = continueButton.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor, constant: conBottom)
         continueBottom.isActive = true
-        let buttonWidth = self.view.frame.width - (18 * 2)
+        let buttonWidth = self.view.frame.width - (26 * 2)
         continueWidth = continueButton.widthAnchor.constraint(equalToConstant: buttonWidth)
         continueWidth.isActive = true
         continueHeight = continueButton.heightAnchor.constraint(equalToConstant: 63)
         continueHeight.isActive = true
-        
-        termsLabel.alpha = 0
-        termsLabel.setupLineHeight(myText: "By tapping continue, you are agreeing to our\nterms of use and privacy policy", myLineSpacing: 3)
-        termsLabel.textAlignment = .center
-        termsLabel.textColor = UIColor.coinBaseBlue.withAlphaComponent(0.6)
-        termsLabel.font = .sofiaRegular(ofSize: 10)
-        termsLabel.numberOfLines = 09
-        termsLabel.translatesAutoresizingMaskIntoConstraints = false
-        mainContainer.addSubview(termsLabel)
-        termsLabel.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: 8).isActive = true
-        termsLabel.centerXAnchor.constraint(equalTo: continueButton.centerXAnchor).isActive = true
-        
-        termsButton.isHidden = true
-        termsButton.backgroundColor = .clear
-        termsButton.translatesAutoresizingMaskIntoConstraints = false
-        mainContainer.addSubview(termsButton)
-        termsButton.leadingAnchor.constraint(equalTo: termsLabel.leadingAnchor).isActive = true
-        termsButton.trailingAnchor.constraint(equalTo: termsLabel.trailingAnchor).isActive = true
-        termsButton.topAnchor.constraint(equalTo: termsLabel.topAnchor).isActive = true
-        termsButton.bottomAnchor.constraint(equalTo: termsLabel.bottomAnchor).isActive = true
+        continueButton.transform =  CGAffineTransform(translationX: 0, y: 300)
         
 //        continueLabel.text = "Continue"
 //        continueLabel.textAlignment = .center
-//        continueLabel.textColor = .coinBaseBlue
-//        continueLabel.font = .sofiaSemiBold(ofSize: 17)
+//        continueLabel.textColor = .white
+//        continueLabel.font = .sfDisplaySemiBold(ofSize: 17)
 //        continueLabel.numberOfLines = 0
 //        continueLabel.translatesAutoresizingMaskIntoConstraints = false
 //        continueButton.addSubview(continueLabel)
@@ -207,7 +144,7 @@ extension SignUpPNViewController {
         
         transitionView.layer.cornerRadius = 10
         transitionView.isUserInteractionEnabled = false
-        transitionView.backgroundColor = .coinBaseBlue
+        transitionView.backgroundColor = .pinkTheme
         transitionView.alpha = 0
         transitionView.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(transitionView)
@@ -232,7 +169,7 @@ extension SignUpPNViewController {
         nameContainer.topAnchor.constraint(equalTo: signUpSteplabel.bottomAnchor, constant: 16).isActive = true
         nameContainer.heightAnchor.constraint(equalToConstant: 160).isActive = true
         
-        enterNameContainer.layer.borderColor = UIColor.coinBaseBlue.cgColor
+        enterNameContainer.layer.borderColor = UIColor.white.cgColor
         enterNameContainer.layer.borderWidth = 1
         enterNameContainer.layer.cornerRadius = 8
         enterNameContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -245,13 +182,12 @@ extension SignUpPNViewController {
         var placeHolder = NSMutableAttributedString()
         let Name  = "Enter your name"
         placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedString.Key.font: UIFont.sofiaMedium(ofSize: 15)])
-        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.coinBaseBlue.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
+        placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
         enterNameTextField.attributedPlaceholder = placeHolder
         enterNameTextField.autocorrectionType = .no
         enterNameTextField.font = .sofiaMedium(ofSize: 15)
-        enterNameTextField.textColor = .coinBaseBlue
-        //enterNameTextField.becomeFirstResponder()
-        enterNameTextField.tintColor = .coinBaseBlue
+        enterNameTextField.textColor = .white
+        enterNameTextField.tintColor = .pinkTheme
         enterNameTextField.returnKeyType = .done
         enterNameTextField.delegate = self
         enterNameTextField.tag = 1
@@ -283,18 +219,19 @@ extension SignUpPNViewController {
             let keyPath = AnimationKeypath(keypath: "\(loadingLayers[layer - 1])")
             
             if i == 1 {
-                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.withAlphaComponent(0.4).lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.white.withAlphaComponent(0.4).lottieColorValue)
                 checkmarkOneLottie.setValueProvider(colorProvider, keypath: keyPath)
             } else {
-                let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.lottieColorValue)
+                let colorProvider = ColorValueProvider(UIColor.white.lottieColorValue)
                 checkmarkOneLottie.setValueProvider(colorProvider, keypath: keyPath)
             }
+            
             i += 1
+            
         }
     }
     
     func setupEnterEmail() {
-        emailFBContentContainer.alpha = 0
         emailFBContentContainer.backgroundColor = .clear
         emailFBContentContainer.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(emailFBContentContainer)
@@ -302,8 +239,9 @@ extension SignUpPNViewController {
         emailFBContentContainer.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         emailFBContentContainer.topAnchor.constraint(equalTo: signUpSteplabel.bottomAnchor, constant: 16).isActive = true
         emailFBContentContainer.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        emailFBContentContainer.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
+        //emailFBContentContainer.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
         
+        emailContainer.alpha = 0
         emailContainer.layer.borderColor = UIColor.coinBaseBlue.cgColor
         emailContainer.layer.borderWidth = 1
         emailContainer.layer.cornerRadius = 8
@@ -382,57 +320,10 @@ extension SignUpPNViewController {
                 let colorProvider = ColorValueProvider(UIColor.coinBaseBlue.lottieColorValue)
                 checkMarkTwoLottie.setValueProvider(colorProvider, keypath: keyPath)
             }
+            
             i += 1
+            
         }
-        
-        faceBookButton.isHidden = true
-        faceBookButton.tag = 1
-        faceBookButton.adjustsImageWhenHighlighted = false
-        //faceBookButton.setBackgroundImage(UIImage(named: "contFB"), for: .normal)
-        //faceBookButton.imageView?.contentMode = .scaleAspectFill
-        faceBookButton.backgroundColor = UIColor(red: 23/255, green: 119/255, blue: 240/255, alpha: 1.0)
-        faceBookButton.layer.cornerRadius = 5
-        faceBookButton.layer.masksToBounds = true
-        faceBookButton.translatesAutoresizingMaskIntoConstraints = false
-        emailFBContentContainer.addSubview(faceBookButton)
-        faceBookButton.leadingAnchor.constraint(equalTo: emailContainer.leadingAnchor, constant: 0).isActive = true
-        //faceBookButton.trailingAnchor.constraint(equalTo: emailContainer.trailingAnchor, constant: 0).isActive = true
-        faceBookButton.trailingAnchor.constraint(equalTo: emailContainer.centerXAnchor, constant: -8).isActive = true
-        faceBookButton.topAnchor.constraint(equalTo: emailContainer.bottomAnchor, constant: 24).isActive = true
-        faceBookButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        
-        let fbImageView = UIImageView()
-        fbImageView.isUserInteractionEnabled = false
-        fbImageView.image = UIImage(named: "fbEmail")
-        fbImageView.contentMode = .scaleAspectFit
-        fbImageView.translatesAutoresizingMaskIntoConstraints = false
-        faceBookButton.addSubview(fbImageView)
-        fbImageView.fillSuperview()
-     
-        appleButton.isHidden = true
-        appleButton.tag = 2
-        appleButton.adjustsImageWhenHighlighted = false
-        //appleButton.setBackgroundImage(UIImage(named: "contApple"), for: .normal)
-        //appleButton.imageView?.contentMode = .scaleAspectFill
-        appleButton.backgroundColor = .black
-        appleButton.layer.cornerRadius = 5
-        appleButton.layer.masksToBounds = true
-        appleButton.translatesAutoresizingMaskIntoConstraints = false
-        emailFBContentContainer.addSubview(appleButton)
-        //appleButton.leadingAnchor.constraint(equalTo: faceBookButton.leadingAnchor, constant: 0).isActive = true
-        appleButton.leadingAnchor.constraint(equalTo: emailContainer.centerXAnchor, constant: 8).isActive = true
-        appleButton.trailingAnchor.constraint(equalTo: emailContainer.trailingAnchor, constant: 0).isActive = true
-        appleButton.topAnchor.constraint(equalTo: emailContainer.bottomAnchor, constant: 24).isActive = true
-        appleButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        
-        let appleImageView = UIImageView()
-        appleImageView.isUserInteractionEnabled = false
-        appleImageView.image = UIImage(named: "appleEmail")
-        appleImageView.contentMode = .scaleAspectFit
-        appleImageView.translatesAutoresizingMaskIntoConstraints = false
-        appleButton.addSubview(appleImageView)
-        appleImageView.fillSuperview()
-        
     }
     
     func setupProfilePhoto() {
@@ -465,7 +356,7 @@ extension SignUpPNViewController {
         
         photoDetailLabel.text = "Looking good! Now add your picture to continue."
         photoDetailLabel.textAlignment = .left
-        photoDetailLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+        photoDetailLabel.textColor = UIColor.white.withAlphaComponent(0.6)
         photoDetailLabel.font = .sofiaRegular(ofSize: 13)
         photoDetailLabel.numberOfLines = 0
         photoDetailLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -474,7 +365,6 @@ extension SignUpPNViewController {
         photoDetailLabel.topAnchor.constraint(equalTo: profilePhotoContainer.topAnchor, constant: 4).isActive = true
         
         photoImageView.image = UIImage(named: "profileImagePH")
-        photoImageView.setImageColor(color: .coinBaseBlue)
         photoImageView.layer.cornerRadius = 172/2
         photoImageView.layer.masksToBounds = true
         photoImageView.contentMode = .scaleAspectFill
@@ -489,7 +379,7 @@ extension SignUpPNViewController {
         
 //        nameLabel.text = "Stephen"
         nameLabel.textAlignment = .center
-        nameLabel.textColor = .coinBaseBlue
+        nameLabel.textColor = .white
         nameLabel.font = .sofiaMedium(ofSize: 14)
         nameLabel.numberOfLines = 0
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -507,15 +397,7 @@ extension SignUpPNViewController {
         phoneNumberContainer.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: 0).isActive = true
         phoneNumberContainer.topAnchor.constraint(equalTo: signUpSteplabel.bottomAnchor, constant: 16).isActive = true
         phoneNumberContainer.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        phoneNumberContainer.transform = CGAffineTransform(translationX: 0, y: 0)
-        /*
-        if isFacebookSignUp || isAppleEmailSignUp {
-            phoneNumberContainer.transform = CGAffineTransform(translationX: 0, y: 0)
-            phoneNumberContainer.alpha = 0
-        } else {
-            phoneNumberContainer.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
-        }
-        */
+        //phoneNumberContainer.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
         
         enterPhoneNumberContainer.backgroundColor = UIColor.coinBaseBlue.withAlphaComponent(0.05)
         enterPhoneNumberContainer.layer.cornerRadius = 8
@@ -533,7 +415,6 @@ extension SignUpPNViewController {
         placeHolder.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.coinBaseBlue.withAlphaComponent(0.4), range:NSRange(location:0,length:Name.count))
         phoneNumberTextField.attributedPlaceholder = placeHolder
         phoneNumberTextField.backgroundColor = .clear
-        //phoneNumberTextField.flagButtonSize = CGSize(width: 44, height: 44)
         phoneNumberTextField.tag = 1
         phoneNumberTextField.setFlag(key: .US)
         phoneNumberTextField.delegate = self
@@ -603,7 +484,6 @@ extension SignUpPNViewController {
     func transitionViews() {
         
         dismissArrowImageView.image = UIImage(named: "downArrowWhite")
-        dismissArrowImageView.setImageColor(color: .coinBaseBlue)
         dismissArrowImageView.contentMode = .scaleAspectFill
         dismissArrowImageView.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(dismissArrowImageView)
@@ -612,9 +492,9 @@ extension SignUpPNViewController {
         dismissArrowImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
         dismissArrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
-        titleLabel.text = "Sign up"
+        titleLabel.text = "Log in"
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .coinBaseBlue
+        titleLabel.textColor = .white
         titleLabel.font = .sofiaBold(ofSize: 24)
         titleLabel.numberOfLines = 0
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -636,7 +516,7 @@ extension SignUpPNViewController {
      
         appleButton.setBackgroundImage(UIImage(named: "contApple"), for: .normal)
         appleButton.imageView?.contentMode = .scaleAspectFit
-        appleButton.backgroundColor = .coinBaseBlue
+        appleButton.backgroundColor = .white
         appleButton.layer.cornerRadius = 5
         appleButton.layer.masksToBounds = true
         appleButton.translatesAutoresizingMaskIntoConstraints = false
@@ -648,7 +528,7 @@ extension SignUpPNViewController {
         
         emailButton.setTitle("Continue with email", for: .normal)
         emailButton.titleLabel?.font = .sofiaSemiBold(ofSize: 18)
-        emailButton.setTitleColor(.coinBaseBlue, for: .normal)
+        emailButton.setTitleColor(.white, for: .normal)
         emailButton.backgroundColor = .clear
         emailButton.layer.cornerRadius = 5
         emailButton.layer.masksToBounds = true
@@ -662,5 +542,6 @@ extension SignUpPNViewController {
     }
     
 }
+
 
 
