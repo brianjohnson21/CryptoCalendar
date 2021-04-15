@@ -32,7 +32,8 @@ extension PickCryptoViewController {
         detailLabel.layer.zPosition = 2
         detailLabel.alpha = 0
         detailLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        let detailLabelText = "Lorem ipsum dolor sit amet, consectetur adipiscing\nelit, sed do eiusmod tempor incididunt"
+        //let detailLabelText = "Lorem ipsum dolor sit amet, consectetur adipiscing\nelit, sed do eiusmod tempor incididunt"
+        let detailLabelText = "The coins you select will be added to your watchlist\nfor you to keep a close eye on"
         detailLabel.setupLineHeight(myText: detailLabelText, myLineSpacing: 5)
         detailLabel.textAlignment = .left
         detailLabel.font = .sofiaLight(ofSize: 12)

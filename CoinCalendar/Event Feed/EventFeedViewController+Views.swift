@@ -91,7 +91,6 @@ extension EventFeedViewController {
         infoButton.trailingAnchor.constraint(equalTo: infoImageView.trailingAnchor, constant: 5).isActive = true
         infoButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
         infoButton.bottomAnchor.constraint(equalTo: infoImageView.bottomAnchor, constant: 5).isActive = true
-
         
         sortImageView.image = UIImage(named: "Sort")
         sortImageView.contentMode = .scaleAspectFill
@@ -237,12 +236,20 @@ extension EventFeedViewController {
             case 0:
                 print("did this")
                 self?.watchListEmptyState.hidViews()
+                self?.newEventsEmptyState.hidViews()
             case 1:
                 print("did this")
                 self?.watchListEmptyState.hidViews()
+                self?.newEventsEmptyState.hidViews()
             case 2:
                 print("did this")
                 self?.watchListEmptyState.hidViews()
+                if let watchListPostsCount = self?.newPosts.count {
+                    if watchListPostsCount < 1 {
+                        self?.newEventsEmptyState.showViews()
+                    }
+                }
+                //newEventsEmptyState
             default:
                 print("did this")
                 if let watchListPostsCount = self?.watchlistPosts.count {
@@ -250,6 +257,7 @@ extension EventFeedViewController {
                         self?.watchListEmptyState.showViews()
                     }
                 }
+                self?.newEventsEmptyState.hidViews()
             }
             //self?.mainFeedTableView.reloadData()
             self?.mainFeedTableView.reloadSections([0], with: .fade)
@@ -376,6 +384,24 @@ extension EventFeedViewController {
         watchListEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
         watchListEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
         watchListEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
+        
+        newEventsEmptyState.isUserInteractionEnabled = false
+        newEventsEmptyState.layer.zPosition = 100
+        newEventsEmptyState.isHidden = true
+        newEventsEmptyState.squadUpButton.isHidden = true
+        newEventsEmptyState.lockLabel.text = "🥳🤩"
+        newEventsEmptyState.lockTitleLabel.text = "No New Events"
+        newEventsEmptyState.lockDetailLabel.setupLineHeight(myText: "New events for coins that we\nfeature will be added here", myLineSpacing: 4)
+        newEventsEmptyState.lockDetailLabel.textAlignment = .center
+        newEventsEmptyState.squadUpButton.setTitle("Browse users", for: .normal)
+        newEventsEmptyState.backgroundColor = .clear
+        newEventsEmptyState.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(newEventsEmptyState)
+        newEventsEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
+        //searchEmptyState.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 25).isActive = true
+        newEventsEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
+        newEventsEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        newEventsEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
     }
     
 }

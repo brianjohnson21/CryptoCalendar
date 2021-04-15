@@ -13,6 +13,7 @@ import ViewAnimator
 class EventFeedViewController: UIViewController {
     
     var watchListEmptyState = EmptyStateView()
+    var newEventsEmptyState = EmptyStateView()
     
     let launchTransition = LaunchTransitionView()
     var transitionView = UIView()
