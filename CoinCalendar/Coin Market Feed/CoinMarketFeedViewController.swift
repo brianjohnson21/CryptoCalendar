@@ -108,7 +108,7 @@ class CoinMarketFeedViewController: UIViewController {
     }
         
     @objc func appMovedToForeround() {
-        //hideTabBar()
+        showTabBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {

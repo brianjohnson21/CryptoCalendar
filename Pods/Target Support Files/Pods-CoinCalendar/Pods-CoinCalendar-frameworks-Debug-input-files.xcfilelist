@@ -6,6 +6,7 @@ ${BUILT_PRODUCTS_DIR}/Comets/Comets.framework
 ${BUILT_PRODUCTS_DIR}/Disk/Disk.framework
 ${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/FlagPhoneNumber/FlagPhoneNumber.framework
+${BUILT_PRODUCTS_DIR}/KDCircularProgress/KDCircularProgress.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/PhotoCircleCrop/PhotoCircleCrop.framework
 ${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework

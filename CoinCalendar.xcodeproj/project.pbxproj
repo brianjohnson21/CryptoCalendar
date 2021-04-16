@@ -60,6 +60,13 @@
 		DE55D2F42626877C00F9295D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D2F32626877C00F9295D /* EmptyStateView.swift */; };
 		DE55D30A2627CF0700F9295D /* LoginPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3092627CF0700F9295D /* LoginPNViewController.swift */; };
 		DE55D30D2627CF7A00F9295D /* LoginPNViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D30C2627CF7A00F9295D /* LoginPNViewController+Views.swift */; };
+		DE55D3232628922C00F9295D /* ValuePropositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3222628922C00F9295D /* ValuePropositionViewController.swift */; };
+		DE55D3272628923500F9295D /* ValuePropositionViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3262628923500F9295D /* ValuePropositionViewController+Views.swift */; };
+		DE55D3732628C71200F9295D /* SplashTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3722628C71200F9295D /* SplashTwoViewController.swift */; };
+		DE55D3772628C71A00F9295D /* SplashTwoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3762628C71A00F9295D /* SplashTwoViewController+Views.swift */; };
+		DE55D3DE2628E29900F9295D /* pulseStart.json in Resources */ = {isa = PBXBuildFile; fileRef = DE55D3DD2628E29900F9295D /* pulseStart.json */; };
+		DE55D3E22629123900F9295D /* SignUpPNTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3E12629123900F9295D /* SignUpPNTwoViewController.swift */; };
+		DE55D3E62629124000F9295D /* SignUpPNTwoViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D3E52629124000F9295D /* SignUpPNTwoViewController+Views.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -174,6 +181,13 @@
 		DE55D2F32626877C00F9295D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		DE55D3092627CF0700F9295D /* LoginPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPNViewController.swift; sourceTree = "<group>"; };
 		DE55D30C2627CF7A00F9295D /* LoginPNViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginPNViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D3222628922C00F9295D /* ValuePropositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuePropositionViewController.swift; sourceTree = "<group>"; };
+		DE55D3262628923500F9295D /* ValuePropositionViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValuePropositionViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D3722628C71200F9295D /* SplashTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashTwoViewController.swift; sourceTree = "<group>"; };
+		DE55D3762628C71A00F9295D /* SplashTwoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashTwoViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D3DD2628E29900F9295D /* pulseStart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pulseStart.json; sourceTree = "<group>"; };
+		DE55D3E12629123900F9295D /* SignUpPNTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPNTwoViewController.swift; sourceTree = "<group>"; };
+		DE55D3E52629124000F9295D /* SignUpPNTwoViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpPNTwoViewController+Views.swift"; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -408,6 +422,33 @@
 			path = "Login Flow";
 			sourceTree = "<group>";
 		};
+		DE55D3212628921700F9295D /* Value Prop */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D3222628922C00F9295D /* ValuePropositionViewController.swift */,
+				DE55D3262628923500F9295D /* ValuePropositionViewController+Views.swift */,
+			);
+			path = "Value Prop";
+			sourceTree = "<group>";
+		};
+		DE55D3712628C70500F9295D /* Splash Two */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D3722628C71200F9295D /* SplashTwoViewController.swift */,
+				DE55D3762628C71A00F9295D /* SplashTwoViewController+Views.swift */,
+			);
+			path = "Splash Two";
+			sourceTree = "<group>";
+		};
+		DE55D3E02629122200F9295D /* Sign Up Flow 2 */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D3E12629123900F9295D /* SignUpPNTwoViewController.swift */,
+				DE55D3E52629124000F9295D /* SignUpPNTwoViewController+Views.swift */,
+			);
+			path = "Sign Up Flow 2";
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -468,8 +509,11 @@
 		DE9AA5F82610FCFB0057A259 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				DE55D3E02629122200F9295D /* Sign Up Flow 2 */,
+				DE55D3712628C70500F9295D /* Splash Two */,
 				DE1EA42726211BB500954FBC /* TempCodeViewController.swift */,
 				DE1EA42A26211BBD00954FBC /* TempCodeViewController+Views.swift */,
+				DE55D3212628921700F9295D /* Value Prop */,
 				DE55D3082627CEF200F9295D /* Login Flow */,
 				DE4247162619145B00E185D4 /* Splash */,
 				DE9AA647261154080057A259 /* Sign Up Flow */,
@@ -550,6 +594,7 @@
 		DE9AA694261260DA0057A259 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				DE55D3DD2628E29900F9295D /* pulseStart.json */,
 				DE4246512614CC3100E185D4 /* checkmark_1.json */,
 				DE4245F22613BDF800E185D4 /* loadingBlocks.json */,
 				DE42456D2612CC2200E185D4 /* Confetti2.json */,
@@ -684,6 +729,7 @@
 				DE9AA69A261262670057A259 /* coinsRotating.json in Resources */,
 				DE9AA6C32612C7F70057A259 /* Confetti.json in Resources */,
 				DE9AA6032610FFB40057A259 /* sofiapro-light.otf in Resources */,
+				DE55D3DE2628E29900F9295D /* pulseStart.json in Resources */,
 				DE9AA6C02612C6FA0057A259 /* checkSuccessBurst.json in Resources */,
 				DE4245F32613BDF800E185D4 /* loadingBlocks.json in Resources */,
 				DE9AA64026114C7B0057A259 /* hexPatternVertical.mov in Resources */,
@@ -775,6 +821,7 @@
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE3DC20626251BC30089E021 /* CoinDetailsViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
+				DE55D3E62629124000F9295D /* SignUpPNTwoViewController+Views.swift in Sources */,
 				DED657632621FACB002CC83D /* EventFeedInfoViewController.swift in Sources */,
 				DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */,
 				DE42473E26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift in Sources */,
@@ -788,6 +835,7 @@
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
+				DE55D3E22629123900F9295D /* SignUpPNTwoViewController.swift in Sources */,
 				FC4E558E26202334008AF09B /* Coin.swift in Sources */,
 				DE9AA66D261155640057A259 /* ContinueButton.swift in Sources */,
 				DE1EA42826211BB500954FBC /* TempCodeViewController.swift in Sources */,
@@ -802,7 +850,10 @@
 				DE42465B2614D29E00E185D4 /* PickCryptoViewController+Views.swift in Sources */,
 				DE9AA669261155520057A259 /* ToastNotificationView.swift in Sources */,
 				DE55D30D2627CF7A00F9295D /* LoginPNViewController+Views.swift in Sources */,
+				DE55D3232628922C00F9295D /* ValuePropositionViewController.swift in Sources */,
+				DE55D3732628C71200F9295D /* SplashTwoViewController.swift in Sources */,
 				FC565FBA26261CED0093D019 /* Post.swift in Sources */,
+				DE55D3772628C71A00F9295D /* SplashTwoViewController+Views.swift in Sources */,
 				DE4245D7261376D000E185D4 /* PickerViewController.swift in Sources */,
 				DED285D7261CC0A0002F34B6 /* InfoViewController.swift in Sources */,
 				DE4245C32613701B00E185D4 /* EventOptionsViewController.swift in Sources */,
@@ -815,6 +866,7 @@
 				DE9AA5FB2610FD080057A259 /* Extensions.swift in Sources */,
 				DE4245DA261376DC00E185D4 /* PickerViewController+Views.swift in Sources */,
 				DE55D2F42626877C00F9295D /* EmptyStateView.swift in Sources */,
+				DE55D3272628923500F9295D /* ValuePropositionViewController+Views.swift in Sources */,
 				DE9AA6492611542F0057A259 /* SignUpPNViewController.swift in Sources */,
 				DED285D2261CBBE5002F34B6 /* DiscountButtonView.swift in Sources */,
 				DE3DC20D262528010089E021 /* CoinDetailCoinTableViewCell.swift in Sources */,

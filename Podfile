@@ -20,5 +20,6 @@ pod 'Comets'
 pod 'Disk'
 pod 'AWSS3'
 pod 'Kingfisher'
+pod 'KDCircularProgress'
 
 end

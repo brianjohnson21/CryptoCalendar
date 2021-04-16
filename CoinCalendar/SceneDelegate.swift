@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.makeKeyAndVisible()
         } else {
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+            let vc = sb.instantiateViewController(withIdentifier: "SplashTwoViewController") as! SplashTwoViewController
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
         }
