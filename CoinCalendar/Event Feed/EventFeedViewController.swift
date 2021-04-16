@@ -193,8 +193,8 @@ extension EventFeedViewController: SortFilterViewControllerDelegate {
         } completion: { (success) in
             self.loadingContainer.isHidden = true
             self.loadingLottie.stop()
-//            self.animateCells()
             self.mainFeedTableView.reloadData()
+            self.animateCells()
         }
 
         
