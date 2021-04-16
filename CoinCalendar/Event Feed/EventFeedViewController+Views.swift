@@ -417,7 +417,9 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var source: [Post]!
         
-        if segmentioControl.selectedSegmentioIndex == 0 {
+        if !filteredCoins.isEmpty {
+            source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+        } else if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts
         } else if segmentioControl.selectedSegmentioIndex == 1 {
             source = self.importantPosts
@@ -435,7 +437,9 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
         
         var source: [Post]!
         
-        if segmentioControl.selectedSegmentioIndex == 0 {
+        if !filteredCoins.isEmpty {
+            source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+        } else if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts
         } else if segmentioControl.selectedSegmentioIndex == 1 {
             source = self.importantPosts
@@ -530,7 +534,9 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let eventOptionsVC =  EventOptionsViewController()
         
         var source: [Post]!
-        if segmentioControl.selectedSegmentioIndex == 0 {
+        if !filteredCoins.isEmpty {
+            source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+        } else if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts
         } else if segmentioControl.selectedSegmentioIndex == 1 {
             source = self.importantPosts

@@ -55,6 +55,8 @@ class EventFeedViewController: UIViewController {
     var selectedSourceLink: String = "http://www.apple.com"
     
     var selectedPost: Post?
+    
+    var filteredCoins = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,7 +181,9 @@ extension EventFeedViewController: LaunchTransitionViewDelegate {
 //MARK: LAUNCH DELEGATE
 
 extension EventFeedViewController: SortFilterViewControllerDelegate {
-    func didUpdateFilter() {
+    func didUpdateFilter(coins: [String]) {
+        self.filteredCoins = coins
+        
         mainFeedTableView.alpha = 0
         loadingLottie.play()
         loadingContainer.alpha = 1.0
@@ -189,7 +193,8 @@ extension EventFeedViewController: SortFilterViewControllerDelegate {
         } completion: { (success) in
             self.loadingContainer.isHidden = true
             self.loadingLottie.stop()
-            self.animateCells()
+//            self.animateCells()
+            self.mainFeedTableView.reloadData()
         }
 
         

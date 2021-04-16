@@ -148,14 +148,14 @@ extension SortFilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! SortCoinTableViewCell
         cell.activateFilter()
-        coinsSelected.append(coins[indexPath.row][0])
+        coinsSelected.append(coins[indexPath.row][1])
         showHideResetButton(showReset: true)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! SortCoinTableViewCell
-        if let blockText = cell.blockChainLabel.text {
-            if let index = coinsSelected.firstIndex(of: blockText) {
+        if let coinText = cell.coinLabel.text {
+            if let index = coinsSelected.firstIndex(of: coinText) {
                 coinsSelected.remove(at: index)
             }
         }

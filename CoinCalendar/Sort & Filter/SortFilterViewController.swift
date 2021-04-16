@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SortFilterViewControllerDelegate: class {
-    func didUpdateFilter()
+    func didUpdateFilter(coins: [String])
 }
 
 class SortFilterViewController: UIViewController {
@@ -74,7 +74,7 @@ extension SortFilterViewController {
     @objc func dimissVC() {
         
         if originalAmount != coinsSelected.count {
-            delegate?.didUpdateFilter()
+            delegate?.didUpdateFilter(coins: coinsSelected)
         }
         
         UIView.animate(withDuration: 0.28) {
