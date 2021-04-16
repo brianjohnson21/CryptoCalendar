@@ -25,6 +25,7 @@ extension HomeFeedViewController {
         navView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         navView.heightAnchor.constraint(equalToConstant: 96).isActive = true
         
+        userProfileImageContainer.isHidden = true
         userProfileImageContainer.backgroundColor = .clear
         userProfileImageContainer.layer.shadowColor = UIColor.black.cgColor
         userProfileImageContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -41,7 +42,7 @@ extension HomeFeedViewController {
             userProfileImageView.kf.setImage(with: URL(string: imageUrl))
         } else {
             userProfileImageView.image = UIImage.init(named: "profileImagePH")
-            userProfileImageView.backgroundColor = UIColor(red: 42/255, green: 42/255, blue: 42/255, alpha: 1.0)
+            userProfileImageView.backgroundColor = UIColor(red: 42/255, green: 42/255, blue: 42/255, alpha: 0.5)
         }
         userProfileImageView.layer.cornerRadius = 39/2
         userProfileImageView.layer.masksToBounds = true
@@ -49,6 +50,16 @@ extension HomeFeedViewController {
         userProfileImageView.translatesAutoresizingMaskIntoConstraints = false
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
+        
+        titleLabel.text = "Discover"
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        titleLabel.font = .sofiaBold(ofSize: 24)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         
         /*
         userGreetingLabel.text = "Good morning,"
@@ -72,23 +83,23 @@ extension HomeFeedViewController {
         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
         */
         
-        calendarImageView.image = UIImage(named: "info")
-        calendarImageView.contentMode = .scaleAspectFill
+        calendarImageView.image = UIImage(named: "avatar")
+        calendarImageView.contentMode = .scaleAspectFit
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(calendarImageView)
-        calendarImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        calendarImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -18).isActive = true
         calendarImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        calendarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        calendarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        calendarImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        calendarImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
-        sortImageView.image = UIImage(named: "blackBell")
+        sortImageView.image = UIImage(named: "thiccBellBlue")
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortImageView)
-        sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -20).isActive = true
+        sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -21.5).isActive = true
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        sortImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        sortImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
         sortButton.addTarget(self, action: #selector(goToAlerts), for: .touchUpInside)
         sortButton.backgroundColor = .clear
@@ -108,24 +119,15 @@ extension HomeFeedViewController {
         separatorLine.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: 0).isActive = true
         separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        titleLabel.text = "Discover"
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-        titleLabel.font = .sofiaBold(ofSize: 24)
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(titleLabel)
-        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 10).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        
         profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
         profileButton.backgroundColor = .clear
         profileButton.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(profileButton)
-        profileButton.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
+        profileButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         profileButton.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
         profileButton.bottomAnchor.constraint(equalTo: userProfileImageContainer.bottomAnchor).isActive = true
-        profileButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
+        //profileButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true //calendarImageView
+        profileButton.leadingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -5).isActive = true
     }
     
     func setupLaunchTransition() {

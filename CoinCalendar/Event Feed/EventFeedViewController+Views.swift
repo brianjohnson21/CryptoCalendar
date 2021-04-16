@@ -27,6 +27,7 @@ extension EventFeedViewController {
         navView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         navView.heightAnchor.constraint(equalToConstant: 136).isActive = true
         
+        userProfileImageContainer.isHidden = true
         userProfileImageContainer.backgroundColor = .clear
         userProfileImageContainer.layer.shadowColor = UIColor.black.cgColor
         userProfileImageContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -52,6 +53,16 @@ extension EventFeedViewController {
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
         
+        titleLabel.text = "Key Events"
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        titleLabel.font = .sofiaBold(ofSize: 24)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        navView.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        
         /*
          userGreetingLabel.text = "Good morning,"
          userGreetingLabel.textAlignment = .left
@@ -74,14 +85,14 @@ extension EventFeedViewController {
          userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
          */
         
-        infoImageView.image = UIImage(named: "info")
+        infoImageView.image = UIImage(named: "thiccinfo")
         infoImageView.contentMode = .scaleAspectFill
         infoImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(infoImageView)
-        infoImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -20).isActive = true
+        infoImageView.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: -18).isActive = true
         infoImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        infoImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        infoImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        infoImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        infoImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
         infoButton.addTarget(self, action: #selector(showMoreInfo), for: .touchUpInside)
         infoButton.backgroundColor = .clear
@@ -92,14 +103,14 @@ extension EventFeedViewController {
         infoButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
         infoButton.bottomAnchor.constraint(equalTo: infoImageView.bottomAnchor, constant: 5).isActive = true
         
-        sortImageView.image = UIImage(named: "Sort")
+        sortImageView.image = UIImage(named: "thiccSort")
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(sortImageView)
-        sortImageView.trailingAnchor.constraint(equalTo: infoImageView.leadingAnchor, constant: -20).isActive = true
+        sortImageView.trailingAnchor.constraint(equalTo: infoImageView.leadingAnchor, constant: -21.5).isActive = true
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        sortImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        sortImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
         sortButton.addTarget(self, action: #selector(didTapSortFilter), for: .touchUpInside)
         sortButton.backgroundColor = .clear
@@ -110,14 +121,14 @@ extension EventFeedViewController {
         sortButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
         sortButton.bottomAnchor.constraint(equalTo: sortImageView.bottomAnchor, constant: 5).isActive = true
         
-        bellImageView.image = UIImage(named: "blackBell")
+        bellImageView.image = UIImage(named: "thiccBellBlue")
         bellImageView.contentMode = .scaleAspectFill
         bellImageView.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(bellImageView)
-        bellImageView.trailingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -20).isActive = true
+        bellImageView.trailingAnchor.constraint(equalTo: sortImageView.leadingAnchor, constant: -21.5).isActive = true
         bellImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        bellImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        bellImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        bellImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        bellImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
         alertsButton.addTarget(self, action: #selector(goToAlerts), for: .touchUpInside)
         alertsButton.backgroundColor = .clear
@@ -127,16 +138,6 @@ extension EventFeedViewController {
         alertsButton.trailingAnchor.constraint(equalTo: bellImageView.trailingAnchor, constant: 5).isActive = true
         alertsButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: 0).isActive = true
         alertsButton.bottomAnchor.constraint(equalTo: bellImageView.bottomAnchor, constant: 5).isActive = true
-        
-        titleLabel.text = "Key Events"
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-        titleLabel.font = .sofiaBold(ofSize: 24)
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        navView.addSubview(titleLabel)
-        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 10).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         
         profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
         profileButton.backgroundColor = .clear

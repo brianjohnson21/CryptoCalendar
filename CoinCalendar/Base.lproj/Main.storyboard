@@ -99,7 +99,7 @@
         <scene sceneID="j9K-FA-TlR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Co0-Mk-lHF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="FeedTab" id="qXs-5w-buv"/>
+                    <tabBarItem key="tabBarItem" title="" image="FeedTabThicc" id="qXs-5w-buv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VFP-l9-6Xv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -118,7 +118,7 @@
         <scene sceneID="ssb-x2-3Sb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Ve-7y-2LU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="cloudTab" id="pwj-bH-vj2"/>
+                    <tabBarItem key="tabBarItem" title="" image="cloudTabThicc" id="pwj-bH-vj2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="78e-z3-fP2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -137,7 +137,7 @@
         <scene sceneID="RNv-lY-Tbk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Um6-yf-gbh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="trendingTab" id="GkT-UW-ZWk"/>
+                    <tabBarItem key="tabBarItem" title="" image="trendingTabThicc" id="GkT-UW-ZWk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="knv-vc-EOq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -172,7 +172,7 @@
         <scene sceneID="c7d-P2-7jP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UNF-LO-RJt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="twitterTab" id="GbQ-Q1-nhT"/>
+                    <tabBarItem key="tabBarItem" title="" image="twitterTabThicc" id="GbQ-Q1-nhT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NCj-BO-eOJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -207,7 +207,7 @@
         <scene sceneID="B8O-gV-dT7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ss-xM-MBj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="dollarTab" id="71X-DZ-bmz"/>
+                    <tabBarItem key="tabBarItem" title="" image="dollarTabThicc" id="71X-DZ-bmz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Il-Km-Ogv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -224,11 +224,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FeedTab" width="24" height="24"/>
-        <image name="cloudTab" width="24" height="24"/>
-        <image name="dollarTab" width="24" height="24"/>
-        <image name="trendingTab" width="24" height="24"/>
-        <image name="twitterTab" width="24" height="24"/>
+        <image name="FeedTabThicc" width="30" height="30"/>
+        <image name="cloudTabThicc" width="30" height="30"/>
+        <image name="dollarTabThicc" width="30" height="30"/>
+        <image name="trendingTabThicc" width="30" height="30"/>
+        <image name="twitterTabThicc" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

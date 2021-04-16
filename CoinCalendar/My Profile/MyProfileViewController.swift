@@ -83,7 +83,8 @@ class MyProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         showTabBar()
-        gamesPlayedLabel.text = "0 Friends"
+        //gamesPlayedLabel.isHidden = true
+        gamesPlayedLabel.text = "Joined April 2021"
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

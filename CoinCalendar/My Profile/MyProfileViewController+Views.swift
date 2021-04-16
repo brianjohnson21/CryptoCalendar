@@ -71,7 +71,7 @@ extension MyProfileViewController {
         containerView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
         containerView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         
-        purpBackground.backgroundColor = UIColor.themeGray
+        purpBackground.backgroundColor = UIColor.clear
         purpBackground.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(purpBackground)
         purpBackground.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
@@ -80,6 +80,7 @@ extension MyProfileViewController {
         purpBackground.heightAnchor.constraint(equalToConstant: nvHeight).isActive = true
         
         downArrowImageView.image = UIImage(named: "downArrowWhite")
+        downArrowImageView.setImageColor(color: .black)
         downArrowImageView.contentMode = .scaleAspectFill
         downArrowImageView.translatesAutoresizingMaskIntoConstraints = false
         purpBackground.addSubview(downArrowImageView)
@@ -97,6 +98,7 @@ extension MyProfileViewController {
         dismissButton.trailingAnchor.constraint(equalTo: downArrowImageView.trailingAnchor, constant: 15).isActive = true
         
         settingsImageView.image = UIImage(named: "settings2")
+        settingsImageView.setImageColor(color: .black)
         settingsImageView.contentMode = .scaleAspectFill
         settingsImageView.translatesAutoresizingMaskIntoConstraints = false
         purpBackground.addSubview(settingsImageView)

@@ -44,6 +44,7 @@ extension CoinMarketFeedViewController {
         profileContainer.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
         profileContainer.heightAnchor.constraint(equalToConstant: 96).isActive = true
         
+        userProfileImageContainer.isHidden = true
         userProfileImageContainer.backgroundColor = .clear
         userProfileImageContainer.layer.shadowColor = UIColor.black.cgColor
         userProfileImageContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -70,6 +71,16 @@ extension CoinMarketFeedViewController {
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
         
+        titleLabel.text = "Market Data"
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        titleLabel.font = .sofiaBold(ofSize: 24)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileContainer.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        
         /*
         userGreetingLabel.text = "Good morning,"
         userGreetingLabel.textAlignment = .left
@@ -92,23 +103,23 @@ extension CoinMarketFeedViewController {
         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
         */
         
-        calendarImageView.image = UIImage(named: "info")
+        calendarImageView.image = UIImage(named: "thiccinfo")
         calendarImageView.contentMode = .scaleAspectFill
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
         profileContainer.addSubview(calendarImageView)
-        calendarImageView.trailingAnchor.constraint(equalTo: profileContainer.trailingAnchor, constant: -20).isActive = true
+        calendarImageView.trailingAnchor.constraint(equalTo: profileContainer.trailingAnchor, constant: -18).isActive = true
         calendarImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        calendarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        calendarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        calendarImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        calendarImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
-        sortImageView.image = UIImage(named: "blackBell")
+        sortImageView.image = UIImage(named: "thiccBellBlue")
         sortImageView.contentMode = .scaleAspectFill
         sortImageView.translatesAutoresizingMaskIntoConstraints = false
         profileContainer.addSubview(sortImageView)
-        sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -20).isActive = true
+        sortImageView.trailingAnchor.constraint(equalTo: calendarImageView.leadingAnchor, constant: -21.5).isActive = true
         sortImageView.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
-        sortImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        sortImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        sortImageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        sortImageView.widthAnchor.constraint(equalToConstant: 29).isActive = true
         
         pinContainer.isUserInteractionEnabled = true
         let pinContainerTapped = UITapGestureRecognizer(target: self, action: #selector(removePinnedCoin))
@@ -122,16 +133,6 @@ extension CoinMarketFeedViewController {
         pinContainer.topAnchor.constraint(equalTo: navView.bottomAnchor).isActive = true
         pinHeight = pinContainer.heightAnchor.constraint(equalToConstant: 0)
         pinHeight.isActive = true
-        
-        titleLabel.text = "Market Data"
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-        titleLabel.font = .sofiaBold(ofSize: 24)
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        profileContainer.addSubview(titleLabel)
-        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 10).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         
         profileButton.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
         profileButton.backgroundColor = .clear
