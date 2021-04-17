@@ -105,8 +105,9 @@ extension SortFilterViewController {
         whiteGradient.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor).isActive = true
         whiteGradient.heightAnchor.constraint(equalToConstant: 119).isActive = true
         
-        resetButton.addTarget(self, action: #selector(didTapReset), for: .touchUpInside)
-        resetButton.setTitle("Reset", for: .normal)
+        //resetButton.addTarget(self, action: #selector(didTapReset), for: .touchUpInside)
+        resetButton.addTarget(self, action: #selector(setFilterTapped), for: .touchUpInside)//dimissVC
+        resetButton.setTitle("Set Filter", for: .normal)
         resetButton.titleLabel?.font = .sofiaBold(ofSize: 16)
         resetButton.setTitleColor(.white, for: .normal)
         resetButton.backgroundColor = .coinBaseBlue
@@ -138,6 +139,13 @@ extension SortFilterViewController: UITableViewDelegate, UITableViewDataSource {
         cell.coinImageView.image = UIImage(named: coins[indexPath.row][0])
         cell.blockChainLabel.text = coins[indexPath.row][0]
         cell.coinLabel.text = coins[indexPath.row][1]
+        
+        if coinsSelected.contains(coins[indexPath.row][1]) {
+            cell.activateFilter()
+        } else {
+            //print("\(indexPath.row) - 😙😙😙 000")
+        }
+                
         return cell
     }
     
@@ -163,6 +171,10 @@ extension SortFilterViewController: UITableViewDelegate, UITableViewDataSource {
         
         if coinsSelected.count < 1 {
             showHideResetButton(showReset: false)
+        }
+        
+        if !originalCoins.containsSameElements(as: coinsSelected) {
+            showHideResetButton(showReset: true)
         }
                  
     }

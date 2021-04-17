@@ -154,6 +154,9 @@ extension EventFeedViewController {
     @objc func didTapSortFilter() {
         lightImpactGenerator()        
         let sortFilterVC = SortFilterViewController()
+        sortFilterVC.coinsSelected = filteredCoins
+        sortFilterVC.originalCoins = filteredCoins
+        sortFilterVC.originalAmount = filteredCoins.count
         sortFilterVC.delegate = self
         sortFilterVC.modalPresentationStyle = .overFullScreen
         self.present(sortFilterVC, animated: false) {
@@ -230,3 +233,4 @@ extension EventFeedViewController: EventOptionsViewControllerDelegate {
     
     
 }
+

@@ -418,7 +418,15 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
         var source: [Post]!
         
         if !filteredCoins.isEmpty {
-            source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            if segmentioControl.selectedSegmentioIndex == 0 {
+                source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            } else if segmentioControl.selectedSegmentioIndex == 1 {
+                source = self.importantPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            } else if segmentioControl.selectedSegmentioIndex == 2 {
+                source = self.newPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            } else if segmentioControl.selectedSegmentioIndex == 3 {
+                source = self.watchlistPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            }
         } else if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts
         } else if segmentioControl.selectedSegmentioIndex == 1 {
@@ -438,7 +446,16 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
         var source: [Post]!
         
         if !filteredCoins.isEmpty {
-            source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            if segmentioControl.selectedSegmentioIndex == 0 {
+                source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            } else if segmentioControl.selectedSegmentioIndex == 1 {
+                source = self.importantPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            } else if segmentioControl.selectedSegmentioIndex == 2 {
+                source = self.newPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            } else if segmentioControl.selectedSegmentioIndex == 3 {
+                source = self.watchlistPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+            }
+            
         } else if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts
         } else if segmentioControl.selectedSegmentioIndex == 1 {

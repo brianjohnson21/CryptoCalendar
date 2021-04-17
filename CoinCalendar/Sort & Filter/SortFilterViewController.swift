@@ -29,6 +29,7 @@ class SortFilterViewController: UIViewController {
     var resetBottom: NSLayoutConstraint!
     
     var coinsSelected: [String] = []
+    var originalCoins: [String] = []
     var coins: [[String]] = [["Cardano", "ADA"],
                              ["Theta Fuel", "TFUEL"],
                              ["Bitcoin", "BTC"],
@@ -53,6 +54,15 @@ class SortFilterViewController: UIViewController {
         setupViews()
         setupTableView()
         perform(#selector(animateViewsIn), with: self, afterDelay: 0.01)
+                                
+        var i = 0
+        for _ in coins {
+            if coinsSelected.contains(coins[i][1]) {
+                let indexPath = IndexPath(row: i, section: 0)
+                mainFeedTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
+            i += 1
+        }
     }
 
 }
@@ -72,11 +82,21 @@ extension SortFilterViewController {
     
     
     @objc func dimissVC() {
-        
-        if originalAmount != coinsSelected.count {
+        UIView.animate(withDuration: 0.28) {
+            self.mainScrollView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+            self.opacityLayer.alpha = 0
+        } completion: { (success) in
+            self.dismiss(animated: false) {
+                //
+            }
+        }
+    }
+    
+    @objc func setFilterTapped() {
+        if !originalCoins.containsSameElements(as: coinsSelected) {
             delegate?.didUpdateFilter(coins: coinsSelected)
         }
-        
+                                
         UIView.animate(withDuration: 0.28) {
             self.mainScrollView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
             self.opacityLayer.alpha = 0
@@ -142,5 +162,11 @@ extension SortFilterViewController: UIScrollViewDelegate {
                 navView.layer.shadowOpacity = 0.3
             }
         }
+    }
+}
+
+extension Array where Element: Comparable {
+    func containsSameElements(as other: [Element]) -> Bool {
+        return self.count == other.count && self.sorted() == other.sorted()
     }
 }
