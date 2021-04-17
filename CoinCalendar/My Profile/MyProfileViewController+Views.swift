@@ -339,9 +339,9 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            goToEditProfile()            
-        case 1:
             goToMyAlerts()
+        case 1:
+            goToInviteContacts()
         case 2:
             goToInviteContacts()
         case 3:
