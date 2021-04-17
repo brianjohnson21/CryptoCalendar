@@ -84,6 +84,7 @@ class MyProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         showTabBar()
         //gamesPlayedLabel.isHidden = true
+        gamesPlayedLabel.isHidden = true
         gamesPlayedLabel.text = "Joined April 2021"
     }
     
@@ -105,6 +106,12 @@ extension MyProfileViewController {
         } completion: { (success) in
             //
         }
+    }
+    
+    @objc func goToInviteContacts() {
+        lightImpactGenerator()
+        let inviteFriendsVC = InviteFriendsViewController()
+        self.navigationController?.pushViewController(inviteFriendsVC, animated: true)
     }
     
     @objc func goToMyAlerts() {
@@ -141,12 +148,6 @@ extension MyProfileViewController {
 //        let editProfileVC = EditProfileViewController()
 //        //editProfileVC.editTitleLabel.text = "Edit your profile"
 //        self.navigationController?.pushViewController(editProfileVC, animated: true)
-    }
-    
-    @objc func goToInviteContacts() {
-//        lightImpactGenerator()
-//        let inviteFriendsVC = InviteFriendsViewController()
-//        self.navigationController?.pushViewController(inviteFriendsVC, animated: true)
     }
     
     @objc func goToPaywall() {

@@ -21,5 +21,6 @@ pod 'Disk'
 pod 'AWSS3'
 pod 'Kingfisher'
 pod 'KDCircularProgress'
+pod 'UICircularProgressRing'
 
 end

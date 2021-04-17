@@ -144,14 +144,15 @@ extension MyProfileViewController {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(profileImageView)
         profileImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        profileCenterY = profileImageView.centerYAnchor.constraint(equalTo: purpBackground.bottomAnchor, constant: 0)//centerYAnchor.constraint(equalTo: purpBackground.bottomAnchor)
+        profileCenterY = profileImageView.centerYAnchor.constraint(equalTo: purpBackground.bottomAnchor, constant: 30)//centerYAnchor.constraint(equalTo: purpBackground.bottomAnchor)
         profileCenterY.isActive = true
         profileHeight = profileImageView.heightAnchor.constraint(equalToConstant: piDimensions)
         profileHeight.isActive = true
         profileWidth = profileImageView.widthAnchor.constraint(equalToConstant: piDimensions)
         profileWidth.isActive = true
         
-        userNameLabel.text = "Evan Robertson" //User.current.name
+        userNameLabel.text = User.current.email//"Evan Robertson" //User.current.name
+        print("\(User.current.email) - 🤬🤬🤬")
         userNameLabel.textColor = .keyEventHeadlineColorModeLight
         userNameLabel.textAlignment = .center
         userNameLabel.font = .sofiaSemiBold(ofSize: 19)
@@ -273,7 +274,7 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             goToMyAlerts()
         case 2:
-            goToPaywall()
+            goToInviteContacts()
         case 3:
             goToInviteContacts()
         case 4:

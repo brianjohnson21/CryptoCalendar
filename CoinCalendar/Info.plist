@@ -22,47 +22,47 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>AWS</key>
-    <dict>
-        <key>CredentialsProvider</key>
-        <dict>
-            <key>CognitoIdentity</key>
-            <dict>
-                <key>Default</key>
-                <dict>
-                    <key>PoolId</key>
-                    <string>us-west-2:972eeb81-e8c6-4848-b9e3-49d33e820fbc</string>
-                    <key>Region</key>
-                    <string>USWest2</string>
-                </dict>
-            </dict>
-        </dict>
-        <key>S3</key>
-        <dict>
-            <key>Default</key>
-            <dict>
-                <key>Bucket</key>
-                <string>cryptocalbucket</string>
-                <key>Region</key>
-                <string>USWest2</string>
-            </dict>
-        </dict>
-    </dict>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>ab6cd743f437da15e.awsglobalaccelerator.com</key>
-            <dict>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
+	<key>AWS</key>
+	<dict>
+		<key>CredentialsProvider</key>
+		<dict>
+			<key>CognitoIdentity</key>
+			<dict>
+				<key>Default</key>
+				<dict>
+					<key>PoolId</key>
+					<string>us-west-2:972eeb81-e8c6-4848-b9e3-49d33e820fbc</string>
+					<key>Region</key>
+					<string>USWest2</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>S3</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>Bucket</key>
+				<string>cryptocalbucket</string>
+				<key>Region</key>
+				<string>USWest2</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>ab6cd743f437da15e.awsglobalaccelerator.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Sofia Pro Bold Az.otf</string>
@@ -111,5 +111,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>Please allow access to your contacts to share CryptoTrack</string>
 </dict>
 </plist>
