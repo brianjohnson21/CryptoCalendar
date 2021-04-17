@@ -11,6 +11,7 @@ ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/PhotoCircleCrop/PhotoCircleCrop.framework
 ${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework
 ${BUILT_PRODUCTS_DIR}/SuperBadges/SuperBadges.framework
+${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework
 ${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework
 ${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework
 ${BUILT_PRODUCTS_DIR}/WXImageCompress/WXImageCompress.framework

@@ -42,7 +42,7 @@ extension SubscriptionViewController {
         dismissImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         dismissImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
-        subscribeButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        subscribeButton.addTarget(self, action: #selector(didTapSubscribe), for: .touchUpInside)
         subscribeButton.backgroundColor = .white
         //subscribeButton.setTitle("Try Free & Subscribe", for: .normal)
         subscribeButton.setTitleColor(.keyEventHeadlineColorModeLight, for: .normal)
