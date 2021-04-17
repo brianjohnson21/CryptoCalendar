@@ -232,35 +232,99 @@ extension EventFeedViewController {
         segmentioControl.valueDidChange = { [weak self] segmentio, segmentIndex in
             self?.lightImpactGenerator()
             print("Selected item: ", segmentIndex)
+            self?.selectedSegment = segmentIndex
             
             switch segmentIndex {
             case 0:
-                print("did this")
                 self?.watchListEmptyState.hidViews()
                 self?.newEventsEmptyState.hidViews()
+                self?.importantEmptyState.hidViews()
+                
+                if self?.filteredCoins.count == 0 {
+                    if let allPostsCount = self?.posts.count {
+                        if allPostsCount < 1 {
+                            self?.allEventsEmptyState.showViews()
+                        }
+                    }
+                } else {
+                    var source: [Post]!
+                    source = self?.posts.filter({self?.filteredCoins.contains($0.coinSymbol ?? "") as! Bool})
+                    if source.count > 0 {
+                        self?.allEventsEmptyState.hidViews()
+                    } else {
+                        self?.allEventsEmptyState.showViews()
+                    }
+                    //print("\(source.count) - 😇😇😇")
+                }
+                
             case 1:
-                print("did this")
+                self?.allEventsEmptyState.hidViews()
                 self?.watchListEmptyState.hidViews()
                 self?.newEventsEmptyState.hidViews()
+                
+                if self?.filteredCoins.count == 0 {
+                    if let importantPostsCount = self?.importantPosts.count {
+                        if importantPostsCount < 1 {
+                            self?.importantEmptyState.showViews()
+                        }
+                    }
+                } else {
+                    var source: [Post]!
+                    source = self?.importantPosts.filter({self?.filteredCoins.contains($0.coinSymbol ?? "") as! Bool})
+                    if source.count > 0 {
+                        self?.importantEmptyState.hidViews()
+                    } else {
+                        self?.importantEmptyState.showViews()
+                    }
+                    //print("\(source.count) - 😇😇😇")
+                }
+                
             case 2:
-                print("did this")
+                self?.allEventsEmptyState.hidViews()
                 self?.watchListEmptyState.hidViews()
-                if let watchListPostsCount = self?.newPosts.count {
-                    if watchListPostsCount < 1 {
+                self?.importantEmptyState.hidViews()
+                                
+                if self?.filteredCoins.count == 0 {
+                    if let newPostsCount = self?.newPosts.count {
+                        if newPostsCount < 1 {
+                            self?.newEventsEmptyState.showViews()
+                        }
+                    }
+                } else {
+                    var source: [Post]!
+                    source = self?.newPosts.filter({self?.filteredCoins.contains($0.coinSymbol ?? "") as! Bool})
+                    if source.count > 0 {
+                        self?.newEventsEmptyState.hidViews()
+                    } else {
                         self?.newEventsEmptyState.showViews()
                     }
+                    //print("\(source.count) - 😇😇😇")
                 }
-                //newEventsEmptyState
+                
+                
             default:
-                print("did this")
-                if let watchListPostsCount = self?.watchlistPosts.count {
-                    if watchListPostsCount < 1 {
+                self?.allEventsEmptyState.hidViews()
+                self?.newEventsEmptyState.hidViews()
+                self?.importantEmptyState.hidViews()
+                
+                if self?.filteredCoins.count == 0 {
+                    if let watchListPostsCount = self?.watchlistPosts.count {
+                        if watchListPostsCount < 1 {
+                            self?.watchListEmptyState.showViews()
+                        }
+                    }
+                } else {
+                    var source: [Post]!
+                    source = self?.watchlistPosts.filter({self?.filteredCoins.contains($0.coinSymbol ?? "") as! Bool})
+                    if source.count > 0 {
+                        self?.watchListEmptyState.hidViews()
+                    } else {
                         self?.watchListEmptyState.showViews()
                     }
+                    //print("\(source.count) - 😇😇😇")
                 }
-                self?.newEventsEmptyState.hidViews()
+                                
             }
-            //self?.mainFeedTableView.reloadData()
             self?.mainFeedTableView.reloadSections([0], with: .fade)
         }
 
@@ -368,23 +432,22 @@ extension EventFeedViewController {
     }
     
     func setupEmptyState() {
-        watchListEmptyState.isUserInteractionEnabled = false
-        watchListEmptyState.layer.zPosition = 100
-        watchListEmptyState.isHidden = true
-        watchListEmptyState.squadUpButton.isHidden = true
-        watchListEmptyState.lockLabel.text = "👀🧐"
-        watchListEmptyState.lockTitleLabel.text = "Watchlist Empty"
-        watchListEmptyState.lockDetailLabel.setupLineHeight(myText: "Add events that you want to keep on your\nradar and receive notifications for", myLineSpacing: 4)
-        watchListEmptyState.lockDetailLabel.textAlignment = .center
-        watchListEmptyState.squadUpButton.setTitle("Browse users", for: .normal)
-        watchListEmptyState.backgroundColor = .clear
-        watchListEmptyState.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(watchListEmptyState)
-        watchListEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
-        //searchEmptyState.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 25).isActive = true
-        watchListEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
-        watchListEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
-        watchListEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
+        allEventsEmptyState.isUserInteractionEnabled = false
+        allEventsEmptyState.layer.zPosition = 100
+        allEventsEmptyState.isHidden = true
+        allEventsEmptyState.squadUpButton.isHidden = true
+        allEventsEmptyState.lockLabel.text = "🤷‍♂️😫"
+        allEventsEmptyState.lockTitleLabel.text = "No Events"
+        allEventsEmptyState.lockDetailLabel.setupLineHeight(myText: "We have not listed any upcoming\nevents for the coins you have filtered for", myLineSpacing: 4)
+        allEventsEmptyState.lockDetailLabel.textAlignment = .center
+        allEventsEmptyState.squadUpButton.setTitle("Browse users", for: .normal)
+        allEventsEmptyState.backgroundColor = .clear
+        allEventsEmptyState.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(allEventsEmptyState)
+        allEventsEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
+        allEventsEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
+        allEventsEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        allEventsEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
         
         newEventsEmptyState.isUserInteractionEnabled = false
         newEventsEmptyState.layer.zPosition = 100
@@ -399,10 +462,45 @@ extension EventFeedViewController {
         newEventsEmptyState.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(newEventsEmptyState)
         newEventsEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
-        //searchEmptyState.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 25).isActive = true
         newEventsEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
         newEventsEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
         newEventsEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
+        
+        importantEmptyState.isUserInteractionEnabled = false
+        importantEmptyState.layer.zPosition = 100
+        importantEmptyState.isHidden = true
+        importantEmptyState.squadUpButton.isHidden = true
+        importantEmptyState.lockLabel.text = "🚀🌕"
+        importantEmptyState.lockTitleLabel.text = "No Important Events"
+        importantEmptyState.lockDetailLabel.setupLineHeight(myText: "Important events for coins that we\nfeature will be added here", myLineSpacing: 4)
+        importantEmptyState.lockDetailLabel.textAlignment = .center
+        importantEmptyState.squadUpButton.setTitle("Browse users", for: .normal)
+        importantEmptyState.backgroundColor = .clear
+        importantEmptyState.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(importantEmptyState)
+        importantEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
+        importantEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
+        importantEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        importantEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
+        
+        watchListEmptyState.isUserInteractionEnabled = false
+        watchListEmptyState.layer.zPosition = 100
+        watchListEmptyState.isHidden = true
+        watchListEmptyState.squadUpButton.isHidden = true
+        watchListEmptyState.lockLabel.text = "👀🧐"
+        watchListEmptyState.lockTitleLabel.text = "No Watchlist Events"
+        watchListEmptyState.lockDetailLabel.setupLineHeight(myText: "Any events you add to your\nwatchlist will show up here", myLineSpacing: 4)
+        watchListEmptyState.lockDetailLabel.textAlignment = .center
+        watchListEmptyState.squadUpButton.setTitle("Browse users", for: .normal)
+        watchListEmptyState.backgroundColor = .clear
+        watchListEmptyState.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(watchListEmptyState)
+        watchListEmptyState.centerXAnchor.constraint(equalTo: mainFeedTableView.centerXAnchor).isActive = true
+        watchListEmptyState.centerYAnchor.constraint(equalTo: mainFeedTableView.centerYAnchor, constant: 0).isActive = true
+        watchListEmptyState.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        watchListEmptyState.widthAnchor.constraint(equalToConstant: 305).isActive = true
+        
+        
     }
     
 }
@@ -417,15 +515,39 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var source: [Post]!
         
+        showAllList = false
+        
         if !filteredCoins.isEmpty {
-            if segmentioControl.selectedSegmentioIndex == 0 {
+            if segmentioControl.selectedSegmentioIndex == 0 {                
                 source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+                if source.count > 0 {
+                    showAllList = false
+                } else {
+                    showAllList = true
+                }
+                                
             } else if segmentioControl.selectedSegmentioIndex == 1 {
                 source = self.importantPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+                if source.count > 0 {
+                    showImportantList = false
+                } else {
+                    showImportantList = true
+                }
             } else if segmentioControl.selectedSegmentioIndex == 2 {
                 source = self.newPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+                if source.count > 0 {
+                    showNewlist = false
+                } else {
+                    showNewlist = true
+                }
+                                
             } else if segmentioControl.selectedSegmentioIndex == 3 {
                 source = self.watchlistPosts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
+                if source.count > 0 {
+                    showWatchList = false
+                } else {
+                    showWatchList = true
+                }
             }
         } else if segmentioControl.selectedSegmentioIndex == 0 {
             source = self.posts

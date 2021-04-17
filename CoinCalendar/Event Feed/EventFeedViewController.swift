@@ -12,8 +12,10 @@ import ViewAnimator
 
 class EventFeedViewController: UIViewController {
     
+    var allEventsEmptyState = EmptyStateView()
     var watchListEmptyState = EmptyStateView()
     var newEventsEmptyState = EmptyStateView()
+    var importantEmptyState = EmptyStateView()
     
     let launchTransition = LaunchTransitionView()
     var transitionView = UIView()
@@ -55,8 +57,13 @@ class EventFeedViewController: UIViewController {
     var selectedSourceLink: String = "http://www.apple.com"
     
     var selectedPost: Post?
-    
     var filteredCoins = [String]()
+    
+    var showAllList = true
+    var showImportantList = true
+    var showWatchList = true
+    var showNewlist = true
+    var selectedSegment: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,7 +193,12 @@ extension EventFeedViewController: LaunchTransitionViewDelegate {
 extension EventFeedViewController: SortFilterViewControllerDelegate {
     func didUpdateFilter(coins: [String]) {
         self.filteredCoins = coins
-        
+        //newEventsEmptyState.alpha = 0
+        //watchListEmptyState.alpha = 0
+        allEventsEmptyState.hidViews()
+        newEventsEmptyState.hidViews()
+        newEventsEmptyState.hidViews()
+        watchListEmptyState.hidViews()
         mainFeedTableView.alpha = 0
         loadingLottie.play()
         loadingContainer.alpha = 1.0
@@ -198,6 +210,24 @@ extension EventFeedViewController: SortFilterViewControllerDelegate {
             self.loadingLottie.stop()
             self.mainFeedTableView.reloadData()
             self.animateCells()
+            
+            //showAllList
+            if self.showAllList && self.selectedSegment == 0 {
+                self.allEventsEmptyState.showViews()
+            }
+            
+            if self.showImportantList && self.selectedSegment == 1 {
+                self.watchListEmptyState.showViews()
+            }
+            
+            if self.showNewlist && self.selectedSegment == 2 {
+                self.newEventsEmptyState.showViews()
+            }
+            
+            if self.showWatchList && self.selectedSegment == 3 {
+                self.watchListEmptyState.showViews()
+            }
+            
         }
 
         
