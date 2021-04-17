@@ -18,15 +18,22 @@ extension MyProfileViewController {
         case .iphone5() :
             piDimensions = 100
             logoTop = 30
+            versionBottom = -17
+            
         case .iphone78() :
             piDimensions = 100
             logoTop = 30
+            versionBottom = -17
+            
         case .iphone78Plus() :
             piDimensions = 130
             logoTop = 30
+            versionBottom = -17
+            
         case .iphone11() :
             piDimensions = 130
             logoTop = 48
+            versionBottom = -34
             
         case .iphone12AndPro() :
             piDimensions = 115
@@ -40,6 +47,7 @@ extension MyProfileViewController {
             piDimensions = 120
             logoTop = 48
             nvHeight = 130
+            versionBottom = -34
         }
     }
     
@@ -235,11 +243,72 @@ extension MyProfileViewController {
         
     }
     
-    
     func setupButtons() {
         payHistoryButton.translatesAutoresizingMaskIntoConstraints = false
         squadUpHistoryContainer.addSubview(payHistoryButton)
         payHistoryButton.fillSuperview()
+    }
+    
+    func setupVersionAndSocial() {
+        
+        versionLabel.text = "Version 1.0"
+        versionLabel.textAlignment = .center
+        versionLabel.textColor = UIColor.coinBaseBlue.withAlphaComponent(0.7)
+        versionLabel.font = .sofiaRegular(ofSize: 15)
+        versionLabel.numberOfLines = 0
+        versionLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(versionLabel)
+        versionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        versionLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: versionBottom).isActive = true
+        
+        twitterButton.adjustsImageWhenHighlighted = false
+        //twitterButton.setBackgroundImage(UIImage(named: "twitter1"), for: .normal)
+        twitterButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(twitterButton)
+        twitterButton.bottomAnchor.constraint(equalTo: versionLabel.topAnchor, constant: -41).isActive = true
+        twitterButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        twitterButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        twitterButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        twitterImageView.image = UIImage(named: "twitter1")
+        twitterImageView.setImageColor(color: .coinBaseBlue)
+        twitterImageView.contentMode = .scaleAspectFill
+        twitterImageView.translatesAutoresizingMaskIntoConstraints = false
+        twitterButton.addSubview(twitterImageView)
+        twitterImageView.fillSuperview()
+        
+        faceBookButton.adjustsImageWhenHighlighted = false
+        //faceBookButton.setBackgroundImage(UIImage(named: "facebook1"), for: .normal)
+        faceBookButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(faceBookButton)
+        faceBookButton.centerYAnchor.constraint(equalTo: twitterButton.centerYAnchor, constant: 0).isActive = true
+        faceBookButton.trailingAnchor.constraint(equalTo: twitterButton.leadingAnchor, constant: -75).isActive = true
+        faceBookButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        faceBookButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        faceBookImageView.image = UIImage(named: "facebook1")
+        faceBookImageView.setImageColor(color: .coinBaseBlue)
+        faceBookImageView.contentMode = .scaleAspectFill
+        faceBookImageView.translatesAutoresizingMaskIntoConstraints = false
+        faceBookButton.addSubview(faceBookImageView)
+        faceBookImageView.fillSuperview()
+        
+        instagramButton.adjustsImageWhenHighlighted = false
+        instagramButton.setBackgroundImage(UIImage(named: "instagram1"), for: .normal)
+        instagramButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(instagramButton)
+        instagramButton.centerYAnchor.constraint(equalTo: twitterButton.centerYAnchor, constant: 0).isActive = true
+        instagramButton.leadingAnchor.constraint(equalTo: twitterButton.trailingAnchor, constant: 75).isActive = true
+        instagramButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        instagramButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        instagramImageView.image = UIImage(named: "instagram1")
+        instagramImageView.setImageColor(color: .coinBaseBlue)
+        instagramImageView.contentMode = .scaleAspectFill
+        instagramImageView.translatesAutoresizingMaskIntoConstraints = false
+        instagramButton.addSubview(instagramImageView)
+        instagramImageView.fillSuperview()
+        
     }
     
 }

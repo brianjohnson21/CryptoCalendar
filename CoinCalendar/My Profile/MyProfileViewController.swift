@@ -32,6 +32,17 @@ class MyProfileViewController: UIViewController {
     var settingsButton = UIButton()
     var loadingLottie = AnimationView()
     
+    var versionLabel = UILabel()
+    var faceBookButton = UIButton()
+    var faceBookImageView = UIImageView()
+    var twitterButton = UIButton()
+    var twitterImageView = UIImageView()
+    var instagramButton = UIButton()
+    var instagramImageView = UIImageView()
+    
+    var buttonsBottom: CGFloat = -42
+    var versionBottom: CGFloat = -34
+    
     var profileImgCenterY: NSLayoutConstraint!
     var proHeight: NSLayoutConstraint!
     var proWidth: NSLayoutConstraint!
@@ -45,8 +56,8 @@ class MyProfileViewController: UIViewController {
     
     var mainFeedTableView = UITableView()
     var myProfileTableViewCell = "myProfileTableViewCell"
-    var settingTitle: [String] = ["Edit my profile", "My alerts", "Invite your friends", "Settings"]
-    var settingImage: [String] = ["edit 1", "bell", "share", "settings2"]
+    var settingTitle: [String] = ["My alerts", "Invite your friends", "FAQ", "Terms of Service"]
+    var settingImage: [String] = ["bell", "share", "share", "share"]
     
     var piDimensions: CGFloat = 100
     var logoTop: CGFloat = 48
@@ -73,6 +84,7 @@ class MyProfileViewController: UIViewController {
         setupTableView()
         setupViews()
         setupLoadingIndicator()
+        setupVersionAndSocial()
         
         settingsButton.addTarget(self, action: #selector(settingsTapped), for: .touchUpInside)
         dismissButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
