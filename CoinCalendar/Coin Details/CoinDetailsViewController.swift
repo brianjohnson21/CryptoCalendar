@@ -34,7 +34,7 @@ class CoinDetailsViewController: UIViewController {
     var events: [String] = ["Event One", "Event Two"]
     
     var whiteGradient = UIImageView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white

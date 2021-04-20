@@ -71,15 +71,15 @@ extension CoinMarketFeedViewController {
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
         
-        titleLabel.text = "Market Data"
-        titleLabel.textAlignment = .left
-        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-        titleLabel.font = .sofiaBold(ofSize: 24)
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        profileContainer.addSubview(titleLabel)
-        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+    titleLabel.text = "Market Data"
+    titleLabel.textAlignment = .left
+    titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+    titleLabel.font = .sofiaBold(ofSize: 24)
+    titleLabel.numberOfLines = 0
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    profileContainer.addSubview(titleLabel)
+    titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
+    titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         
         /*
         userGreetingLabel.text = "Good morning,"

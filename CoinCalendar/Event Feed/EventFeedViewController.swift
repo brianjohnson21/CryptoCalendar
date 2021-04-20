@@ -77,7 +77,7 @@ class EventFeedViewController: UIViewController {
         setupTableView()
         setupLoadingIndicator()
         setupEmptyState()
-        self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
                 
         perform(#selector(animateCells), with: self, afterDelay: 0.25)
         

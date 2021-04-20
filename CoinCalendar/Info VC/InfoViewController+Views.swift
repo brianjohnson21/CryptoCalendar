@@ -31,11 +31,19 @@ extension InfoViewController {
         mainContainer.layer.masksToBounds = true
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
         mainScrollView.addSubview(mainContainer)
-        mainContainer.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 71).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: mainScrollView.leadingAnchor, constant: 0).isActive = true
         mainContainer.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        mainContainer.heightAnchor.constraint(equalToConstant: self.view.frame.height - 71).isActive = true
         mainContainer.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
+        if isLivePortfolio {
+            mainContainer.heightAnchor.constraint(equalToConstant: self.view.frame.height - 250).isActive = true
+            mainContainer.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 250).isActive = true
+        } else if isWatchlist {
+            mainContainer.heightAnchor.constraint(equalToConstant: self.view.frame.height - 580).isActive = true
+            mainContainer.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 580).isActive = true
+        } else {
+            mainContainer.heightAnchor.constraint(equalToConstant: self.view.frame.height - 71).isActive = true
+            mainContainer.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 71).isActive = true
+        }
         
         keyLine.backgroundColor = .white
         keyLine.layer.cornerRadius = 4/2
@@ -98,7 +106,11 @@ extension InfoViewController {
         mainFeedTableView.contentInset = .zero
         mainFeedTableView.showsVerticalScrollIndicator = false
         mainFeedTableView.separatorStyle = .none
-        mainFeedTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 100, right: 0)
+        if isLivePortfolio || isWatchlist {
+            mainFeedTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        } else {
+            mainFeedTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 100, right: 0)
+        }
         mainFeedTableView.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(mainFeedTableView)
         mainFeedTableView.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor).isActive = true
@@ -126,19 +138,42 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return expos.count
+        if isLivePortfolio {
+            return liveCoinsExpo.count
+        } else if isWatchlist {
+            return watchListExpo.count
+        } else {
+            return expos.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: infoTableViewCell, for: indexPath) as! InfoTableViewCell
-        cell.infoTitleLabel.text = expos[indexPath.row][0]
-        let infoDetailLabelText = expos[indexPath.row][1]
-        cell.infoDetailLabel.setupLineHeight(myText: infoDetailLabelText, myLineSpacing: 8)
-        
-        if indexPath.row == expos.count - 1 {
+        if isLivePortfolio {
+            cell.infoTitleLabel.text = liveCoinsExpo[indexPath.row][0]
+            let infoDetailLabelText = liveCoinsExpo[indexPath.row][1]
+            cell.infoDetailLabel.setupLineHeight(myText: infoDetailLabelText, myLineSpacing: 8)
+            
+            if indexPath.row == expos.count - 1 {
+                cell.dividerLine.isHidden = true
+            } else {
+                cell.dividerLine.isHidden = false
+            }
+        } else if isWatchlist {
+            cell.infoTitleLabel.text = watchListExpo[indexPath.row][0]
+            let infoDetailLabelText = watchListExpo[indexPath.row][1]
+            cell.infoDetailLabel.setupLineHeight(myText: infoDetailLabelText, myLineSpacing: 8)
             cell.dividerLine.isHidden = true
         } else {
-            cell.dividerLine.isHidden = false
+            cell.infoTitleLabel.text = expos[indexPath.row][0]
+            let infoDetailLabelText = expos[indexPath.row][1]
+            cell.infoDetailLabel.setupLineHeight(myText: infoDetailLabelText, myLineSpacing: 8)
+            
+            if indexPath.row == expos.count - 1 {
+                cell.dividerLine.isHidden = true
+            } else {
+                cell.dividerLine.isHidden = false
+            }
         }
         
         return cell

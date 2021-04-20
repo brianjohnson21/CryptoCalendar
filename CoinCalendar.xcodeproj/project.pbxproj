@@ -74,6 +74,22 @@
 		DE55D431262A87CB00F9295D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D430262A87CB00F9295D /* ContactsTableViewCell.swift */; };
 		DE55D434262A882C00F9295D /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D433262A882C00F9295D /* Contact.swift */; };
 		DE55D437262A884600F9295D /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D436262A884600F9295D /* Contacts.swift */; };
+		DE55D471262CCE5800F9295D /* DiscoverExpertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D470262CCE5700F9295D /* DiscoverExpertsViewController.swift */; };
+		DE55D475262CCE6600F9295D /* DiscoverExpertsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D474262CCE6500F9295D /* DiscoverExpertsViewController+Views.swift */; };
+		DE55D478262CCFC200F9295D /* DiscoverSpotlightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D477262CCFC200F9295D /* DiscoverSpotlightTableViewCell.swift */; };
+		DE55D47B262CD33900F9295D /* SpotlightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D47A262CD33900F9295D /* SpotlightCollectionViewCell.swift */; };
+		DE55D492262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D491262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift */; };
+		DE55D496262CDFF300F9295D /* TopTradersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D495262CDFF300F9295D /* TopTradersTableViewCell.swift */; };
+		DE55D49A262CF46C00F9295D /* ExpertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D499262CF46C00F9295D /* ExpertDetailViewController.swift */; };
+		DE55D49E262CF47500F9295D /* ExpertDetailViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D49D262CF47500F9295D /* ExpertDetailViewController+Views.swift */; };
+		DE55D4B5262CF98600F9295D /* ExpertBioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4B4262CF98600F9295D /* ExpertBioTableViewCell.swift */; };
+		DE55D4B8262D292900F9295D /* ExpertsCurrentCoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4B7262D292900F9295D /* ExpertsCurrentCoinsTableViewCell.swift */; };
+		DE55D4CF262D3D5300F9295D /* ExpertCurrentCoinMarketFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4CE262D3D5300F9295D /* ExpertCurrentCoinMarketFeedTableViewCell.swift */; };
+		DE55D4E6262DC17700F9295D /* ExpertWatchlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4E5262DC17700F9295D /* ExpertWatchlistTableViewCell.swift */; };
+		DE55D4E9262DD34700F9295D /* ExpertPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4E8262DD34700F9295D /* ExpertPostTableViewCell.swift */; };
+		DE55D500262DF55800F9295D /* FollowUnfollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4FF262DF55800F9295D /* FollowUnfollowView.swift */; };
+		DE55D517262F0A4700F9295D /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D516262F0A4700F9295D /* TimePickerViewController.swift */; };
+		DE55D51A262F0A5200F9295D /* TimePickerViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D519262F0A5200F9295D /* TimePickerViewController+Views.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -202,6 +218,22 @@
 		DE55D430262A87CB00F9295D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		DE55D433262A882C00F9295D /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		DE55D436262A884600F9295D /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		DE55D470262CCE5700F9295D /* DiscoverExpertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverExpertsViewController.swift; sourceTree = "<group>"; };
+		DE55D474262CCE6500F9295D /* DiscoverExpertsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoverExpertsViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D477262CCFC200F9295D /* DiscoverSpotlightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSpotlightTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D47A262CD33900F9295D /* SpotlightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE55D491262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertsTopCoinsTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D495262CDFF300F9295D /* TopTradersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTradersTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D499262CF46C00F9295D /* ExpertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertDetailViewController.swift; sourceTree = "<group>"; };
+		DE55D49D262CF47500F9295D /* ExpertDetailViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpertDetailViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D4B4262CF98600F9295D /* ExpertBioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertBioTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D4B7262D292900F9295D /* ExpertsCurrentCoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertsCurrentCoinsTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D4CE262D3D5300F9295D /* ExpertCurrentCoinMarketFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCurrentCoinMarketFeedTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D4E5262DC17700F9295D /* ExpertWatchlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertWatchlistTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D4E8262DD34700F9295D /* ExpertPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertPostTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D4FF262DF55800F9295D /* FollowUnfollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUnfollowView.swift; sourceTree = "<group>"; };
+		DE55D516262F0A4700F9295D /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		DE55D519262F0A5200F9295D /* TimePickerViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimePickerViewController+Views.swift"; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -477,6 +509,45 @@
 			path = "Invite Friends";
 			sourceTree = "<group>";
 		};
+		DE55D46F262CCE4400F9295D /* Expert Portfolios */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D470262CCE5700F9295D /* DiscoverExpertsViewController.swift */,
+				DE55D474262CCE6500F9295D /* DiscoverExpertsViewController+Views.swift */,
+				DE55D477262CCFC200F9295D /* DiscoverSpotlightTableViewCell.swift */,
+				DE55D47A262CD33900F9295D /* SpotlightCollectionViewCell.swift */,
+				DE55D491262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift */,
+				DE55D495262CDFF300F9295D /* TopTradersTableViewCell.swift */,
+				DE55D498262CF41200F9295D /* Expert Detail */,
+				DE55D51C262F0A5600F9295D /* Time Picker */,
+			);
+			path = "Expert Portfolios";
+			sourceTree = "<group>";
+		};
+		DE55D498262CF41200F9295D /* Expert Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D499262CF46C00F9295D /* ExpertDetailViewController.swift */,
+				DE55D49D262CF47500F9295D /* ExpertDetailViewController+Views.swift */,
+				DE55D4B4262CF98600F9295D /* ExpertBioTableViewCell.swift */,
+				DE55D4B7262D292900F9295D /* ExpertsCurrentCoinsTableViewCell.swift */,
+				DE55D4CE262D3D5300F9295D /* ExpertCurrentCoinMarketFeedTableViewCell.swift */,
+				DE55D4E5262DC17700F9295D /* ExpertWatchlistTableViewCell.swift */,
+				DE55D4E8262DD34700F9295D /* ExpertPostTableViewCell.swift */,
+				DE55D4FF262DF55800F9295D /* FollowUnfollowView.swift */,
+			);
+			path = "Expert Detail";
+			sourceTree = "<group>";
+		};
+		DE55D51C262F0A5600F9295D /* Time Picker */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D516262F0A4700F9295D /* TimePickerViewController.swift */,
+				DE55D519262F0A5200F9295D /* TimePickerViewController+Views.swift */,
+			);
+			path = "Time Picker";
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +579,7 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE55D46F262CCE4400F9295D /* Expert Portfolios */,
 				DE55D40E262A85FF00F9295D /* Invite Friends */,
 				DE55D2EA26267D8D00F9295D /* Coin Source Webview */,
 				DE3DC20426251BB80089E021 /* Coin Details */,
@@ -824,6 +896,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE55D478262CCFC200F9295D /* DiscoverSpotlightTableViewCell.swift in Sources */,
 				DE4246262613F9A600E185D4 /* MyProfileViewController.swift in Sources */,
 				DE3DC15D262416B30089E021 /* CompareCoinsViewController+Views.swift in Sources */,
 				DE9AA6262611130B0057A259 /* MainFeedCardTableViewCell.swift in Sources */,
@@ -839,34 +912,42 @@
 				DE42474D261969CA00E185D4 /* PriceVolumeMarketFeedViewController.swift in Sources */,
 				DE9AA629261118570057A259 /* MainFeedListHeaderView.swift in Sources */,
 				DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */,
+				DE55D471262CCE5800F9295D /* DiscoverExpertsViewController.swift in Sources */,
 				DE1EA42B26211BBD00954FBC /* TempCodeViewController+Views.swift in Sources */,
 				DE3DC17E26248B7E0089E021 /* CompareTableViewCell.swift in Sources */,
+				DE55D4E6262DC17700F9295D /* ExpertWatchlistTableViewCell.swift in Sources */,
 				DED2863D261F90B3002F34B6 /* CoinOptionsViewController+Views.swift in Sources */,
 				DE55D2EC26267D9E00F9295D /* EventSourceWebViewController.swift in Sources */,
+				DE55D4E9262DD34700F9295D /* ExpertPostTableViewCell.swift in Sources */,
 				DE9AA630261148CF0057A259 /* SplashViewController+Views.swift in Sources */,
 				DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */,
 				DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */,
 				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
 				DE55D413262A863700F9295D /* InviteFriendsViewController+Views.swift in Sources */,
 				DED657662621FAD4002CC83D /* EventFeedInfoViewController+Views.swift in Sources */,
+				DE55D500262DF55800F9295D /* FollowUnfollowView.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE3DC20626251BC30089E021 /* CoinDetailsViewController.swift in Sources */,
 				DE55D431262A87CB00F9295D /* ContactsTableViewCell.swift in Sources */,
 				DE55D410262A862800F9295D /* InviteFriendsViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,
 				DE55D3E62629124000F9295D /* SignUpPNTwoViewController+Views.swift in Sources */,
+				DE55D49A262CF46C00F9295D /* ExpertDetailViewController.swift in Sources */,
 				DED657632621FACB002CC83D /* EventFeedInfoViewController.swift in Sources */,
 				DE9AA64D2611543E0057A259 /* SignUpPNViewController+Views.swift in Sources */,
+				DE55D49E262CF47500F9295D /* ExpertDetailViewController+Views.swift in Sources */,
 				DE42473E26192C4600E185D4 /* CoinMarketFeedTableViewCell.swift in Sources */,
 				DE4246612614E54400E185D4 /* CircularProgressView.swift in Sources */,
 				DE9AA68D2612234E0057A259 /* SubscriptionViewController.swift in Sources */,
 				DE9AA67D2611781E0057A259 /* LaunchTransitionView.swift in Sources */,
+				DE55D51A262F0A5200F9295D /* TimePickerViewController+Views.swift in Sources */,
 				DE42462A2613F9B600E185D4 /* MyProfileViewController+Views.swift in Sources */,
 				DE9AA60C261101140057A259 /* EventFeedViewController.swift in Sources */,
 				DED657BA26223D2A002CC83D /* SetAlertViewController.swift in Sources */,
 				DE3DC1122622C4660089E021 /* PinnedCoinCollectionViewCell.swift in Sources */,
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
+				DE55D492262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
 				DE55D3E22629123900F9295D /* SignUpPNTwoViewController.swift in Sources */,
 				FC4E558E26202334008AF09B /* Coin.swift in Sources */,
@@ -878,6 +959,7 @@
 				DE42471F2619199B00E185D4 /* CoinMarketFeedViewController.swift in Sources */,
 				DED28635261F28E9002F34B6 /* CoinIconFeedTableViewCell.swift in Sources */,
 				DE424749261963B300E185D4 /* SocialMarketFeedTableViewCell.swift in Sources */,
+				DE55D4CF262D3D5300F9295D /* ExpertCurrentCoinMarketFeedTableViewCell.swift in Sources */,
 				DED285DE261CC418002F34B6 /* InfoTableViewCell.swift in Sources */,
 				DE55D42E262A87B300F9295D /* SingleOptionAlertView.swift in Sources */,
 				DE4246222613F17500E185D4 /* MyAlertsTableViewCell.swift in Sources */,
@@ -886,6 +968,7 @@
 				DE55D30D2627CF7A00F9295D /* LoginPNViewController+Views.swift in Sources */,
 				DE55D3232628922C00F9295D /* ValuePropositionViewController.swift in Sources */,
 				DE55D3732628C71200F9295D /* SplashTwoViewController.swift in Sources */,
+				DE55D517262F0A4700F9295D /* TimePickerViewController.swift in Sources */,
 				FC565FBA26261CED0093D019 /* Post.swift in Sources */,
 				DE55D3772628C71A00F9295D /* SplashTwoViewController+Views.swift in Sources */,
 				DE4245D7261376D000E185D4 /* PickerViewController.swift in Sources */,
@@ -897,7 +980,9 @@
 				DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */,
 				DE4245C62613702200E185D4 /* EventOptionsViewController+Views.swift in Sources */,
 				DED657CF26225C43002CC83D /* SetAlertOptionOneTableViewCell.swift in Sources */,
+				DE55D47B262CD33900F9295D /* SpotlightCollectionViewCell.swift in Sources */,
 				DE4246B926169DE000E185D4 /* HomeFeedCoinOfDayTableViewCell.swift in Sources */,
+				DE55D4B8262D292900F9295D /* ExpertsCurrentCoinsTableViewCell.swift in Sources */,
 				DE9AA5FB2610FD080057A259 /* Extensions.swift in Sources */,
 				DE4245DA261376DC00E185D4 /* PickerViewController+Views.swift in Sources */,
 				DE55D2F42626877C00F9295D /* EmptyStateView.swift in Sources */,
@@ -913,6 +998,7 @@
 				DE4246A72616930700E185D4 /* HomeFeedViewController+Views.swift in Sources */,
 				DE4245762612CE3900E185D4 /* SortFilterViewController+Views.swift in Sources */,
 				DE42465E2614D73D00E185D4 /* PickCryptoCollectionViewCell.swift in Sources */,
+				DE55D496262CDFF300F9295D /* TopTradersTableViewCell.swift in Sources */,
 				DED657D226226190002CC83D /* SetAlertOptionTwoTableViewCell.swift in Sources */,
 				DE3DC21326252C4A0089E021 /* CoinDetailStatTableViewCell.swift in Sources */,
 				DE9AA670261155780057A259 /* OneTimeCodeTextField.swift in Sources */,
@@ -923,8 +1009,10 @@
 				FC4E558C26202334008AF09B /* Admin.swift in Sources */,
 				DE42475426196B0900E185D4 /* PriceVolumeMarketFeedTableViewCell.swift in Sources */,
 				DE4245A12612D69C00E185D4 /* SortCoinTableViewCell.swift in Sources */,
+				DE55D4B5262CF98600F9295D /* ExpertBioTableViewCell.swift in Sources */,
 				FC4E558F26202334008AF09B /* API.swift in Sources */,
 				DE4246572614D28700E185D4 /* PickCryptoViewController.swift in Sources */,
+				DE55D475262CCE6600F9295D /* DiscoverExpertsViewController+Views.swift in Sources */,
 				DE55D434262A882C00F9295D /* Contact.swift in Sources */,
 				DE3DC21026252B270089E021 /* CoinDetailsHeader.swift in Sources */,
 				DE3DC20A26251BCA0089E021 /* CoinDetailsViewController+Views.swift in Sources */,

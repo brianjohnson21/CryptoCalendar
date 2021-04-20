@@ -518,7 +518,7 @@ extension EventFeedViewController: UITableViewDelegate, UITableViewDataSource {
         showAllList = false
         
         if !filteredCoins.isEmpty {
-            if segmentioControl.selectedSegmentioIndex == 0 {                
+            if segmentioControl.selectedSegmentioIndex == 0 {
                 source = self.posts.filter({filteredCoins.contains($0.coinSymbol ?? "")})
                 if source.count > 0 {
                     showAllList = false

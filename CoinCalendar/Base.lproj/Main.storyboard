@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="90" y="127"/>
         </scene>
-        <!--Event Feed View Controller-->
+        <!--Discover Experts View Controller-->
         <scene sceneID="wDz-sg-DwL">
             <objects>
-                <viewController storyboardIdentifier="EventFeedViewController" id="pbc-qk-QBr" customClass="EventFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverExpertsViewController" id="pbc-qk-QBr" customClass="DiscoverExpertsViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qkw-Vr-fDw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
         <scene sceneID="ssb-x2-3Sb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Ve-7y-2LU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="cloudTabThicc" id="pwj-bH-vj2"/>
+                    <tabBarItem key="tabBarItem" title="" image="pieChartTabThicc" id="pwj-bH-vj2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="78e-z3-fP2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -152,10 +152,10 @@
             </objects>
             <point key="canvasLocation" x="1909" y="126"/>
         </scene>
-        <!--Social Market Feed View Controller-->
+        <!--Event Feed View Controller-->
         <scene sceneID="9kQ-5t-YSh">
             <objects>
-                <viewController storyboardIdentifier="SocialMarketFeedViewController" id="t1X-0z-ae1" customClass="SocialMarketFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedViewController" id="t1X-0z-ae1" customClass="EventFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="shF-ic-zlG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
         <scene sceneID="c7d-P2-7jP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UNF-LO-RJt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="twitterTabThicc" id="GbQ-Q1-nhT"/>
+                    <tabBarItem key="tabBarItem" title="" image="cloudTabThicc" id="GbQ-Q1-nhT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NCj-BO-eOJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -207,7 +207,7 @@
         <scene sceneID="B8O-gV-dT7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ss-xM-MBj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="dollarTabThicc" id="71X-DZ-bmz"/>
+                    <tabBarItem key="tabBarItem" title="" image="listTabThicc" id="71X-DZ-bmz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Il-Km-Ogv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -226,9 +226,9 @@
     <resources>
         <image name="FeedTabThicc" width="30" height="30"/>
         <image name="cloudTabThicc" width="30" height="30"/>
-        <image name="dollarTabThicc" width="30" height="30"/>
+        <image name="listTabThicc" width="24" height="24"/>
+        <image name="pieChartTabThicc" width="24" height="24"/>
         <image name="trendingTabThicc" width="30" height="30"/>
-        <image name="twitterTabThicc" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

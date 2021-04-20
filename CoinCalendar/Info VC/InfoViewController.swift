@@ -21,6 +21,8 @@ class InfoViewController: UIViewController {
     
     var whiteGradient = UIImageView()
     var isDismissing = false
+    var isLivePortfolio = false
+    var isWatchlist = false
     
     var expos: [[String]] = [
         ["Coin Health", "The Coin Health Score is a combined measure of cryptocurrency indicators used to correlate and understand the overall health, quality and performance of a specific project. In short, it indicates how well a coin is doing.\n\nHow can it be used?\n\nThe Coin Health Score can be used as a signal when a project is entering a new territory, from very bearish to very bullish. Scores greater than 50 are generally bullish while scores less than 50 are generally bearish. Bottom line, the higher the score the better. The overall score combines the total score of the following four key performance indicators:\n\n• Price Score\n\n• Social Sentiment\n\n• Social Impact\n\n• Correlation Rank"],
@@ -28,6 +30,10 @@ class InfoViewController: UIViewController {
         ["Volatility", "Volatility looks at price fluctuations over time and uses a standard deviation of logarithmic returns to detect patterns."],
         ["Coin Rank", "Coin Rank measures a coin’s performance VS. all other coins that we actively support. In general it is a unique measurement that combines ALT coin price performance relative to Bitcoin and other social activity indicators across the entire crypto market. The lower the score the better! A coin can have a Coin Rank of 1 even in a bear market situation. This combined metric seeks to provide a broader view of the health and performance of altcoins.\n\nHow can it be used?\n\nCoin Rank looks at both financial metrics alongside community metrics and seeks to identify altcoins that outperform Bitcoin during specific timeframes. There’s four main factors that go into the Coin Rank:\n\n• Price Change\n\n• Trading Volume\n\n• Social Volume\n\n• Social Score"]
     ]
+    
+    var liveCoinsExpo = [["", "These are the coins currently held by this trader"], ["Entry", "This represents the price point that the trader purchased this asset at"], ["Current", "This represents the current price point that the asset is at relative to its market cap"], ["%", "This represents the percentage of this traders portfolio that is attributed to this asset"]]
+    
+    var watchListExpo = [["", "These are the coins the trader is keeping an eye on and the price point that they are looking to possibly enter at"]]
     
     var socialExpos: [[String]] = [
         ["Social Volume", ""]

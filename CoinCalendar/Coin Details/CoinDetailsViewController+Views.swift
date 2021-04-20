@@ -138,7 +138,22 @@ extension CoinDetailsViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.detailImageView.image = UIImage(named: "d\(indexPath.row + 1)")
                 cell.detailImageView.setImageColor(color: .coinBaseBlue)
                 cell.detailLabel.text = marketStats[indexPath.row]
-                cell.statLabel.text = "$1.1 trillion"
+                //cell.statLabel.text = "$1.1 trillion"
+                
+                if indexPath.row == 0 {
+                    if let coinPrice = coin?.price {
+                        cell.statLabel.text = "$\(coinPrice)"
+                    }
+                } else if indexPath.row == 1 {
+                    if let coinMarketCap = coin?.marketCap {
+                        cell.statLabel.text = "\(coinMarketCap)"
+                    }
+                } else if indexPath.row == 2 {
+                    cell.statLabel.text = "--"
+                } else {
+                    cell.statLabel.text = "--"
+                }
+                
             case 2:
                 cell.detailImageView.image = UIImage(named: "d\(marketStats.count + 1 + indexPath.row)")
                 cell.detailImageView.setImageColor(color: .coinBaseBlue)

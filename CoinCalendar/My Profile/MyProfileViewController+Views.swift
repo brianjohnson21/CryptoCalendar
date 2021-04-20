@@ -257,16 +257,16 @@ extension MyProfileViewController {
         versionLabel.font = .sofiaRegular(ofSize: 15)
         versionLabel.numberOfLines = 0
         versionLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(versionLabel)
-        versionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        versionLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: versionBottom).isActive = true
+        containerView.addSubview(versionLabel)
+        versionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 0).isActive = true
+        versionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: versionBottom).isActive = true
         
         twitterButton.adjustsImageWhenHighlighted = false
         //twitterButton.setBackgroundImage(UIImage(named: "twitter1"), for: .normal)
         twitterButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(twitterButton)
+        containerView.addSubview(twitterButton)
         twitterButton.bottomAnchor.constraint(equalTo: versionLabel.topAnchor, constant: -41).isActive = true
-        twitterButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        twitterButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         twitterButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
         twitterButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
@@ -280,7 +280,7 @@ extension MyProfileViewController {
         faceBookButton.adjustsImageWhenHighlighted = false
         //faceBookButton.setBackgroundImage(UIImage(named: "facebook1"), for: .normal)
         faceBookButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(faceBookButton)
+        containerView.addSubview(faceBookButton)
         faceBookButton.centerYAnchor.constraint(equalTo: twitterButton.centerYAnchor, constant: 0).isActive = true
         faceBookButton.trailingAnchor.constraint(equalTo: twitterButton.leadingAnchor, constant: -75).isActive = true
         faceBookButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
@@ -296,7 +296,7 @@ extension MyProfileViewController {
         instagramButton.adjustsImageWhenHighlighted = false
         instagramButton.setBackgroundImage(UIImage(named: "instagram1"), for: .normal)
         instagramButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(instagramButton)
+        containerView.addSubview(instagramButton)
         instagramButton.centerYAnchor.constraint(equalTo: twitterButton.centerYAnchor, constant: 0).isActive = true
         instagramButton.leadingAnchor.constraint(equalTo: twitterButton.trailingAnchor, constant: 75).isActive = true
         instagramButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
