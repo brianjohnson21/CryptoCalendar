@@ -22,5 +22,6 @@ pod 'AWSS3'
 pod 'Kingfisher'
 pod 'KDCircularProgress'
 pod 'UICircularProgressRing'
+pod 'SwiftyStoreKit'
 
 end

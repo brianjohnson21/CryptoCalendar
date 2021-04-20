@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import SuperBadges
+import SwiftyStoreKit
 
 class HomeFeedViewController: UIViewController {
     
@@ -80,6 +81,23 @@ class HomeFeedViewController: UIViewController {
         //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
         
 //        perform(#selector(showSubscriptionVC), with: self, afterDelay: 2.0)
+        showSubscriptionVC()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in
+            if let error = error {
+                print("D'oh: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    center.delegate = appDelegate.notificationDelegate
+                    let openAction = UNNotificationAction(identifier: "OpenNotification", title: NSLocalizedString("Abrir", comment: ""), options: UNNotificationActionOptions.foreground)
+                    let deafultCategory = UNNotificationCategory(identifier: "CustomSamplePush", actions: [openAction], intentIdentifiers: [], options: [])
+                    center.setNotificationCategories(Set([deafultCategory]))
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
         
         getCoins()
         getCoinOfDay()
@@ -144,9 +162,59 @@ extension HomeFeedViewController {
     }
     
     @objc func showSubscriptionVC() {
-        let subVC = SubscriptionViewController()
-        subVC.modalPresentationStyle = .overFullScreen
-        self.present(subVC, animated: true, completion: nil)
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "b9f30628cfbb42019b73fa6546d3b652")
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
+            switch result {
+            case .success(let receipt):
+                let productId = "CryptoGainz_Sub1"
+                // Verify the purchase of a Subscription
+                let purchaseResult = SwiftyStoreKit.verifySubscription(
+                    ofType: .autoRenewable, // or .nonRenewing (see below)
+                    productId: productId,
+                    inReceipt: receipt)
+                
+                switch purchaseResult {
+                case .purchased(let expiryDate, let items):
+                    print("\(productId) is valid until \(expiryDate)\n\(items)\n")
+                    User.authorized = true
+//                        MAPI.registerUser(user: UserSignup(), completionHandler: { (success, user, error) in
+//                            guard error == nil else {
+//                                print(error!)
+//                                return
+//                            }
+//                            guard success, let user = user else {
+//                                print("error")
+//                                return
+//                            }
+//
+//                            User.current = user
+//                            User.saveCurrentUser()
+//                        })
+                case .expired(let expiryDate, let items):
+                    print("\(productId) is expired since \(expiryDate)\n\(items)\n")
+                    DispatchQueue.main.async {
+                        let subVC = SubscriptionViewController()
+                        subVC.modalPresentationStyle = .overFullScreen
+                        self.present(subVC, animated: true, completion: nil)
+                    }
+                case .notPurchased:
+                    print("The user has never purchased \(productId)")
+                    DispatchQueue.main.async {
+                        let subVC = SubscriptionViewController()
+                        subVC.modalPresentationStyle = .overFullScreen
+                        self.present(subVC, animated: true, completion: nil)
+                    }
+                }
+                
+            case .error(let error):
+                print("Receipt verification failed: \(error)")
+                DispatchQueue.main.async {
+                    let subVC = SubscriptionViewController()
+                    subVC.modalPresentationStyle = .overFullScreen
+                    self.present(subVC, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @objc func goToProfile() {

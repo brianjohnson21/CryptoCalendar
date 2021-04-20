@@ -7,6 +7,7 @@
 
 import Foundation
 import Disk
+import SwiftyStoreKit
 
 final class User: Codable {
     var id: UUID?
@@ -32,6 +33,10 @@ final class User: Codable {
             return []
         }
     }
+    
+    static var purchasedIds = [String]()
+    
+    static var authorized = false
     
     init() {
         
@@ -98,6 +103,47 @@ final class User: Codable {
                 try Disk.save([post], to: .caches, as: "userposts")
             } catch {
                 print(error)
+            }
+        }
+    }
+    
+    static func hasAccess() {
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "b9f30628cfbb42019b73fa6546d3b652")
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
+            switch result {
+            case .success(let receipt):
+                let productId = "CryptoGainz_Sub1"
+                // Verify the purchase of a Subscription
+                let purchaseResult = SwiftyStoreKit.verifySubscription(
+                    ofType: .autoRenewable, // or .nonRenewing (see below)
+                    productId: productId,
+                    inReceipt: receipt)
+                
+                switch purchaseResult {
+                case .purchased(let expiryDate, let items):
+                    print("\(productId) is valid until \(expiryDate)\n\(items)\n")
+                    User.authorized = true
+//                        MAPI.registerUser(user: UserSignup(), completionHandler: { (success, user, error) in
+//                            guard error == nil else {
+//                                print(error!)
+//                                return
+//                            }
+//                            guard success, let user = user else {
+//                                print("error")
+//                                return
+//                            }
+//
+//                            User.current = user
+//                            User.saveCurrentUser()
+//                        })
+                case .expired(let expiryDate, let items):
+                    print("\(productId) is expired since \(expiryDate)\n\(items)\n")
+                case .notPurchased:
+                    print("The user has never purchased \(productId)")
+                }
+                
+            case .error(let error):
+                print("Receipt verification failed: \(error)")
             }
         }
     }

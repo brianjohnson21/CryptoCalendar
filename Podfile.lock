@@ -31,6 +31,7 @@ PODS:
   - PhotoCircleCrop (1.3.2)
   - Segmentio (4.1)
   - SuperBadges (1.0.3)
+  - SwiftyStoreKit (0.16.1)
   - UICircularProgressRing (8.0.0)
   - ViewAnimator (3.0.2)
   - WXImageCompress (0.1.3)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - PhotoCircleCrop
   - Segmentio
   - SuperBadges
+  - SwiftyStoreKit
   - UICircularProgressRing
   - ViewAnimator
   - WXImageCompress
@@ -67,6 +69,7 @@ SPEC REPOS:
     - PhotoCircleCrop
     - Segmentio
     - SuperBadges
+    - SwiftyStoreKit
     - UICircularProgressRing
     - ViewAnimator
     - WXImageCompress
@@ -85,10 +88,11 @@ SPEC CHECKSUMS:
   PhotoCircleCrop: cdbea998ad27778853977b349dd2e7c3352c9245
   Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
   SuperBadges: f57402a584a59b25cb0f565319ed45d17bad4438
+  SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
   WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
 
-PODFILE CHECKSUM: e8dc79294d46ae6e2d9208e8b6e98febe8b245b6
+PODFILE CHECKSUM: 9dc2f33a3cdff77e8796353b9ab60ccf2ca0f778
 
 COCOAPODS: 1.10.1
