@@ -29,6 +29,8 @@ class ExpertDetailViewController: UIViewController {
     
     var showingName = false
     var isFollowing = false
+    
+    var watchListCoins: [[String]] = [["COMP", "Compound", "$500.50"], ["ETH", "Ethereum", "$2,200.00"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ class ExpertDetailViewController: UIViewController {
         setupNav()
         setupTableView()
         
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +48,10 @@ class ExpertDetailViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
+    }
+
+    @objc func appMovedToForeround() {
+        hideTabBar()
     }
 
 }

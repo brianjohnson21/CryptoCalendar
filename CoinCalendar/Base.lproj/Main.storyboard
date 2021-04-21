@@ -187,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="1908.6956521739132" y="855.80357142857144"/>
         </scene>
-        <!--Price Volume Market Feed View Controller-->
+        <!--Watchlist View Controller-->
         <scene sceneID="5Ja-gW-bSc">
             <objects>
-                <viewController storyboardIdentifier="PriceVolumeMarketFeedViewController" id="pRu-yA-3EX" customClass="PriceVolumeMarketFeedViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WatchlistViewController" id="pRu-yA-3EX" customClass="WatchlistViewController" customModule="CoinCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NNR-RR-l7L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

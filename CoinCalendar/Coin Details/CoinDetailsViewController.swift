@@ -43,6 +43,7 @@ class CoinDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .darkContent
         hideTabBar()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom

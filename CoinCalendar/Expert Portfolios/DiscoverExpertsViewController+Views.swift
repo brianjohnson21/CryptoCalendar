@@ -62,28 +62,6 @@ extension DiscoverExpertsViewController {
         titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 2).isActive = true
         
-        /*
-         userGreetingLabel.text = "Good morning,"
-         userGreetingLabel.textAlignment = .left
-         userGreetingLabel.textColor = UIColor.black.withAlphaComponent(0.3)
-         userGreetingLabel.font = .sofiaRegular(ofSize: 12)
-         userGreetingLabel.numberOfLines = 0
-         userGreetingLabel.translatesAutoresizingMaskIntoConstraints = false
-         navView.addSubview(userGreetingLabel)
-         userGreetingLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.trailingAnchor, constant: 6).isActive = true
-         userGreetingLabel.topAnchor.constraint(equalTo: userProfileImageContainer.topAnchor, constant: 5).isActive = true
-         
-         userNameLabel.text = User.current.name
-         userNameLabel.textAlignment = .left
-         userNameLabel.textColor = .black
-         userNameLabel.font = .sofiaSemiBold(ofSize: 12)
-         userNameLabel.numberOfLines = 0
-         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
-         navView.addSubview(userNameLabel)
-         userNameLabel.leadingAnchor.constraint(equalTo: userGreetingLabel.leadingAnchor, constant: 0).isActive = true
-         userNameLabel.topAnchor.constraint(equalTo: userGreetingLabel.bottomAnchor, constant: 3).isActive = true
-         */
-        
         calendarImageView.image = UIImage(named: "avatar")
         calendarImageView.contentMode = .scaleAspectFit
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -221,10 +199,10 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: topTradersTableViewCell, for: indexPath) as! TopTradersTableViewCell
-            cell.traderImageView.image = UIImage(named: traders[indexPath.row][2])
             cell.traderNameLabel.text = traders[indexPath.row][0]
             cell.traderCoinsLabel.text = traders[indexPath.row][1]
-            cell.returnPercentLabel.text = "252%"
+            cell.traderImageView.image = UIImage(named: traders[indexPath.row][2])
+            cell.returnPercentLabel.text = "\(traders[indexPath.row][3])%"
             return cell
         }
     }
@@ -257,7 +235,8 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
         titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 23).isActive = true
         titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 12).isActive = true
                 
-        roiLabel.text = "30 Day ROI"
+        let roiLabel = UILabel()
+        roiLabel.text = roiSelected
         roiLabel.textAlignment = .right
         roiLabel.textColor = .coinBaseBlue
         roiLabel.font = .sofiaBold(ofSize: 12)
@@ -266,15 +245,7 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
         headerView.addSubview(roiLabel)
         roiLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -23).isActive = true
         roiLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor, constant: 0).isActive = true
-        
-        if section != 2 {
-            titleLabel.isHidden = true
-            roiLabel.isHidden = true
-        } else {
-            titleLabel.isHidden = false
-            roiLabel.isHidden = false
-        }
-        
+
         let roiButton = UIButton()
         roiButton.addTarget(self, action: #selector(roiTapped), for: .touchUpInside)
         roiButton.translatesAutoresizingMaskIntoConstraints = false
@@ -283,6 +254,17 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
         roiButton.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
         roiButton.bottomAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         roiButton.leadingAnchor.constraint(equalTo: roiLabel.leadingAnchor, constant: -20).isActive = true
+        
+        if section != 2 {
+            titleLabel.isHidden = true
+            roiLabel.isHidden = true
+            roiButton.isHidden = true
+        } else {
+            titleLabel.isHidden = false
+            roiLabel.isHidden = false
+            roiButton.isHidden = false
+        }
+               
         
         return headerView
     }

@@ -35,22 +35,28 @@ class DiscoverExpertsViewController: UIViewController {
     var expertsTopCoinsTableViewCell = "expertsTopCoinsTableViewCell"
     var topTradersTableViewCell = "topTradersTableViewCell"
     
-    var traders: [[String]] = [["Thomas Jones", "5 coins", "tempHeadShot"], ["Felix He", "5 coins", "spotlightTwo"], ["John Horne", "5 coins", "spotlightOne"], ["Erick Sandoval", "5 coins", "spotlightFour"]]
-    let roiLabel = UILabel()
-    //var spotlightExperts: [[String]] = [["spotlightOne", "John Horne"], ["spotlightTwo", "Clive Miller"], ["tempHeadShot", "Jason Estrada"]]
+    var traders: [[String]] = [["Thomas Jones", "5 coins", "tempHeadShot", "252"],
+                               ["Clive Miller", "8 coins", "spotlightTwo", "198"],
+                               ["John Horne", "7 coins", "spotlightOne", "172"],
+                               ["Erick Sandoval", "5 coins", "spotlightFour", "145"],                               
+                               ["Cindy Wui", "9 coins", "temp2", "192"],
+                               ["Jeff Moroney", "7 coins", "temp3", "128"],
+                               ["Raj Patel", "11 coins", "temp4", "102"],
+                               ["Jermaine Lewis", "4 coins", "temp5", "83"],
+                               ["Ash Malik", "8 coins", "temp6", "278"],
+                               ["Chris Blake", "5 coins", "temp7", "50"],
+    ]
+    
+    var roiSelected = "30 Day ROI"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let notificationCenter = NotificationCenter.default
-        //notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight
         
         //Call Views
         setupNav()
         setupTableView()
         //setupLoadingIndicator()
-        //setupEmptyState()
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
                 
         //perform(#selector(animateCells), with: self, afterDelay: 0.25)
@@ -58,10 +64,15 @@ class DiscoverExpertsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .darkContent
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
     }
 
 }
@@ -101,7 +112,9 @@ extension DiscoverExpertsViewController {
 
 extension DiscoverExpertsViewController: TimePickerViewControllerDelegate {
     func didPickDuration(duration: String) {
-        roiLabel.text = duration
+        roiSelected = duration
+        traders.shuffle()
+        mainFeedTableView.reloadSections([2], with: .automatic)
     }
     
     

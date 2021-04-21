@@ -150,7 +150,7 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
         } else if section == 1 {
             return 1
         } else if section == 2 {
-            return 2
+            return watchListCoins.count
         } else {
             return 2
         }
@@ -176,10 +176,10 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         } else if indexPath.section == 2  {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertWatchlistTableViewCell, for: indexPath) as! ExpertWatchlistTableViewCell
-            cell.coinImageView.image = UIImage(named: "ADA")
-            cell.blockChainNameLabel.text = "Cardano"
-            cell.coinNameLabel.text = "ADA"
-            cell.coinPriceLabel.text = "$275"
+            cell.coinImageView.image = UIImage(named: watchListCoins[indexPath.row][0])
+            cell.coinNameLabel.text = watchListCoins[indexPath.row][0]
+            cell.blockChainNameLabel.text = watchListCoins[indexPath.row][1]
+            cell.coinPriceLabel.text = watchListCoins[indexPath.row][2]
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertPostTableViewCell, for: indexPath) as! ExpertPostTableViewCell

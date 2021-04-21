@@ -71,15 +71,15 @@ extension CoinMarketFeedViewController {
         userProfileImageContainer.addSubview(userProfileImageView)
         userProfileImageView.fillSuperview()
         
-    titleLabel.text = "Market Data"
-    titleLabel.textAlignment = .left
-    titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-    titleLabel.font = .sofiaBold(ofSize: 24)
-    titleLabel.numberOfLines = 0
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    profileContainer.addSubview(titleLabel)
-    titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
-    titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
+        titleLabel.text = "Market Data"
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
+        titleLabel.font = .sofiaBold(ofSize: 24)
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileContainer.addSubview(titleLabel)
+        titleLabel.leadingAnchor.constraint(equalTo: userProfileImageContainer.leadingAnchor, constant: 0).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: userProfileImageContainer.centerYAnchor, constant: 0).isActive = true
         
         /*
         userGreetingLabel.text = "Good morning,"
@@ -255,7 +255,7 @@ extension CoinMarketFeedViewController {
 
         mainFeedContainer.tag = 0
         mainFeedContainer.delegate = self
-        mainFeedContainer.contentSize = CGSize(width: view.frame.width * 1.025, height: view.frame.height - 200)
+        mainFeedContainer.contentSize = CGSize(width: view.frame.width * 1.75, height: view.frame.height - 200) //1.025
         mainFeedContainer.backgroundColor = .clear
         mainFeedContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mainFeedContainer)
@@ -282,7 +282,7 @@ extension CoinMarketFeedViewController {
         mainFeedContainer.addSubview(mainFeedTableView)
         mainFeedTableView.leadingAnchor.constraint(equalTo: mainFeedContainer.leadingAnchor).isActive = true
         mainFeedTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
-        mainFeedTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        mainFeedTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 1.75).isActive = true
         mainFeedTableView.topAnchor.constraint(equalTo: mainFeedContainer.topAnchor).isActive = true
         
         setupSegmentio()
@@ -292,7 +292,7 @@ extension CoinMarketFeedViewController {
         dataHeadersScrollView.showsHorizontalScrollIndicator = false
         dataHeadersScrollView.layer.zPosition = 100
         dataHeadersScrollView.backgroundColor = .clear
-        dataHeadersScrollView.contentSize = CGSize(width: view.frame.width * 1.025, height: 33)
+        dataHeadersScrollView.contentSize = CGSize(width: view.frame.width * 1.75, height: 33)
         dataHeadersScrollView.delegate = self
         dataHeadersScrollView.translatesAutoresizingMaskIntoConstraints = false
         segmentContentContainer.addSubview(dataHeadersScrollView)
@@ -316,7 +316,7 @@ extension CoinMarketFeedViewController {
         priceScoreContainer.tag = 2
         priceScoreContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
         priceScoreContainer.backgroundColor = .clear
-        priceScoreContainer.filterLabel.text = "Price Score"
+        priceScoreContainer.filterLabel.text = "Price"
         priceScoreContainer.translatesAutoresizingMaskIntoConstraints = false
         dataHeadersScrollView.addSubview(priceScoreContainer)
         priceScoreContainer.leadingAnchor.constraint(equalTo: coinHealthContainer.trailingAnchor, constant: 5).isActive = true
@@ -347,6 +347,45 @@ extension CoinMarketFeedViewController {
         coinRankContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
         coinRankContainer.widthAnchor.constraint(equalToConstant: 90).isActive = true
         coinRankContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        
+        //////////////////////////////
+        
+        marketCapContainer.tag = 5
+        marketCapContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
+        marketCapContainer.backgroundColor = .clear
+        marketCapContainer.filterLabel.text = "Market Cap"
+        marketCapContainer.translatesAutoresizingMaskIntoConstraints = false
+        dataHeadersScrollView.addSubview(marketCapContainer)
+        marketCapContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor, constant: 5).isActive = true
+        marketCapContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
+        marketCapContainer.widthAnchor.constraint(equalToConstant: 85).isActive = true
+        marketCapContainer.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        percentChangeContainer.tag = 6
+        percentChangeContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
+        percentChangeContainer.backgroundColor = .clear
+        percentChangeContainer.filterLabel.text = "% Change (24h)"
+        percentChangeContainer.translatesAutoresizingMaskIntoConstraints = false
+        dataHeadersScrollView.addSubview(percentChangeContainer)
+        percentChangeContainer.leadingAnchor.constraint(equalTo: marketCapContainer.trailingAnchor, constant: 5).isActive = true
+        percentChangeContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
+        percentChangeContainer.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        percentChangeContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
+                
+        //
+        volumeContainer.tag = 7
+        volumeContainer.addTarget(self, action: #selector(didSelectCoinHeahlth), for: .touchUpInside)
+        volumeContainer.backgroundColor = .clear
+        volumeContainer.filterLabel.text = "Volume (24h)"
+        volumeContainer.translatesAutoresizingMaskIntoConstraints = false
+        dataHeadersScrollView.addSubview(volumeContainer)
+        volumeContainer.leadingAnchor.constraint(equalTo: percentChangeContainer.trailingAnchor, constant: 5).isActive = true
+        volumeContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
+        volumeContainer.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        volumeContainer.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        
+        
+        //////////////////////////////
         
         whiteGradient.isHidden = false
         whiteGradient.layer.zPosition = 100
@@ -491,15 +530,39 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
             
             if let score = coin.healthScore {
                 cell.coinHealthLabel.text = "\(score)"
-                //print("\(score) - 🥶🥶🥶")
+                let meterWidth = 49
+                //cell.coinHealthMeterWidth.constant = CGFloat(meterWidth * (Int(score) / 100))
+                let meterUpdatedWidth = score / 100
+                let meterValue: CGFloat = CGFloat(meterUpdatedWidth) * CGFloat(meterWidth)
+                cell.coinHealthMeter.widthAnchor.constraint(equalToConstant: meterValue).isActive = true
+               
+                if score < 65 {
+                    cell.coinHealthMeter.backgroundColor = UIColor(red: 222/255, green: 76/255, blue: 76/255, alpha: 1.0)
+                } else {
+                    cell.coinHealthMeter.backgroundColor = UIColor(red: 76/255, green: 222/255, blue: 108/255, alpha: 1.0)
+                }
+                
             } else {
                 cell.coinHealthLabel.text = "N/A"
             }
             
-            if let score = coin.altRank{
-                cell.priceScoreLabel.text = "\(score)"
+            if let coinPrice = coin.price {
+                //cell.coinRankLabel.text = "$\(price)"
+                
+                if coinPrice < 1.0 {
+                    cell.coinRankLabel.text = "$\(coinPrice)"
+                } else {
+                    let largeNumber = coinPrice.rounded(toPlaces: 2)
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber))
+                    if let formNumber = formattedNumber {
+                        cell.coinRankLabel.text = "$\(formNumber)"
+                    }
+                }
+                
             } else {
-                cell.priceScoreLabel.text = "N/A"
+                cell.coinRankLabel.text = "N/A"
             }
             
             if let volatility = coin.volatility {
@@ -516,10 +579,32 @@ extension CoinMarketFeedViewController: UITableViewDelegate, UITableViewDataSour
                 cell.volatilityLabel.text = "N/A"
             }
             
-            if let rank = coin.priceScore {
-                cell.coinRankLabel.text = "\(rank)"
+            if let score = coin.altRank {
+                cell.priceScoreLabel.text = "\(score)"
             } else {
-                cell.coinRankLabel.text = "N/A"
+                cell.priceScoreLabel.text = "N/A"
+            }
+            
+            //
+            
+            if let change = coin.marketCap {
+                //let capNumber =
+                cell.marketCapLabel.text = "$\(suffixNumber(number: Double(change)))"//"\(change)"
+                
+            } else {
+                cell.marketCapLabel.text = "N/A"
+            }
+            
+            if let score = coin.socialVolume {
+                cell.volumeLabel.text = "\(score)"
+            } else {
+                cell.volumeLabel.text = "N/A"
+            }
+            
+            if let score = coin.percentChange24Hours {
+                cell.percentChangeLabel.text = "\(score)%"
+            } else {
+                cell.percentChangeLabel.text = "N/A"
             }
             
             return cell

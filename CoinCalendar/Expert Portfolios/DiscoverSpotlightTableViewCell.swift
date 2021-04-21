@@ -19,7 +19,7 @@ class DiscoverSpotlightTableViewCell: UITableViewCell {
     var globalContactListCollectionView: UICollectionView!
     var spotlightCollectionViewCell = "spotlightCollectionViewCell"
     
-    var spotlightExperts: [[String]] = [["spotlightOne", "John Horne"], ["spotlightTwo", "Clive Miller"], ["tempHeadShot", "Jason Estrada"]]
+    var spotlightExperts: [[String]] = [["spotlightOne", "John Horne", "172"], ["spotlightTwo", "Clive Miller", "198"], ["tempHeadShot", "Jason Estrada", "252"]]
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -103,8 +103,8 @@ extension DiscoverSpotlightTableViewCell: UICollectionViewDelegate, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: spotlightCollectionViewCell, for: indexPath) as! SpotlightCollectionViewCell
         cell.expertImageView.image = UIImage(named: spotlightExperts[indexPath.row][0])
         cell.greenRedArrow.image = UIImage(named: "greenArrowDownThree")
-        cell.percentLabel.text = "252%"
         cell.expertNameLabel.text = spotlightExperts[indexPath.row][1]
+        cell.percentLabel.text = "\(spotlightExperts[indexPath.row][2])%"
         return cell
     }
     

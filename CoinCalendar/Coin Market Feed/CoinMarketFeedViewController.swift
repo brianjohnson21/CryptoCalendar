@@ -39,20 +39,15 @@ class CoinMarketFeedViewController: UIViewController {
     var coinMarketFeedTableViewCell = "coinMarketFeedTableViewCell"
     
     var coinContainer = FilterOptionView()
-    var coinLabel = UILabel()
-    
     var coinHealthContainer = FilterOptionView()
-    var coinHealthLabel = UILabel()
-    
     var priceScoreContainer = FilterOptionView()
-    var priceScoreLabel = UILabel()
-    
     var volatilityContainer = FilterOptionView()
-    var volatilityLabel = UILabel()
-    
     var coinRankContainer = FilterOptionView()
-    var coinRankLabel = UILabel()
     
+    var marketCapContainer = FilterOptionView()
+    var percentChangeContainer = FilterOptionView()
+    var volumeContainer = FilterOptionView()
+        
     var coinIconFeedContainer = UIView()
     var coinIconFeedTableView = UITableView()
     var coinIconFeedTableViewCell = "coinIconFeedTableViewCell"
@@ -112,6 +107,7 @@ class CoinMarketFeedViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .darkContent
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
@@ -277,6 +273,26 @@ extension CoinMarketFeedViewController {
         eventOptionsVC.modalPresentationStyle = .overFullScreen
         self.present(eventOptionsVC, animated: false, completion: nil)
         
+    }
+    
+    func suffixNumber(number:Double) -> String {
+
+        var num:Double = number//.doubleValue;
+        let sign = ((num < 0) ? "-" : "" );
+
+        num = fabs(num);
+
+        if (num < 1000.0){
+            return "\(sign)\(num)"// as NSString;
+        }
+
+        let exp:Int = Int(log10(num) / 3.0 ); //log10(1000));
+
+        let units:[String] = ["K ","M ","B ","T ","P ","E ®"];
+
+        let roundedNum:Double = round(10 * num / pow(1000.0,Double(exp))) / 10;
+
+        return "\(sign)\(roundedNum)\(units[exp-1])"
     }
     
 }

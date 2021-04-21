@@ -387,21 +387,7 @@ extension PriceVolumeMarketFeedViewController: UITableViewDelegate, UITableViewD
             
             if let change = coin.marketCap {
                 //let capNumber =
-                cell.priceScoreLabel.text = "$\(suffixNumber(number: Double(change)))"//"\(change)"
-                
-                /*
-                let myDouble = change
-                let currencyFormatter = NumberFormatter()
-                currencyFormatter.usesGroupingSeparator = true
-                currencyFormatter.numberStyle = .currency
-                // localize to your grouping and decimal separator
-                currencyFormatter.locale = Locale.current
-
-                // We'll force unwrap with the !, if you've got defined data you may need more error checking
-
-                let priceString = currencyFormatter.string(from: NSNumber(value: myDouble))!
-                cell.priceScoreLabel.text = priceString
-                */
+                cell.priceScoreLabel.text = "$\(suffixNumber(number: Double(change)))"//"\(change)"                
                 
             } else {
                 cell.priceScoreLabel.text = "N/A"

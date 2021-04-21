@@ -43,8 +43,9 @@ class ExpertsCurrentCoinsTableViewCell: UITableViewCell {
     var entryLabel = UILabel()
     var currentLabel = UILabel()
     var percetLabel = UILabel()
-    
     var dividerLine = UIView()
+    
+    var currentCoins: [[String]] = [["ADA", "Cardano", "$1.05", "$1.35", "10.24%", "20"], ["BTC", "Bitcoin", "$18,450.19", "$57,857.11", "2.24%", "30"], ["TFUEL", "Theta Fuel", "$0.012", "$0.309", "9.53%", "15"], ["UNI", "Uniswap", "$26.98", "$32.10", "7.49%", "10"], ["ENJ", "Enjin Coin", "$1.42", "$2.60", "17.56%", "15"]]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -170,7 +171,7 @@ extension ExpertsCurrentCoinsTableViewCell {
         coinHealthContainer.backgroundColor = .clear
         coinHealthContainer.translatesAutoresizingMaskIntoConstraints = false
         dataHeadersScrollView.addSubview(coinHealthContainer)
-        coinHealthContainer.leadingAnchor.constraint(equalTo: dataHeadersScrollView.leadingAnchor, constant: 100).isActive = true //106
+        coinHealthContainer.leadingAnchor.constraint(equalTo: dataHeadersScrollView.leadingAnchor, constant: 143).isActive = true //106
         coinHealthContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
         coinHealthContainer.widthAnchor.constraint(equalToConstant: 59).isActive = true
         coinHealthContainer.heightAnchor.constraint(equalToConstant: 123).isActive = true
@@ -193,7 +194,7 @@ extension ExpertsCurrentCoinsTableViewCell {
         dataHeadersScrollView.addSubview(volatilityContainer)
         volatilityContainer.leadingAnchor.constraint(equalTo: priceScoreContainer.trailingAnchor, constant: 0).isActive = true
         volatilityContainer.centerYAnchor.constraint(equalTo: dataHeadersScrollView.centerYAnchor, constant: 0).isActive = true
-        volatilityContainer.widthAnchor.constraint(equalToConstant: 84).isActive = true
+        volatilityContainer.widthAnchor.constraint(equalToConstant: 79).isActive = true
         volatilityContainer.heightAnchor.constraint(equalToConstant: 109).isActive = true
                 
         createSectionLabel(label: entryLabel, string: "Entry", cointainer: coinHealthContainer)
@@ -263,25 +264,24 @@ extension ExpertsCurrentCoinsTableViewCell {
 
 extension ExpertsCurrentCoinsTableViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return currentCoins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: coinIconFeedTableViewCell, for: indexPath) as! CoinIconFeedTableViewCell
-            cell.coinImageView.image = UIImage(named: "ADA")
+            cell.coinImageView.image = UIImage(named: currentCoins[indexPath.row][0])
             cell.contentView.backgroundColor = .white
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertCurrentCoinMarketFeedTableViewCell, for: indexPath) as! ExpertCurrentCoinMarketFeedTableViewCell
-            cell.blockChainNameLabel.text = "Cardano"
-            cell.coinNameLabel.text = "ADA"
-            cell.coinHealthLabel.text = "$1.01"
-            cell.coinRankLabel.text = "$1.54"
-            cell.priceScoreLabel.text = "30%"
-            
-            cell.percentChangeLabel.text = "+16.75%"
+            cell.coinNameLabel.text = currentCoins[indexPath.row][0]
+            cell.blockChainNameLabel.text = currentCoins[indexPath.row][1]
+            cell.coinHealthLabel.text = currentCoins[indexPath.row][2]
+            cell.coinRankLabel.text = currentCoins[indexPath.row][3]
+            cell.percentChangeLabel.text = currentCoins[indexPath.row][4]
             cell.percentChangeLabel.textColor = UIColor(red: 36/255, green: 157/255, blue: 48/255, alpha: 1.0)
+            cell.priceScoreLabel.text = "\(currentCoins[indexPath.row][5])%"
             return cell
         }
     }

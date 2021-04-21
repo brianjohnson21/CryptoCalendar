@@ -113,5 +113,7 @@
 	</array>
 	<key>NSContactsUsageDescription</key>
 	<string>Please allow access to your contacts to share CryptoTrack</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

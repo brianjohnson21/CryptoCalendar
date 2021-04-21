@@ -90,6 +90,10 @@
 		DE55D500262DF55800F9295D /* FollowUnfollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D4FF262DF55800F9295D /* FollowUnfollowView.swift */; };
 		DE55D517262F0A4700F9295D /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D516262F0A4700F9295D /* TimePickerViewController.swift */; };
 		DE55D51A262F0A5200F9295D /* TimePickerViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D519262F0A5200F9295D /* TimePickerViewController+Views.swift */; };
+		DE55D54926302BC600F9295D /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D54826302BC500F9295D /* WatchlistViewController.swift */; };
+		DE55D54D26302BCC00F9295D /* WatchlistViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D54C26302BCC00F9295D /* WatchlistViewController+Views.swift */; };
+		DE55D5652630305E00F9295D /* WatchlistCoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */; };
+		DE55D56826307B6B00F9295D /* WatchlistExpertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -235,6 +239,10 @@
 		DE55D4FF262DF55800F9295D /* FollowUnfollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUnfollowView.swift; sourceTree = "<group>"; };
 		DE55D516262F0A4700F9295D /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		DE55D519262F0A5200F9295D /* TimePickerViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimePickerViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D54826302BC500F9295D /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		DE55D54C26302BCC00F9295D /* WatchlistViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistViewController+Views.swift"; sourceTree = "<group>"; };
+		DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCoinsTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistExpertTableViewCell.swift; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -550,6 +558,17 @@
 			path = "Time Picker";
 			sourceTree = "<group>";
 		};
+		DE55D54726302BBA00F9295D /* Watchlist */ = {
+			isa = PBXGroup;
+			children = (
+				DE55D54826302BC500F9295D /* WatchlistViewController.swift */,
+				DE55D54C26302BCC00F9295D /* WatchlistViewController+Views.swift */,
+				DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */,
+				DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */,
+			);
+			path = Watchlist;
+			sourceTree = "<group>";
+		};
 		DE9AA5D52610F18C0057A259 = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +600,7 @@
 				DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */,
 				DE9AA5FA2610FD080057A259 /* Extensions.swift */,
 				DE9AA611261101850057A259 /* MyTabBarController.swift */,
+				DE55D54726302BBA00F9295D /* Watchlist */,
 				DE55D46F262CCE4400F9295D /* Expert Portfolios */,
 				DE55D40E262A85FF00F9295D /* Invite Friends */,
 				DE55D2EA26267D8D00F9295D /* Coin Source Webview */,
@@ -908,6 +928,7 @@
 				FC4E558D26202334008AF09B /* User.swift in Sources */,
 				DE3DC124262349240089E021 /* PinnedCoinView.swift in Sources */,
 				DED657BD26223D31002CC83D /* SetAlertViewController+Views.swift in Sources */,
+				DE55D54D26302BCC00F9295D /* WatchlistViewController+Views.swift in Sources */,
 				DE55D437262A884600F9295D /* Contacts.swift in Sources */,
 				DED657602621EE8A002CC83D /* PlayerViewClass.swift in Sources */,
 				DE9AA6902612235C0057A259 /* SubscriptionViewController+Views.swift in Sources */,
@@ -927,6 +948,7 @@
 				DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */,
 				DE42474226195C3D00E185D4 /* SocialMarketFeedViewController.swift in Sources */,
 				DE55D413262A863700F9295D /* InviteFriendsViewController+Views.swift in Sources */,
+				DE55D54926302BC600F9295D /* WatchlistViewController.swift in Sources */,
 				DED657662621FAD4002CC83D /* EventFeedInfoViewController+Views.swift in Sources */,
 				DE55D500262DF55800F9295D /* FollowUnfollowView.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
@@ -951,6 +973,7 @@
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
 				DE55D492262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift in Sources */,
+				DE55D56826307B6B00F9295D /* WatchlistExpertTableViewCell.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
 				DE55D3E22629123900F9295D /* SignUpPNTwoViewController.swift in Sources */,
 				FC4E558E26202334008AF09B /* Coin.swift in Sources */,
@@ -979,6 +1002,7 @@
 				DE4245C32613701B00E185D4 /* EventOptionsViewController.swift in Sources */,
 				DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */,
 				FC565FB7262618F40093D019 /* ImageUploader.swift in Sources */,
+				DE55D5652630305E00F9295D /* WatchlistCoinsTableViewCell.swift in Sources */,
 				DE55D416262A865100F9295D /* InviteFriendsSectionHeaderView.swift in Sources */,
 				DED285DB261CC0B0002F34B6 /* InfoViewController+Views.swift in Sources */,
 				DE4245C62613702200E185D4 /* EventOptionsViewController+Views.swift in Sources */,

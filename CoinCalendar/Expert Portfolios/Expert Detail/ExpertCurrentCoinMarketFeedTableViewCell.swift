@@ -61,7 +61,7 @@ extension ExpertCurrentCoinMarketFeedTableViewCell {
         coinNameContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         coinNameContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
         coinNameContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        coinNameContainer.widthAnchor.constraint(equalToConstant: 95).isActive = true
+        coinNameContainer.widthAnchor.constraint(equalToConstant: 138).isActive = true //95 120
         
         blockChainNameLabel.textAlignment = .center
         blockChainNameLabel.textColor = UIColor.black
@@ -105,7 +105,7 @@ extension ExpertCurrentCoinMarketFeedTableViewCell {
         priceContainer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         priceContainer.leadingAnchor.constraint(equalTo: coinRankContainer.trailingAnchor, constant: 0).isActive = true
         priceContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        priceContainer.widthAnchor.constraint(equalToConstant: 84).isActive = true
+        priceContainer.widthAnchor.constraint(equalToConstant: 79).isActive = true
         
         createSectionLabel(label: coinHealthLabel, string: "9.0", cointainer: coinHealthContainer)
         createSectionLabel(label: coinRankLabel, string: "7.0", cointainer: coinRankContainer)
