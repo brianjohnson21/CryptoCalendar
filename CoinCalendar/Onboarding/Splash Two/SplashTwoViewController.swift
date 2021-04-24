@@ -129,7 +129,7 @@ extension SplashTwoViewController {
     func playVideoAudio() {
               
         //LOCAL
-        guard let path = Bundle.main.path(forResource: "hexPatternVertical", ofType:"mov") else { //streat
+        guard let path = Bundle.main.path(forResource: "hex_loop_3mb", ofType:"mp4") else { //hex_loop_422 //hexPatternVertical
               debugPrint("video.m4v not found")
               return
           }

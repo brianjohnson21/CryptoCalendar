@@ -94,6 +94,7 @@
 		DE55D54D26302BCC00F9295D /* WatchlistViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D54C26302BCC00F9295D /* WatchlistViewController+Views.swift */; };
 		DE55D5652630305E00F9295D /* WatchlistCoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */; };
 		DE55D56826307B6B00F9295D /* WatchlistExpertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */; };
+		DE55D5BE263103E300F9295D /* hex_loop_3mb.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DE55D5BD263103E300F9295D /* hex_loop_3mb.mp4 */; };
 		DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E12610F18C0057A259 /* AppDelegate.swift */; };
 		DE9AA5E42610F18C0057A259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */; };
 		DE9AA5E62610F18C0057A259 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9AA5E52610F18C0057A259 /* SplashViewController.swift */; };
@@ -243,6 +244,7 @@
 		DE55D54C26302BCC00F9295D /* WatchlistViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistViewController+Views.swift"; sourceTree = "<group>"; };
 		DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCoinsTableViewCell.swift; sourceTree = "<group>"; };
 		DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistExpertTableViewCell.swift; sourceTree = "<group>"; };
+		DE55D5BD263103E300F9295D /* hex_loop_3mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = hex_loop_3mb.mp4; sourceTree = "<group>"; };
 		DE9AA5DE2610F18C0057A259 /* CoinCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9AA5E12610F18C0057A259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9AA5E32610F18C0057A259 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -674,6 +676,7 @@
 		DE9AA62E261148010057A259 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				DE55D5BD263103E300F9295D /* hex_loop_3mb.mp4 */,
 				DE9AA63F26114C7B0057A259 /* hexPatternVertical.mov */,
 				DED6575C2621EDAD002CC83D /* space1Vid.mp4 */,
 			);
@@ -859,6 +862,7 @@
 				DE9AA64026114C7B0057A259 /* hexPatternVertical.mov in Resources */,
 				DE9AA6042610FFB40057A259 /* Sofia Pro Medium Az.otf in Resources */,
 				DE9AA6072610FFB40057A259 /* Sofia Pro Bold Az.otf in Resources */,
+				DE55D5BE263103E300F9295D /* hex_loop_3mb.mp4 in Resources */,
 				DED6575D2621EDAD002CC83D /* space1Vid.mp4 in Resources */,
 				DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */,
 				DE9AA6052610FFB40057A259 /* Sofia Pro Regular Az.otf in Resources */,
@@ -1192,7 +1196,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1215,7 +1219,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = M32NGP6PG5;
 				INFOPLIST_FILE = CoinCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

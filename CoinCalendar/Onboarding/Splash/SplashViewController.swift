@@ -87,7 +87,7 @@ extension SplashViewController {
     func playVideoAudio() {
               
         //LOCAL
-        guard let path = Bundle.main.path(forResource: "hexPatternVertical", ofType:"mov") else { //streat
+        guard let path = Bundle.main.path(forResource: "hex_loop_422", ofType:"mov") else { //streat
               debugPrint("video.m4v not found")
               return
           }
