@@ -363,9 +363,15 @@ extension CoinMarketFeedViewController: CoinOptionsViewControllerDelegate {
                 compareContainer.coinOneShortNameLabel.text = coinSymbol
             }
             
-            UIView.animate(withDuration: 0.35) {
+//            UIView.animate(withDuration: 0.35) {
+//                self.compareContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+//            }
+            UIView.animate(withDuration: 0.35, delay: 0.5, options: []) {
                 self.compareContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+            } completion: { (success) in
+                //
             }
+
         }
     }
     

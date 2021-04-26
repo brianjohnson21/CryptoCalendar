@@ -39,6 +39,10 @@ class SplashTwoViewController: UIViewController {
     var benefitFourImageView = UIImageView()
     var benefitFourTitleLabel = UILabel()
     var benefitFourDetailLabel = UILabel()
+    
+    var benefitFiveImageView = UIImageView()
+    var benefitFiveTitleLabel = UILabel()
+    var benefitFiveDetailLabel = UILabel()
 
     var mainContainer = UIView()
     var previewPlayer = AVPlayer()
@@ -74,7 +78,7 @@ class SplashTwoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .white//.green
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
         
@@ -165,35 +169,42 @@ extension SplashTwoViewController {
         case 0:
             animateCryptoAway()
             pageControl.set(progress: 1, animated: true)
-            progress.animate(toAngle: 72, duration: 0.28) { (success) in
+            progress.animate(toAngle: 60, duration: 0.28) { (success) in
                 print("Step 2")
                 self.animateBenefitIn(benefitImage: self.benefitOneImageView, benefitTitle: self.benefitOneTitleLabel, benefitDetail: self.benefitOneDetailLabel)
             }
         case 1:
             animateBenefitOut(benefitImage: self.benefitOneImageView, benefitTitle: self.benefitOneTitleLabel, benefitDetail: self.benefitOneDetailLabel)
             pageControl.set(progress: 2, animated: true)
-            progress.animate(toAngle: 144, duration: 0.28) { (success) in
+            progress.animate(toAngle: 120, duration: 0.28) { (success) in
                 self.animateBenefitIn(benefitImage: self.benefitTwoImageView, benefitTitle: self.benefitTwoTitleLabel, benefitDetail: self.benefitTwoDetailLabel)
                 print("Step 3")
             }
         case 2:
             animateBenefitOut(benefitImage: self.benefitTwoImageView, benefitTitle: self.benefitTwoTitleLabel, benefitDetail: self.benefitTwoDetailLabel)
             pageControl.set(progress: 3, animated: true)
-            progress.animate(toAngle: 216, duration: 0.28) { (success) in
+            progress.animate(toAngle: 180, duration: 0.28) { (success) in
                 self.animateBenefitIn(benefitImage: self.benefitThreeImageView, benefitTitle: self.benefitThreeTitleLabel, benefitDetail: self.benefitThreeDetailLabel)
                 print("Step 4")
             }
         case 3:
             animateBenefitOut(benefitImage: self.benefitThreeImageView, benefitTitle: self.benefitThreeTitleLabel, benefitDetail: self.benefitThreeDetailLabel)
             pageControl.set(progress: 4, animated: true)
-            progress.animate(toAngle: 288, duration: 0.28) { (success) in
+            progress.animate(toAngle: 240, duration: 0.28) { (success) in
                 print("Step 5")
                 self.animateBenefitIn(benefitImage: self.benefitFourImageView, benefitTitle: self.benefitFourTitleLabel, benefitDetail: self.benefitFourDetailLabel)
             }
         
-        default:
-            print("Step 6")
+        case 4:
             animateBenefitOut(benefitImage: self.benefitFourImageView, benefitTitle: self.benefitFourTitleLabel, benefitDetail: self.benefitFourDetailLabel)
+            pageControl.set(progress: 5, animated: true)
+            progress.animate(toAngle: 300, duration: 0.28) { (success) in
+                print("Step 5")
+                self.animateBenefitIn(benefitImage: self.benefitFiveImageView, benefitTitle: self.benefitFiveTitleLabel, benefitDetail: self.benefitFiveDetailLabel)
+            }
+        
+        default:
+            animateBenefitOut(benefitImage: self.benefitFiveImageView, benefitTitle: self.benefitFiveTitleLabel, benefitDetail: self.benefitFiveDetailLabel)
             progress.animate(toAngle: 360, duration: 0.28) { (success) in
                 print("Step 5")
                 self.successImpactGenerator()

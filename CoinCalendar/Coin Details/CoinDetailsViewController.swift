@@ -61,9 +61,7 @@ extension CoinDetailsViewController: UIScrollViewDelegate {
             navView.layer.shadowOpacity = navShadow
         } else {
             navView.layer.shadowOpacity = 0.3
-        }
-        print("\(yAxis) - 👍👍👍")
-        
+        }        
         
         if yAxis > 80 {
             if !coinShowing {
@@ -77,7 +75,6 @@ extension CoinDetailsViewController: UIScrollViewDelegate {
             }
         }
     }
-    
     
     @objc func showCoin() {
         UIView.animate(withDuration: 0.2) {

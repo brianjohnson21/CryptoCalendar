@@ -183,14 +183,17 @@ extension CoinOptionsViewController {
     }
     
     @objc func dimissVC() {
+        if self.isComparing {
+            self.delegate?.compareTapped(coinCompare: self.coin!)
+        }
         UIView.animate(withDuration: 0.28) {
             self.mainScrollView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
             self.opacityLayer.alpha = 0
         } completion: { (success) in
             self.dismiss(animated: false) {
-                if self.isComparing {
-                    self.delegate?.compareTapped(coinCompare: self.coin!)
-                }
+//                if self.isComparing {
+//                    self.delegate?.compareTapped(coinCompare: self.coin!)
+//                }
                 
                 if self.goingToCoinDetail {
                     self.delegate?.goToCoinDetail(coinToGo: self.coin!)

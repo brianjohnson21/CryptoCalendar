@@ -160,7 +160,7 @@ extension EventFeedViewController {
     }
     
     @objc func didTapSortFilter() {
-        lightImpactGenerator()        
+        lightImpactGenerator()
         let sortFilterVC = SortFilterViewController()
         sortFilterVC.coinsSelected = filteredCoins
         sortFilterVC.originalCoins = filteredCoins

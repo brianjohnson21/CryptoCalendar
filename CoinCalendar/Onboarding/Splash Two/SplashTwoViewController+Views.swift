@@ -39,7 +39,7 @@ extension SplashTwoViewController {
         
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.alpha = 0.4
+        blurEffectView.alpha = 0.5
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
@@ -159,7 +159,7 @@ extension SplashTwoViewController {
             print("did this 🤟🤟🤟")
         }
                 
-        pageControl.numberOfPages = 5
+        pageControl.numberOfPages = 6
         pageControl.padding = 10
         pageControl.radius = 4
         pageControl.currentPageTintColor = .coinBaseBlue
@@ -278,31 +278,38 @@ extension SplashTwoViewController {
         adaIcon.widthAnchor.constraint(equalToConstant: 41).isActive = true
         
         createBenefitContainer(benefitImageView: benefitOneImageView,
-                               benefitImage: "phoneEmpty",
+                               benefitImage: "step1",
                                benefitTitleLabel: benefitOneTitleLabel,
-                               benefitTitle: "Never miss an opportunity",
+                               benefitTitle: "Trade like the pro’s",
                                benefitDetailLabel: benefitOneDetailLabel,
-                               benefitDetail: "Get much more pertinent and detailed information about the coins you are watching or currently invested into")
+                               benefitDetail: "Follow the portfolios of expert traders and get an insight to what coins are being held, what percentage of their portfolio is allocated to certain assets, and much more!")
         
         createBenefitContainer(benefitImageView: benefitTwoImageView,
-                               benefitImage: "phoneEmpty",
+                               benefitImage: "step2",
                                benefitTitleLabel: benefitTwoTitleLabel,
-                               benefitTitle: "Manage your entire portfolio",
+                               benefitTitle: "Never miss an opportunity",
                                benefitDetailLabel: benefitTwoDetailLabel,
-                               benefitDetail: "Easily stay on top of all your crypto investments in one centralized location")
+                               benefitDetail: "You will receive a notification everytime an expert trader you follow makes an update to their portfolio, adds a new coin to their watchlist, or makes a post on their public feed!")
         
         createBenefitContainer(benefitImageView: benefitThreeImageView,
-                               benefitImage: "phoneEmpty",
+                               benefitImage: "step3",
                                benefitTitleLabel: benefitThreeTitleLabel,
-                               benefitTitle: "Sophisticated price alerts",
+                               benefitTitle: "Gain access to way more data",
                                benefitDetailLabel: benefitThreeDetailLabel,
-                               benefitDetail: "Set and receive custom price alerts for all the coins you are watching so you can never miss an opportunity")
+                               benefitDetail: "Go beyond price and market cap and see all the details about a coin from detailed price metrics to social metrics, volatility, news volume and much more!")
         
         createBenefitContainer(benefitImageView: benefitFourImageView,
-                               benefitImage: "phoneEmpty",
+                               benefitImage: "step4",
                                benefitTitleLabel: benefitFourTitleLabel,
-                               benefitTitle: "Stay on top of key events",
+                               benefitTitle: "Sophisticated price alerts",
                                benefitDetailLabel: benefitFourDetailLabel,
+                               benefitDetail: "Set and receive custom price alerts for all the coins you are watching so you can never miss a good buying or selling opportunity.")
+        
+        createBenefitContainer(benefitImageView: benefitFiveImageView,
+                               benefitImage: "step5",
+                               benefitTitleLabel: benefitFiveTitleLabel,
+                               benefitTitle: "Stay on top of key events",
+                               benefitDetailLabel: benefitFiveDetailLabel,
                                benefitDetail: "Major events in the crypto industry can play a vital role in the price of an asset growing exponentially. CryptoBase makes it easy to never miss a key event.")
     }
     
