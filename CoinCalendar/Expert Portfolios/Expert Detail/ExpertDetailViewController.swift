@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpertDetailViewController: UIViewController {
+class ExpertDetailViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     var navView = UIView()
     var notchOffset: CGFloat = 44
@@ -35,6 +35,7 @@ class ExpertDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         setupNav()
         setupTableView()

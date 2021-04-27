@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoinDetailsViewController: UIViewController {
+class CoinDetailsViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     var coin: Coin?
     
@@ -37,6 +37,7 @@ class CoinDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.view.backgroundColor = .white
         setupNav()
         setupTableView()

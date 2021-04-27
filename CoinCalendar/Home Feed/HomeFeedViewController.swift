@@ -74,7 +74,6 @@ class HomeFeedViewController: UIViewController {
         self.tabBarController?.addDotAtTabBarItemIndex(index: 3, radius: 4, color : .red)
         self.tabBarController?.addDotAtTabBarItemIndex(index: 4, radius: 4, color : .red)
         
-        
         //self.tabBarController?.tabBarItem.badgeValue = "●"
         //self.tabBarController?.tabBarItem.badgeColor = .clear
         //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
