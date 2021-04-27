@@ -11,6 +11,38 @@ import Lottie
 
 extension DiscoverExpertsViewController {
     
+    func modifyConstraints() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            spotlightHeight = 420
+            
+        case .iphone78() :
+            spotlightHeight = 416
+            navHeight = 70
+            
+        case .iphone78Plus() :
+            spotlightHeight = 450
+            navHeight = 70
+            
+        case .iphone11Max() :
+            spotlightHeight = 450
+            
+        case .iphone12AndPro() :
+            spotlightHeight = 432
+            
+        case .iphone12ProMax() :
+            spotlightHeight = 472
+            
+        case .iphone12Mini() :
+            spotlightHeight = 420
+            
+        default:
+            spotlightHeight = 420
+        }
+    }
+    
     func setupNav() {
         
         navView.isUserInteractionEnabled = true
@@ -24,7 +56,7 @@ extension DiscoverExpertsViewController {
         navView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         navView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         navView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        navView.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        navView.heightAnchor.constraint(equalToConstant: navHeight).isActive = true
         
         userProfileImageContainer.isHidden = true
         userProfileImageContainer.backgroundColor = .clear
@@ -35,7 +67,8 @@ extension DiscoverExpertsViewController {
         userProfileImageContainer.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(userProfileImageContainer)
         userProfileImageContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 18).isActive = true
-        userProfileImageContainer.topAnchor.constraint(equalTo: navView.topAnchor, constant: 45).isActive = true
+        //userProfileImageContainer.topAnchor.constraint(equalTo: navView.topAnchor, constant: 45).isActive = true
+        userProfileImageContainer.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: -5).isActive = true
         userProfileImageContainer.heightAnchor.constraint(equalToConstant: 39).isActive = true
         userProfileImageContainer.widthAnchor.constraint(equalToConstant: 39).isActive = true
         
@@ -209,7 +242,7 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 420
+            return spotlightHeight
         } else if indexPath.section == 1 {
             return 223
         } else {

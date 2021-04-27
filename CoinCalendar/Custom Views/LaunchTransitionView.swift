@@ -86,7 +86,7 @@ extension LaunchTransitionView {
             enigmaBottom = -11
         case .iphone78Plus() :
             enigmaBottom = -11
-        case .iphone11() :
+        case .iphone11Max() :
             enigmaBottom = -45
         default:
             enigmaBottom = -45

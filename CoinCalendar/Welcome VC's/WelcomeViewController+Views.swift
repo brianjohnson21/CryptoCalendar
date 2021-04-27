@@ -23,7 +23,7 @@ extension WelcomeViewController {
         case .iphone78Plus() :
             cardHeight = 400
             buttonBottom = -21
-        case .iphone11() :
+        case .iphone11Max() :
             cardHeight = 430
         default:
             cardHeight = 430

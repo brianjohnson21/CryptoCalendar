@@ -25,7 +25,7 @@ extension CGFloat {
         return 812
     }
     
-    static func iphone11() -> CGFloat {
+    static func iphone11Max() -> CGFloat {
         return 896
     }
     
@@ -260,7 +260,7 @@ extension UIViewController {
             viewFrame?.origin.y = 618
         case .iphone78Plus() :
             viewFrame?.origin.y = 687
-        case .iphone11() :
+        case .iphone11Max() :
             viewFrame?.origin.y = 815
             
         case .iphone12AndPro() :

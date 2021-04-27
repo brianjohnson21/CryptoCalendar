@@ -24,6 +24,14 @@ class SplashTwoViewController: UIViewController {
     var pageControl = CHIPageControlAleppo()
     var pulseLottie = AnimationView()
     
+    var benefitImageHeight: CGFloat = 355
+    var benefitImagetop: CGFloat = 97
+    var benefitImageWidth: CGFloat = 178
+    var benefitTitleSize: CGFloat = 21
+    var benefitDetailSize: CGFloat = 14
+    var circleBottom: CGFloat = -57
+    var benefitTitleTop: CGFloat = 58
+    
     var benefitOneImageView = UIImageView()
     var benefitOneTitleLabel = UILabel()
     var benefitOneDetailLabel = UILabel()
@@ -62,6 +70,7 @@ class SplashTwoViewController: UIViewController {
     
     var goingToMoonLabel = UILabel()
     var whatWeDoLabel = UILabel()
+    var whatWeDoFontSize: CGFloat = 20
     
     //Icons
     
@@ -83,6 +92,7 @@ class SplashTwoViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         modifyConstraints()
+        modifyStepsConstraints()
         setupViews()
         playVideoAudio()
         setupLaunchTransition()
@@ -308,15 +318,17 @@ extension SplashTwoViewController {
             animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
             animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
             animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+            
         case .iphone78() :
-            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -330)
+            animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -258)
             animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -294)
             animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 116, yAxis: -18)
             animateCoin(coin: thetaFuelIcon, delay: baseValue + (multiplier * 3), xAxis: 155, yAxis: 152)
-            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 365)
-            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 387)
-            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 109)
-            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
+            animateCoin(coin: uniSwapIcon, delay: baseValue + (multiplier * 4), xAxis: 131, yAxis: 300)
+            animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 304)
+            animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -33, yAxis: 30)
+            animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -127, yAxis: -25)
+            
         case .iphone78Plus() :
             animateCoin(coin: btcIcon, delay: baseValue, xAxis: -113, yAxis: -320)
             animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 123, yAxis: -270)
@@ -326,7 +338,8 @@ extension SplashTwoViewController {
             animateCoin(coin: chainLinkIcon, delay: baseValue + (multiplier * 5), xAxis: -131, yAxis: 341)
             animateCoin(coin: enjinIcon, delay: baseValue + (multiplier * 6), xAxis: -64, yAxis: 85)
             animateCoin(coin: adaIcon, delay: baseValue + (multiplier * 7), xAxis: -129, yAxis: -34)
-        case .iphone11() :
+            
+        case .iphone11Max() :
             animateCoin(coin: btcIcon, delay: baseValue, xAxis: -133, yAxis: -375)
             animateCoin(coin: sushiIcon, delay: baseValue + (multiplier), xAxis: 146, yAxis: -343)
             animateCoin(coin: ethIcon, delay: baseValue + (multiplier * 2), xAxis: 117, yAxis: -60)

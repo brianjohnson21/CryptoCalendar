@@ -14,6 +14,7 @@ class MyProfileViewController: UIViewController {
     var mainScrollView = UIScrollView()
     var containerView = UIView()
     
+    var headerHeight: CGFloat = 290
     var purpBackground = UIView()
     var profileImageView = UIImageView()
     var profileCenterY: NSLayoutConstraint!

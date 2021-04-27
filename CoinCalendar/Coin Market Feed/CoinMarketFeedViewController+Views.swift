@@ -12,6 +12,44 @@ import Lottie
 
 extension CoinMarketFeedViewController {
     
+    func modifyConstraints() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            navHeight = 110
+            miniNavHeight = 70
+            
+        case .iphone78() :
+            navHeight = 110
+            miniNavHeight = 70
+            
+        case .iphone78Plus() :
+            navHeight = 110
+            miniNavHeight = 70
+            
+        case .iphone11Max() :
+            navHeight = 136
+            miniNavHeight = 96
+            
+        case .iphone12AndPro() :
+            navHeight = 136
+            miniNavHeight = 96
+            
+        case .iphone12ProMax() :
+            navHeight = 136
+            miniNavHeight = 96
+            
+        case .iphone12Mini() :
+            navHeight = 136
+            miniNavHeight = 96
+            
+        default:
+            navHeight = 136
+            miniNavHeight = 96
+        }
+    }
+    
     func setupNav() {
         
         navView.layer.zPosition = 150
@@ -27,7 +65,7 @@ extension CoinMarketFeedViewController {
         navView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         navView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         navView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        navView.heightAnchor.constraint(equalToConstant: 136).isActive = true
+        navView.heightAnchor.constraint(equalToConstant: navHeight).isActive = true
         
         profileContainer.layer.zPosition = 2
         profileContainer.backgroundColor = .white
@@ -42,7 +80,7 @@ extension CoinMarketFeedViewController {
         profileContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor).isActive = true
         profileContainer.trailingAnchor.constraint(equalTo: navView.trailingAnchor).isActive = true
         profileContainer.topAnchor.constraint(equalTo: navView.topAnchor).isActive = true
-        profileContainer.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        profileContainer.heightAnchor.constraint(equalToConstant: miniNavHeight).isActive = true
         
         userProfileImageContainer.isHidden = true
         userProfileImageContainer.backgroundColor = .clear
@@ -53,7 +91,8 @@ extension CoinMarketFeedViewController {
         userProfileImageContainer.translatesAutoresizingMaskIntoConstraints = false
         profileContainer.addSubview(userProfileImageContainer)
         userProfileImageContainer.leadingAnchor.constraint(equalTo: profileContainer.leadingAnchor, constant: 18).isActive = true
-        userProfileImageContainer.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 45).isActive = true
+        //userProfileImageContainer.topAnchor.constraint(equalTo: profileContainer.topAnchor, constant: 45).isActive = true
+        userProfileImageContainer.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: -45).isActive = true
         userProfileImageContainer.heightAnchor.constraint(equalToConstant: 39).isActive = true
         userProfileImageContainer.widthAnchor.constraint(equalToConstant: 39).isActive = true
         

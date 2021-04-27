@@ -45,7 +45,7 @@ extension MyAlertsViewController {
             
             piDimensions = 130
             
-        case .iphone11() :
+        case .iphone11Max() :
             backTop = 60
             discordOffset = 882
             nvHeight = 140

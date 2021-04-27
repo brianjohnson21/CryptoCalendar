@@ -19,18 +19,21 @@ extension MyProfileViewController {
             piDimensions = 100
             logoTop = 30
             versionBottom = -17
+            headerHeight = 180
             
         case .iphone78() :
             piDimensions = 100
             logoTop = 30
             versionBottom = -17
+            headerHeight = 180
             
         case .iphone78Plus() :
             piDimensions = 130
             logoTop = 30
             versionBottom = -17
+            headerHeight = 180
             
-        case .iphone11() :
+        case .iphone11Max() :
             piDimensions = 130
             logoTop = 48
             versionBottom = -34
@@ -366,7 +369,7 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 290
+        return headerHeight
     }
     
     

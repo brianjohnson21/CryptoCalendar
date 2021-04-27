@@ -114,7 +114,7 @@ class LoginPNViewController: UIViewController {
             circleCenter = -302
         case .iphone78Plus() :
             circleCenter = -337
-        case .iphone11() :
+        case .iphone11Max() :
             circleCenter = -416
         default:
             circleCenter = -375
@@ -423,7 +423,7 @@ extension LoginPNViewController: CircleCropViewControllerDelegate {
             conBottom = -30
         case .iphone78Plus() :
             conBottom = -30
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -42
         default:
             conBottom = -42
@@ -520,7 +520,7 @@ extension LoginPNViewController: CircleCropViewControllerDelegate {
             conBottom = -240
         case .iphone78Plus() :
             conBottom = -250
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
         default:
             conBottom = -325

@@ -12,6 +12,21 @@ import Lottie
 extension SignUpPNTwoViewController {
     
     func setupTransitionViews() {
+              
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            gsBottom = -57
+        case .iphone78() :
+            gsBottom = -30
+        case .iphone78Plus() :
+            gsBottom = -57
+        case .iphone11Max() :
+            gsBottom = -57
+        default:
+            gsBottom = -57
+        }
                     
         getStartedButton.isHidden = true
         getStartedButton.backgroundColor = .coinBaseBlue
@@ -20,7 +35,7 @@ extension SignUpPNTwoViewController {
         self.view.addSubview(getStartedButton)
         getStartedLeading = getStartedButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32) //18
         getStartedLeading.isActive = true
-        getStartedBottom = getStartedButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -57)
+        getStartedBottom = getStartedButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: gsBottom)
         getStartedBottom.isActive = true
         getStartedWidth = getStartedButton.widthAnchor.constraint(equalToConstant: 77)
         getStartedWidth.isActive = true
@@ -39,18 +54,21 @@ extension SignUpPNTwoViewController {
         switch screenHeight {
         case .iphone5() :
             conBottom = -325
+            gsBottom = -57
         case .iphone78() :
             conBottom = -240
             backTop = 40
+            gsBottom = -30
         case .iphone78Plus() :
             conBottom = -250
+            gsBottom = -57
             backTop = 40
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
-            
-            
+            gsBottom = -57
         default:
             conBottom = -325
+            gsBottom = -57
         }
         
         mainContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -153,7 +171,7 @@ extension SignUpPNTwoViewController {
         self.view.addSubview(continueButton)
         continueTrailing = continueButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32)
         continueTrailing.isActive = true
-        continueBottom = continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -57)
+        continueBottom = continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: gsBottom)
         continueBottom.isActive = true
         continueWidth = continueButton.widthAnchor.constraint(equalToConstant: 77)
         continueWidth.isActive = true
@@ -433,7 +451,7 @@ extension SignUpPNTwoViewController {
             photoTop = 70
         case .iphone78Plus() :
             photoTop = 93
-        case .iphone11() :
+        case .iphone11Max() :
             photoTop = 93
         default:
             photoTop = 93

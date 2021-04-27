@@ -24,6 +24,7 @@ class EventFeedViewController: UIViewController {
     
     //Nav
     var navView = UIView()
+    var navHeight: CGFloat = 136
     var notchOffset: CGFloat = 44
     var segmentContainer = UIView()
     var segmentioControl: Segmentio!
@@ -73,6 +74,7 @@ class EventFeedViewController: UIViewController {
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight
         
         //Call Views
+        modifyConstraints()
         setupNav()
         setupTableView()
         setupLoadingIndicator()

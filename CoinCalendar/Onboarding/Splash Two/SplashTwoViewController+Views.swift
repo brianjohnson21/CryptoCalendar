@@ -18,15 +18,75 @@ extension SplashTwoViewController {
         let screenHeight = screenSize.height
         switch screenHeight {
         case .iphone5() :
-            cryptoLabelTop = 153
+            cryptoLabelTop = 128
         case .iphone78() :
-            cryptoLabelTop = 153
+            cryptoLabelTop = 128
         case .iphone78Plus() :
             cryptoLabelTop = 128
-        case .iphone11() :
+        case .iphone11Max() :
             cryptoLabelTop = 153
         default:
             cryptoLabelTop = 153
+        }
+    }
+    
+    func modifyStepsConstraints() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            benefitImageHeight = 355
+            benefitImageWidth = 178
+            benefitTitleSize = 21
+            benefitDetailSize = 14
+            
+        case .iphone78() :
+            benefitImageHeight = 355
+            benefitImageWidth = 178
+            benefitTitleSize = 21
+            benefitDetailSize = 14
+            circleBottom = -30
+            benefitImagetop = 45
+            benefitTitleTop = 29
+            
+        case .iphone78Plus() :
+            benefitImageHeight = 355
+            benefitImageWidth = 178
+            benefitTitleSize = 21
+            benefitDetailSize = 14
+            benefitImagetop = 45
+            
+        case .iphone11Max() :
+            benefitImageHeight = 399
+            benefitImageWidth = 199
+            benefitTitleSize = 24
+            benefitDetailSize = 16
+            
+        case .iphone12AndPro() :
+            benefitImageHeight = 371
+            benefitImageWidth = 185
+            benefitTitleSize = 22
+            benefitDetailSize = 15
+            
+        case .iphone12ProMax() :
+            benefitImageHeight = 414
+            benefitImageWidth = 209
+            benefitTitleSize = 25
+            benefitDetailSize = 17
+            whatWeDoFontSize = 24
+            
+        case .iphone12Mini() :
+            benefitImageHeight = 355
+            benefitImageWidth = 178
+            benefitTitleSize = 21
+            benefitDetailSize = 14
+            
+        default:
+            benefitImageHeight = 355
+            benefitImageWidth = 178
+            benefitTitleSize = 21
+            benefitDetailSize = 14
+            
         }
     }
     
@@ -72,7 +132,7 @@ extension SplashTwoViewController {
         circularButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(circularButton)
         circularButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -32).isActive = true
-        circularButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -57).isActive = true
+        circularButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: circleBottom).isActive = true
         circularButton.heightAnchor.constraint(equalToConstant: 77).isActive = true
         circularButton.widthAnchor.constraint(equalToConstant: 77).isActive = true
         
@@ -156,7 +216,7 @@ extension SplashTwoViewController {
         progress.widthAnchor.constraint(equalToConstant: 105).isActive = true
         
         progress.animate(toAngle: 0, duration: 3.0) { (success) in
-            print("did this 🤟🤟🤟")
+            //print("did this 🤟🤟🤟")
         }
                 
         pageControl.numberOfPages = 6
@@ -188,7 +248,7 @@ extension SplashTwoViewController {
         
         calendarLabel.alpha = 0
         calendarLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        calendarLabel.text = "Track"
+        calendarLabel.text = "Gainz"
         calendarLabel.textAlignment = .left
         calendarLabel.textColor = .keyEventHeadlineColorModeLight
         calendarLabel.font = .sofiaSemiBold(ofSize: 50)
@@ -237,7 +297,7 @@ extension SplashTwoViewController {
         whatWeDoLabel.alpha = 0
         whatWeDoLabel.transform = CGAffineTransform(translationX: 0, y: 0)
         whatWeDoLabel.textAlignment = .left
-        whatWeDoLabel.font = .sofiaRegular(ofSize: 20)
+        whatWeDoLabel.font = .sofiaRegular(ofSize: whatWeDoFontSize)
         whatWeDoLabel.textColor = UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1.0)
         whatWeDoLabel.numberOfLines = 0
         whatWeDoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -345,28 +405,28 @@ extension SplashTwoViewController {
         benefitImageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(benefitImageView)
         benefitImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        benefitImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 97).isActive = true
-        benefitImageView.heightAnchor.constraint(equalToConstant: 355).isActive = true
-        benefitImageView.widthAnchor.constraint(equalToConstant: 178).isActive = true
+        benefitImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: benefitImagetop).isActive = true
+        benefitImageView.heightAnchor.constraint(equalToConstant: benefitImageHeight).isActive = true
+        benefitImageView.widthAnchor.constraint(equalToConstant: benefitImageWidth).isActive = true
         
         benefitTitleLabel.transform = CGAffineTransform(translationX: 100, y: 0)
         benefitTitleLabel.alpha = 0
         benefitTitleLabel.text = benefitTitle
         benefitTitleLabel.textAlignment = .center
-        benefitTitleLabel.font = .sofiaMedium(ofSize: 21)
+        benefitTitleLabel.font = .sofiaMedium(ofSize: benefitTitleSize)
         benefitTitleLabel.textColor = .black
         benefitTitleLabel.numberOfLines = 0
         benefitTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(benefitTitleLabel)
         benefitTitleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 26).isActive = true
         benefitTitleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -26).isActive = true
-        benefitTitleLabel.topAnchor.constraint(equalTo: benefitImageView.bottomAnchor, constant: 58).isActive = true
+        benefitTitleLabel.topAnchor.constraint(equalTo: benefitImageView.bottomAnchor, constant: benefitTitleTop).isActive = true
         
         benefitDetailLabel.alpha = 0
         benefitDetailLabel.transform = CGAffineTransform(translationX: 100, y: 0)
         benefitDetailLabel.setupLineHeight(myText: benefitDetail, myLineSpacing: 4)
         benefitDetailLabel.textAlignment = .center
-        benefitDetailLabel.font = .sofiaLight(ofSize: 14)
+        benefitDetailLabel.font = .sofiaLight(ofSize: benefitDetailSize)
         benefitDetailLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1.0)
         benefitDetailLabel.numberOfLines = 0
         benefitDetailLabel.translatesAutoresizingMaskIntoConstraints = false

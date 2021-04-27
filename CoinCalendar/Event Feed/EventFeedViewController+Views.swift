@@ -12,6 +12,36 @@ import Lottie
 
 extension EventFeedViewController {
     
+    func modifyConstraints() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            navHeight = 110
+            
+        case .iphone78() :
+            navHeight = 110
+            
+        case .iphone78Plus() :
+            navHeight = 110
+            
+        case .iphone11Max() :
+            navHeight = 136
+            
+        case .iphone12AndPro() :
+            navHeight = 136
+            
+        case .iphone12ProMax() :
+            navHeight = 136
+            
+        case .iphone12Mini() :
+            navHeight = 136
+            
+        default:
+            navHeight = 136
+        }
+    }
+    
     func setupNav() {
         
         navView.isUserInteractionEnabled = true
@@ -25,7 +55,7 @@ extension EventFeedViewController {
         navView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         navView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         navView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        navView.heightAnchor.constraint(equalToConstant: 136).isActive = true
+        navView.heightAnchor.constraint(equalToConstant: navHeight).isActive = true
         
         userProfileImageContainer.isHidden = true
         userProfileImageContainer.backgroundColor = .clear
@@ -36,7 +66,8 @@ extension EventFeedViewController {
         userProfileImageContainer.translatesAutoresizingMaskIntoConstraints = false
         navView.addSubview(userProfileImageContainer)
         userProfileImageContainer.leadingAnchor.constraint(equalTo: navView.leadingAnchor, constant: 18).isActive = true
-        userProfileImageContainer.topAnchor.constraint(equalTo: navView.topAnchor, constant: 45).isActive = true
+        //userProfileImageContainer.topAnchor.constraint(equalTo: navView.topAnchor, constant: 45).isActive = true
+        userProfileImageContainer.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: -45).isActive = true //-5
         userProfileImageContainer.heightAnchor.constraint(equalToConstant: 39).isActive = true
         userProfileImageContainer.widthAnchor.constraint(equalToConstant: 39).isActive = true
         

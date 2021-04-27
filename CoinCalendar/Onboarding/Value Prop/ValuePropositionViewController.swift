@@ -52,7 +52,7 @@ extension ValuePropositionViewController {
             conBottom = -38
         case .iphone78Plus() :
             conBottom = -38
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -38
         default:
             conBottom = -38

@@ -18,6 +18,7 @@ class HomeFeedViewController: UIViewController {
     //Nav
     var navView = UIView()
     var notchOffset: CGFloat = 44
+    var navHeight: CGFloat = 96
     
     var userProfileImageContainer = UIView()
     var userProfileImageView = UIImageView()
@@ -44,6 +45,7 @@ class HomeFeedViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight//UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
         
+        modifyConstraints()
         setupNav()
         setupTableView()
         setupLaunchTransition()

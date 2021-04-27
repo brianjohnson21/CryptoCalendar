@@ -16,6 +16,7 @@ class DiscoverExpertsViewController: UIViewController {
     var navView = UIView()
     var notchOffset: CGFloat = 44
     var titleLabel = UILabel()
+    var navHeight: CGFloat = 96
     
     var userProfileImageContainer = UIView()
     var userProfileImageView = UIImageView()
@@ -29,6 +30,7 @@ class DiscoverExpertsViewController: UIViewController {
     var infoImageView = UIImageView()
     var infoButton = UIButton()
     var alertsButton = UIButton()
+    var spotlightHeight: CGFloat = 420
     
     var mainFeedTableView = UITableView()
     var discoverSpotlightTableViewCell = "discoverSpotlightTableViewCell"
@@ -54,6 +56,7 @@ class DiscoverExpertsViewController: UIViewController {
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight
         
         //Call Views
+        modifyConstraints()
         setupNav()
         setupTableView()
         //setupLoadingIndicator()

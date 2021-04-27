@@ -18,6 +18,8 @@ class DiscoverSpotlightTableViewCell: UITableViewCell {
     var globalContactListCollectionViewFlowLayout = UICollectionViewFlowLayout()
     var globalContactListCollectionView: UICollectionView!
     var spotlightCollectionViewCell = "spotlightCollectionViewCell"
+    var cellHeight: CGFloat = 352
+    var cellWidth: CGFloat = 333
     
     var spotlightExperts: [[String]] = [["spotlightOne", "John Horne", "172"], ["spotlightTwo", "Clive Miller", "198"], ["tempHeadShot", "Jason Estrada", "252"]]
 
@@ -26,6 +28,7 @@ class DiscoverSpotlightTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
         self.selectionStyle = .none
+        modifyConstraints()
         setupViews()
         setupGlobalCollectionView()
     }
@@ -38,6 +41,44 @@ class DiscoverSpotlightTableViewCell: UITableViewCell {
 //MARK: VIEWS
 
 extension DiscoverSpotlightTableViewCell {
+    
+    func modifyConstraints() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        switch screenHeight {
+        case .iphone5() :
+            cellHeight = 352
+            cellWidth = 333
+            
+        case .iphone78() :
+            cellHeight = 348
+            cellWidth = 329
+            
+        case .iphone78Plus() :
+            cellHeight = 389
+            cellWidth = 368
+            
+        case .iphone11Max() :
+            cellHeight = 389
+            cellWidth = 368
+            
+        case .iphone12AndPro() :
+            cellHeight = 364
+            cellWidth = 344
+            
+        case .iphone12ProMax() :
+            cellHeight = 404
+            cellWidth = 382
+            
+        case .iphone12Mini() :
+            cellHeight = 348
+            cellWidth = 329
+            
+        default:
+            cellHeight = 352
+            cellWidth = 333
+        }
+    }
     
     func setupViews() {
         titleLabel.text = "Spotlight"
@@ -56,7 +97,7 @@ extension DiscoverSpotlightTableViewCell {
         // MARK: Setup Collection View Flow Layout
         
         globalContactListCollectionViewFlowLayout.scrollDirection = .horizontal
-        globalContactListCollectionViewFlowLayout.itemSize = CGSize(width: 333, height: 352)
+        globalContactListCollectionViewFlowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         globalContactListCollectionViewFlowLayout.minimumLineSpacing = 11
         globalContactListCollectionViewFlowLayout.minimumInteritemSpacing = 11
         globalContactListCollectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 0 , left: 23, bottom: 0, right: 23)

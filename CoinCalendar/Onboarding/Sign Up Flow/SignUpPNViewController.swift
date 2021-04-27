@@ -140,7 +140,7 @@ class SignUpPNViewController: UIViewController {
             circleCenter = -302
         case .iphone78Plus() :
             circleCenter = -337
-        case .iphone11() :
+        case .iphone11Max() :
             circleCenter = -416
         
         //Iphone 12
@@ -201,7 +201,7 @@ extension SignUpPNViewController {
             conBottom = -240
         case .iphone78Plus() :
             conBottom = -250
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
         default:
             conBottom = -325
@@ -683,7 +683,7 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
             conBottom = -58
         case .iphone78Plus() :
             conBottom = -58
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -59
         default:
             conBottom = -70 //17
@@ -792,7 +792,7 @@ extension SignUpPNViewController: CircleCropViewControllerDelegate {
             conBottom = -240
         case .iphone78Plus() :
             conBottom = -250
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
         default:
             conBottom = -325

@@ -27,7 +27,7 @@ extension LoginPNViewController {
         case .iphone78Plus() :
             conBottom = -250
             backTop = 40
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
         default:
             conBottom = -325
@@ -339,7 +339,7 @@ extension LoginPNViewController {
             photoTop = 70
         case .iphone78Plus() :
             photoTop = 93
-        case .iphone11() :
+        case .iphone11Max() :
             photoTop = 93
         default:
             photoTop = 93

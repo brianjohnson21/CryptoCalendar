@@ -18,6 +18,8 @@ class CoinMarketFeedViewController: UIViewController {
     var navView = UIView()
     var profileContainer = UIView()
     var notchOffset: CGFloat = 44
+    var navHeight: CGFloat = 136
+    var miniNavHeight: CGFloat = 96
     var segmentContainer = UIView()
     var segmentContentContainer = UIView()
     var segmentioControl: Segmentio!
@@ -86,6 +88,7 @@ class CoinMarketFeedViewController: UIViewController {
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight
         
         //Call Views
+        modifyConstraints()
         setupNav()
         setupCoinTable()
         setupTableView()

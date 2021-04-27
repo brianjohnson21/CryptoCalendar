@@ -10,6 +10,7 @@ import UIKit
 class WatchlistViewController: UIViewController {
     
     var navView = UIView()
+    var navHeight: CGFloat = 96
     var notchOffset: CGFloat = 44
     var titleLabel = UILabel()
     var userProfileImageContainer = UIView()
@@ -38,6 +39,7 @@ class WatchlistViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
         
         //Call Views
+        modifyConstraints()
         setupNav()
         setupTableView()
         //setupLoadingIndicator()

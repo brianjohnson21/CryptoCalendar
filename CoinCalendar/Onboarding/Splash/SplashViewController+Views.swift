@@ -20,7 +20,7 @@ extension SplashViewController {
             cryptoLabelTop = 153
         case .iphone78Plus() :
             cryptoLabelTop = 128
-        case .iphone11() :
+        case .iphone11Max() :
             cryptoLabelTop = 153
         default:
             cryptoLabelTop = 153

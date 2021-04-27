@@ -148,7 +148,7 @@ extension PickCryptoViewController {
             circleCenter = -302
         case .iphone78Plus() :
             circleCenter = -337
-        case .iphone11() :
+        case .iphone11Max() :
             circleCenter = -416
         
         //Iphone 12

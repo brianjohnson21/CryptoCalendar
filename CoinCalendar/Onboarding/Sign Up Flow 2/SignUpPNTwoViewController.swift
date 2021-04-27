@@ -24,6 +24,7 @@ class SignUpPNTwoViewController: UIViewController {
     
     //Transition Views
     var getStartedButton = UIButton()
+    var gsBottom: CGFloat = -57
     var getStartedBottom: NSLayoutConstraint!
     var getStartedLeading: NSLayoutConstraint!
     var getStartedWidth: NSLayoutConstraint!
@@ -142,7 +143,7 @@ class SignUpPNTwoViewController: UIViewController {
             circleCenter = -302
         case .iphone78Plus() :
             circleCenter = -337
-        case .iphone11() :
+        case .iphone11Max() :
             circleCenter = -416
         
         //Iphone 12
@@ -203,7 +204,7 @@ extension SignUpPNTwoViewController {
             conBottom = -240
         case .iphone78Plus() :
             conBottom = -250
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
         default:
             conBottom = -325
@@ -692,7 +693,7 @@ extension SignUpPNTwoViewController: CircleCropViewControllerDelegate {
             conBottom = -58
         case .iphone78Plus() :
             conBottom = -58
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -59
         default:
             conBottom = -70 //17
@@ -801,7 +802,7 @@ extension SignUpPNTwoViewController: CircleCropViewControllerDelegate {
             conBottom = -240
         case .iphone78Plus() :
             conBottom = -250
-        case .iphone11() :
+        case .iphone11Max() :
             conBottom = -325
         default:
             conBottom = -325
