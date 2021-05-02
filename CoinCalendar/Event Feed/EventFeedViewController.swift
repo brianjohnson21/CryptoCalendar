@@ -65,6 +65,8 @@ class EventFeedViewController: UIViewController {
     var showWatchList = true
     var showNewlist = true
     var selectedSegment: Int = 0
+    
+    var isInitialLoad = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +132,10 @@ class EventFeedViewController: UIViewController {
                 self?.newPosts = posts.filter({($0.postDate ?? Date()) > Date().addingTimeInterval(-86400)})
                 self?.mainFeedTableView.reloadData()
                 //self?.perform(#selector(self?.animateCells), with: self, afterDelay: 0.25)
-                self?.perform(#selector(self?.hideLoader), with: self, afterDelay: 0.1)
+                if self?.isInitialLoad == true {
+                    self?.perform(#selector(self?.hideLoader), with: self, afterDelay: 0.1)
+                    self?.isInitialLoad = false
+                }
             }
         }
     }
