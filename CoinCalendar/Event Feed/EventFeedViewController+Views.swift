@@ -406,8 +406,8 @@ extension EventFeedViewController {
     
     func setupLoadingIndicator() {
         
-        loadingContainer.isHidden = true
-        loadingContainer.alpha = 0
+        loadingContainer.isHidden = false
+        loadingContainer.alpha = 1.0
         loadingContainer.backgroundColor = .white
         loadingContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(loadingContainer)
@@ -429,6 +429,7 @@ extension EventFeedViewController {
         loadingLottie.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
         loadingLottie.heightAnchor.constraint(equalToConstant: 80).isActive = true
         loadingLottie.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        loadingLottie.play()
         
         let loadingLabel = UILabel()
         loadingLabel.text = "Updating the feed..."

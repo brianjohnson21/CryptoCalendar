@@ -81,7 +81,7 @@ class EventFeedViewController: UIViewController {
         setupEmptyState()
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
                 
-        perform(#selector(animateCells), with: self, afterDelay: 0.25)
+        //perform(#selector(animateCells), with: self, afterDelay: 0.25)
         
     }
     
@@ -129,6 +129,8 @@ class EventFeedViewController: UIViewController {
                 self?.importantPosts = posts.filter({$0.isImportant ?? false})
                 self?.newPosts = posts.filter({($0.postDate ?? Date()) > Date().addingTimeInterval(-86400)})
                 self?.mainFeedTableView.reloadData()
+                //self?.perform(#selector(self?.animateCells), with: self, afterDelay: 0.25)
+                self?.perform(#selector(self?.hideLoader), with: self, afterDelay: 0.1)
             }
         }
     }
@@ -138,6 +140,16 @@ class EventFeedViewController: UIViewController {
 //MARK: ACTIONS
 
 extension EventFeedViewController {
+    @objc func hideLoader() {
+        UIView.animateKeyframes(withDuration: 0.35, delay: 0.2, options: []) {
+            self.loadingContainer.alpha = 0
+        } completion: { (success) in
+            self.loadingLottie.stop()
+            self.loadingContainer.isHidden = true
+            self.perform(#selector(self.animateCells), with: self, afterDelay: 0.25)
+        }
+    }
+    
     @objc func goToAlerts() {
         lightImpactGenerator()
         let sortFilterVC = MyAlertsViewController()
