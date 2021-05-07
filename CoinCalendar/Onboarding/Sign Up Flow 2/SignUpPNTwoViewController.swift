@@ -293,7 +293,7 @@ extension SignUpPNTwoViewController {
         continueButton.spinner.alpha = 0
         continueButton.spinner.isHidden = true
         
-        continueBottom.constant = -30
+        continueBottom.constant = -55
         UIView.animate(withDuration: 0.35) {
             self.view.layoutIfNeeded()
             self.view.endEditing(true)

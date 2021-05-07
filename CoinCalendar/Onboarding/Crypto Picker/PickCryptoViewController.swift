@@ -182,11 +182,14 @@ extension PickCryptoViewController {
         }
         
         continueButton.isUserInteractionEnabled = false
+        termsButton.isHidden = true
+        privacyButton.isHidden = true
         //shrinkAnimation(viewToAnimate: photoImageView, delay: 0.1)
         shrinkAnimation(viewToAnimate: detailLabel, delay: 0.1)
         shrinkAnimation(viewToAnimate: titleLabel, delay: 0.2)
         shrinkAnimation(viewToAnimate: continueButton.continueLabel, delay: 0.3)
         shrinkAnimation(viewToAnimate: continueButton.spinner, delay: 0.3)
+        shrinkAnimation(viewToAnimate: termsPrivacyLabel, delay: 0.3)
         continueButton.spinner.stopAnimating()
         continueButton.spinner.alpha = 0
         continueButton.spinner.isHidden = true

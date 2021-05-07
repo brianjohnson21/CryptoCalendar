@@ -285,12 +285,14 @@ extension SignUpPNViewController {
         continueButton.spinner.alpha = 0
         continueButton.spinner.isHidden = true
         
-        continueBottom.constant = -30
+        continueBottom.constant = -55
         UIView.animate(withDuration: 0.35) {
             self.view.layoutIfNeeded()
         } completion: { (success) in
             
         }
+        
+        print("did this 🙈🙈🙈")
         
         perform(#selector(showPickCrypto), with: self, afterDelay: 0.7)
         
