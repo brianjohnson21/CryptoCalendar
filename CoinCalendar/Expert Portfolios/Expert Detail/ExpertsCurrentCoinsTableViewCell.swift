@@ -45,7 +45,21 @@ class ExpertsCurrentCoinsTableViewCell: UITableViewCell {
     var percetLabel = UILabel()
     var dividerLine = UIView()
     
-    var currentCoins: [[String]] = [["ADA", "Cardano", "$1.05", "$1.35", "10.24%", "20"], ["BTC", "Bitcoin", "$18,450.19", "$57,857.11", "2.24%", "30"], ["TFUEL", "Theta Fuel", "$0.012", "$0.309", "9.53%", "15"], ["UNI", "Uniswap", "$26.98", "$32.10", "7.49%", "10"], ["ENJ", "Enjin Coin", "$1.42", "$2.60", "17.56%", "15"]]
+    var currentCoins: [[String]] = [
+        ["ADA", "Cardano", "20"],
+        ["BTC", "Bitcoin","30"],
+        ["TFUEL", "Theta Fuel", "15"],
+        ["UNI", "Uniswap", "10"],
+        ["ENJ", "Enjin Coin", "15"]
+    ]
+    
+    var coinPrices: [[CGFloat]] = [
+        [1.05, 1.35],
+        [18450.19, 57857.11],
+        [0.012, 0.309],
+        [26.98, 32.10],
+        [1.42, 2.60],
+    ]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -56,6 +70,8 @@ class ExpertsCurrentCoinsTableViewCell: UITableViewCell {
         setupCoinTable()
         setupHeaders()
         setupTableView()
+        print("\(coinPrices[4][1]) - 🤬🤬🤬")
+        print(coinPrices[4][1])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -277,11 +293,24 @@ extension ExpertsCurrentCoinsTableViewCell: UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: expertCurrentCoinMarketFeedTableViewCell, for: indexPath) as! ExpertCurrentCoinMarketFeedTableViewCell
             cell.coinNameLabel.text = currentCoins[indexPath.row][0]
             cell.blockChainNameLabel.text = currentCoins[indexPath.row][1]
-            cell.coinHealthLabel.text = currentCoins[indexPath.row][2]
-            cell.coinRankLabel.text = currentCoins[indexPath.row][3]
-            cell.percentChangeLabel.text = currentCoins[indexPath.row][4]
+            
+            cell.coinHealthLabel.text = "$\(coinPrices[indexPath.row][0])"
+            cell.coinRankLabel.text = "$\(coinPrices[indexPath.row][1])"
+            
+            
+            let difference = coinPrices[indexPath.row][1] - coinPrices[indexPath.row][0]
+            let percentChange = (difference / coinPrices[indexPath.row][0]) * 100
+            //print("\(percentChange) - 🤬🤬🤬")
+            cell.percentChangeLabel.text = "\(percentChange.rounded())%"                                                     
+            
             cell.percentChangeLabel.textColor = UIColor(red: 36/255, green: 157/255, blue: 48/255, alpha: 1.0)
-            cell.priceScoreLabel.text = "\(currentCoins[indexPath.row][5])%"
+            cell.priceScoreLabel.text = "\(currentCoins[indexPath.row][2])%"
+                        
+            
+            
+            
+            //print("🥶🥶🥶 \(currentPrice ?? 2)")
+            
             return cell
         }
     }

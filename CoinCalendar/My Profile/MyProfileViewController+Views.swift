@@ -163,7 +163,7 @@ extension MyProfileViewController {
         profileWidth.isActive = true
         
         userNameLabel.text = User.current.email//"Evan Robertson" //User.current.name
-        print("\(User.current.email) - 🤬🤬🤬")
+        //print("\(User.current.email) - 🤬🤬🤬")
         userNameLabel.textColor = .keyEventHeadlineColorModeLight
         userNameLabel.textAlignment = .center
         userNameLabel.font = .sofiaSemiBold(ofSize: 19)
@@ -346,7 +346,8 @@ extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             goToInviteContacts()
         case 2:
-            goToInviteContacts()
+            //goToInviteContacts()
+            goToFAQ()
         case 3:
             goToInviteContacts()
         case 4:

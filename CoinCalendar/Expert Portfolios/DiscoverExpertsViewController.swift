@@ -31,6 +31,7 @@ class DiscoverExpertsViewController: UIViewController {
     var infoButton = UIButton()
     var alertsButton = UIButton()
     var spotlightHeight: CGFloat = 420
+    var viewedDiscoverExperts = UserDefaults()
     
     var mainFeedTableView = UITableView()
     var discoverSpotlightTableViewCell = "discoverSpotlightTableViewCell"
@@ -60,9 +61,14 @@ class DiscoverExpertsViewController: UIViewController {
         setupNav()
         setupTableView()
         //setupLoadingIndicator()
+        
         self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
-                
-        //perform(#selector(animateCells), with: self, afterDelay: 0.25)
+        if viewedDiscoverExperts.bool(forKey: "viewedDiscoverExperts") {
+            print("not first time here")
+        } else {
+            print("first time here")
+            viewedDiscoverExperts.set(true, forKey: "viewedDiscoverExperts")
+        }
         
     }
     
@@ -72,6 +78,8 @@ class DiscoverExpertsViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
+               
+        //print("\(viewedDiscoverExperts.bool(forKey: "viewedDiscoverExperts")) - ❄️❄️❄️")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

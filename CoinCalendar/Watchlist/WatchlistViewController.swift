@@ -25,6 +25,7 @@ class WatchlistViewController: UIViewController {
     var infoImageView = UIImageView()
     var infoButton = UIButton()
     var alertsButton = UIButton()
+    var viewedWatchlist = UserDefaults()
     
     var mainFeedTableView = UITableView()
     var watchlistCoinsTableViewCell = "watchlistCoinsTableViewCell"
@@ -43,9 +44,16 @@ class WatchlistViewController: UIViewController {
         setupNav()
         setupTableView()
         //setupLoadingIndicator()
-        self.tabBarController?.removeDotAtTabBarItemIndex(index: 4)
                 
         //perform(#selector(animateCells), with: self, afterDelay: 0.25)
+        
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 4)
+        if viewedWatchlist.bool(forKey: "viewedWatchlist") {
+            print("not first time here")
+        } else {
+            print("first time here")
+            viewedWatchlist.set(true, forKey: "viewedWatchlist")
+        }
         
     }
     

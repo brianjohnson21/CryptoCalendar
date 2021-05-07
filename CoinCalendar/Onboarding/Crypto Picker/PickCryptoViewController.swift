@@ -26,6 +26,12 @@ class PickCryptoViewController: UIViewController {
     
     var fromSignUp = UserDefaults()
     
+    var termsPrivacyLabel = UILabel()
+    var termsOfUseLink = "https://www.cryptogainz.xyz/terms-of-use"
+    var privacyLink = "https://www.cryptogainz.xyz/privacy-policy"
+    var termsButton = UIButton()
+    var privacyButton = UIButton()
+    
     var coinsSelected: [String] = []
     var coins: [[String]] = [["Cardano", "ADA"],
                              ["Theta Fuel", "TFUEL"],
@@ -80,6 +86,20 @@ class PickCryptoViewController: UIViewController {
 //MARK: ACTIONS
 
 extension PickCryptoViewController {
+    @objc func didTapViewSource(sender: UIButton) {
+        let eventSourceVC = EventSourceWebViewController()
+        
+        if sender.tag == 1 {
+            eventSourceVC.urlString = termsOfUseLink
+        } else {
+            eventSourceVC.urlString = privacyLink
+        }
+        //print("\(resource) - 🎯🎯🎯")
+        
+        self.present(eventSourceVC, animated: true) {
+            //
+        }
+    }
     
     @objc func animateViewsIn() {
         showView(viewToAnimate: titleLabel, delay: 0.1)

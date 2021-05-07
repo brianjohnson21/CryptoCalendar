@@ -55,11 +55,11 @@ class LaunchTransitionView: UIView {
         
         if fromSignUp.bool(forKey: "comingFromSignUp") {
             //transitionDelay = 0.25
-            print("🧠🧠🧠 111")
+            //print("🧠🧠🧠 111")
             isFromSignUp = true
             perform(#selector(shootOffRocket), with: self, afterDelay: 0.25)
         } else {
-            print("🧠🧠🧠 222")
+            //print("🧠🧠🧠 222")
             isFromSignUp = false
             perform(#selector(shootOffRocket), with: self, afterDelay: 1.75)
         }

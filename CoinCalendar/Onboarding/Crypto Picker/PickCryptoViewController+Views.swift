@@ -121,13 +121,51 @@ extension PickCryptoViewController {
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(continueButton)
         continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        continueBottom = continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30)
+        continueBottom = continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -55)
         continueBottom.isActive = true
         let buttonWidth = self.view.frame.width - (18 * 2)
         continueWidth = continueButton.widthAnchor.constraint(equalToConstant: buttonWidth)
         continueWidth.isActive = true
         continueHeight = continueButton.heightAnchor.constraint(equalToConstant: 63)
         continueHeight.isActive = true
+        
+        let termsPrivacyText = "By tapping continue, you are agreeing to our\nprivacy policy and terms of use"
+        termsPrivacyLabel.setupLineHeight(myText: termsPrivacyText, myLineSpacing: 4)
+        termsPrivacyLabel.textAlignment = .center
+        termsPrivacyLabel.font = .sofiaSemiBold(ofSize: 10)
+        termsPrivacyLabel.textColor = UIColor.black.withAlphaComponent(0.28)
+        termsPrivacyLabel.numberOfLines = 0
+        termsPrivacyLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(termsPrivacyLabel)
+        termsPrivacyLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -25).isActive = true
+        termsPrivacyLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        
+        let text = (termsPrivacyLabel.text)!
+        let underlineAttriString = NSMutableAttributedString(string: text)
+        let range1 = (text as NSString).range(of: "privacy policy")
+        underlineAttriString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range1)
+        let range2 = (text as NSString).range(of: "terms of use")
+        underlineAttriString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range2)
+        termsPrivacyLabel.attributedText = underlineAttriString
+        
+        termsButton.addTarget(self, action: #selector(didTapViewSource(sender:)), for: .touchUpInside)
+        termsButton.tag = 1
+        termsButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(termsButton)
+        termsButton.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor, constant: 0).isActive = true
+        termsButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        termsButton.leadingAnchor.constraint(equalTo: continueButton.centerXAnchor, constant: 0).isActive = true
+        termsButton.topAnchor.constraint(equalTo: termsPrivacyLabel.topAnchor).isActive = true
+        
+        privacyButton.addTarget(self, action: #selector(didTapViewSource(sender:)), for: .touchUpInside)
+        privacyButton.tag = 2
+        privacyButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(privacyButton)
+        privacyButton.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor, constant: 0).isActive = true
+        privacyButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        privacyButton.trailingAnchor.constraint(equalTo: continueButton.centerXAnchor, constant: 0).isActive = true
+        privacyButton.topAnchor.constraint(equalTo: termsPrivacyLabel.topAnchor).isActive = true
+        
     }
     
 }

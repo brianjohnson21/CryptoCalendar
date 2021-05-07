@@ -65,9 +65,10 @@ class EventFeedViewController: UIViewController {
     var showWatchList = true
     var showNewlist = true
     var selectedSegment: Int = 0
-    
     var isInitialLoad = true
 
+    var viewedEvents = UserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let notificationCenter = NotificationCenter.default
@@ -81,9 +82,16 @@ class EventFeedViewController: UIViewController {
         setupTableView()
         setupLoadingIndicator()
         setupEmptyState()
-        self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
                 
         //perform(#selector(animateCells), with: self, afterDelay: 0.25)
+        
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
+        if viewedEvents.bool(forKey: "viewedEvents") {
+            print("not first time here")
+        } else {
+            print("first time here")
+            viewedEvents.set(true, forKey: "viewedEvents")
+        }
         
     }
     
@@ -91,13 +99,14 @@ class EventFeedViewController: UIViewController {
         //hideTabBar()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .darkContent
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
+        loadingLottie.play()
         showTabBar()
-        
         getPosts()
     }
     
@@ -146,12 +155,13 @@ class EventFeedViewController: UIViewController {
 
 extension EventFeedViewController {
     @objc func hideLoader() {
+        print("doing this 🚀🚀🚀")
         UIView.animateKeyframes(withDuration: 0.35, delay: 0.2, options: []) {
             self.loadingContainer.alpha = 0
         } completion: { (success) in
             self.loadingLottie.stop()
             self.loadingContainer.isHidden = true
-            self.perform(#selector(self.animateCells), with: self, afterDelay: 0.25)
+            self.perform(#selector(self.animateCells), with: self, afterDelay: 0.1)
         }
     }
     

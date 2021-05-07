@@ -13,7 +13,7 @@ class InviteFriendsSectionHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        self.backgroundColor = .coinBaseBlue//UIColor.black.withAlphaComponent(0.1)
         setupViews()
     }
     

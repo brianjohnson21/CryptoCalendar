@@ -31,6 +31,10 @@ class HomeFeedViewController: UIViewController {
     var titleLabel = UILabel()
     
     var fromSignUp = UserDefaults()
+    var viewedDiscoverExperts = UserDefaults()
+    var viewedMarketData = UserDefaults()
+    var viewedEvents = UserDefaults()
+    var viewedWatchlist = UserDefaults()
     
     var mainFeedTableView = UITableView()
     var homeFeedCoinsTableViewCell = "homeFeedCoinsTableViewCell"
@@ -70,17 +74,6 @@ class HomeFeedViewController: UIViewController {
         
         //doTransitionViewThing()
         
-        //self.tabBarController?.addDotAtTabBarItemIndex(index: 0, radius: 4, color : .red)
-        self.tabBarController?.addDotAtTabBarItemIndex(index: 1, radius: 4, color : .red)
-        self.tabBarController?.addDotAtTabBarItemIndex(index: 2, radius: 4, color : .red)
-        self.tabBarController?.addDotAtTabBarItemIndex(index: 3, radius: 4, color : .red)
-        self.tabBarController?.addDotAtTabBarItemIndex(index: 4, radius: 4, color : .red)
-        
-        //self.tabBarController?.tabBarItem.badgeValue = "●"
-        //self.tabBarController?.tabBarItem.badgeColor = .clear
-        //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
-        //self.tabBarController?.tabBarItem.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor.rawValue: .red], for: .normal)
-        
         //perform(#selector(showSubscriptionVC), with: self, afterDelay: 4.0)
         //showSubscriptionVC()
         
@@ -110,6 +103,33 @@ class HomeFeedViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
+        checkForTabDots()
+    }
+    
+    func checkForTabDots() {
+        if viewedDiscoverExperts.bool(forKey: "viewedDiscoverExperts") {
+            self.tabBarController?.removeDotAtTabBarItemIndex(index: 1)
+        } else {
+            self.tabBarController?.addDotAtTabBarItemIndex(index: 1, radius: 4, color : .red)
+        }
+        
+        if viewedMarketData.bool(forKey: "viewedMarketData") {
+            self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
+        } else {
+            self.tabBarController?.addDotAtTabBarItemIndex(index: 2, radius: 4, color : .red)
+        }
+        
+        if viewedEvents.bool(forKey: "viewedEvents") {
+            self.tabBarController?.removeDotAtTabBarItemIndex(index: 3)
+        } else {
+            self.tabBarController?.addDotAtTabBarItemIndex(index: 3, radius: 4, color : .red)
+        }
+        
+        if viewedWatchlist.bool(forKey: "viewedWatchlist") {
+            self.tabBarController?.removeDotAtTabBarItemIndex(index: 4)
+        } else {
+            self.tabBarController?.addDotAtTabBarItemIndex(index: 4, radius: 4, color : .red)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

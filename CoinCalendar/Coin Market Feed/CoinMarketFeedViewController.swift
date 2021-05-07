@@ -77,8 +77,9 @@ class CoinMarketFeedViewController: UIViewController {
     var pinnedPriceContainer = UIView()
     
     var firstPinnedCoinView = PinnedCoinView()
-    
     var compareContainer = CompareCoinsView()
+    
+    var viewedMarketData = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,16 +94,21 @@ class CoinMarketFeedViewController: UIViewController {
         setupCoinTable()
         setupTableView()
         setupPinScrollView()
-        //setupPinCollectionView()
         setupCompareContainer()
         setupLoadingIndicator()
         
-        self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
+        //self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
         
         getCoins()
         
-        //let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
-        //self.mainFeedTableView.addGestureRecognizer(longPressRecognizer)
+        self.tabBarController?.removeDotAtTabBarItemIndex(index: 2)
+        if viewedMarketData.bool(forKey: "viewedMarketData") {
+            print("not first time here")
+        } else {
+            print("first time here")
+            viewedMarketData.set(true, forKey: "viewedMarketData")
+        }
+                
     }
         
     @objc func appMovedToForeround() {
@@ -115,8 +121,6 @@ class CoinMarketFeedViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
-        //hideTabBar()
-        //setNeedsStatusBarAppearanceUpdate()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

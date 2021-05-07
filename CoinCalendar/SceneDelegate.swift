@@ -22,17 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func determineLaunchPoint() {
-//        if User.restoreCurrentUser() {
+        if User.restoreCurrentUser() {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "MyTabBarController") as! MyTabBarController
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
-//        } else {
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = sb.instantiateViewController(withIdentifier: "SplashTwoViewController") as! SplashTwoViewController
-//            window?.rootViewController = vc
-//            window?.makeKeyAndVisible()
-//        }
+        } else {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "SplashTwoViewController") as! SplashTwoViewController
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
