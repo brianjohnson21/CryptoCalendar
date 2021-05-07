@@ -111,6 +111,16 @@ extension SplashTwoViewController {
         self.view.addSubview(iconsBGImageView)
         iconsBGImageView.fillSuperview()
         
+        mainScrollView.contentSize = CGSize(width: view.frame.width * 6, height: view.frame.height)
+        mainScrollView.delegate = self
+        mainScrollView.showsHorizontalScrollIndicator = false
+        mainScrollView.isPagingEnabled = true
+        mainScrollView.isPagingEnabled = true
+        mainScrollView.backgroundColor = .clear
+        mainScrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(mainScrollView)
+        mainScrollView.fillSuperview()
+        
         getStartedButton.backgroundColor = .coinBaseBlue//.themePurple
         getStartedButton.layer.cornerRadius = 63/2
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false

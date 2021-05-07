@@ -23,6 +23,8 @@ class SplashTwoViewController: UIViewController {
     var progressStep = 0
     var pageControl = CHIPageControlAleppo()
     var pulseLottie = AnimationView()
+    var mainScrollView = UIScrollView()
+    var lastScrollPosition = CGPoint.zero
     
     var benefitImageHeight: CGFloat = 355
     var benefitImagetop: CGFloat = 97
@@ -175,6 +177,7 @@ extension SplashTwoViewController {
 extension SplashTwoViewController {
     @objc func circleButtonTapped() {
         lightImpactGenerator()
+        mainScrollView.isUserInteractionEnabled = false
         switch progressStep {
         case 0:
             animateCryptoAway()
@@ -182,12 +185,14 @@ extension SplashTwoViewController {
             progress.animate(toAngle: 60, duration: 0.28) { (success) in
                 print("Step 2")
                 self.animateBenefitIn(benefitImage: self.benefitOneImageView, benefitTitle: self.benefitOneTitleLabel, benefitDetail: self.benefitOneDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
             }
         case 1:
             animateBenefitOut(benefitImage: self.benefitOneImageView, benefitTitle: self.benefitOneTitleLabel, benefitDetail: self.benefitOneDetailLabel)
             pageControl.set(progress: 2, animated: true)
             progress.animate(toAngle: 120, duration: 0.28) { (success) in
                 self.animateBenefitIn(benefitImage: self.benefitTwoImageView, benefitTitle: self.benefitTwoTitleLabel, benefitDetail: self.benefitTwoDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
                 print("Step 3")
             }
         case 2:
@@ -195,6 +200,7 @@ extension SplashTwoViewController {
             pageControl.set(progress: 3, animated: true)
             progress.animate(toAngle: 180, duration: 0.28) { (success) in
                 self.animateBenefitIn(benefitImage: self.benefitThreeImageView, benefitTitle: self.benefitThreeTitleLabel, benefitDetail: self.benefitThreeDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
                 print("Step 4")
             }
         case 3:
@@ -203,6 +209,7 @@ extension SplashTwoViewController {
             progress.animate(toAngle: 240, duration: 0.28) { (success) in
                 print("Step 5")
                 self.animateBenefitIn(benefitImage: self.benefitFourImageView, benefitTitle: self.benefitFourTitleLabel, benefitDetail: self.benefitFourDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
             }
         
         case 4:
@@ -211,6 +218,7 @@ extension SplashTwoViewController {
             progress.animate(toAngle: 300, duration: 0.28) { (success) in
                 print("Step 5")
                 self.animateBenefitIn(benefitImage: self.benefitFiveImageView, benefitTitle: self.benefitFiveTitleLabel, benefitDetail: self.benefitFiveDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
             }
         
         default:
@@ -465,4 +473,43 @@ extension SplashTwoViewController: SignUpPNTwoViewControllerDelegate {
         self.circularButton.isHidden = true
         self.progress.isHidden = true
     }
+}
+
+//MARK: SCROLLVIEW DELEGATE
+
+extension SplashTwoViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.contentOffset.x > lastScrollPosition.x else {
+            scrollView.setContentOffset(lastScrollPosition, animated: false)
+            return
+        }
+        
+        lastScrollPosition = scrollView.contentOffset
+        
+        //
+        
+        let xAxis = scrollView.contentOffset.x
+        let viewWidth = view.frame.width
+        
+        if xAxis > 0 && progressStep == 0 {
+            circleButtonTapped()
+        } else if xAxis > viewWidth && progressStep == 1 {
+            circleButtonTapped()
+        } else if xAxis > viewWidth * 2 && progressStep == 2 {
+            circleButtonTapped()
+        } else if xAxis > viewWidth * 3 && progressStep == 3 {
+            circleButtonTapped()
+        } else if xAxis > viewWidth * 4 && progressStep == 4 {
+            circleButtonTapped()
+        } else if xAxis > viewWidth * 5 && progressStep == 5 {
+            circleButtonTapped()
+        }
+                
+        
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //scrollView.isUserInteractionEnabled = true
+    }
+    
 }
