@@ -48,4 +48,40 @@ class Coin: Codable {
             }
         }
     }
+    
+    static func removeSubscriptionToCache(coin: Coin) {
+        do {
+            var usercoins = try Disk.retrieve("usercoins", from: .caches, as: [Coin].self)
+            
+            usercoins.removeAll(where: {$0 == coin})
+            
+            do {
+                try Disk.save(usercoins, to: .caches, as: "usercoins")
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+            print("coin already not present")
+        }
+    }
+}
+
+extension Coin: CustomStringConvertible {
+    public var description: String {
+        var description = ""
+        let selfMirror = Mirror(reflecting: self)
+        for child in selfMirror.children {
+            if let propertyName = child.label {
+                description += "\(propertyName): \(child.value)\n"
+            }
+        }
+        return description
+    }
+}
+
+extension Coin: Equatable {
+    public static func == (lhs: Coin, rhs: Coin) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

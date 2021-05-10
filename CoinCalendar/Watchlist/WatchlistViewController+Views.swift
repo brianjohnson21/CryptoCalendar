@@ -163,11 +163,17 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: watchlistCoinsTableViewCell, for: indexPath) as! WatchlistCoinsTableViewCell
-            cell.coinImageView.image = UIImage(named: myCoins[indexPath.row][0])
-            cell.blockChainNameLabel.text = myCoins[indexPath.row][1]
-            cell.coinNameLabel.text = myCoins[indexPath.row][0]
-            cell.coinPriceLabel.text = myCoins[indexPath.row][2]
-            cell.percentChangeLabel.text = myCoins[indexPath.row][3]
+            
+            let coin = myCoins[indexPath.row]
+            
+            if let coinSymbol = coin.symbol {
+                cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
+            }
+//            cell.coinImageView.image = UIImage(named: myCoins[indexPath.row][0])
+            cell.blockChainNameLabel.text = coin.symbol
+            cell.coinNameLabel.text = coin.name
+            cell.coinPriceLabel.text = "\(coin.price ?? 0.0)"
+            cell.percentChangeLabel.text = "\(coin.percentChange24Hours ?? 0.0)%"
             
             if indexPath.row == myCoins.count - 1 {
                 cell.contentContainer.layer.cornerRadius = 12

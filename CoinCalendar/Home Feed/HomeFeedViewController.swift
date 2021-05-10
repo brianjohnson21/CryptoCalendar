@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import SuperBadges
 import SwiftyStoreKit
+import Disk
 
 class HomeFeedViewController: UIViewController {
     
@@ -273,6 +274,14 @@ extension HomeFeedViewController: LaunchTransitionViewDelegate {
 //MARK: COIN OPTION DELEGATE
 
 extension HomeFeedViewController: CoinOptionsViewControllerDelegate {
+    func addToWatchlist(coinPinned: Coin) {
+        Coin.addSubscriptionToCache(coin: coinPinned)
+    }
+    
+    func removeFromWatchlist(coinPinned: Coin) {
+        Coin.removeSubscriptionToCache(coin: coinPinned)
+    }
+    
     func pinCoin(coinPinned: Coin) {
         //
     }
@@ -300,6 +309,12 @@ extension HomeFeedViewController: HomeFeedCoinsTableViewCellDelegate {
         let eventOptionsVC =  CoinOptionsViewController()
         eventOptionsVC.isFromHome = true
         eventOptionsVC.coin = coinTapped
+        do {
+            let usercoins = try Disk.retrieve("usercoins", from: .caches, as: [Coin].self)
+            eventOptionsVC.inWatchlist = usercoins.contains(coinTapped)
+        } catch {
+            
+        }
         eventOptionsVC.delegate = self
         
         eventOptionsVC.blockChainLabel.text = coinTapped.name

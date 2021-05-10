@@ -7,11 +7,17 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension ExpertDetailViewController {
     func setupNav() {
         
-        expertImageView.image = UIImage(named: "tempHeadShot")
+        if let image = admin?.profilePhotoUrl {
+            expertImageView.kf.setImage(with: URL(string: image))
+        } else {
+            expertImageView.image = nil
+        }
+//        expertImageView.image = UIImage(named: "tempHeadShot")
         expertImageView.contentMode = .scaleAspectFill
         expertImageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(expertImageView)
@@ -107,7 +113,7 @@ extension ExpertDetailViewController {
         dismissButton.bottomAnchor.constraint(equalTo: navView.bottomAnchor, constant: 0).isActive = true
         dismissButton.trailingAnchor.constraint(equalTo: dismissImageView.trailingAnchor, constant: 15).isActive = true
         
-        userNameLabel.text = "Joseph E."
+        userNameLabel.text = admin?.name
         userNameLabel.layer.zPosition = 3
         userNameLabel.alpha = 0
         userNameLabel.textColor = .black
@@ -148,11 +154,11 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
         if section == 0 {
             return 1
         } else if section == 1 {
-            return 1
+            return portfolios.count
         } else if section == 2 {
-            return watchListCoins.count
+            return watchlistCoins.count
         } else {
-            return 2
+            return posts.count
         }
     }
     
@@ -165,8 +171,8 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: expertBioTableViewCell, for: indexPath) as! ExpertBioTableViewCell
             cell.igButton.addTarget(self, action: #selector(didTapIG), for: .touchUpInside)
             cell.twitterButton.addTarget(self, action: #selector(didTapTwitter), for: .touchUpInside)
-            cell.expertNameLabel.text = "Joseph Estrada"
-            let bioText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+            cell.expertNameLabel.text = admin?.name
+            let bioText = admin?.bio ?? ""
             cell.expertBioLabel.setupLineHeight(myText: bioText, myLineSpacing: 6)
             return cell
         } else if indexPath.section == 1 {
@@ -176,17 +182,33 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
             return cell
         } else if indexPath.section == 2  {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertWatchlistTableViewCell, for: indexPath) as! ExpertWatchlistTableViewCell
-            cell.coinImageView.image = UIImage(named: watchListCoins[indexPath.row][0])
-            cell.coinNameLabel.text = watchListCoins[indexPath.row][0]
-            cell.blockChainNameLabel.text = watchListCoins[indexPath.row][1]
-            cell.coinPriceLabel.text = watchListCoins[indexPath.row][2]
+            let coin = watchlistCoins[indexPath.row]
+            
+            if let coinSymbol = coin.symbol {
+                cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
+            }
+            cell.coinNameLabel.text = coin.name
+            cell.blockChainNameLabel.text = coin.symbol
+            cell.coinPriceLabel.text = "\(coin.price ?? 0.0)"
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertPostTableViewCell, for: indexPath) as! ExpertPostTableViewCell
-            cell.expertNameLabel.text = "Joseph Estrada"
-            let expertMessage = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo."
+            
+            let post = posts[indexPath.row]
+            
+            cell.expertNameLabel.text = post.admin?.name
+            let expertMessage = post.name ?? ""
             cell.expertMessageLabel.setupLineHeight(myText: expertMessage, myLineSpacing: 6)
-            cell.postDateLabel.text = "4/15/21"
+            let dateFormatter: DateFormatter = DateFormatter()
+            
+            // Set date format
+            dateFormatter.dateFormat = "MM/dd/yyyy"//"MM/dd/yyyy hh:mm a"
+            
+            // Apply date format
+            if let postEventDate = post.eventDate {
+                let selectedDate: String = dateFormatter.string(from: postEventDate)
+                cell.postDateLabel.text = "\(selectedDate)"
+            }
             cell.expertImageView.image = UIImage(named: "tempHeadShot")
             return cell
         }

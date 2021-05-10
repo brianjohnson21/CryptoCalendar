@@ -30,7 +30,13 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
     var showingName = false
     var isFollowing = false
     
-    var watchListCoins: [[String]] = [["COMP", "Compound", "$500.50"], ["ETH", "Ethereum", "$2,200.00"]]
+//    var watchListCoins: [[String]] = [["COMP", "Compound", "$500.50"], ["ETH", "Ethereum", "$2,200.00"]]
+    
+    var admin: Admin?
+    
+    var portfolios = [Portfolio]()
+    var watchlistCoins = [Coin]()
+    var posts = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +55,74 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
+        
+        getPortfolios()
+        getWatchlist()
+        getPosts()
     }
 
     @objc func appMovedToForeround() {
         hideTabBar()
+    }
+    
+    func getPortfolios() {
+        guard let admin = self.admin else { return }
+        API.sharedInstance.getPortfolios(admin: admin) { (success, portfolios, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let portfolios = portfolios else {
+                print("error getting trader portfolios")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.portfolios = portfolios
+                self?.mainFeedTableView.reloadData()
+            }
+        }
+    }
+    
+    func getWatchlist() {
+        guard let admin = self.admin else { return }
+        API.sharedInstance.getAdminWatchlist(admin: admin) { (success, coins, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coins = coins else {
+                print("error getting trader watchlist")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.watchlistCoins = coins
+                self?.mainFeedTableView.reloadData()
+            }
+        }
+    }
+    
+    func getPosts() {
+        guard let admin = self.admin else { return }
+        API.sharedInstance.getAdminPosts(admin: admin) { (success, posts, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let posts = posts else {
+                print("error getting trader posts")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.posts = posts
+                self?.mainFeedTableView.reloadData()
+            }
+        }
     }
 
 }

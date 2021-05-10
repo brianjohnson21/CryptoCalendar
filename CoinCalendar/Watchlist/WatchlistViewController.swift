@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Disk
 
 class WatchlistViewController: UIViewController {
     
@@ -31,7 +32,8 @@ class WatchlistViewController: UIViewController {
     var watchlistCoinsTableViewCell = "watchlistCoinsTableViewCell"
     var watchlistExpertTableViewCell = "watchlistExpertTableViewCell"
     
-    var myCoins: [[String]] = [["ADA", "Cardano", "$1.40", "+15.75%"], ["BNB", "Binance Coin", "$585.15", "+4.89%"], ["LTC", "Litecoin", "$271.06", "+11.21%"], ["BTC", "Bitcoin", "$56,228.45", "+2.65%"], ["XRP", "XRP", "$1.37", "+10.65%"]]
+//    var myCoins: [[String]] = [["ADA", "Cardano", "$1.40", "+15.75%"], ["BNB", "Binance Coin", "$585.15", "+4.89%"], ["LTC", "Litecoin", "$271.06", "+11.21%"], ["BTC", "Bitcoin", "$56,228.45", "+2.65%"], ["XRP", "XRP", "$1.37", "+10.65%"]]
+    var myCoins = [Coin]()
     
     var expertCoins: [[String]] = [["BTC", "Bitcoin", "$18,450.19", "$57,857.11", "2.24%", "30"], ["TFUEL", "Theta Fuel", "$0.012", "$0.309", "9.53%", "15"], ["ADA", "Cardano", "$1.40", "$1.35", "10.24%", "20"], ["UNI", "Uniswap", "$26.98", "$32.10", "7.49%", "10"], ["ENJ", "Enjin Coin", "$1.42", "$2.60", "17.56%", "15"]]
 
@@ -63,10 +65,21 @@ class WatchlistViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.bottom
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
+        
+        loadCoinWatchlist()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .default
+    }
+    
+    func loadCoinWatchlist() {
+        do {
+            self.myCoins = try Disk.retrieve("usercoins", from: .caches, as: [Coin].self)
+            self.mainFeedTableView.reloadData()
+        } catch {
+            print(error)
+        }
     }
 
 }

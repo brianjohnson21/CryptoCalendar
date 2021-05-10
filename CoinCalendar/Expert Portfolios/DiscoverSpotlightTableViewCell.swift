@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol DiscoverSpotlightTableViewCellDelegate: class {
-    func didSelectExpertFromSpotlight()
+    func didSelectExpertFromSpotlight(expert: Admin)
 }
 
 class DiscoverSpotlightTableViewCell: UITableViewCell {
@@ -21,7 +22,9 @@ class DiscoverSpotlightTableViewCell: UITableViewCell {
     var cellHeight: CGFloat = 352
     var cellWidth: CGFloat = 333
     
-    var spotlightExperts: [[String]] = [["spotlightOne", "John Horne", "172"], ["spotlightTwo", "Clive Miller", "198"], ["tempHeadShot", "Jason Estrada", "252"]]
+//    var spotlightExperts: [[String]] = [["spotlightOne", "John Horne", "172"], ["spotlightTwo", "Clive Miller", "198"], ["tempHeadShot", "Jason Estrada", "252"]]
+    
+    var spotlightExperts = [Admin]()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -137,19 +140,28 @@ extension DiscoverSpotlightTableViewCell {
 
 extension DiscoverSpotlightTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return spotlightExperts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: spotlightCollectionViewCell, for: indexPath) as! SpotlightCollectionViewCell
-        cell.expertImageView.image = UIImage(named: spotlightExperts[indexPath.row][0])
+        
+        let trader = spotlightExperts[indexPath.row]
+        
+        if let image = trader.profilePhotoUrl {
+            cell.expertImageView.kf.setImage(with: URL(string: image))
+        } else {
+            cell.expertImageView.image = nil
+        }
+        
+//        cell.expertImageView.image = UIImage(named: spotlightExperts[indexPath.row][0])
         cell.greenRedArrow.image = UIImage(named: "greenArrowDownThree")
-        cell.expertNameLabel.text = spotlightExperts[indexPath.row][1]
-        cell.percentLabel.text = "\(spotlightExperts[indexPath.row][2])%"
+        cell.expertNameLabel.text = trader.name
+        cell.percentLabel.text = "255%"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectExpertFromSpotlight()
+        delegate?.didSelectExpertFromSpotlight(expert: spotlightExperts[indexPath.row])
     }
 }
