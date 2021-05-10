@@ -87,6 +87,10 @@ class SplashTwoViewController: UIViewController {
     
     var icons: [UIImageView] = []
     
+    var isGoingLeft = false
+    var isGoingRight = false
+    var lastContentOffset: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white//.green
@@ -234,6 +238,60 @@ extension SplashTwoViewController {
         progressStep += 1
     }
     
+    @objc func swipeBack() {
+        lightImpactGenerator()
+        mainScrollView.isUserInteractionEnabled = false
+        switch progressStep {
+        case 0:
+            print("Step 1")
+        case 1:
+            animateBenefitOutReverse(benefitImage: self.benefitOneImageView, benefitTitle: self.benefitOneTitleLabel, benefitDetail: self.benefitOneDetailLabel)
+            pageControl.set(progress: 0, animated: true)
+            progress.animate(toAngle: 0, duration: 0.28) { (success) in
+                self.showCryptoAgain()
+                self.mainScrollView.isUserInteractionEnabled = true
+                print("Step 3")
+            }
+        case 2:
+            animateBenefitOutReverse(benefitImage: self.benefitTwoImageView, benefitTitle: self.benefitTwoTitleLabel, benefitDetail: self.benefitTwoDetailLabel)
+            pageControl.set(progress: 1, animated: true)
+            progress.animate(toAngle: 60, duration: 0.28) { (success) in
+                self.animateBenefitInReverse(benefitImage: self.benefitOneImageView, benefitTitle: self.benefitOneTitleLabel, benefitDetail: self.benefitOneDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
+                print("Step 4")
+            }
+        case 3:
+            animateBenefitOutReverse(benefitImage: self.benefitThreeImageView, benefitTitle: self.benefitThreeTitleLabel, benefitDetail: self.benefitThreeDetailLabel)
+            pageControl.set(progress: 2, animated: true)
+            progress.animate(toAngle: 120, duration: 0.28) { (success) in
+                print("Step 5")
+                self.animateBenefitInReverse(benefitImage: self.benefitTwoImageView, benefitTitle: self.benefitTwoTitleLabel, benefitDetail: self.benefitTwoDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
+            }
+        
+        case 4:
+            animateBenefitOutReverse(benefitImage: self.benefitFourImageView, benefitTitle: self.benefitFourTitleLabel, benefitDetail: self.benefitFourDetailLabel)
+            pageControl.set(progress: 3, animated: true)
+            progress.animate(toAngle: 180, duration: 0.28) { (success) in
+                print("Step 5")
+                self.animateBenefitInReverse(benefitImage: self.benefitThreeImageView, benefitTitle: self.benefitThreeTitleLabel, benefitDetail: self.benefitThreeDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
+            }
+        
+        default:
+            animateBenefitOutReverse(benefitImage: self.benefitFiveImageView, benefitTitle: self.benefitFiveTitleLabel, benefitDetail: self.benefitFiveDetailLabel)
+            pageControl.set(progress: 4, animated: true)
+            progress.animate(toAngle: 240, duration: 0.28) { (success) in
+                print("Step 5")
+                self.animateBenefitInReverse(benefitImage: self.benefitFourImageView, benefitTitle: self.benefitFourTitleLabel, benefitDetail: self.benefitFourDetailLabel)
+                self.mainScrollView.isUserInteractionEnabled = true
+            }
+        }
+        progressStep -= 1
+    }
+    
+    
+    
     @objc func animateCryptoAway() {
         aniamteAway(viewToAnimate: cryptoLabel, delay: 0)
         aniamteAway(viewToAnimate: calendarLabel, delay: 0.1)
@@ -286,6 +344,56 @@ extension SplashTwoViewController {
     }
     
     @objc func animateIn(viewToAnimate: UIView, delay: Double) {
+        UIView.animate(withDuration: 0.35, delay: delay, options: []) {
+            viewToAnimate.transform = CGAffineTransform(translationX: 0, y: 0)
+            viewToAnimate.alpha = 1.0
+        } completion: { (success) in
+            //
+        }
+    }
+    
+    //
+    
+    @objc func showCryptoAgain() {
+        animateInReverse(viewToAnimate: cryptoLabel, delay: 0)
+        animateInReverse(viewToAnimate: calendarLabel, delay: 0.1)
+        animateInReverse(viewToAnimate: goingToMoonLabel, delay: 0.2)
+        animateInReverse(viewToAnimate: whatWeDoLabel, delay: 0.3)
+        for icon in icons {
+            UIView.animate(withDuration: 0.35) {
+                icon.alpha = 1.00
+            }
+        }
+        
+        self.pulseLottie.isHidden = false
+                
+        UIView.animate(withDuration: 0.75) {
+            self.pulseLottie.alpha = 1.0
+        }
+    }
+    
+    @objc func animateBenefitInReverse(benefitImage: UIImageView, benefitTitle: UILabel, benefitDetail: UILabel) {
+        animateInReverse(viewToAnimate: benefitImage, delay: 0)
+        animateInReverse(viewToAnimate: benefitTitle, delay: 0.1)
+        animateInReverse(viewToAnimate: benefitDetail, delay: 0.2)
+    }
+    
+    @objc func animateBenefitOutReverse(benefitImage: UIImageView, benefitTitle: UILabel, benefitDetail: UILabel) {
+        aniamteAwayReverse(viewToAnimate: benefitImage, delay: 0)
+        aniamteAwayReverse(viewToAnimate: benefitTitle, delay: 0.1)
+        aniamteAwayReverse(viewToAnimate: benefitDetail, delay: 0.2)
+    }
+    
+    @objc func aniamteAwayReverse(viewToAnimate: UIView, delay: Double) {
+        UIView.animate(withDuration: 0.35, delay: delay, options: []) {
+            viewToAnimate.transform = CGAffineTransform(translationX: 100, y: 0)
+            viewToAnimate.alpha = 0
+        } completion: { (success) in
+            //
+        }
+    }
+    
+    @objc func animateInReverse(viewToAnimate: UIView, delay: Double) {
         UIView.animate(withDuration: 0.35, delay: delay, options: []) {
             viewToAnimate.transform = CGAffineTransform(translationX: 0, y: 0)
             viewToAnimate.alpha = 1.0
@@ -479,37 +587,63 @@ extension SplashTwoViewController: SignUpPNTwoViewControllerDelegate {
 
 extension SplashTwoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /*
         guard scrollView.contentOffset.x > lastScrollPosition.x else {
             scrollView.setContentOffset(lastScrollPosition, animated: false)
             return
         }
         
         lastScrollPosition = scrollView.contentOffset
+         */
         
-        //
+        if (self.lastContentOffset > scrollView.contentOffset.x) {
+            //print("scroll right")
+            isGoingLeft = false
+            isGoingRight = true
+        } else if (self.lastContentOffset < scrollView.contentOffset.x) {
+            //print("scroll left")
+            isGoingLeft = true
+            isGoingRight = false
+        }
         
         let xAxis = scrollView.contentOffset.x
         let viewWidth = view.frame.width
         
-        if xAxis > 0 && progressStep == 0 {
-            circleButtonTapped()
-        } else if xAxis > viewWidth && progressStep == 1 {
-            circleButtonTapped()
-        } else if xAxis > viewWidth * 2 && progressStep == 2 {
-            circleButtonTapped()
-        } else if xAxis > viewWidth * 3 && progressStep == 3 {
-            circleButtonTapped()
-        } else if xAxis > viewWidth * 4 && progressStep == 4 {
-            circleButtonTapped()
-        } else if xAxis > viewWidth * 5 && progressStep == 5 {
-            circleButtonTapped()
+        if isGoingLeft {
+            if xAxis > 0 && progressStep == 0 {
+                circleButtonTapped()
+            } else if xAxis > viewWidth && progressStep == 1 {
+                circleButtonTapped()
+            } else if xAxis > viewWidth * 2 && progressStep == 2 {
+                circleButtonTapped()
+            } else if xAxis > viewWidth * 3 && progressStep == 3 {
+                circleButtonTapped()
+            } else if xAxis > viewWidth * 4 && progressStep == 4 {
+                circleButtonTapped()
+            } else if xAxis > viewWidth * 5 && progressStep == 5 {
+                circleButtonTapped()
+            }
+        } else if isGoingRight {
+            if xAxis < viewWidth && progressStep == 1 {
+                swipeBack()
+            } else if xAxis < viewWidth * 2 && progressStep == 2 {
+                swipeBack()
+            } else if xAxis < viewWidth * 3 && progressStep == 3 {
+                swipeBack()
+            } else if xAxis < viewWidth * 4 && progressStep == 4 {
+                swipeBack()
+            } else if xAxis < viewWidth * 5 && progressStep == 5 {
+                swipeBack()
+            }
         }
-                
+           
+        self.lastContentOffset = scrollView.contentOffset.x;
         
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        //scrollView.isUserInteractionEnabled = true
+        scrollView.isUserInteractionEnabled = true
     }
+    
     
 }
