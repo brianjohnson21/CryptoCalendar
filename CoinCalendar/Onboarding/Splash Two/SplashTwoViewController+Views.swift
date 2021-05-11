@@ -246,7 +246,7 @@ extension SplashTwoViewController {
         
         cryptoLabel.alpha = 0
         cryptoLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        cryptoLabel.text = "Crypto"
+        cryptoLabel.text = "Moon"//"Crypto"
         cryptoLabel.textAlignment = .left
         cryptoLabel.textColor = .keyEventHeadlineColorModeLight
         cryptoLabel.font = .sofiaSemiBold(ofSize: 50)
@@ -258,7 +258,7 @@ extension SplashTwoViewController {
         
         calendarLabel.alpha = 0
         calendarLabel.transform = CGAffineTransform(translationX: 0, y: 50)
-        calendarLabel.text = "Gainz"
+        calendarLabel.text = "Base"//"Gainz"
         calendarLabel.textAlignment = .left
         calendarLabel.textColor = .keyEventHeadlineColorModeLight
         calendarLabel.font = .sofiaSemiBold(ofSize: 50)

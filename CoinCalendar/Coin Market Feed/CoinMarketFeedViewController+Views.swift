@@ -471,7 +471,7 @@ extension CoinMarketFeedViewController {
         loadingContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         loadingContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        let checkAnimation = Animation.named("loadingBlocks")
+        let checkAnimation = Animation.named("doubleSpin")
         loadingLottie.isUserInteractionEnabled = false
         loadingLottie.alpha = 1.0
         loadingLottie.loopMode = .loop

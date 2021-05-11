@@ -56,7 +56,7 @@ class DiscoverExpertsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight
-        
+        self.view.layer.masksToBounds = true
         //Call Views
         modifyConstraints()
         setupNav()

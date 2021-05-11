@@ -52,7 +52,7 @@ extension SpotlightCollectionViewCell {
         shadowView.addSubview(containerView)
         containerView.fillSuperview()
                 
-        expertImageView.backgroundColor = .red
+        expertImageView.backgroundColor = .lightGray
         expertImageView.contentMode = .scaleAspectFill
         expertImageView.layer.masksToBounds = true
         expertImageView.translatesAutoresizingMaskIntoConstraints = false
