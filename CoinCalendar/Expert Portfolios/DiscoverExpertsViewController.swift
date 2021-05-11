@@ -70,6 +70,8 @@ class DiscoverExpertsViewController: UIViewController {
             viewedDiscoverExperts.set(true, forKey: "viewedDiscoverExperts")
         }
         
+        perform(#selector(showWelcome), with: self, afterDelay: 0.25)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +103,12 @@ extension DiscoverExpertsViewController: DiscoverSpotlightTableViewCellDelegate 
 //MARK: ACTIONS
 
 extension DiscoverExpertsViewController {
+    @objc func showWelcome() {
+        let subVC = WelcomeViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
+    
     @objc func roiTapped() {
         let timePickerVC = TimePickerViewController()
         timePickerVC.modalPresentationStyle = .overFullScreen

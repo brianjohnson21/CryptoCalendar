@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import Lottie
 
 class DiscountButtonView: UIView {
     
     var priceLabel = UILabel()
     var updatedPriceLabel = UILabel()
     var purpleBG = UIView()
+    
+    var swipeContainer = UIView()
+    var swipeScrollView = UIScrollView()
+    var swipeLabel = UILabel()
+    var swipeLottie = AnimationView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +62,7 @@ extension DiscountButtonView {
         updatedPriceLabel.centerYAnchor.constraint(equalTo: purpleBG.centerYAnchor, constant: 0).isActive = true
         updatedPriceLabel.centerXAnchor.constraint(equalTo: purpleBG.centerXAnchor).isActive = true
         updatedPriceLabel.transform = CGAffineTransform(translationX: 0, y: -50)
-        
+                
     }
     
 }
