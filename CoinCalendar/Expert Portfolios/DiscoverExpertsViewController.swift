@@ -56,7 +56,7 @@ class DiscoverExpertsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .mainFeedBackgroundColorModeLight
-        
+        self.view.layer.masksToBounds = true
         //Call Views
         modifyConstraints()
         setupNav()
@@ -68,7 +68,7 @@ class DiscoverExpertsViewController: UIViewController {
             print("not first time here")
         } else {
             print("first time here")
-            viewedDiscoverExperts.set(true, forKey: "viewedDiscoverExperts")
+            perform(#selector(showWelcome), with: self, afterDelay: 0.25)
         }
         
     }
@@ -131,6 +131,12 @@ extension DiscoverExpertsViewController: DiscoverSpotlightTableViewCellDelegate,
 //MARK: ACTIONS
 
 extension DiscoverExpertsViewController {
+    @objc func showWelcome() {
+        let subVC = WelcomeViewController()
+        subVC.modalPresentationStyle = .overFullScreen
+        self.present(subVC, animated: false, completion: nil)
+    }
+    
     @objc func roiTapped() {
         let timePickerVC = TimePickerViewController()
         timePickerVC.modalPresentationStyle = .overFullScreen

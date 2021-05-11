@@ -144,6 +144,10 @@ class EventFeedViewController: UIViewController {
                 if self?.isInitialLoad == true {
                     self?.perform(#selector(self?.hideLoader), with: self, afterDelay: 0.1)
                     self?.isInitialLoad = false
+                    
+                    if self?.posts.count == 0 {
+                        self?.allEventsEmptyState.showViews()                        
+                    }
                 }
             }
         }

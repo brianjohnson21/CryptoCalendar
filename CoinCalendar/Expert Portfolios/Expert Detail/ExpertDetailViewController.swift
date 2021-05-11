@@ -33,7 +33,7 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
     
     var showingName = false
     
-//    var watchListCoins: [[String]] = [["COMP", "Compound", "$500.50"], ["ETH", "Ethereum", "$2,200.00"]]
+    //var watchListCoins: [[String]] = [["COMP", "Compound", "$500.50"], ["ETH", "Ethereum", "$2,200.00"]]
     
     var admin: Admin?
     
@@ -47,6 +47,7 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.view.layer.masksToBounds = true
         
         setupNav()
         setupTableView()

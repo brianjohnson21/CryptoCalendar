@@ -159,7 +159,7 @@ extension DiscoverExpertsViewController {
         loadingContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         loadingContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        let checkAnimation = Animation.named("loadingBlocks")
+        let checkAnimation = Animation.named("doubleSpin")
         loadingLottie.isUserInteractionEnabled = false
         loadingLottie.alpha = 1.0
         loadingLottie.loopMode = .loop
@@ -242,7 +242,12 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
             } else {
                 cell.traderImageView.image = nil
             }
-            cell.traderCoinsLabel.text = "\(trader.watchlist?.count ?? 0) coins)"
+            
+            if trader.watchlist?.count == 1 {
+                cell.traderCoinsLabel.text = "\(trader.watchlist?.count ?? 0) coin"
+            } else {
+                cell.traderCoinsLabel.text = "\(trader.watchlist?.count ?? 0) coins"
+            }
             
             cell.returnPercentLabel.text = "252%"
             return cell

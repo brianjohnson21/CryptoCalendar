@@ -95,6 +95,7 @@
 		DE55D5652630305E00F9295D /* WatchlistCoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */; };
 		DE55D56826307B6B00F9295D /* WatchlistExpertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */; };
 		DE55D5BE263103E300F9295D /* hex_loop_3mb.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DE55D5BD263103E300F9295D /* hex_loop_3mb.mp4 */; };
+		DE6A17B22649CE0C00ACE5C1 /* SwipeConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6A17B12649CE0B00ACE5C1 /* SwipeConfirmView.swift */; };
 		DE876D48263F53A4000B3817 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE876D47263F53A3000B3817 /* FAQViewController.swift */; };
 		DE876D4C263F53B1000B3817 /* FAQViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE876D4B263F53B1000B3817 /* FAQViewController+Views.swift */; };
 		DE876D4F263F542D000B3817 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE876D4E263F542D000B3817 /* FAQTableViewCell.swift */; };
@@ -129,6 +130,10 @@
 		DE9AA6A72612A8850057A259 /* successCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6A62612A8850057A259 /* successCheck.json */; };
 		DE9AA6C02612C6FA0057A259 /* checkSuccessBurst.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6BF2612C6FA0057A259 /* checkSuccessBurst.json */; };
 		DE9AA6C32612C7F70057A259 /* Confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = DE9AA6C22612C7F70057A259 /* Confetti.json */; };
+		DEA21D012649D457009EFEE1 /* whiteArrows.json in Resources */ = {isa = PBXBuildFile; fileRef = DEA21D002649D457009EFEE1 /* whiteArrows.json */; };
+		DEA21D042649EB2C009EFEE1 /* blueArrows.json in Resources */ = {isa = PBXBuildFile; fileRef = DEA21D032649EB2C009EFEE1 /* blueArrows.json */; };
+		DEA21D32264AF37A009EFEE1 /* tripleSpin.json in Resources */ = {isa = PBXBuildFile; fileRef = DEA21D31264AF379009EFEE1 /* tripleSpin.json */; };
+		DEA21D35264AF733009EFEE1 /* doubleSpin.json in Resources */ = {isa = PBXBuildFile; fileRef = DEA21D34264AF733009EFEE1 /* doubleSpin.json */; };
 		DED285AB261C0D32002F34B6 /* FilterOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285AA261C0D32002F34B6 /* FilterOptionView.swift */; };
 		DED285CB261CBB1B002F34B6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285CA261CBB1B002F34B6 /* WelcomeViewController.swift */; };
 		DED285CF261CBB29002F34B6 /* WelcomeViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED285CE261CBB29002F34B6 /* WelcomeViewController+Views.swift */; };
@@ -249,6 +254,7 @@
 		DE55D5642630305E00F9295D /* WatchlistCoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCoinsTableViewCell.swift; sourceTree = "<group>"; };
 		DE55D56726307B6B00F9295D /* WatchlistExpertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistExpertTableViewCell.swift; sourceTree = "<group>"; };
 		DE55D5BD263103E300F9295D /* hex_loop_3mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = hex_loop_3mb.mp4; sourceTree = "<group>"; };
+		DE6A17B12649CE0B00ACE5C1 /* SwipeConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeConfirmView.swift; sourceTree = "<group>"; };
 		DE876D47263F53A3000B3817 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		DE876D4B263F53B1000B3817 /* FAQViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FAQViewController+Views.swift"; sourceTree = "<group>"; };
 		DE876D4E263F542D000B3817 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
@@ -285,6 +291,10 @@
 		DE9AA6A62612A8850057A259 /* successCheck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = successCheck.json; sourceTree = "<group>"; };
 		DE9AA6BF2612C6FA0057A259 /* checkSuccessBurst.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkSuccessBurst.json; sourceTree = "<group>"; };
 		DE9AA6C22612C7F70057A259 /* Confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Confetti.json; sourceTree = "<group>"; };
+		DEA21D002649D457009EFEE1 /* whiteArrows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = whiteArrows.json; sourceTree = "<group>"; };
+		DEA21D032649EB2C009EFEE1 /* blueArrows.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blueArrows.json; sourceTree = "<group>"; };
+		DEA21D31264AF379009EFEE1 /* tripleSpin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tripleSpin.json; sourceTree = "<group>"; };
+		DEA21D34264AF733009EFEE1 /* doubleSpin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = doubleSpin.json; sourceTree = "<group>"; };
 		DED285AA261C0D32002F34B6 /* FilterOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionView.swift; sourceTree = "<group>"; };
 		DED285CA261CBB1B002F34B6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DED285CE261CBB29002F34B6 /* WelcomeViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeViewController+Views.swift"; sourceTree = "<group>"; };
@@ -723,6 +733,7 @@
 				DED285AA261C0D32002F34B6 /* FilterOptionView.swift */,
 				DED6575F2621EE8A002CC83D /* PlayerViewClass.swift */,
 				DE55D2F32626877C00F9295D /* EmptyStateView.swift */,
+				DE6A17B12649CE0B00ACE5C1 /* SwipeConfirmView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -739,6 +750,10 @@
 		DE9AA694261260DA0057A259 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				DEA21D34264AF733009EFEE1 /* doubleSpin.json */,
+				DEA21D31264AF379009EFEE1 /* tripleSpin.json */,
+				DEA21D032649EB2C009EFEE1 /* blueArrows.json */,
+				DEA21D002649D457009EFEE1 /* whiteArrows.json */,
 				DE55D3DD2628E29900F9295D /* pulseStart.json */,
 				DE4246512614CC3100E185D4 /* checkmark_1.json */,
 				DE4245F22613BDF800E185D4 /* loadingBlocks.json */,
@@ -873,16 +888,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE9AA5EE2610F18D0057A259 /* LaunchScreen.storyboard in Resources */,
+				DEA21D042649EB2C009EFEE1 /* blueArrows.json in Resources */,
 				DE9AA69A261262670057A259 /* coinsRotating.json in Resources */,
+				DEA21D35264AF733009EFEE1 /* doubleSpin.json in Resources */,
 				DE9AA6C32612C7F70057A259 /* Confetti.json in Resources */,
 				DE9AA6032610FFB40057A259 /* sofiapro-light.otf in Resources */,
 				DE55D3DE2628E29900F9295D /* pulseStart.json in Resources */,
 				DE9AA6C02612C6FA0057A259 /* checkSuccessBurst.json in Resources */,
 				DE4245F32613BDF800E185D4 /* loadingBlocks.json in Resources */,
+				DEA21D012649D457009EFEE1 /* whiteArrows.json in Resources */,
 				DE9AA64026114C7B0057A259 /* hexPatternVertical.mov in Resources */,
 				DE9AA6042610FFB40057A259 /* Sofia Pro Medium Az.otf in Resources */,
 				DE9AA6072610FFB40057A259 /* Sofia Pro Bold Az.otf in Resources */,
 				DE55D5BE263103E300F9295D /* hex_loop_3mb.mp4 in Resources */,
+				DEA21D32264AF37A009EFEE1 /* tripleSpin.json in Resources */,
 				DED6575D2621EDAD002CC83D /* space1Vid.mp4 in Resources */,
 				DE42456E2612CC2200E185D4 /* Confetti2.json in Resources */,
 				DE9AA6052610FFB40057A259 /* Sofia Pro Regular Az.otf in Resources */,
@@ -997,6 +1016,7 @@
 				DE3DC1122622C4660089E021 /* PinnedCoinCollectionViewCell.swift in Sources */,
 				DE4246102613E90200E185D4 /* MyAlertsViewController.swift in Sources */,
 				DE42474626195C4600E185D4 /* SocialMarketFeedViewController+Views.swift in Sources */,
+				DE6A17B22649CE0C00ACE5C1 /* SwipeConfirmView.swift in Sources */,
 				DE55D492262CD60900F9295D /* ExpertsTopCoinsTableViewCell.swift in Sources */,
 				DE55D56826307B6B00F9295D /* WatchlistExpertTableViewCell.swift in Sources */,
 				DE9AA5E22610F18C0057A259 /* AppDelegate.swift in Sources */,
