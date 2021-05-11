@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension WatchlistViewController {
     
@@ -148,14 +149,14 @@ extension WatchlistViewController {
 
 extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1 + traders.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return myCoins.count
         } else {
-            return expertCoins.count
+            return traders[section - 1].watchlist?.count ?? 0
         }
     }
     
@@ -183,11 +184,16 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: watchlistExpertTableViewCell, for: indexPath) as! WatchlistExpertTableViewCell
-            cell.coinImageView.image = UIImage(named: expertCoins[indexPath.row][0])
-            cell.blockChainNameLabel.text = expertCoins[indexPath.row][1]
-            cell.coinNameLabel.text = expertCoins[indexPath.row][0]
-            cell.coinPriceLabel.text = expertCoins[indexPath.row][2]
-            cell.percentChangeLabel.text = expertCoins[indexPath.row][4]
+            
+            let trader = traders[indexPath.row]
+            
+            let coin = (trader.watchlist ?? [])[indexPath.row]
+            
+            cell.coinImageView.image = UIImage(named: "\(coin)")
+            cell.blockChainNameLabel.text = coin
+            cell.coinNameLabel.text = ""
+            cell.coinPriceLabel.text = ""
+            cell.percentChangeLabel.text = ""
             
             if indexPath.row == myCoins.count - 1 {
                 cell.contentContainer.layer.cornerRadius = 12
@@ -235,7 +241,8 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             coinsLabel.text = "Coins"
         } else {
-            coinsLabel.text = "John Horne"
+            let trader = traders[section - 1]
+            coinsLabel.text = trader.name
         }
         
         return headerView

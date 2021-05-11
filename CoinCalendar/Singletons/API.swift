@@ -306,6 +306,26 @@ class API: NSObject {
         }
     }
     
+    func getTraderSubscriptions(completionHandler: @escaping (Bool, [Admin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/subscriptions", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let admins = try decoder.decode([Admin].self, from: data)
+                
+                completionHandler(true, admins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
     func subscribeToAdmin(admin: Admin, completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
         performRequest(endpoint: "api/users/subscriptions?id=\(admin.id.uuidString)", method: "POST", authenticated: true) { (data, response, error) in
             guard let _ = data, error == nil else {                                                 // check for fundamental networking error
