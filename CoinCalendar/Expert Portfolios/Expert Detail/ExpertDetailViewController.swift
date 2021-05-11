@@ -54,6 +54,8 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        followUnfollow.followLabel.text = (admin?.areSubscribed ?? false) ? "+ Follow" : "Following"
     }
     
     override func viewWillAppear(_ animated: Bool) {
