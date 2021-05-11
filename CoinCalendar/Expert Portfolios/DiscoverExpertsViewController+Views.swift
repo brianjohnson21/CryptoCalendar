@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Lottie
+import Kingfisher
 
 extension DiscoverExpertsViewController {
     
@@ -225,6 +226,8 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: discoverSpotlightTableViewCell, for: indexPath) as! DiscoverSpotlightTableViewCell
+            cell.spotlightExperts = self.traders
+            cell.globalContactListCollectionView.reloadData()
             cell.delegate = self
             return cell
         } else if indexPath.section == 1 {
@@ -232,10 +235,16 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: topTradersTableViewCell, for: indexPath) as! TopTradersTableViewCell
-            cell.traderNameLabel.text = traders[indexPath.row][0]
-            cell.traderCoinsLabel.text = traders[indexPath.row][1]
-            cell.traderImageView.image = UIImage(named: traders[indexPath.row][2])
-            cell.returnPercentLabel.text = "\(traders[indexPath.row][3])%"
+            let trader = traders[indexPath.row]
+            cell.traderNameLabel.text = trader.name
+            if let image = trader.profilePhotoUrl {
+                cell.traderImageView.kf.setImage(with: URL(string: image))
+            } else {
+                cell.traderImageView.image = nil
+            }
+            cell.traderCoinsLabel.text = "\(trader.watchlist?.count ?? 0) coins)"
+            
+            cell.returnPercentLabel.text = "252%"
             return cell
         }
     }
@@ -312,6 +321,7 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let expertsVC = ExpertDetailViewController()
+        expertsVC.admin = traders[indexPath.row]
         self.navigationController?.pushViewController(expertsVC, animated: true)
     }
     

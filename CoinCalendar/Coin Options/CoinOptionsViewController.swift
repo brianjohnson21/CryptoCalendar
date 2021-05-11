@@ -9,6 +9,8 @@ import UIKit
 import Lottie
 
 protocol CoinOptionsViewControllerDelegate: class {
+    func addToWatchlist(coinPinned: Coin)
+    func removeFromWatchlist(coinPinned: Coin)
     func pinCoin(coinPinned: Coin)
     func unPinCoin()
     func compareTapped(coinCompare: Coin)
@@ -56,6 +58,8 @@ class CoinOptionsViewController: UIViewController {
     var isDismissing = false
     var goingToCoinDetail = false
     var isFromHome = false
+    
+    var inWatchlist = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +122,11 @@ extension CoinOptionsViewController {
             self.shareOption.alpha = 0
             self.coinContainer.alpha = 0
         } completion: { (success) in
-            //self.delegate?.pinCoin(coinPinned: self.coin!)
+            if self.inWatchlist {
+                self.delegate?.removeFromWatchlist(coinPinned: self.coin!)
+            } else {
+                self.delegate?.addToWatchlist(coinPinned: self.coin!)
+            }
             self.successCheck.alpha = 1.0
             self.successCheck.play()
             self.addedToWatchListLabel.text = "Add to watchlist!"

@@ -246,6 +246,66 @@ class API: NSObject {
         }
     }
     
+    func getPortfolios(admin: Admin, completionHandler: @escaping (Bool, [Portfolio]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/portfolio/admin?id\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let portfolios = try decoder.decode([Portfolio].self, from: data)
+                
+                completionHandler(true, portfolios, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func getAdmins(completionHandler: @escaping (Bool, [Admin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/admins", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let admins = try decoder.decode([Admin].self, from: data)
+                
+                completionHandler(true, admins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func getAdminWatchlist(admin: Admin, completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/admins/watchlist?id\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let coins = try decoder.decode([Coin].self, from: data)
+                
+                completionHandler(true, coins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
     func getWatchlist(completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
         performRequest(endpoint: "api/users/watchlist", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -259,6 +319,26 @@ class API: NSObject {
                 let coins = try decoder.decode([Coin].self, from: data)
                 
                 completionHandler(true, coins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func getAdminPosts(admin: Admin, completionHandler: @escaping (Bool, [Post]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/posts/admin?id\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let posts = try decoder.decode([Post].self, from: data)
+                
+                completionHandler(true, posts, nil)
             } catch {
                 print(error)
                 completionHandler(false, nil, error)

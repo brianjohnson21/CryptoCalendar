@@ -348,6 +348,14 @@ extension CoinMarketFeedViewController: UIScrollViewDelegate {
 //MARK: COIN OPTIONS DELEGATE
 
 extension CoinMarketFeedViewController: CoinOptionsViewControllerDelegate {
+    func addToWatchlist(coinPinned: Coin) {
+        Coin.addSubscriptionToCache(coin: coinPinned)
+    }
+    
+    func removeFromWatchlist(coinPinned: Coin) {
+        Coin.removeSubscriptionToCache(coin: coinPinned)
+    }
+    
     func goToCoinDetail(coinToGo: Coin) {
         let eventOptionsVC =  CoinDetailsViewController()
         eventOptionsVC.coin = coinToGo
