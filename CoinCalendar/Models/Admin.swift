@@ -38,3 +38,9 @@ extension Admin: Equatable {
         return lhs.id == rhs.id
     }
 }
+
+
+struct AdminCoin: Codable {
+    var admin: Admin
+    var coins: [Coin]?
+}

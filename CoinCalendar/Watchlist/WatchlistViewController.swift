@@ -37,7 +37,7 @@ class WatchlistViewController: UIViewController {
     
 //    var expertCoins: [[String]] = [["BTC", "Bitcoin", "$18,450.19", "$57,857.11", "2.24%", "30"], ["TFUEL", "Theta Fuel", "$0.012", "$0.309", "9.53%", "15"], ["ADA", "Cardano", "$1.40", "$1.35", "10.24%", "20"], ["UNI", "Uniswap", "$26.98", "$32.10", "7.49%", "10"], ["ENJ", "Enjin Coin", "$1.42", "$2.60", "17.56%", "15"]]
     
-    var traders = [Admin]()
+    var traders = [AdminCoin]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ class WatchlistViewController: UIViewController {
     }
     
     func loadExpertWatchlist() {
-        API.sharedInstance.getTraderSubscriptions(completionHandler: { (success, traders, error) in
+        API.sharedInstance.getAdminCoins(completionHandler: { (success, traders, error) in
             guard error == nil else {
                 print(error!)
                 return

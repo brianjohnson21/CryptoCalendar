@@ -156,7 +156,7 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return myCoins.count
         } else {
-            return traders[section - 1].watchlist?.count ?? 0
+            return traders[section - 1].coins?.count ?? 0
         }
     }
     
@@ -185,15 +185,14 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: watchlistExpertTableViewCell, for: indexPath) as! WatchlistExpertTableViewCell
             
-            let trader = traders[indexPath.row]
-            
-            let coin = (trader.watchlist ?? [])[indexPath.row]
+            let adminCoin = traders[indexPath.row]
+            let coin = (adminCoin.coins ?? [])[indexPath.row]
             
             cell.coinImageView.image = UIImage(named: "\(coin)")
-            cell.blockChainNameLabel.text = coin
-            cell.coinNameLabel.text = ""
-            cell.coinPriceLabel.text = ""
-            cell.percentChangeLabel.text = ""
+            cell.blockChainNameLabel.text = coin.symbol
+            cell.coinNameLabel.text = coin.name
+            cell.coinPriceLabel.text = "$\(coin.price ?? 0.0)"
+            cell.percentChangeLabel.text = "\(coin.percentChange24Hours ?? 0.0)%"
             
             if indexPath.row == myCoins.count - 1 {
                 cell.contentContainer.layer.cornerRadius = 12
@@ -241,7 +240,7 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             coinsLabel.text = "Coins"
         } else {
-            let trader = traders[section - 1]
+            let trader = traders[section - 1].admin
             coinsLabel.text = trader.name
         }
         
