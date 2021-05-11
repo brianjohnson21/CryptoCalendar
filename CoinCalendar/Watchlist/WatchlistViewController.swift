@@ -74,12 +74,22 @@ class WatchlistViewController: UIViewController {
     }
     
     func loadCoinWatchlist() {
-        do {
-            self.myCoins = try Disk.retrieve("usercoins", from: .caches, as: [Coin].self)
-            self.mainFeedTableView.reloadData()
-        } catch {
-            print(error)
-        }
+        API.sharedInstance.getCoins(coins: User.current.watchlist ?? [], completionHandler: { (success, coins, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coins = coins else {
+                print("error getting coins")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.myCoins = coins
+                self?.mainFeedTableView.reloadData()
+            }
+        })
     }
 
 }

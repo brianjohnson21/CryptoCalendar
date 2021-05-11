@@ -112,12 +112,19 @@ class DiscoverExpertsViewController: UIViewController {
 
 //MARK: SPOTLIGHT DELEGATE
 
-extension DiscoverExpertsViewController: DiscoverSpotlightTableViewCellDelegate {
+extension DiscoverExpertsViewController: DiscoverSpotlightTableViewCellDelegate, ExpertDetailViewControllerDelegate {
     func didSelectExpertFromSpotlight(expert: Admin) {
         lightImpactGenerator()
         let expertsVC = ExpertDetailViewController()
+        expertsVC.delegate = self
         expertsVC.admin = expert
         self.navigationController?.pushViewController(expertsVC, animated: true)
+    }
+    
+    func updatedTrader(trader: Admin) {
+        if let index = self.traders.firstIndex(where: {$0 == trader}) {
+            self.traders[index] = trader
+        }
     }
 }
 

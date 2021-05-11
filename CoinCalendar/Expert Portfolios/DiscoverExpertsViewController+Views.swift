@@ -321,6 +321,7 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let expertsVC = ExpertDetailViewController()
+        expertsVC.delegate = self
         expertsVC.admin = traders[indexPath.row]
         self.navigationController?.pushViewController(expertsVC, animated: true)
     }
