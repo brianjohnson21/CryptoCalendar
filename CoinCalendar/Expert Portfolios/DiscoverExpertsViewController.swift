@@ -68,10 +68,8 @@ class DiscoverExpertsViewController: UIViewController {
             print("not first time here")
         } else {
             print("first time here")
-            viewedDiscoverExperts.set(true, forKey: "viewedDiscoverExperts")
+            perform(#selector(showWelcome), with: self, afterDelay: 0.25)
         }
-        
-        perform(#selector(showWelcome), with: self, afterDelay: 0.25)
         
     }
     

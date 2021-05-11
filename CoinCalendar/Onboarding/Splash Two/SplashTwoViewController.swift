@@ -89,6 +89,7 @@ class SplashTwoViewController: UIViewController {
     
     var isGoingLeft = false
     var isGoingRight = false
+    var finishedRight = false
     var lastContentOffset: CGFloat = 0
     
     override func viewDidLoad() {
@@ -235,10 +236,13 @@ extension SplashTwoViewController {
                 
             }
         }
+        
         progressStep += 1
+        
     }
     
     @objc func swipeBack() {
+        finishedRight = true
         lightImpactGenerator()
         mainScrollView.isUserInteractionEnabled = false
         switch progressStep {
@@ -287,7 +291,9 @@ extension SplashTwoViewController {
                 self.mainScrollView.isUserInteractionEnabled = true
             }
         }
+        
         progressStep -= 1
+        
     }
     
     
@@ -398,7 +404,7 @@ extension SplashTwoViewController {
             viewToAnimate.transform = CGAffineTransform(translationX: 0, y: 0)
             viewToAnimate.alpha = 1.0
         } completion: { (success) in
-            //
+            self.finishedRight = false
         }
     }
     
@@ -624,16 +630,18 @@ extension SplashTwoViewController: UIScrollViewDelegate {
                 circleButtonTapped()
             }
         } else if isGoingRight {
-            if xAxis < viewWidth && progressStep == 1 {
-                swipeBack()
-            } else if xAxis < viewWidth * 2 && progressStep == 2 {
-                swipeBack()
-            } else if xAxis < viewWidth * 3 && progressStep == 3 {
-                swipeBack()
-            } else if xAxis < viewWidth * 4 && progressStep == 4 {
-                swipeBack()
-            } else if xAxis < viewWidth * 5 && progressStep == 5 {
-                swipeBack()
+            if !finishedRight {
+                if xAxis < viewWidth && progressStep == 1 {
+                    swipeBack()
+                } else if xAxis < viewWidth * 2 && progressStep == 2 {
+                    swipeBack()
+                } else if xAxis < viewWidth * 3 && progressStep == 3 {
+                    swipeBack()
+                } else if xAxis < viewWidth * 4 && progressStep == 4 {
+                    swipeBack()
+                } else if xAxis < viewWidth * 5 && progressStep == 5 {
+                    swipeBack()
+                }
             }
         }
            

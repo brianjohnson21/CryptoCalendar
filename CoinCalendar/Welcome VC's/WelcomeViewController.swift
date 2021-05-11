@@ -39,6 +39,7 @@ class WelcomeViewController: UIViewController {
     
     var cardHeight: CGFloat = 430
     var buttonBottom: CGFloat = -42
+    var viewedDiscoverExperts = UserDefaults()
     
     var fistTimeOnExplorePage = UserDefaults()
 
@@ -229,6 +230,7 @@ extension WelcomeViewController: UIScrollViewDelegate {
                         self.cardContainer.transform = CGAffineTransform(translationX: 0, y: self.cardHeight)
                         self.opacityLayer.alpha = 0
                     }) { (success) in
+                        self.viewedDiscoverExperts.set(true, forKey: "viewedDiscoverExperts")
                         self.dismissWelcome()
                     }
                 }
