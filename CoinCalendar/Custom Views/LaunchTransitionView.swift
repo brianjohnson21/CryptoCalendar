@@ -51,7 +51,7 @@ class LaunchTransitionView: UIView {
         //print("did this 😅😅😅")
         //perform(#selector(animateViewsAway), with: self, afterDelay: 0.25)
         
-        print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😅😅😅")
+        //print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😅😅😅")
         
         if fromSignUp.bool(forKey: "comingFromSignUp") {
             //transitionDelay = 0.25

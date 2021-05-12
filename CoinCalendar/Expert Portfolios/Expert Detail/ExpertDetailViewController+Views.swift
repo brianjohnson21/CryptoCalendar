@@ -17,7 +17,7 @@ extension ExpertDetailViewController {
         } else {
             expertImageView.image = nil
         }
-//        expertImageView.image = UIImage(named: "tempHeadShot")
+        //expertImageView.image = UIImage(named: "tempHeadShot")
         expertImageView.contentMode = .scaleAspectFill
         expertImageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(expertImageView)
@@ -153,7 +153,7 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else if section == 1 {
+        } else if section == 1 {            
             return portfolios.count
         } else if section == 2 {
             return watchlistCoins.count
@@ -189,11 +189,25 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             cell.coinNameLabel.text = coin.name
             cell.blockChainNameLabel.text = coin.symbol
-            cell.coinPriceLabel.text = "\(coin.price ?? 0.0)"
+            //cell.coinPriceLabel.text = "\(coin.price ?? 0.0)"
+            
+            let coinPrice = coin.price ?? 0.0
+            if coinPrice < 1.0 {
+                cell.coinPriceLabel.text = "$\(coinPrice)"
+            } else {
+                let largeNumber = coinPrice.rounded(toPlaces: 2)
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                let formattedNumber = numberFormatter.string(from: NSNumber(value:largeNumber))
+                if let formNumber = formattedNumber {
+                    cell.coinPriceLabel.text = "$\(formNumber)"
+                }
+            }
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertPostTableViewCell, for: indexPath) as! ExpertPostTableViewCell
-            
+            cell.contentView.backgroundColor = .green
             let post = posts[indexPath.row]
             
             cell.expertNameLabel.text = post.admin?.name
@@ -296,7 +310,11 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
         } else if indexPath.section == 2 {
             return 57
         } else {
-            return UITableView.automaticDimension
+            if posts.count > 0 {
+                return UITableView.automaticDimension
+            } else {
+                return 150
+            }
         }
     }
     

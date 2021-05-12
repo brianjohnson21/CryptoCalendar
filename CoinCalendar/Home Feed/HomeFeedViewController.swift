@@ -242,7 +242,7 @@ extension HomeFeedViewController {
     
     @objc func goToProfile() {
         lightImpactGenerator()
-        let VC1 = MyProfileViewController()
+        let VC1 = MyProfileViewController() //PickCryptoViewController()
         let navController = UINavigationController(rootViewController: VC1)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
