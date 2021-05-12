@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ExpertDetailViewControllerDelegate: class {
+    func updatedTrader(trader: Admin)
+}
+
 class ExpertDetailViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     var navView = UIView()
@@ -28,7 +32,6 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
     var whiteGradient = UIImageView()
     
     var showingName = false
-    var isFollowing = false
     
     //var watchListCoins: [[String]] = [["COMP", "Compound", "$500.50"], ["ETH", "Ethereum", "$2,200.00"]]
     
@@ -37,6 +40,8 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
     var portfolios = [Portfolio]()
     var watchlistCoins = [Coin]()
     var posts = [Post]()
+    
+    weak var delegate: ExpertDetailViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +54,8 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        followUnfollow.followLabel.text = (admin?.areSubscribed ?? false) ? "+ Follow" : "Following"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,12 +139,39 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
 
 extension ExpertDetailViewController {
     @objc func followTapped() {
-        if !isFollowing {
+        guard var admin = self.admin else { return }
+        if !admin.areSubscribed {
+            self.admin?.areSubscribed = true
+            admin.areSubscribed = true
+            self.delegate?.updatedTrader(trader: admin)
             followUnfollow.followUser()
-            isFollowing = true
+            API.sharedInstance.subscribeToAdmin(admin: admin) { (success, _, error) in
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                guard success else {
+                    print("error subscribing to trader")
+                    return
+                }
+            }
         } else {
+            self.admin?.areSubscribed = false
+            admin.areSubscribed = false
+            self.delegate?.updatedTrader(trader: admin)
             followUnfollow.unFollowUser()
-            isFollowing = false
+            API.sharedInstance.unsubscribeFromAdmin(admin: admin) { (success, _, error) in
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                guard success else {
+                    print("error subscribing to trader")
+                    return
+                }
+            }
         }
     }
     

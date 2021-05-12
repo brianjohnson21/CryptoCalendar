@@ -206,6 +206,26 @@ class API: NSObject {
         }
     }
     
+    func getCoins(coins: [String], completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/coins?coins=\(coins.joined(separator: ","))", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let coins = try decoder.decode([Coin].self, from: data)
+                
+                completionHandler(true, coins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
     func getCoinOfDay(completionHandler: @escaping (Bool, Coin?, Error?) -> ()) {
         performRequest(endpoint: "api/users/coins/coinofday", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -219,6 +239,26 @@ class API: NSObject {
                 let coin = try decoder.decode(Coin.self, from: data)
                 
                 completionHandler(true, coin, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func getAdminCoins(completionHandler: @escaping (Bool, [AdminCoin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/coins/admincoins", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let adminCoins = try decoder.decode([AdminCoin].self, from: data)
+                
+                completionHandler(true, adminCoins, nil)
             } catch {
                 print(error)
                 completionHandler(false, nil, error)
@@ -247,7 +287,7 @@ class API: NSObject {
     }
     
     func getPortfolios(admin: Admin, completionHandler: @escaping (Bool, [Portfolio]?, Error?) -> ()) {
-        performRequest(endpoint: "api/users/portfolio/admin?id\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
+        performRequest(endpoint: "api/users/portfolio/admin?id=\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 completionHandler(false, nil, error)
@@ -286,8 +326,68 @@ class API: NSObject {
         }
     }
     
+    func getTraderSubscriptions(completionHandler: @escaping (Bool, [Admin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/subscriptions", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let admins = try decoder.decode([Admin].self, from: data)
+                
+                completionHandler(true, admins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    func subscribeToAdmin(admin: Admin, completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/subscriptions?id=\(admin.id.uuidString)", method: "POST", authenticated: true) { (data, response, error) in
+            guard let _ = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.dateDecodingStrategy = .iso8601
+//                let coins = try decoder.decode([Coin].self, from: data)
+                
+                completionHandler(true, nil, nil)
+//            } catch {
+//                print(error)
+//                completionHandler(false, nil, error)
+//            }
+        }
+    }
+    
+    func unsubscribeFromAdmin(admin: Admin, completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/subscriptions?id=\(admin.id.uuidString)", method: "DELETE", authenticated: true) { (data, response, error) in
+            guard let _ = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.dateDecodingStrategy = .iso8601
+//                let coins = try decoder.decode([Coin].self, from: data)
+                
+                completionHandler(true, nil, nil)
+//            } catch {
+//                print(error)
+//                completionHandler(false, nil, error)
+//            }
+        }
+    }
+    
     func getAdminWatchlist(admin: Admin, completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
-        performRequest(endpoint: "api/users/admins/watchlist?id\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
+        performRequest(endpoint: "api/users/admins/watchlist?id=\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 completionHandler(false, nil, error)
@@ -327,7 +427,7 @@ class API: NSObject {
     }
     
     func getAdminPosts(admin: Admin, completionHandler: @escaping (Bool, [Post]?, Error?) -> ()) {
-        performRequest(endpoint: "api/users/posts/admin?id\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
+        performRequest(endpoint: "api/users/posts/admin?id=\(admin.id.uuidString)", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(String(describing: error))")
                 completionHandler(false, nil, error)
