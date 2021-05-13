@@ -155,6 +155,7 @@
 		DED657D226226190002CC83D /* SetAlertOptionTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED657D126226190002CC83D /* SetAlertOptionTwoTableViewCell.swift */; };
 		DEDD55EB264C2D680056F70A /* WatchlistCoinOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD55EA264C2D680056F70A /* WatchlistCoinOptionsViewController.swift */; };
 		DEDD55EF264C2D730056F70A /* WatchlistCoinOptionsViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD55EE264C2D730056F70A /* WatchlistCoinOptionsViewController+Views.swift */; };
+		DEDD55F2264CAA850056F70A /* SubscribeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD55F1264CAA850056F70A /* SubscribeButton.swift */; };
 		FC2F18782649D6AE0069065C /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2F18772649D6AE0069065C /* Portfolio.swift */; };
 		FC38621B262B7B6900828015 /* PushParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38621A262B7B6900828015 /* PushParser.swift */; };
 		FC4E558C26202334008AF09B /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4E558726202334008AF09B /* Admin.swift */; };
@@ -318,6 +319,7 @@
 		DED657D126226190002CC83D /* SetAlertOptionTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlertOptionTwoTableViewCell.swift; sourceTree = "<group>"; };
 		DEDD55EA264C2D680056F70A /* WatchlistCoinOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCoinOptionsViewController.swift; sourceTree = "<group>"; };
 		DEDD55EE264C2D730056F70A /* WatchlistCoinOptionsViewController+Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistCoinOptionsViewController+Views.swift"; sourceTree = "<group>"; };
+		DEDD55F1264CAA850056F70A /* SubscribeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeButton.swift; sourceTree = "<group>"; };
 		FC2F18772649D6AE0069065C /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		FC38621A262B7B6900828015 /* PushParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushParser.swift; sourceTree = "<group>"; };
 		FC4E558726202334008AF09B /* Admin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				DED6575F2621EE8A002CC83D /* PlayerViewClass.swift */,
 				DE55D2F32626877C00F9295D /* EmptyStateView.swift */,
 				DE6A17B12649CE0B00ACE5C1 /* SwipeConfirmView.swift */,
+				DEDD55F1264CAA850056F70A /* SubscribeButton.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1011,6 +1014,7 @@
 				DE55D500262DF55800F9295D /* FollowUnfollowView.swift in Sources */,
 				DE4245722612CE3200E185D4 /* SortFilterViewController.swift in Sources */,
 				DE3DC20626251BC30089E021 /* CoinDetailsViewController.swift in Sources */,
+				DEDD55F2264CAA850056F70A /* SubscribeButton.swift in Sources */,
 				DE55D431262A87CB00F9295D /* ContactsTableViewCell.swift in Sources */,
 				DE55D410262A862800F9295D /* InviteFriendsViewController.swift in Sources */,
 				DE4246BC2616A1C300E185D4 /* HomeFeedCoinCollectionViewCell.swift in Sources */,

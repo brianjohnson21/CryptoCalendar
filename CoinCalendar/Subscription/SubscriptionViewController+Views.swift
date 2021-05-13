@@ -45,8 +45,9 @@ extension SubscriptionViewController {
         subscribeButton.addTarget(self, action: #selector(didTapSubscribe), for: .touchUpInside)
         subscribeButton.backgroundColor = .white
         //subscribeButton.setTitle("Try Free & Subscribe", for: .normal)
-        subscribeButton.setTitleColor(.keyEventHeadlineColorModeLight, for: .normal)
-        subscribeButton.titleLabel?.font = .sofiaSemiBold(ofSize: 22)
+        //subscribeButton.setTitleColor(.keyEventHeadlineColorModeLight, for: .normal)
+        //subscribeButton.titleLabel?.font = .sofiaSemiBold(ofSize: 22)
+        subscribeButton.continueLabel.text = "Try Free & Subscribe"
         subscribeButton.layer.cornerRadius = 60/2
         subscribeButton.layer.masksToBounds = true
         subscribeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +57,7 @@ extension SubscriptionViewController {
         subscribeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16).isActive = true
         subscribeButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
                         
+        tryFreeLabel.isHidden = true
         tryFreeLabel.isUserInteractionEnabled = false
         tryFreeLabel.text = "Try Free & Subscribe"
         tryFreeLabel.font = .sofiaSemiBold(ofSize: 22)

@@ -398,6 +398,7 @@ extension SplashTwoViewController {
         launchTransition.layer.zPosition = 100
         launchTransition.alpha = 1.0
         launchTransition.spinner.isHidden = true
+        launchTransition.splashScreen = true
         launchTransition.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(launchTransition)
         launchTransition.fillSuperview()
