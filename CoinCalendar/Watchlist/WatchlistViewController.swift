@@ -180,6 +180,8 @@ extension WatchlistViewController {
 extension WatchlistViewController: WatchlistCoinOptionsViewControllerDelegate {
     func removeFromWatchlist(coinPinned: Coin) {
         print("did this remove")
+        //Coin.removeSubscriptionToCache(coin: coinPinned)
+        //mainFeedTableView.reloadData()
     }
     
     func goToCoinDetail(coinToGo: Coin) {

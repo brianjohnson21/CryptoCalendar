@@ -256,16 +256,14 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         if myCoins.count > 0 {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: watchlistCoinsTableViewCell, for: indexPath) as! WatchlistCoinsTableViewCell
-                
                 let coin = myCoins[indexPath.row]
                 
-                if let coinSymbol = coin.name {
+                if let coinSymbol = coin.symbol {
                     cell.coinImageView.image = UIImage(named: "\(coinSymbol)")
                 }
-                //cell.coinImageView.image = UIImage(named: myCoins[indexPath.row][0])
+                
                 cell.blockChainNameLabel.text = coin.name
                 cell.coinNameLabel.text = coin.symbol
-                //cell.coinPriceLabel.text = "\(coin.price ?? 0.0)"
                 let coinPrice = coin.price ?? 0.0
                 if coinPrice < 1.0 {
                     cell.coinPriceLabel.text = "$\(coinPrice)"
@@ -279,7 +277,14 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
                 
-                cell.percentChangeLabel.text = "\(coin.percentChange24Hours ?? 0.0)%"
+                let percent24hourChange = coin.percentChange24Hours ?? 0.0
+                cell.percentChangeLabel.text = "\(percent24hourChange)%"
+                
+                if percent24hourChange > 0 {
+                    cell.percentChangeLabel.textColor = UIColor(red: 36/255, green: 157/255, blue: 48/255, alpha: 0.6)
+                } else {
+                    cell.percentChangeLabel.textColor = UIColor(red: 217/255, green: 20/255, blue: 20/255, alpha: 0.6)
+                }
                 
                 if indexPath.row == myCoins.count - 1 {
                     cell.contentContainer.layer.cornerRadius = 12

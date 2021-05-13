@@ -309,3 +309,35 @@ extension ExpertDetailViewController: ExpertsCurrentCoinsTableViewCellDelegate {
         self.present(subVC, animated: false, completion: nil)
     }
 }
+
+//MARK: COIN OPTIONS DELEGATE
+
+extension ExpertDetailViewController: CoinOptionsViewControllerDelegate {
+    func addToWatchlist(coinPinned: Coin) {
+        Coin.addSubscriptionToCache(coin: coinPinned)
+    }
+    
+    func removeFromWatchlist(coinPinned: Coin) {
+        Coin.removeSubscriptionToCache(coin: coinPinned)
+    }
+    
+    func pinCoin(coinPinned: Coin) {
+        //
+    }
+    
+    func unPinCoin() {
+        //
+    }
+    
+    func compareTapped(coinCompare: Coin) {
+        //
+    }
+    
+    func goToCoinDetail(coinToGo: Coin) {
+        print("did this 🙂🙂🙂")
+        let eventOptionsVC =  CoinDetailsViewController()
+        eventOptionsVC.coin = coinToGo
+        self.navigationController?.pushViewController(eventOptionsVC, animated: true)
+    }
+        
+}

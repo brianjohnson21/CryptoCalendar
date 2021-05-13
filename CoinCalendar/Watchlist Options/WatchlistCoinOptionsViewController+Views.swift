@@ -149,7 +149,7 @@ extension WatchlistCoinOptionsViewController {
         watchlistOption.iconImageView.image = UIImage(named: "eye")
         watchlistOption.iconImageView.setImageColor(color: .coinBaseBlue)
         watchlistOption.optionTitleLabel.text = "Remove from Watchlist"
-        watchlistOption.optionDetailLabel.text = "Remove this event from your watchlist"
+        watchlistOption.optionDetailLabel.text = "Remove this coin from your watchlist"
         watchlistOption.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.addSubview(watchlistOption)
         watchlistOption.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 0).isActive = true

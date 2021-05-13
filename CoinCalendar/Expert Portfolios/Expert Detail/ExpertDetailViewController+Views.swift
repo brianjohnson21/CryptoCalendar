@@ -57,7 +57,7 @@ extension ExpertDetailViewController {
         mainFeedTableView.register(ExpertsCurrentCoinsTableViewCell.self, forCellReuseIdentifier: expertsCurrentCoinsTableViewCell)
         mainFeedTableView.register(ExpertWatchlistTableViewCell.self, forCellReuseIdentifier: expertWatchlistTableViewCell)
         mainFeedTableView.register(ExpertPostTableViewCell.self, forCellReuseIdentifier: expertPostTableViewCell)
-        mainFeedTableView.allowsMultipleSelection = true
+        mainFeedTableView.allowsMultipleSelection = false
         mainFeedTableView.contentInset = .zero
         mainFeedTableView.showsVerticalScrollIndicator = false
         mainFeedTableView.separatorStyle = .none
@@ -315,6 +315,36 @@ extension ExpertDetailViewController: UITableViewDelegate, UITableViewDataSource
             } else {
                 return 150
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            
+        } else if indexPath.section == 2 {
+            lightImpactGenerator()
+            
+            let eventOptionsVC =  CoinOptionsViewController()
+            eventOptionsVC.isFromHome = true
+            eventOptionsVC.delegate = self                                                
+            
+            eventOptionsVC.coin = watchlistCoins[indexPath.row]
+            let coin = watchlistCoins[indexPath.row]
+            if let coinPrice = coin.price {
+                eventOptionsVC.coinPrice = "$\(coinPrice.rounded(toPlaces: 2))"
+            }
+            
+            if let coinName = coin.name {
+                eventOptionsVC.coinName = coinName
+            }
+            
+            if let coinSymbol = coin.symbol {
+                eventOptionsVC.coinSymbol = coinSymbol
+            }
+            
+            eventOptionsVC.modalPresentationStyle = .overFullScreen
+            self.present(eventOptionsVC, animated: false, completion: nil)
+            
         }
     }
     
