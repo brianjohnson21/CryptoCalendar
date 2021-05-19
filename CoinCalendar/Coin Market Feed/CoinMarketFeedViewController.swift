@@ -350,10 +350,52 @@ extension CoinMarketFeedViewController: UIScrollViewDelegate {
 extension CoinMarketFeedViewController: CoinOptionsViewControllerDelegate {
     func addToWatchlist(coinPinned: Coin) {
         Coin.addSubscriptionToCache(coin: coinPinned)
+        
+        if User.current.watchlist == nil || (User.current.watchlist?.count ?? 0) == 0 {
+            User.current.watchlist = [coinPinned.symbol ?? ""]
+        } else {
+            if !(User.current.watchlist?.contains(coinPinned.symbol ?? "") ?? false) {
+                User.current.watchlist?.append(coinPinned.symbol ?? "")
+            }
+        }
+        
+        API.sharedInstance.updateUser(user: User.current) { (success, user, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            guard success, let user = user else {
+                print("failed updating user")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                User.current = user
+                User.saveCurrentUser()
+            }
+        }
     }
     
     func removeFromWatchlist(coinPinned: Coin) {
         Coin.removeSubscriptionToCache(coin: coinPinned)
+        
+        User.current.watchlist?.removeAll(where: {$0 == coinPinned.symbol ?? ""})
+        
+        API.sharedInstance.updateUser(user: User.current) { (success, user, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            guard success, let user = user else {
+                print("failed updating user")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                User.current = user
+                User.saveCurrentUser()
+            }
+        }
     }
     
     func goToCoinDetail(coinToGo: Coin) {

@@ -182,6 +182,13 @@ extension PickCryptoViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.coinImageView.image = UIImage(named: coins[indexPath.row][0])
         cell.blockChainLabel.text = coins[indexPath.row][0]
         cell.coinLabel.text = coins[indexPath.row][1]
+        
+        if coinsSelected.contains(coins[indexPath.row][1]) {
+            cell.handleTap()
+        } else {
+            cell.hideRing()
+        }
+        
         return cell
     }
     

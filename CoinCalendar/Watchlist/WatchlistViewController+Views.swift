@@ -188,7 +188,7 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
             let adminCoin = traders[indexPath.row]
             let coin = (adminCoin.coins ?? [])[indexPath.row]
             
-            cell.coinImageView.image = UIImage(named: "\(coin)")
+            cell.coinImageView.image = UIImage(named: "\(coin.symbol ?? "")")
             cell.blockChainNameLabel.text = coin.symbol
             cell.coinNameLabel.text = coin.name
             cell.coinPriceLabel.text = "$\(coin.price ?? 0.0)"
@@ -240,8 +240,8 @@ extension WatchlistViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             coinsLabel.text = "Coins"
         } else {
-            let trader = traders[section - 1].admin
-            coinsLabel.text = trader.name
+            let trader = traders[section - 1].admin.name
+            coinsLabel.text = trader
         }
         
         return headerView

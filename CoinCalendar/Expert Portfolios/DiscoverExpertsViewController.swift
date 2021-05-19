@@ -50,6 +50,7 @@ class DiscoverExpertsViewController: UIViewController {
 //                               ["Chris Blake", "5 coins", "temp7", "50"],
 //    ]
     var traders = [Admin]()
+    var coins = [Coin]()
     
     var roiSelected = "30 Day ROI"
 
@@ -103,6 +104,25 @@ class DiscoverExpertsViewController: UIViewController {
             
             DispatchQueue.main.async { [weak self] in
                 self?.traders = admins
+                self?.mainFeedTableView.reloadData()
+            }
+        }
+    }
+    
+    func getTopCoins() {
+        API.sharedInstance.getTopCoins { (success, coins, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard success, let coins = coins else {
+                print("error getting coins")
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.coins = coins
                 self?.mainFeedTableView.reloadData()
             }
         }

@@ -232,6 +232,8 @@ extension DiscoverExpertsViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: expertsTopCoinsTableViewCell, for: indexPath) as! ExpertsTopCoinsTableViewCell
+            cell.coins = self.coins
+            cell.globalContactListCollectionView.reloadData()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: topTradersTableViewCell, for: indexPath) as! TopTradersTableViewCell

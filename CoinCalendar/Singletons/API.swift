@@ -246,6 +246,26 @@ class API: NSObject {
         }
     }
     
+    func getTopCoins(completionHandler: @escaping (Bool, [Coin]?, Error?) -> ()) {
+        performRequest(endpoint: "api/users/coins/topcoins", method: "GET", authenticated: true) { (data, response, error) in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                completionHandler(false, nil, error)
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let coins = try decoder.decode([Coin].self, from: data)
+                
+                completionHandler(true, coins, nil)
+            } catch {
+                print(error)
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
     func getAdminCoins(completionHandler: @escaping (Bool, [AdminCoin]?, Error?) -> ()) {
         performRequest(endpoint: "api/users/coins/admincoins", method: "GET", authenticated: true) { (data, response, error) in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error

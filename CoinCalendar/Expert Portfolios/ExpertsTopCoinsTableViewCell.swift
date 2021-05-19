@@ -18,9 +18,9 @@ class ExpertsTopCoinsTableViewCell: UITableViewCell {
     var globalContactListCollectionViewFlowLayout = UICollectionViewFlowLayout()
     var globalContactListCollectionView: UICollectionView!
     var homeFeedCoinCollectionViewCell = "homeFeedCoinCollectionViewCell"
-    var topCoins: [[String]] = [["ADA", "Cardano", "$1.35", "10.24%"], ["BTC", "Bitcoin", "$57,857.11", "2.24%"], ["TFUEL", "Theta Fuel", "$0.309", "9.53%"], ["UNI", "Uniswap", "$32.10", "7.49%"], ["ENJ", "Enjin Coin", "$2.60", "17.56%"]]
+//    var topCoins: [[String]] = [["ADA", "Cardano", "$1.35", "10.24%"], ["BTC", "Bitcoin", "$57,857.11", "2.24%"], ["TFUEL", "Theta Fuel", "$0.309", "9.53%"], ["UNI", "Uniswap", "$32.10", "7.49%"], ["ENJ", "Enjin Coin", "$2.60", "17.56%"]]
     
-    //var coins = [Coin]()
+    var coins = [Coin]()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -100,13 +100,12 @@ extension ExpertsTopCoinsTableViewCell {
 
 extension ExpertsTopCoinsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return topCoins.count
+        return coins.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeFeedCoinCollectionViewCell, for: indexPath) as! HomeFeedCoinCollectionViewCell
         
-        /*
         let coin = coins[indexPath.row]
         
         if let coinSymbol = coin.symbol {
@@ -144,13 +143,12 @@ extension ExpertsTopCoinsTableViewCell: UICollectionViewDelegate, UICollectionVi
                 
         cell.upDownImageView.image = coin.percentChange24Hours ?? 0 > 0.0 ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
         cell.upDownLabel.text = "\(coin.percentChange24Hours ?? 0)%"
-        */
         
-        cell.coinImageView.image = UIImage(named: topCoins[indexPath.row][0])
-        cell.coinNameLabel.text = topCoins[indexPath.row][1]
-        cell.coinPriceLabel.text = topCoins[indexPath.row][2]
-        cell.upDownLabel.text = topCoins[indexPath.row][3]
-        cell.upDownImageView.image = UIImage(named: "greenArrowUp")
+//        cell.coinImageView.image = UIImage(named: topCoins[indexPath.row][0])
+//        cell.coinNameLabel.text = topCoins[indexPath.row][1]
+//        cell.coinPriceLabel.text = topCoins[indexPath.row][2]
+//        cell.upDownLabel.text = topCoins[indexPath.row][3]
+//        cell.upDownImageView.image = UIImage(named: "greenArrowUp")
         
         return cell
     }
