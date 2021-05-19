@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "XMR.png",
+      "filename" : "SHIB.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "XMR@2x.png",
+      "filename" : "SHIB@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "XMR@3x.png",
+      "filename" : "SHIB@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -55,7 +55,16 @@ class ExpertDetailViewController: UIViewController, UINavigationControllerDelega
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
         
-        followUnfollow.followLabel.text = (admin?.areSubscribed ?? false) ? "+ Follow" : "Following"
+        //followUnfollow.followLabel.text = (admin?.areSubscribed ?? false) ? "+ Follow" : "Following"
+        
+        if admin?.areSubscribed == true {
+            //Shows the "Following" text
+            followUnfollow.unFollowUser()
+        } else {
+            //Shows the "+ Follow" text
+            followUnfollow.followUser()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -299,4 +308,36 @@ extension ExpertDetailViewController: ExpertsCurrentCoinsTableViewCellDelegate {
         subVC.modalPresentationStyle = .overFullScreen
         self.present(subVC, animated: false, completion: nil)
     }
+}
+
+//MARK: COIN OPTIONS DELEGATE
+
+extension ExpertDetailViewController: CoinOptionsViewControllerDelegate {
+    func addToWatchlist(coinPinned: Coin) {
+        Coin.addSubscriptionToCache(coin: coinPinned)
+    }
+    
+    func removeFromWatchlist(coinPinned: Coin) {
+        Coin.removeSubscriptionToCache(coin: coinPinned)
+    }
+    
+    func pinCoin(coinPinned: Coin) {
+        //
+    }
+    
+    func unPinCoin() {
+        //
+    }
+    
+    func compareTapped(coinCompare: Coin) {
+        //
+    }
+    
+    func goToCoinDetail(coinToGo: Coin) {
+        print("did this 🙂🙂🙂")
+        let eventOptionsVC =  CoinDetailsViewController()
+        eventOptionsVC.coin = coinToGo
+        self.navigationController?.pushViewController(eventOptionsVC, animated: true)
+    }
+        
 }

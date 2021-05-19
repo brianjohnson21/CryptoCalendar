@@ -45,6 +45,9 @@ class HomeFeedViewController: UIViewController {
     
     var coins = [Coin]()
     var coin: Coin?
+    var coinOfDayLoaded = false
+    var coinsLoaded = false
+    var isSubscribed = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,12 +74,12 @@ class HomeFeedViewController: UIViewController {
             //fromSignUp.set(true, forKey: "comingFromSignUp")
         }
         
-        print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😇😇😇")
+        //print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😇😇😇")
         
         //doTransitionViewThing()
         
         //perform(#selector(showSubscriptionVC), with: self, afterDelay: 4.0)
-        //showSubscriptionVC()
+        showSubscriptionVC()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let center = UNUserNotificationCenter.current()
@@ -105,6 +108,13 @@ class HomeFeedViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         showTabBar()
         checkForTabDots()
+    }
+    
+    func hideTransitionView() {
+        if coinOfDayLoaded && coinsLoaded && isSubscribed {
+            launchTransition.shootOffRocket()
+            //self.perform(#selector(self.launchTransition.shootOffRocket), with: self, afterDelay: 0.5)
+        }
     }
     
     func checkForTabDots() {
@@ -152,6 +162,7 @@ class HomeFeedViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.coins = coins
                 self?.mainFeedTableView.reloadData()
+                self?.coinsLoaded = true
             }
         }
     }
@@ -171,6 +182,7 @@ class HomeFeedViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.coin = coin
                 self?.mainFeedTableView.reloadData()
+                self?.coinOfDayLoaded = true
             }
         }
     }
@@ -198,30 +210,37 @@ extension HomeFeedViewController {
                 
                 switch purchaseResult {
                 case .purchased(let expiryDate, let items):
-                    print("\(productId) is valid until \(expiryDate)\n\(items)\n")
+                    print("\(productId) is valid until \(expiryDate)\n\(items)\n - 😇😇😇 - 111")
                     User.authorized = true
-//                        MAPI.registerUser(user: UserSignup(), completionHandler: { (success, user, error) in
-//                            guard error == nil else {
-//                                print(error!)
-//                                return
-//                            }
-//                            guard success, let user = user else {
-//                                print("error")
-//                                return
-//                            }
-//
-//                            User.current = user
-//                            User.saveCurrentUser()
-//                        })
+                    
+                    /*
+                     MAPI.registerUser(user: UserSignup(), completionHandler: { (success, user, error) in
+                     guard error == nil else {
+                     print(error!)
+                     return
+                     }
+                     guard success, let user = user else {
+                     print("error")
+                     return
+                     }
+                     
+                     User.current = user
+                     User.saveCurrentUser()
+                     })
+                     */
+                    
+                    self.isSubscribed = true
+                    self.hideTransitionView()
+                
                 case .expired(let expiryDate, let items):
-                    print("\(productId) is expired since \(expiryDate)\n\(items)\n")
+                    print("\(productId) is expired since \(expiryDate)\n\(items)\n - 😇😇😇 - 222")
                     DispatchQueue.main.async {
                         let subVC = SubscriptionViewController()
                         subVC.modalPresentationStyle = .overFullScreen
                         self.present(subVC, animated: true, completion: nil)
                     }
                 case .notPurchased:
-                    print("The user has never purchased \(productId)")
+                    print("The user has never purchased \(productId) - 😇😇😇 - 333")
                     DispatchQueue.main.async {
                         let subVC = SubscriptionViewController()
                         subVC.modalPresentationStyle = .overFullScreen
@@ -230,11 +249,15 @@ extension HomeFeedViewController {
                 }
                 
             case .error(let error):
-                print("Receipt verification failed: \(error)")
+                print("Receipt verification failed: \(error) - 😇😇😇 - 444")
                 DispatchQueue.main.async {
-                    let subVC = SubscriptionViewController()
-                    subVC.modalPresentationStyle = .overFullScreen
-                    self.present(subVC, animated: true, completion: nil)
+                    
+                    //let subVC = SubscriptionViewController()
+                    //subVC.modalPresentationStyle = .overFullScreen
+                    //self.present(subVC, animated: true, completion: nil)
+                    
+                    self.isSubscribed = true
+                    self.hideTransitionView()
                 }
             }
         }
@@ -242,7 +265,7 @@ extension HomeFeedViewController {
     
     @objc func goToProfile() {
         lightImpactGenerator()
-        let VC1 = MyProfileViewController()
+        let VC1 = MyProfileViewController() //PickCryptoViewController()
         let navController = UINavigationController(rootViewController: VC1)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)

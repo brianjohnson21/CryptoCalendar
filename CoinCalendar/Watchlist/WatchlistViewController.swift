@@ -7,6 +7,7 @@
 
 import UIKit
 import Disk
+import Lottie
 
 class WatchlistViewController: UIViewController {
     
@@ -26,11 +27,17 @@ class WatchlistViewController: UIViewController {
     var infoImageView = UIImageView()
     var infoButton = UIButton()
     var alertsButton = UIButton()
+    var watchlistEmptyState = EmptyStateView()
     var viewedWatchlist = UserDefaults()
+    var loadingContainer = UIView()
+    var loadingLottie = AnimationView()
     
     var mainFeedTableView = UITableView()
     var watchlistCoinsTableViewCell = "watchlistCoinsTableViewCell"
     var watchlistExpertTableViewCell = "watchlistExpertTableViewCell"
+    
+    var coinsFinished = false
+    var expertsFinished = false
     
 //    var myCoins: [[String]] = [["ADA", "Cardano", "$1.40", "+15.75%"], ["BNB", "Binance Coin", "$585.15", "+4.89%"], ["LTC", "Litecoin", "$271.06", "+11.21%"], ["BTC", "Bitcoin", "$56,228.45", "+2.65%"], ["XRP", "XRP", "$1.37", "+10.65%"]]
     var myCoins = [Coin]()
@@ -47,7 +54,7 @@ class WatchlistViewController: UIViewController {
         modifyConstraints()
         setupNav()
         setupTableView()
-        //setupLoadingIndicator()
+        setupLoadingIndicator()
                 
         //perform(#selector(animateCells), with: self, afterDelay: 0.25)
         
@@ -91,6 +98,11 @@ class WatchlistViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.myCoins = coins
                 self?.mainFeedTableView.reloadData()
+                self?.coinsFinished = true
+                
+                if self?.coinsFinished == true && self?.expertsFinished == true {
+                    self?.hideLoader()
+                }
             }
         })
     }
@@ -110,8 +122,29 @@ class WatchlistViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.traders = traders
                 self?.mainFeedTableView.reloadData()
+                self?.expertsFinished = true
+                
+                if self?.coinsFinished == true && self?.expertsFinished == true {
+                    self?.hideLoader()
+                }
             }
         })
+    }
+    
+    @objc func hideLoader() {
+        //print("doing this 🚀🚀🚀")
+        UIView.animateKeyframes(withDuration: 0.35, delay: 0.2, options: []) {
+            self.loadingContainer.alpha = 0
+        } completion: { (success) in
+            if self.traders.count > 0 || self.myCoins.count > 0 {
+                self.watchlistEmptyState.hidViews()
+            } else {
+                self.watchlistEmptyState.showViews()
+            }
+            self.loadingLottie.stop()
+            self.loadingContainer.isHidden = true
+            
+        }
     }
 
 }
@@ -125,5 +158,46 @@ extension WatchlistViewController {
         let navController = UINavigationController(rootViewController: VC1)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
+    }
+    
+    @objc func goToExpertDetail(sender: UIButton) {
+        lightImpactGenerator()
+        let expertsVC = ExpertDetailViewController()
+        expertsVC.delegate = self
+        if myCoins.count > 0 {
+            let trader = traders[sender.tag - 1].admin
+            expertsVC.admin = trader
+        } else {
+            let trader = traders[sender.tag].admin
+            expertsVC.admin = trader
+        }
+        self.navigationController?.pushViewController(expertsVC, animated: true)
+    }
+}
+
+//MARK: COIN OPTIONS DELEGATE
+
+extension WatchlistViewController: WatchlistCoinOptionsViewControllerDelegate {
+    func removeFromWatchlist(coinPinned: Coin) {
+        print("did this remove")
+        //Coin.removeSubscriptionToCache(coin: coinPinned)
+        //mainFeedTableView.reloadData()
+    }
+    
+    func goToCoinDetail(coinToGo: Coin) {
+        let eventOptionsVC =  CoinDetailsViewController()
+        eventOptionsVC.coin = coinToGo
+        self.navigationController?.pushViewController(eventOptionsVC, animated: true)
+    }
+
+}
+
+extension WatchlistViewController: ExpertDetailViewControllerDelegate {
+    func updatedTrader(trader: Admin) {
+        /*
+        if let index = self.traders.firstIndex(where: {$0 == trader}) {
+            self.traders[index] = trader
+        }
+        */
     }
 }

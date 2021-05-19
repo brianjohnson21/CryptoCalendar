@@ -22,7 +22,7 @@ class ExpertPostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
-        self.contentView.backgroundColor = .white
+        //self.contentView.backgroundColor = .white
         self.selectionStyle = .none
         setupViews()
     }

@@ -166,6 +166,7 @@ extension HomeFeedViewController {
         if fromSignUp.bool(forKey: "comingFromSignUp") {
             launchTransition.transitionDelay = 0.25
         } else {
+            launchTransition.transitionDelay = 0.5
             print("is not from sign up")            
         }
         

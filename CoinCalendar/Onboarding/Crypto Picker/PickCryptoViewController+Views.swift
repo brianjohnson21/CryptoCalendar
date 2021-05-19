@@ -179,7 +179,7 @@ extension PickCryptoViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pickCryptoCollectionViewCell, for: indexPath) as! PickCryptoCollectionViewCell
-        cell.coinImageView.image = UIImage(named: coins[indexPath.row][0])
+        cell.coinImageView.image = UIImage(named: coins[indexPath.row][1])
         cell.blockChainLabel.text = coins[indexPath.row][0]
         cell.coinLabel.text = coins[indexPath.row][1]
         

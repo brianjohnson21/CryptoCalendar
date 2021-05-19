@@ -95,7 +95,8 @@ extension MyProfileViewController {
         downArrowImageView.contentMode = .scaleAspectFill
         downArrowImageView.translatesAutoresizingMaskIntoConstraints = false
         purpBackground.addSubview(downArrowImageView)
-        downArrowImageView.leadingAnchor.constraint(equalTo: purpBackground.leadingAnchor, constant: 22).isActive = true
+        //downArrowImageView.leadingAnchor.constraint(equalTo: purpBackground.leadingAnchor, constant: 22).isActive = true
+        downArrowImageView.trailingAnchor.constraint(equalTo: purpBackground.trailingAnchor, constant: -22).isActive = true
         downArrowImageView.topAnchor.constraint(equalTo: purpBackground.topAnchor, constant: 60).isActive = true
         downArrowImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
         downArrowImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -103,11 +104,13 @@ extension MyProfileViewController {
         dismissButton.backgroundColor = .clear
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
         purpBackground.addSubview(dismissButton)
-        dismissButton.leadingAnchor.constraint(equalTo: purpBackground.leadingAnchor).isActive = true
+        //dismissButton.leadingAnchor.constraint(equalTo: purpBackground.leadingAnchor).isActive = true
+        dismissButton.trailingAnchor.constraint(equalTo: purpBackground.trailingAnchor).isActive = true
         dismissButton.bottomAnchor.constraint(equalTo: purpBackground.bottomAnchor).isActive = true
         dismissButton.topAnchor.constraint(equalTo: purpBackground.topAnchor).isActive = true
-        dismissButton.trailingAnchor.constraint(equalTo: downArrowImageView.trailingAnchor, constant: 15).isActive = true
+        dismissButton.leadingAnchor.constraint(equalTo: downArrowImageView.leadingAnchor, constant: -15).isActive = true
         
+        /*
         settingsImageView.image = UIImage(named: "settings2")
         settingsImageView.setImageColor(color: .black)
         settingsImageView.contentMode = .scaleAspectFill
@@ -125,6 +128,7 @@ extension MyProfileViewController {
         settingsButton.trailingAnchor.constraint(equalTo: purpBackground.trailingAnchor).isActive = true
         settingsButton.leadingAnchor.constraint(equalTo: settingsImageView.leadingAnchor, constant: -10).isActive = true
         settingsButton.bottomAnchor.constraint(equalTo: settingsImageView.bottomAnchor, constant: 10).isActive = true
+        */
         
 //        if let imageUrl = User.current.profilePhotoUrl {
 //            profileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in

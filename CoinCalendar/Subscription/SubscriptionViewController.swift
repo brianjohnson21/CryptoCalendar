@@ -14,7 +14,7 @@ class SubscriptionViewController: UIViewController {
 
     var mainScrollView = UIScrollView()
     var containerView = UIView()
-    var subscribeButton = UIButton()
+    var subscribeButton = SubscribeButton()
     var dismissImageView = UIImageView()
     var promoCodeButton = UIButton()
     var promoCodeLabel = UILabel()
@@ -152,22 +152,34 @@ extension SubscriptionViewController {
     }
     
     @objc func didTapSubscribe() {
+        lightImpactGenerator()
+        
+        subscribeButton.showLoader()
+        
         let purchaseId = "CryptoGainz_Sub1"
+        
+        print("⚠️⚠️⚠️ 111")
         
         if User.purchasedIds.contains(purchaseId) {
             self.dismiss(animated: true, completion: nil)
+            print("⚠️⚠️⚠️ 000")
         } else {
             SwiftyStoreKit.purchaseProduct(purchaseId, quantity: 1, atomically: true) { [weak self] result in
                 switch result {
                 case .success(let purchase):
-//                    self?.productId = purchase.productId
-//                    let data = SwiftyStoreKit.localReceiptData
-//                    self?.receiptData = data?.base64EncodedString(options: [])
+                    print("⚠️⚠️⚠️ 222")
+                    /*
+                     self?.productId = purchase.productId
+                     let data = SwiftyStoreKit.localReceiptData
+                     self?.receiptData = data?.base64EncodedString(options: [])
+                     */
                     print("Purchase Success: \(purchase.productId)")
                     DispatchQueue.main.async { [weak self] in
-                        self?.dismiss(animated: true, completion: nil)
+                        self?.subscribeButton.showCheckmark()
                     }
                 case .error(let error):
+                    print("⚠️⚠️⚠️ 333")
+                    self?.subscribeButton.didCancelLoader()
                     switch error.code {
                     case .unknown: print("Unknown error. Please contact support")
                     case .clientInvalid: print("Not allowed to make the payment")
@@ -225,5 +237,13 @@ extension SubscriptionViewController: UITextFieldDelegate {
         }
         return true
         
+    }
+}
+
+//MARK: SUBSCRIBE BUTTON DELEGATE
+
+extension SubscriptionViewController: SubscribeButtonDelegate {
+    func didFinishCheckmark() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

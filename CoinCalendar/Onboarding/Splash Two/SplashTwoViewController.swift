@@ -97,13 +97,16 @@ class SplashTwoViewController: UIViewController {
         self.view.backgroundColor = .white//.green
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeround), name: UIApplication.willEnterForegroundNotification, object: nil)
+                
+        //launchTransition.isFromSignUp =
         
         modifyConstraints()
         modifyStepsConstraints()
         setupViews()
         playVideoAudio()
         setupLaunchTransition()
-        
+                        
+        perform(#selector(hideRockets), with: self, afterDelay: 1.0)
         
         let min = CGFloat(-20)
         let max = CGFloat(20)
@@ -139,6 +142,10 @@ class SplashTwoViewController: UIViewController {
         pulseLottie.play(fromFrame: 0, toFrame: 30, loopMode: .loop) { (success) in
             //
         }
+    }
+    
+    @objc func hideRockets() {
+        self.launchTransition.shootOffRocket()
     }
 
 }

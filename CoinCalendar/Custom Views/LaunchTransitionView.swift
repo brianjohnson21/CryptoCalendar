@@ -35,11 +35,12 @@ class LaunchTransitionView: UIView {
     
     var fromEnigmaImageView = UIImageView()
     var isFromSignUp = false
+    var splashScreen = false
     
     var cometsLayer = UIView()
     var moonImageView = UIImageView()
     var rocketImageView = UIImageView()
-    var transitionDelay: Double = 1.75
+    var transitionDelay: Double = 0
     var showDrip = false
 
     override init(frame: CGRect) {
@@ -51,17 +52,24 @@ class LaunchTransitionView: UIView {
         //print("did this 😅😅😅")
         //perform(#selector(animateViewsAway), with: self, afterDelay: 0.25)
         
-        print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😅😅😅")
+        //print("\(fromSignUp.bool(forKey: "comingFromSignUp")) - 😅😅😅")
         
         if fromSignUp.bool(forKey: "comingFromSignUp") {
             //transitionDelay = 0.25
-            //print("🧠🧠🧠 111")
+            print("🧠🧠🧠 111")
             isFromSignUp = true
-            perform(#selector(shootOffRocket), with: self, afterDelay: 0.25)
+            //perform(#selector(shootOffRocket), with: self, afterDelay: 0.25)
         } else {
-            //print("🧠🧠🧠 222")
+            print("🧠🧠🧠 222")
             isFromSignUp = false
+            //perform(#selector(shootOffRocket), with: self, afterDelay: 1.75)
+        }
+        
+        if splashScreen {
+            print("did this ⛔️⛔️⛔️ 333")
             perform(#selector(shootOffRocket), with: self, afterDelay: 1.75)
+        } else {
+            print("did this ⛔️⛔️⛔️ 444")
         }
                 
     }
@@ -268,11 +276,37 @@ extension LaunchTransitionView {
 
 extension LaunchTransitionView {
     @objc func shootOffRocket() {
-        
+        print("did this ⛔️⛔️⛔️ 111")
         if isFromSignUp {
             self.animateViewsAway()            
             self.delegate?.didFinishLaunchAnimation()
         } else {
+            print("did this ⛔️⛔️⛔️")
+            UIView.animate(withDuration: 0.5, delay: transitionDelay, options: []) {
+                self.rocketImageView.transform = CGAffineTransform(translationX: -20, y: 20)
+            } completion: { (success) in
+                UIView.animate(withDuration: 0.35) {
+                    //self.successImpactGenerator()
+                    self.heavyImpactGenerator()
+                    self.rocketImageView.transform = CGAffineTransform(translationX: 400, y: -400)
+                } completion: { (success) in
+                    UIView.animate(withDuration: 0.2) {
+                        self.cometsLayer.alpha = 0
+                        self.moonImageView.alpha = 0
+                        self.moonImageView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                    } completion: { (success) in
+                        self.animateViewsAway()
+                        UIView.animate(withDuration: 0.35) {
+                            //self.moonImageView.transform = CGAffineTransform(scaleX: 0, y: 0)
+                        } completion: { (success) in
+                            self.delegate?.didFinishLaunchAnimation()
+                        }
+                    }
+
+                }
+            }
+
+            /*
             UIView.animate(withDuration: 0.5) {
                 self.rocketImageView.transform = CGAffineTransform(translationX: -20, y: 20)
             } completion: { (success) in
@@ -296,6 +330,7 @@ extension LaunchTransitionView {
 
                 }
             }
+            */
         }
     }
     
